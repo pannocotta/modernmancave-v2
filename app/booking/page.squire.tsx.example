@@ -1,0 +1,171 @@
+'use client'
+
+/**
+ * SQUIRE BOOKING PAGE - READY TO ACTIVATE
+ * 
+ * To enable Squire booking:
+ * 1. Rename this file to page.tsx (replace current page.tsx)
+ * 2. Update SQUIRE_SHOP_ID below with actual shop ID from Squire dashboard
+ * 3. Deploy to production
+ * 
+ * To revert to WhatsApp booking:
+ * 1. Restore original page.tsx from git or backup
+ * 2. Deploy to production
+ */
+
+import { useEffect } from 'react'
+import Header from '@/components/Header'
+
+// UPDATE THIS with actual Squire shop ID
+const SQUIRE_SHOP_ID = 'YOUR_SHOP_ID_HERE'
+
+export default function BookingPage() {
+  useEffect(() => {
+    // Load Squire widget script
+    const script = document.createElement('script')
+    script.src = 'https://widget.getsquire.com/embed.js'
+    script.async = true
+    script.onload = () => {
+      // Initialize widget once script loaded
+      if (typeof window !== 'undefined' && (window as any).SquireWidget) {
+        (window as any).SquireWidget.init({
+          shopId: SQUIRE_SHOP_ID,
+          containerId: 'squire-booking-widget'
+        })
+      }
+    }
+    document.body.appendChild(script)
+    
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script)
+      }
+    }
+  }, [])
+
+  return (
+    <main className="min-h-screen bg-black text-white">
+      <Header />
+
+      {/* Hero Section */}
+      <section className="relative min-h-[40vh] flex items-center pt-24 md:pt-32 pb-12 md:pb-20">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black z-10" />
+          <img 
+            src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&h=1080&fit=crop&q=80"
+            alt="Modern Mancave"
+            className="absolute inset-0 w-full h-full object-cover grayscale"
+          />
+        </div>
+        
+        <div className="relative z-20 w-full px-4 md:px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-headliner mb-4 md:mb-6">
+              BOOK YOUR <span className="text-[#ff0000]">APPOINTMENT</span>
+            </h1>
+            <div className="w-16 md:w-20 h-1 bg-[#ff0000] mx-auto mb-6 md:mb-8"></div>
+            <p className="text-base md:text-xl text-gray-300">
+              Select your service and preferred time below
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Booking Widget Section */}
+      <section className="py-12 md:py-20 px-4 md:px-6 bg-zinc-950">
+        <div className="max-w-6xl mx-auto">
+          
+          {/* Widget Container */}
+          <div 
+            id="squire-booking-widget"
+            className="bg-black border border-zinc-800 rounded-lg p-6 min-h-[600px] flex items-center justify-center"
+          >
+            {/* Loading State */}
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#ff0000] mx-auto mb-4"></div>
+              <p className="text-gray-400">Loading booking system...</p>
+            </div>
+          </div>
+
+          {/* Help Section */}
+          <div className="mt-8 text-center">
+            <p className="text-gray-400 mb-4">
+              Having trouble booking online?
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="tel:0415631007"
+                className="inline-block border-2 border-zinc-700 hover:border-[#ff0000] text-white font-bold transition-colors px-6 py-3"
+              >
+                📞 Call 0415 631 007
+              </a>
+              <a 
+                href="https://wa.me/61415631007"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block border-2 border-zinc-700 hover:border-[#ff0000] text-white font-bold transition-colors px-6 py-3"
+              >
+                💬 WhatsApp Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Info Section */}
+      <section className="py-12 md:py-20 px-4 md:px-6 bg-black">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-headliner text-center mb-8">
+            BOOKING <span className="text-[#ff0000]">INFORMATION</span>
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="border border-zinc-800 p-6">
+              <h3 className="font-headliner text-xl mb-3 text-[#ff0000]">Payment Required</h3>
+              <p className="text-gray-400">
+                All appointments require upfront payment to secure your booking. 
+                Payment will be processed during the booking process.
+              </p>
+            </div>
+
+            <div className="border border-zinc-800 p-6">
+              <h3 className="font-headliner text-xl mb-3 text-[#ff0000]">Cancellation Policy</h3>
+              <p className="text-gray-400">
+                Please cancel or reschedule at least 24 hours in advance. 
+                Late cancellations may forfeit your deposit.
+              </p>
+            </div>
+
+            <div className="border border-zinc-800 p-6">
+              <h3 className="font-headliner text-xl mb-3 text-[#ff0000]">First Time Here?</h3>
+              <p className="text-gray-400">
+                New clients are always welcome! Select your preferred service and 
+                our team will ensure you get the perfect cut.
+              </p>
+            </div>
+
+            <div className="border border-zinc-800 p-6">
+              <h3 className="font-headliner text-xl mb-3 text-[#ff0000]">Questions?</h3>
+              <p className="text-gray-400">
+                Not sure which service is right for you? Call us and we'll help 
+                you choose the perfect option.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+/**
+ * ALTERNATIVE: Simple iframe version (if embed script doesn't work)
+ * 
+ * Replace the widget container with:
+ * 
+ * <iframe 
+ *   src={`https://widget.getsquire.com/v2/${SQUIRE_SHOP_ID}`}
+ *   className="w-full min-h-[800px] border-0 rounded-lg"
+ *   title="Book Appointment"
+ * />
+ */
