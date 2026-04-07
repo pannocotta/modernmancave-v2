@@ -1,4 +1,10 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
+
+export const metadata: Metadata = {
+  title: 'Download App - Modern Mancave',
+  description: 'Install the Modern Mancave app on your phone for instant bookings and exclusive deals.',
+}
 
 export default function AppPage() {
   return (
@@ -9,7 +15,7 @@ export default function AppPage() {
       <section className="relative min-h-screen flex items-center pt-24 md:pt-32 pb-12">
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            
+
             {/* Left: Content */}
             <div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-headliner gradient-heading mb-6 leading-tight">
@@ -20,19 +26,11 @@ export default function AppPage() {
               <p className="text-xl text-gray-300 mb-8">
                 Download the Modern Mancave app for instant bookings, exclusive deals, and a seamless grooming experience.
               </p>
-              
-              {/* QR Code */}
-              <div className="bg-white p-6 rounded-lg inline-block mb-8">
-                <div className="w-48 h-48 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">
-                  QR Code Placeholder
-                  <br/>
-                  (To be updated)
-                </div>
+
+              {/* Install note */}
+              <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-8 inline-block mb-8">
+                <p className="text-gray-400 text-sm">Visit modernmancave.com.au on your phone to install</p>
               </div>
-              
-              <p className="text-gray-400">
-                Scan the QR code to install the app on your device
-              </p>
             </div>
 
             {/* Right: Phone Mockup */}
@@ -64,9 +62,9 @@ export default function AppPage() {
             HOW TO INSTALL
           </h2>
           <div className="w-20 h-1 bg-gray-500 mx-auto mb-12"></div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
-            
+
             {/* iOS Instructions */}
             <div className="bg-black p-8 rounded-lg">
               <div className="flex items-center gap-3 mb-6">
@@ -77,19 +75,19 @@ export default function AppPage() {
               </div>
               <ol className="space-y-4 text-gray-300">
                 <li className="flex gap-3">
-                  <span className="text-[#ff0000] font-bold">1.</span>
+                  <span className="text-brand-red font-bold">1.</span>
                   <span>Scan the QR code or visit the website in Safari</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-[#ff0000] font-bold">2.</span>
+                  <span className="text-brand-red font-bold">2.</span>
                   <span>Tap the Share button at the bottom</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-[#ff0000] font-bold">3.</span>
+                  <span className="text-brand-red font-bold">3.</span>
                   <span>Scroll down and tap &quot;Add to Home Screen&quot;</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-[#ff0000] font-bold">4.</span>
+                  <span className="text-brand-red font-bold">4.</span>
                   <span>Tap &quot;Add&quot; in the top right corner</span>
                 </li>
               </ol>
@@ -105,19 +103,19 @@ export default function AppPage() {
               </div>
               <ol className="space-y-4 text-gray-300">
                 <li className="flex gap-3">
-                  <span className="text-[#ff0000] font-bold">1.</span>
+                  <span className="text-brand-red font-bold">1.</span>
                   <span>Scan the QR code or visit the website in Chrome</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-[#ff0000] font-bold">2.</span>
+                  <span className="text-brand-red font-bold">2.</span>
                   <span>Tap the menu button (three dots) in the top right</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-[#ff0000] font-bold">3.</span>
+                  <span className="text-brand-red font-bold">3.</span>
                   <span>Tap &quot;Add to Home screen&quot; or &quot;Install app&quot;</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-[#ff0000] font-bold">4.</span>
+                  <span className="text-brand-red font-bold">4.</span>
                   <span>Tap &quot;Add&quot; or &quot;Install&quot; to confirm</span>
                 </li>
               </ol>

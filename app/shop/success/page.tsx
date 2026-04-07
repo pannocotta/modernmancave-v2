@@ -35,7 +35,7 @@ export default function SuccessPage() {
           <div className="space-y-4">
             <Link
               href="/shop"
-              className="inline-block bg-[#ff0000] hover:bg-red-600 px-8 py-3 rounded-lg font-bold transition"
+              className="inline-block bg-brand-red hover:bg-red-600 px-8 py-3 rounded-lg font-bold transition"
             >
               Continue Shopping
             </Link>

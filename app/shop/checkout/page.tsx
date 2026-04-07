@@ -48,7 +48,7 @@ export default function CheckoutPage() {
           <h1 className="text-4xl font-headliner gradient-heading mb-6">YOUR CART IS EMPTY</h1>
           <Link
             href="/shop"
-            className="inline-block bg-[#ff0000] hover:bg-red-600 px-8 py-3 rounded-lg font-bold transition"
+            className="inline-block bg-brand-red hover:bg-red-600 px-8 py-3 rounded-lg font-bold transition"
           >
             Continue Shopping
           </Link>
@@ -79,7 +79,7 @@ export default function CheckoutPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none transition"
+                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none transition"
                   />
                 </div>
 
@@ -92,7 +92,7 @@ export default function CheckoutPage() {
                       value={formData.firstName}
                       onChange={handleChange}
                       required
-                      className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none transition"
+                      className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none transition"
                     />
                   </div>
                   <div>
@@ -103,7 +103,7 @@ export default function CheckoutPage() {
                       value={formData.lastName}
                       onChange={handleChange}
                       required
-                      className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none transition"
+                      className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none transition"
                     />
                   </div>
                 </div>
@@ -116,7 +116,7 @@ export default function CheckoutPage() {
                     value={formData.address}
                     onChange={handleChange}
                     required
-                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none transition"
+                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none transition"
                   />
                 </div>
 
@@ -129,7 +129,7 @@ export default function CheckoutPage() {
                       value={formData.city}
                       onChange={handleChange}
                       required
-                      className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none transition"
+                      className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none transition"
                     />
                   </div>
                   <div>
@@ -139,7 +139,7 @@ export default function CheckoutPage() {
                       value={formData.state}
                       onChange={handleChange}
                       required
-                      className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none transition"
+                      className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none transition"
                     >
                       <option>NSW</option>
                       <option>VIC</option>
@@ -160,7 +160,7 @@ export default function CheckoutPage() {
                       onChange={handleChange}
                       required
                       pattern="[0-9]{4}"
-                      className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none transition"
+                      className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none transition"
                     />
                   </div>
                 </div>
@@ -173,7 +173,7 @@ export default function CheckoutPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none transition"
+                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none transition"
                   />
                 </div>
 
@@ -183,7 +183,7 @@ export default function CheckoutPage() {
                   className={`w-full py-4 rounded-lg font-bold text-lg transition ${
                     processing
                       ? 'bg-zinc-700 cursor-not-allowed'
-                      : 'bg-[#ff0000] hover:bg-red-600'
+                      : 'bg-brand-red hover:bg-red-600'
                   }`}
                 >
                   {processing ? 'PROCESSING...' : `PAY $${total.toFixed(2)}`}
@@ -231,7 +231,7 @@ export default function CheckoutPage() {
                 </div>
                 <div className="flex justify-between text-2xl font-bold pt-2 border-t border-zinc-700">
                   <span>Total</span>
-                  <span className="text-[#ff0000]">
+                  <span className="text-brand-red">
                     ${(total + (total >= 100 ? 0 : 10)).toFixed(2)}
                   </span>
                 </div>
