@@ -2,10 +2,11 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { NAV_LINKS, BOOKING_LINK } from '@/lib/config'
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false)
-
   const closeDrawer = () => setDrawerOpen(false)
 
   return (
@@ -13,127 +14,64 @@ export default function Header() {
       <nav className="fixed top-0 w-full z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-between" style={{ paddingLeft: 'clamp(1rem, 4vw, 1.5rem)', paddingRight: 'clamp(1rem, 4vw, 1.5rem)', paddingTop: 'clamp(1rem, 3vh, 1.25rem)', paddingBottom: 'clamp(1rem, 3vh, 1.25rem)' }}>
           <Link href="/" className="flex items-center hover:opacity-80 transition">
-            <img src="/1.png" alt="Modern Mancave" style={{ height: 'clamp(24px, 5vw, 28px)' }} className="w-auto" />
+            <Image src="/1.png" alt="Modern Mancave" width={112} height={28} style={{ height: 'clamp(24px, 5vw, 28px)', width: 'auto' }} priority />
           </Link>
-          
-          {/* Hamburger Menu Button - fluid touch target */}
+
           <button
             onClick={() => setDrawerOpen(true)}
             className="flex flex-col justify-center items-end group p-2 -mr-2"
             style={{ width: 'clamp(40px, 8vw, 48px)', height: 'clamp(40px, 8vw, 48px)', gap: 'clamp(5px, 1.5vw, 6px)' }}
             aria-label="Open menu"
           >
-            <span className="h-0.5 bg-[#ff0000] group-hover:opacity-70 transition-all" style={{ width: 'clamp(20px, 5vw, 28px)' }}></span>
-            <span className="h-0.5 bg-[#ff0000] group-hover:opacity-70 transition-all" style={{ width: 'clamp(16px, 4vw, 24px)' }}></span>
-            <span className="h-0.5 bg-[#ff0000] group-hover:opacity-70 transition-all" style={{ width: 'clamp(20px, 5vw, 28px)' }}></span>
+            <span className="h-0.5 bg-brand-red group-hover:opacity-70 transition-all" style={{ width: 'clamp(20px, 5vw, 28px)' }} />
+            <span className="h-0.5 bg-brand-red group-hover:opacity-70 transition-all" style={{ width: 'clamp(16px, 4vw, 24px)' }} />
+            <span className="h-0.5 bg-brand-red group-hover:opacity-70 transition-all" style={{ width: 'clamp(20px, 5vw, 28px)' }} />
           </button>
         </div>
       </nav>
 
       {/* Side Drawer */}
-      <div 
+      <div
         className={`fixed top-0 right-0 h-full w-80 bg-black z-[100] transform transition-transform duration-300 ease-in-out shadow-2xl ${
           drawerOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <button 
+        <button
           onClick={closeDrawer}
           className="absolute top-8 right-8 text-white text-4xl font-light hover:rotate-90 transition-transform"
           aria-label="Close menu"
         >
           ×
         </button>
-        
+
         <div className="p-8 border-b border-zinc-800">
-          <img src="/1.png" alt="Modern Mancave" className="h-8 w-auto" />
+          <Image src="/1.png" alt="Modern Mancave" width={112} height={32} className="h-8 w-auto" />
         </div>
-        
+
         <nav className="flex flex-col gap-6 p-12 pt-8">
-          <Link 
-            href="/" 
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={closeDrawer}
+              className="text-white text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link
+            href={BOOKING_LINK.href}
             onClick={closeDrawer}
-            className="text-white text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
+            className="text-brand-red text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
           >
-            HOME
-          </Link>
-          
-          <Link 
-            href="/team" 
-            onClick={closeDrawer}
-            className="text-white text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
-          >
-            THE TEAM
-          </Link>
-          
-          <Link 
-            href="/community" 
-            onClick={closeDrawer}
-            className="text-white text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
-          >
-            COMMUNITY
-          </Link>
-          
-          <Link 
-            href="/prices" 
-            onClick={closeDrawer}
-            className="text-white text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
-          >
-            PRICES
-          </Link>
-          
-          <Link 
-            href="/locations" 
-            onClick={closeDrawer}
-            className="text-white text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
-          >
-            LOCATIONS
-          </Link>
-          
-          <Link 
-            href="/mobile-barber" 
-            onClick={closeDrawer}
-            className="text-white text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
-          >
-            MOBILE BARBER
-          </Link>
-          
-          <Link 
-            href="/shop" 
-            onClick={closeDrawer}
-            className="text-white text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
-          >
-            MERCH
-          </Link>
-          
-          <Link 
-            href="/franchise" 
-            onClick={closeDrawer}
-            className="text-white text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
-          >
-            FRANCHISE
-          </Link>
-          
-          <Link 
-            href="/app" 
-            onClick={closeDrawer}
-            className="text-white text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
-          >
-            DOWNLOAD APP
-          </Link>
-          
-          <Link 
-            href="/booking" 
-            onClick={closeDrawer}
-            className="text-[#ff0000] text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
-          >
-            BOOK NOW
+            {BOOKING_LINK.label}
           </Link>
         </nav>
       </div>
 
       {/* Overlay */}
       {drawerOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-[90]"
           onClick={closeDrawer}
         />
