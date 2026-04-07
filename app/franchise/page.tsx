@@ -1,7 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import Header from '@/components/Header'
 import { useState } from 'react'
+import { SITE } from '@/lib/config'
 
 export default function FranchisePage() {
   const [submitted, setSubmitted] = useState(false)
@@ -18,11 +20,7 @@ export default function FranchisePage() {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center pt-24 md:pt-32 pb-12">
         <div className="absolute inset-0 z-0">
-          <img
-            src="/stock/barbershop-tools.jpg"
-            alt=""
-            className="w-full h-full object-cover grayscale opacity-30"
-          />
+          <Image src="/stock/barbershop-tools.jpg" alt="" fill className="object-cover grayscale opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black"></div>
         </div>
 
@@ -32,13 +30,13 @@ export default function FranchisePage() {
               OWN A MODERN<br/>
               MANCAVE
             </h1>
-            <div className="w-20 h-1 bg-[#ff0000] mx-auto mb-8"></div>
+            <div className="w-20 h-1 bg-brand-red mx-auto mb-8"></div>
             <p className="text-xl md:text-2xl text-gray-300 mb-8">
               A proven business. A recognised brand. Everything you need to open the doors and start earning from day one.
             </p>
             <a
               href="#application"
-              className="inline-block bg-[#ff0000] hover:bg-red-600 px-8 py-4 rounded-lg font-bold text-lg transition"
+              className="inline-block bg-brand-red hover:bg-red-600 px-8 py-4 rounded-lg font-bold text-lg transition"
             >
               APPLY NOW
             </a>
@@ -54,7 +52,7 @@ export default function FranchisePage() {
               <h2 className="text-4xl md:text-5xl font-headliner gradient-heading mb-6">
                 THE OPPORTUNITY
               </h2>
-              <div className="w-20 h-1 bg-[#ff0000] mb-8"></div>
+              <div className="w-20 h-1 bg-brand-red mb-8"></div>
               <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                 <p>
                   Modern Mancave has been operating since 2017. Three locations in Griffith, a mobile barber studio, a tattoo studio, and a loyal customer base that keeps growing.
@@ -70,15 +68,15 @@ export default function FranchisePage() {
 
             <div className="space-y-6">
               <div className="border border-zinc-800 bg-black p-8 rounded-xl shadow-lg shadow-black/50">
-                <div className="text-4xl font-bold text-[#ff0000] mb-2">10+</div>
+                <div className="text-4xl font-bold text-brand-red mb-2">{new Date().getFullYear() - SITE.established}+</div>
                 <p className="text-gray-400">Years in business</p>
               </div>
               <div className="border border-zinc-800 bg-black p-8 rounded-xl shadow-lg shadow-black/50">
-                <div className="text-4xl font-bold text-[#ff0000] mb-2">3</div>
+                <div className="text-4xl font-bold text-brand-red mb-2">3</div>
                 <p className="text-gray-400">Locations across Griffith</p>
               </div>
               <div className="border border-zinc-800 bg-black p-8 rounded-xl shadow-lg shadow-black/50">
-                <div className="text-4xl font-bold text-[#ff0000] mb-2">90%+</div>
+                <div className="text-4xl font-bold text-brand-red mb-2">90%+</div>
                 <p className="text-gray-400">Client return rate</p>
               </div>
             </div>
@@ -93,7 +91,7 @@ export default function FranchisePage() {
             <h2 className="text-4xl md:text-5xl font-headliner gradient-heading mb-4">
               WHAT YOU GET
             </h2>
-            <div className="w-20 h-1 bg-[#ff0000] mx-auto mb-6"></div>
+            <div className="w-20 h-1 bg-brand-red mx-auto mb-6"></div>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               Everything is set up for you. No guesswork, no figuring it out alone.
             </p>
@@ -111,8 +109,8 @@ export default function FranchisePage() {
               { title: 'ONGOING SUPPORT', desc: 'Direct access to Tristan and the team. Operational guidance, regular check-ins, and help when you need it.' },
               { title: 'PROVEN SYSTEMS', desc: 'Pricing, rostering, stock management, and customer retention systems that already work across three locations.' },
             ].map((item, index) => (
-              <div key={index} className="border border-zinc-800 bg-zinc-950 p-6 rounded-xl shadow-lg shadow-black/50 hover:border-[#ff0000]/30 transition-colors">
-                <h3 className="font-headliner text-lg text-[#ff0000] mb-3">{item.title}</h3>
+              <div key={index} className="border border-zinc-800 bg-zinc-950 p-6 rounded-xl shadow-lg shadow-black/50 hover:border-brand-red/30 transition-colors">
+                <h3 className="font-headliner text-lg text-brand-red mb-3">{item.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -127,7 +125,7 @@ export default function FranchisePage() {
             <h2 className="text-4xl md:text-5xl font-headliner gradient-heading mb-4">
               WHO THIS IS FOR
             </h2>
-            <div className="w-20 h-1 bg-[#ff0000] mx-auto mb-6"></div>
+            <div className="w-20 h-1 bg-brand-red mx-auto mb-6"></div>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               This is for people who want to build something real.
             </p>
@@ -141,9 +139,9 @@ export default function FranchisePage() {
               { title: 'COMMITTED', text: 'You have capital to invest and are ready to go', icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg> },
               { title: 'ANY BACKGROUND', text: 'Barbering experience is a plus but not required', icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a23.838 23.838 0 0 0-1.012 5.434c.306.1.618.19.933.268a23.89 23.89 0 0 0 3.79.518M4.26 10.147A23.867 23.867 0 0 1 12 8.25c2.724 0 5.335.456 7.74 1.297M4.26 10.147l.174-.442c.63-1.593 2.258-2.455 3.867-2.012a23.716 23.716 0 0 1 7.398 0c1.609-.443 3.237.419 3.867 2.012l.174.442m-15.482 0c.38.96.686 1.955.91 2.976m14.572-2.976a23.867 23.867 0 0 1 .91 2.976" /></svg> },
             ].map((item, i) => (
-              <div key={i} className="bg-black border border-zinc-800 rounded-xl shadow-lg shadow-black/50 p-6 text-center hover:border-[#ff0000]/30 transition-colors">
-                <div className="text-[#ff0000] mb-4 flex justify-center">{item.icon}</div>
-                <h3 className="font-bold text-[#ff0000] text-xs tracking-widest mb-3">{item.title}</h3>
+              <div key={i} className="bg-black border border-zinc-800 rounded-xl shadow-lg shadow-black/50 p-6 text-center hover:border-brand-red/30 transition-colors">
+                <div className="text-brand-red mb-4 flex justify-center">{item.icon}</div>
+                <h3 className="font-bold text-brand-red text-xs tracking-widest mb-3">{item.title}</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">{item.text}</p>
               </div>
             ))}
@@ -158,7 +156,7 @@ export default function FranchisePage() {
             <h2 className="text-4xl md:text-5xl font-headliner gradient-heading mb-4">
               START YOUR JOURNEY
             </h2>
-            <div className="w-20 h-1 bg-[#ff0000] mx-auto mb-6"></div>
+            <div className="w-20 h-1 bg-brand-red mx-auto mb-6"></div>
             <p className="text-gray-300 text-lg">
               Take the first step toward owning your own Modern Mancave
             </p>
@@ -166,7 +164,7 @@ export default function FranchisePage() {
 
           {submitted ? (
             <div className="bg-zinc-900 p-8 rounded-lg text-center">
-              <div className="w-16 h-16 bg-[#ff0000] rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-brand-red rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
@@ -175,7 +173,7 @@ export default function FranchisePage() {
               <p className="text-gray-300 mb-6">
                 Thanks for your interest. We&apos;ll review your application and be in touch within 2-3 business days with full details.
               </p>
-              <a href="/" className="inline-block bg-[#ff0000] text-white px-6 py-3 font-bold hover:bg-white hover:text-[#ff0000] transition-colors">
+              <a href="/" className="inline-block bg-brand-red text-white px-6 py-3 font-bold hover:bg-white hover:text-brand-red transition-colors">
                 BACK TO HOME
               </a>
             </div>
@@ -187,7 +185,7 @@ export default function FranchisePage() {
                   <input
                     type="text"
                     required
-                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
                 </div>
                 <div>
@@ -195,7 +193,7 @@ export default function FranchisePage() {
                   <input
                     type="text"
                     required
-                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
                 </div>
               </div>
@@ -206,7 +204,7 @@ export default function FranchisePage() {
                   <input
                     type="email"
                     required
-                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
                 </div>
                 <div>
@@ -214,7 +212,7 @@ export default function FranchisePage() {
                   <input
                     type="tel"
                     required
-                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
                 </div>
               </div>
@@ -224,13 +222,13 @@ export default function FranchisePage() {
                 <input
                   type="text"
                   required
-                  className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                  className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold mb-2">Barbering Experience</label>
-                <select className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none">
+                <select className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none">
                   <option>None</option>
                   <option>Less than 2 years</option>
                   <option>2-5 years</option>
@@ -244,13 +242,13 @@ export default function FranchisePage() {
                 <textarea
                   required
                   rows={4}
-                  className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                  className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-[#ff0000] hover:bg-red-600 text-white py-4 rounded-lg font-bold text-lg transition"
+                className="w-full bg-brand-red hover:bg-red-600 text-white py-4 rounded-lg font-bold text-lg transition"
               >
                 SUBMIT APPLICATION
               </button>
