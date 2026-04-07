@@ -30,17 +30,17 @@ export default function MobileBarberEnquiryPage() {
 
             {submitted ? (
               <div className="bg-zinc-900 p-8 rounded-lg text-center">
-                <div className="w-16 h-16 bg-[#ff0000] rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-brand-red rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <h2 className="text-3xl font-headliner gradient-heading mb-4">ENQUIRY RECEIVED</h2>
                 <p className="text-gray-300 mb-6">
-                  Thank you for your interest in the Modern Mancave mobile studio. 
+                  Thank you for your interest in the Modern Mancave mobile studio.
                   We&apos;ll be in touch within 24 hours to discuss your event.
                 </p>
-                <a href="/mobile-barber" className="inline-block bg-[#ff0000] text-white px-6 py-3 font-bold hover:bg-white hover:text-[#ff0000] transition-colors">
+                <a href="/mobile-barber" className="inline-block bg-brand-red text-white px-6 py-3 font-bold hover:bg-white hover:text-brand-red transition-colors">
                   BACK TO MOBILE BARBER
                 </a>
               </div>
@@ -49,43 +49,43 @@ export default function MobileBarberEnquiryPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-bold mb-2 text-gray-400">FIRST NAME *</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       required
-                      className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                      className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-bold mb-2 text-gray-400">LAST NAME *</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       required
-                      className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                      className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                     />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-bold mb-2 text-gray-400">EMAIL *</label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     required
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-bold mb-2 text-gray-400">PHONE *</label>
-                  <input 
-                    type="tel" 
+                  <input
+                    type="tel"
                     required
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-bold mb-2 text-gray-400">EVENT TYPE</label>
-                  <select className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-[#ff0000] focus:outline-none">
+                  <select className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none">
                     <option value="">Select event type</option>
                     <option value="wedding">Wedding</option>
                     <option value="corporate">Corporate Event</option>
@@ -97,42 +97,42 @@ export default function MobileBarberEnquiryPage() {
 
                 <div>
                   <label className="block text-sm font-bold mb-2 text-gray-400">EVENT DATE</label>
-                  <input 
-                    type="date" 
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                  <input
+                    type="date"
+                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-bold mb-2 text-gray-400">EVENT LOCATION</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     placeholder="e.g. Griffith, NSW"
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-bold mb-2 text-gray-400">ESTIMATED NUMBER OF GUESTS</label>
-                  <input 
-                    type="number" 
+                  <input
+                    type="number"
                     placeholder="How many people will need grooming?"
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-bold mb-2 text-gray-400">TELL US ABOUT YOUR EVENT</label>
-                  <textarea 
+                  <textarea
                     rows={4}
                     placeholder="Any special requirements or additional details..."
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-[#ff0000] focus:outline-none"
+                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
                 </div>
 
-                <button 
+                <button
                   type="submit"
-                  className="w-full bg-[#ff0000] text-white px-8 py-4 text-lg font-bold tracking-wider hover:bg-white hover:text-[#ff0000] transition-colors"
+                  className="w-full bg-brand-red text-white px-8 py-4 text-lg font-bold tracking-wider hover:bg-white hover:text-brand-red transition-colors"
                 >
                   SUBMIT ENQUIRY
                 </button>

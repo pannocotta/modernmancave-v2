@@ -1,5 +1,13 @@
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Link from 'next/link'
+import Image from 'next/image'
+import AnimatedSection from '@/components/AnimatedSection'
+
+export const metadata: Metadata = {
+  title: 'Mobile Barber - Modern Mancave',
+  description: 'Bring the Modern Mancave experience to your home, office, or event. Fully equipped mobile barber studio in Griffith and the Riverina.',
+}
 
 export default function MobileBarberPage() {
   const events = [
@@ -100,20 +108,16 @@ export default function MobileBarberPage() {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center pt-24 md:pt-32 pb-6 md:pb-8">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/stock/barber-cutting.jpg"
-            alt=""
-            className="w-full h-full object-cover grayscale opacity-40"
-          />
+          <Image src="/stock/barber-cutting.jpg" alt="" fill className="object-cover grayscale opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black"></div>
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full text-center">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-headliner gradient-heading mb-6 leading-tight">
             THE MANCAVE<br/>
             COMES TO YOU
           </h1>
-          <div className="w-20 h-1 bg-[#ff0000] mx-auto mb-8"></div>
+          <div className="w-20 h-1 bg-brand-red mx-auto mb-8"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
             Bring the Modern Mancave experience to your home, office, or event. Our fully equipped mobile studio delivers expert cuts and grooming wherever you need it.
           </p>
@@ -129,9 +133,11 @@ export default function MobileBarberPage() {
           <div className="grid md:grid-cols-[58%_42%] gap-16 items-center">
             {/* Left: Image */}
             <div>
-              <img 
+              <Image
                 src="/mobile-trailer.png"
                 alt="Modern Mancave Mobile Barber Studio"
+                width={800}
+                height={600}
                 className="w-full h-auto rounded-lg"
               />
             </div>
@@ -142,15 +148,17 @@ export default function MobileBarberPage() {
                 THE ULTIMATE MOBILE<br/>
                 BARBER EXPERIENCE
               </h2>
-              <div className="w-20 h-1 bg-[#ff0000] mb-8"></div>
-              <ul className="space-y-4">
-                {features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-[#ff0000] mr-3 text-xl">✓</span>
-                    <span className="text-gray-300 text-lg">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="w-20 h-1 bg-brand-red mb-8"></div>
+              <AnimatedSection>
+                <ul className="space-y-4">
+                  {features.map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="text-brand-red mr-3 text-xl">✓</span>
+                      <span className="text-gray-300 text-lg">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </AnimatedSection>
             </div>
           </div>
         </div>
@@ -164,7 +172,7 @@ export default function MobileBarberPage() {
               <h2 className="text-4xl md:text-6xl font-headliner gradient-heading mb-6">
                 BARBER<br/>TRAINING
               </h2>
-              <div className="w-20 h-1 bg-[#ff0000] mb-8"></div>
+              <div className="w-20 h-1 bg-brand-red mb-8"></div>
               <p className="text-gray-300 text-lg mb-8">
                 We bring expert barbering education directly to your hairdressing salon or business. Whether you&apos;re upskilling your team or starting from scratch, our hands-on training covers everything from foundational techniques to advanced styling.
               </p>
@@ -175,19 +183,19 @@ export default function MobileBarberPage() {
 
             <div className="space-y-6">
               <div className="border border-zinc-800 bg-zinc-950 p-6">
-                <h3 className="font-headliner text-lg text-[#ff0000] mb-2">CUTTING FUNDAMENTALS</h3>
+                <h3 className="font-headliner text-lg text-brand-red mb-2">CUTTING FUNDAMENTALS</h3>
                 <p className="text-gray-400 text-sm">Clipper work, scissor technique, fades, tapers, and blending. The core skills every barber needs to master.</p>
               </div>
               <div className="border border-zinc-800 bg-zinc-950 p-6">
-                <h3 className="font-headliner text-lg text-[#ff0000] mb-2">BEARD SHAPING & HOT TOWEL SHAVES</h3>
+                <h3 className="font-headliner text-lg text-brand-red mb-2">BEARD SHAPING & HOT TOWEL SHAVES</h3>
                 <p className="text-gray-400 text-sm">Straight razor technique, beard design, and the full hot towel shave experience. Premium services that set you apart.</p>
               </div>
               <div className="border border-zinc-800 bg-zinc-950 p-6">
-                <h3 className="font-headliner text-lg text-[#ff0000] mb-2">CLIENT EXPERIENCE & BUSINESS</h3>
+                <h3 className="font-headliner text-lg text-brand-red mb-2">CLIENT EXPERIENCE & BUSINESS</h3>
                 <p className="text-gray-400 text-sm">Consultation skills, upselling premium services, building loyalty, and creating an atmosphere that keeps clients coming back.</p>
               </div>
               <div className="border border-zinc-800 bg-zinc-950 p-6">
-                <h3 className="font-headliner text-lg text-[#ff0000] mb-2">ON-SITE AT YOUR LOCATION</h3>
+                <h3 className="font-headliner text-lg text-brand-red mb-2">ON-SITE AT YOUR LOCATION</h3>
                 <p className="text-gray-400 text-sm">We come to you. Your hairdressing salon, your tools, your team. Training is tailored to your business and skill level. Groups of any size welcome.</p>
               </div>
             </div>
@@ -201,21 +209,23 @@ export default function MobileBarberPage() {
           <h2 className="text-4xl md:text-5xl font-headliner gradient-heading text-center mb-16">
             WHEREVER YOU NEED US
           </h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event, index) => (
-              <div key={index} className="bg-black p-8 rounded-lg hover:bg-zinc-900 transition-colors text-center">
-                <div className="text-white mb-4 flex justify-center">{event.icon}</div>
-                <h3 className="font-headliner text-xl mb-4 text-[#ff0000]">{event.title}</h3>
-                <p className="text-gray-400 text-sm">{event.description}</p>
-              </div>
-            ))}
-          </div>
+
+          <AnimatedSection>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {events.map((event, index) => (
+                <div key={index} className="bg-black p-8 rounded-lg hover:bg-zinc-900 transition-colors text-center">
+                  <div className="text-white mb-4 flex justify-center">{event.icon}</div>
+                  <h3 className="font-headliner text-xl mb-4 text-brand-red">{event.title}</h3>
+                  <p className="text-gray-400 text-sm">{event.description}</p>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Contact CTA */}
-      <section id="contact" className="py-24 md:py-32 px-6 bg-[#ff0000]">
+      <section id="contact" className="py-24 md:py-32 px-6 bg-brand-red">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-headliner mb-6 text-black">
             BOOK YOUR NEXT EVENT
@@ -223,7 +233,7 @@ export default function MobileBarberPage() {
           <p className="text-black/80 text-lg mb-8 max-w-2xl mx-auto">
             Get in touch today to discuss your event and secure a custom quote for the mobile barber studio.
           </p>
-          <Link 
+          <Link
             href="/mobile-barber-enquiry"
             className="inline-block bg-black text-white px-8 py-4 text-lg font-bold tracking-wider hover:bg-zinc-900 transition-colors"
           >
