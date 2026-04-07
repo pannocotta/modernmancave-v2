@@ -20,10 +20,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-poppins)', 'system-ui', '-apple-system', 'sans-serif'],
         serif: ['var(--font-playfair)'],
-        script: ['var(--font-script)'],
         display: ['var(--font-bebas)'],
-        sancreek: ['var(--font-sancreek)'],
-        montserrat: ['var(--font-montserrat)'],
         headliner: ['Awakening', 'sans-serif'],
       },
     },
