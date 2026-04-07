@@ -76,7 +76,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                       {item.size && (
                         <p className="text-sm text-gray-400">Size: {item.size}</p>
                       )}
-                      <p className="text-[#ff0000] font-bold mt-1">
+                      <p className="text-brand-red font-bold mt-1">
                         ${item.price.toFixed(2)}
                       </p>
                       
@@ -117,12 +117,12 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
             <div className="p-6 border-t border-zinc-800 space-y-4">
               <div className="flex justify-between text-xl font-bold">
                 <span>Total:</span>
-                <span className="text-[#ff0000]">${total.toFixed(2)}</span>
+                <span className="text-brand-red">${total.toFixed(2)}</span>
               </div>
               <Link
                 href="/shop/checkout"
                 onClick={onClose}
-                className="block w-full bg-[#ff0000] hover:bg-red-600 text-white text-center py-3 rounded-lg font-bold transition"
+                className="block w-full bg-brand-red hover:bg-red-600 text-white text-center py-3 rounded-lg font-bold transition"
               >
                 CHECKOUT
               </Link>

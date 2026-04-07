@@ -36,7 +36,7 @@ export default function PWAPrompt() {
 
   return (
     <div className="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-sm z-50 animate-slide-up">
-      <div className="bg-zinc-900 border-2 border-[#ff0000] rounded-lg p-6 shadow-2xl">
+      <div className="bg-zinc-900 border-2 border-brand-red rounded-lg p-6 shadow-2xl">
         <div className="flex items-start gap-4">
           <div className="text-4xl">📱</div>
           <div className="flex-1">
@@ -47,7 +47,7 @@ export default function PWAPrompt() {
             <div className="flex gap-3">
               <button
                 onClick={handleInstall}
-                className="bg-[#ff0000] hover:bg-[#cc0000] text-white px-4 py-2 rounded-md text-sm font-bold transition"
+                className="bg-brand-red hover:bg-[#cc0000] text-white px-4 py-2 rounded-md text-sm font-bold transition"
               >
                 Install App
               </button>
