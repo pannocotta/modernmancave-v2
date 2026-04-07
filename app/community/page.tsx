@@ -1,7 +1,12 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Image from 'next/image'
+import AnimatedSection from '@/components/AnimatedSection'
+
+export const metadata: Metadata = {
+  title: 'Community - Modern Mancave',
+  description: 'Modern Mancave giving back to Griffith and beyond. 30+ community projects, 500+ free haircuts since 2017.',
+}
 
 const charityPosts = [
   { url: 'https://www.instagram.com/p/BeSUyEvD8Rl/', image: '/charity/1.jpg' },
@@ -36,14 +41,10 @@ export default function CommunityPage() {
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center pt-24 md:pt-32 pb-12">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/stock/community.jpg"
-            alt=""
-            className="w-full h-full object-cover grayscale opacity-20"
-          />
+          <Image src="/stock/community.jpg" alt="" fill className="object-cover grayscale opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black"></div>
         </div>
-        
+
         <div className="relative z-10 w-full px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="font-headliner gradient-heading text-5xl md:text-6xl lg:text-7xl mb-4 leading-tight">
@@ -61,27 +62,29 @@ export default function CommunityPage() {
       {/* Social Proof Stats */}
       <section className="relative py-16 px-6 bg-zinc-950">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/stock/community.jpg"
-            alt=""
-            className="w-full h-full object-cover grayscale opacity-10"
-          />
+          <Image src="/stock/community.jpg" alt="" fill className="object-cover grayscale opacity-10" />
           <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-950/90 to-zinc-950"></div>
         </div>
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-[#ff0000] mb-3">30+</div>
-              <div className="text-xl text-gray-300">Community Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-[#ff0000] mb-3">150+</div>
-              <div className="text-xl text-gray-300">Hours of Community Work</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-[#ff0000] mb-3">500+</div>
-              <div className="text-xl text-gray-300">Free Hair Cuts</div>
-            </div>
+            <AnimatedSection animation="slideUp" delay={0}>
+              <div className="text-center">
+                <div className="text-5xl md:text-6xl font-bold text-brand-red mb-3">30+</div>
+                <div className="text-xl text-gray-300">Community Projects</div>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection animation="slideUp" delay={100}>
+              <div className="text-center">
+                <div className="text-5xl md:text-6xl font-bold text-brand-red mb-3">150+</div>
+                <div className="text-xl text-gray-300">Hours of Community Work</div>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection animation="slideUp" delay={200}>
+              <div className="text-center">
+                <div className="text-5xl md:text-6xl font-bold text-brand-red mb-3">500+</div>
+                <div className="text-xl text-gray-300">Free Hair Cuts</div>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
