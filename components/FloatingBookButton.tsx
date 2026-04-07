@@ -1,27 +1,32 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
 export default function FloatingBookButton() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Show after scrolling 100vh
-      setIsVisible(window.scrollY > window.innerHeight)
+    let ticking = false
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setVisible(window.scrollY > window.innerHeight * 0.5)
+          ticking = false
+        })
+        ticking = true
+      }
     }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  if (!visible) return null
 
   return (
     <Link
       href="/booking"
-      className={`fixed bottom-6 right-6 z-50 bg-[#ff0000] text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide shadow-2xl shadow-[#ff0000]/50 transition-all duration-500 hover:scale-110 active:scale-95 ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
-      }`}
+      className="fixed bottom-6 right-6 z-40 bg-brand-red text-white px-6 py-3 font-bold text-sm tracking-wider shadow-lg shadow-brand-red/30 hover:bg-red-600 transition-colors"
     >
       BOOK NOW
     </Link>

@@ -4,23 +4,32 @@ import { useEffect, useState } from 'react'
 
 export default function SmokeReveal({ children }: { children: React.ReactNode }) {
   const [revealed, setRevealed] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
   useEffect(() => {
-    // Trigger reveal after mount
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReducedMotion(mq.matches)
+
+    if (mq.matches) {
+      setRevealed(true)
+      return
+    }
+
     const timer = setTimeout(() => setRevealed(true), 300)
     return () => clearTimeout(timer)
   }, [])
 
+  if (prefersReducedMotion) {
+    return <div>{children}</div>
+  }
+
   return (
     <div className="relative">
-      {/* Content */}
       <div className={`transition-all duration-2000 ${revealed ? 'opacity-100' : 'opacity-0'}`}>
         {children}
       </div>
-      
-      {/* Smoke overlay */}
-      <div 
-        className={`absolute inset-0 pointer-events-none transition-all duration-2000 ease-out ${
+      <div
+        className={`absolute inset-0 pointer-events-none transition-all duration-2000 ease-out will-change-[transform,opacity] ${
           revealed ? 'opacity-0 translate-x-full' : 'opacity-100 translate-x-0'
         }`}
         style={{
