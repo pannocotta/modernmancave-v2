@@ -10,6 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         black: '#000000',
+        'brand-red': '#ff0000',
+        'brand-black': '#000000',
+        'brand-white': '#ffffff',
       },
       transitionDuration: {
         '2000': '2000ms',
