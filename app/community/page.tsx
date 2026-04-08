@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Image from 'next/image'
 import AnimatedSection from '@/components/AnimatedSection'
+import AnimatedCounter from '@/components/AnimatedCounter'
 
 export const metadata: Metadata = {
   title: 'Community - Modern Mancave',
@@ -69,19 +70,19 @@ export default function CommunityPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <AnimatedSection animation="slideUp" delay={0}>
               <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold text-brand-red mb-3">30+</div>
+                <AnimatedCounter target={30} suffix="+" className="text-5xl md:text-6xl font-bold text-brand-red mb-3" />
                 <div className="text-xl text-gray-300">Community Projects</div>
               </div>
             </AnimatedSection>
             <AnimatedSection animation="slideUp" delay={100}>
               <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold text-brand-red mb-3">150+</div>
+                <AnimatedCounter target={150} suffix="+" className="text-5xl md:text-6xl font-bold text-brand-red mb-3" />
                 <div className="text-xl text-gray-300">Hours of Community Work</div>
               </div>
             </AnimatedSection>
             <AnimatedSection animation="slideUp" delay={200}>
               <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold text-brand-red mb-3">500+</div>
+                <AnimatedCounter target={500} suffix="+" className="text-5xl md:text-6xl font-bold text-brand-red mb-3" />
                 <div className="text-xl text-gray-300">Free Hair Cuts</div>
               </div>
             </AnimatedSection>

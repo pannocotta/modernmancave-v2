@@ -15,17 +15,23 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[100svh] flex items-center justify-center bg-black">
         {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
             src="/hero-background.jpg"
             alt=""
             fill
             priority
             quality={75}
-            className="object-cover grayscale opacity-30"
+            className="object-cover grayscale opacity-30 animate-ken-burns"
             sizes="100vw"
           />
+          {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black z-10" />
+          {/* Red glow vignette */}
+          <div
+            className="absolute inset-0 z-10"
+            style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(255,0,0,0.08) 100%)' }}
+          />
         </div>
 
         <div className="relative z-20 w-full flex flex-col items-center justify-center" style={{ paddingTop: 'clamp(6rem, 15vh, 10rem)', paddingBottom: 'clamp(4rem, 10vh, 6rem)' }}>
@@ -141,6 +147,8 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent" />
+
       {/* Our Work */}
       <section id="services" className="bg-zinc-950" style={{ paddingTop: 'clamp(4rem, 10vh, 8rem)', paddingBottom: 'clamp(4rem, 10vh, 8rem)' }}>
         <div className="max-w-7xl mx-auto" style={{ paddingLeft: 'clamp(1rem, 4vw, 1.5rem)', paddingRight: 'clamp(1rem, 4vw, 1.5rem)' }}>
@@ -168,17 +176,55 @@ export default function Home() {
           </AnimatedSection>
 
           {/* Work Gallery Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
-              <div key={num} className="relative aspect-square overflow-hidden group">
-                <Image
-                  src={`/work/${num}.jpg`}
-                  alt={`Modern Mancave Work ${num}`}
-                  fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
-              </div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[250px]">
+            {/* 1: 2x2 hero */}
+            <div className="relative col-span-2 row-span-2 overflow-hidden group">
+              <Image src="/work/1.jpg" alt="Modern Mancave Work 1" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
+            {/* 2: 1x1 */}
+            <div className="relative overflow-hidden group">
+              <Image src="/work/2.jpg" alt="Modern Mancave Work 2" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
+            {/* 3: 1x1 */}
+            <div className="relative overflow-hidden group">
+              <Image src="/work/3.jpg" alt="Modern Mancave Work 3" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
+            {/* 4: 1x1 */}
+            <div className="relative overflow-hidden group">
+              <Image src="/work/4.jpg" alt="Modern Mancave Work 4" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
+            {/* 5: 1x1 */}
+            <div className="relative overflow-hidden group">
+              <Image src="/work/5.jpg" alt="Modern Mancave Work 5" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
+            {/* 6: 2x1 wide */}
+            <div className="relative col-span-2 overflow-hidden group">
+              <Image src="/work/6.jpg" alt="Modern Mancave Work 6" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
+            {/* 7: 1x1 */}
+            <div className="relative overflow-hidden group">
+              <Image src="/work/7.jpg" alt="Modern Mancave Work 7" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
+            {/* 8: 1x2 tall */}
+            <div className="relative row-span-2 overflow-hidden group">
+              <Image src="/work/8.jpg" alt="Modern Mancave Work 8" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
+            {/* 9: 1x1 */}
+            <div className="relative overflow-hidden group">
+              <Image src="/work/9.jpg" alt="Modern Mancave Work 9" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
+            {/* 10: 1x1 */}
+            <div className="relative overflow-hidden group">
+              <Image src="/work/10.jpg" alt="Modern Mancave Work 10" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
+            {/* 11: 2x1 wide */}
+            <div className="relative col-span-2 overflow-hidden group">
+              <Image src="/work/11.jpg" alt="Modern Mancave Work 11" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
+            {/* 12: 1x1 */}
+            <div className="relative overflow-hidden group">
+              <Image src="/work/12.jpg" alt="Modern Mancave Work 12" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+            </div>
           </div>
 
           <div className="text-center" style={{ marginTop: 'clamp(2rem, 6vh, 3rem)' }}>
@@ -194,6 +240,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent" />
 
       {/* Testimonials */}
       <section className="bg-black" style={{ paddingTop: 'clamp(4rem, 10vh, 8rem)', paddingBottom: 'clamp(4rem, 10vh, 8rem)' }}>
@@ -221,9 +269,10 @@ export default function Home() {
             {TESTIMONIALS.map((review, i) => (
               <div
                 key={i}
-                className="bg-zinc-950 border border-zinc-800 hover:border-brand-red transition-colors"
+                className="bg-zinc-950 border border-zinc-800 hover:border-brand-red transition-colors relative overflow-hidden"
                 style={{ padding: 'clamp(1.5rem, 5vw, 2rem)' }}
               >
+                <span className="absolute -top-2 -left-1 text-7xl text-brand-red opacity-15 font-serif leading-none select-none pointer-events-none" aria-hidden="true">&ldquo;</span>
                 <div className="flex gap-1 mb-4">
                   {Array(review.stars).fill('★').map((star, j) => (
                     <span key={j} className="text-brand-red" style={{ fontSize: 'clamp(1.25rem, 4vw, 1.5rem)' }}>{star}</span>
@@ -245,6 +294,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent" />
 
       {/* Mobile Barber CTA */}
       <section className="py-20 bg-zinc-950">
@@ -275,8 +326,10 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="h-px bg-gradient-to-r from-transparent via-brand-red/20 to-transparent" />
+
       {/* Booking CTA */}
-      <section className="py-20 bg-brand-red">
+      <section className="py-20 bg-gradient-to-r from-red-700 via-brand-red to-red-600">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-5xl md:text-6xl font-headliner mb-6 text-black tracking-wide">
             LOOK SHARP. BOOK FASTER.
@@ -293,7 +346,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-950 border-t border-zinc-900 py-16">
+      <footer className="bg-zinc-950 py-16">
+        <div className="h-1 bg-gradient-to-r from-transparent via-brand-red to-transparent" />
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-12 mb-12">
             <div>
