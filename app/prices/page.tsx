@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Header from '@/components/Header'
-import AnimatedSection from '@/components/AnimatedSection'
+import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
+import ParallaxHero from '@/components/ParallaxHero'
 import { SERVICE_CATEGORIES, TEETH_WHITENING } from '@/lib/services'
 import { SOCIAL, CONTACT } from '@/lib/config'
 
@@ -15,43 +16,15 @@ export default function PricesPage() {
     <main className="min-h-screen bg-black text-white">
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center pt-24 md:pt-32 pb-12 md:pb-20">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black z-10" />
-          <Image
-            src="/stock/barbershop-tools.jpg"
-            alt="Barbershop tools"
-            fill
-            className="object-cover grayscale"
-          />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-20 w-full px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-headliner gradient-heading mb-4 md:mb-6">
-              PRICE LIST
-            </h1>
-            <div className="w-16 md:w-20 h-1 bg-brand-red mx-auto mb-6 md:mb-8"></div>
-            <p className="text-base md:text-xl text-gray-300 mb-8">
-              Clear pricing. Quality cuts. No surprises.
-            </p>
-            <Link href="/booking" className="cta-button">
-              BOOK NOW
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ParallaxHero image="/stock/barbershop-tools.jpg" title="OUR PRICES" subtitle="Quality cuts and services at competitive prices. Walk-ins welcome at all locations." />
 
       {/* Price Sections */}
       <section className="py-12 md:py-20 px-4 md:px-6 bg-black text-base md:text-lg">
         <div className="max-w-6xl mx-auto">
-          <AnimatedSection animation="fadeIn">
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-              {SERVICE_CATEGORIES.map((category) => (
-                <div key={category.name} className="border border-zinc-800 p-6">
+          <StaggerContainer className="grid md:grid-cols-2 gap-6 md:gap-8">
+            {SERVICE_CATEGORIES.map((category) => (
+              <StaggerItem key={category.name}>
+                <div className="border border-zinc-800 p-6">
                   <h3 className="font-headliner text-xl md:text-2xl mb-6 pb-3 border-b border-zinc-800">{category.name}</h3>
                   <div className="space-y-3">
                     {category.services.map((service) => (
@@ -62,9 +35,9 @@ export default function PricesPage() {
                     ))}
                   </div>
                 </div>
-              ))}
-            </div>
-          </AnimatedSection>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
 
           {/* Featured: Teeth Whitening */}
           <div className="mt-8 border border-zinc-800 bg-zinc-950 p-8">

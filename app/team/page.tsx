@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Header from '@/components/Header'
-import AnimatedSection from '@/components/AnimatedSection'
+import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import { SOCIAL } from '@/lib/config'
 
 export const metadata: Metadata = {
@@ -82,10 +82,10 @@ export default function TeamPage() {
           <h2 className="text-4xl md:text-6xl font-headliner gradient-heading text-center mb-4">THE TEAM</h2>
           <div className="w-20 h-1 bg-brand-red mx-auto mb-16"></div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
             {/* Nick */}
-            <AnimatedSection animation="slideUp" delay={0}>
+            <StaggerItem>
               <div className="border border-zinc-800 bg-zinc-950 p-8 text-center group hover:border-brand-red/30 hover:scale-[1.02] transition-all duration-300">
                 <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-zinc-900 border-2 border-brand-red/20 flex items-center justify-center overflow-hidden">
                   <span className="text-5xl font-headliner text-zinc-700">N</span>
@@ -104,10 +104,10 @@ export default function TeamPage() {
                   {SOCIAL.nickInstagram.handle}
                 </a>
               </div>
-            </AnimatedSection>
+            </StaggerItem>
 
             {/* Kevin */}
-            <AnimatedSection animation="slideUp" delay={100}>
+            <StaggerItem>
               <div className="border border-zinc-800 bg-zinc-950 p-8 text-center group hover:border-brand-red/30 hover:scale-[1.02] transition-all duration-300">
                 <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-zinc-900 border-2 border-brand-red/20 flex items-center justify-center overflow-hidden">
                   <span className="text-5xl font-headliner text-zinc-700">K</span>
@@ -126,10 +126,10 @@ export default function TeamPage() {
                   {SOCIAL.kevinInstagram.handle}
                 </a>
               </div>
-            </AnimatedSection>
+            </StaggerItem>
 
             {/* Delvin */}
-            <AnimatedSection animation="slideUp" delay={200}>
+            <StaggerItem>
               <div className="border border-zinc-800 bg-zinc-950 p-8 text-center group hover:border-brand-red/30 hover:scale-[1.02] transition-all duration-300">
                 <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-zinc-900 border-2 border-brand-red/20 flex items-center justify-center overflow-hidden">
                   <span className="text-5xl font-headliner text-zinc-700">D</span>
@@ -148,10 +148,10 @@ export default function TeamPage() {
                   {SOCIAL.delvinInstagram.handle}
                 </a>
               </div>
-            </AnimatedSection>
+            </StaggerItem>
 
             {/* Leka */}
-            <AnimatedSection animation="slideUp" delay={300}>
+            <StaggerItem>
               <div className="border border-zinc-800 bg-zinc-950 p-8 text-center group hover:border-brand-red/30 hover:scale-[1.02] transition-all duration-300">
                 <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-zinc-900 border-2 border-brand-red/20 flex items-center justify-center overflow-hidden">
                   <span className="text-5xl font-headliner text-zinc-700">L</span>
@@ -170,9 +170,9 @@ export default function TeamPage() {
                   {SOCIAL.lekaInstagram.handle}
                 </a>
               </div>
-            </AnimatedSection>
+            </StaggerItem>
 
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 

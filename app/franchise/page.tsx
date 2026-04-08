@@ -7,10 +7,28 @@ import { SITE } from '@/lib/config'
 
 export default function FranchisePage() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setError(false)
+    const form = new FormData(e.currentTarget)
+    const data = Object.fromEntries(form.entries())
+    try {
+      const res = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, name: `${data.firstName} ${data.lastName}`.trim(), type: 'franchise' }),
+      })
+      if (!res.ok) throw new Error('Failed')
+      setSubmitted(true)
+    } catch {
+      setError(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -184,6 +202,7 @@ export default function FranchisePage() {
                   <label className="block text-sm font-semibold mb-2">First Name *</label>
                   <input
                     type="text"
+                    name="firstName"
                     required
                     className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
@@ -192,6 +211,7 @@ export default function FranchisePage() {
                   <label className="block text-sm font-semibold mb-2">Last Name *</label>
                   <input
                     type="text"
+                    name="lastName"
                     required
                     className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
@@ -203,6 +223,7 @@ export default function FranchisePage() {
                   <label className="block text-sm font-semibold mb-2">Email *</label>
                   <input
                     type="email"
+                    name="email"
                     required
                     className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
@@ -211,6 +232,7 @@ export default function FranchisePage() {
                   <label className="block text-sm font-semibold mb-2">Phone *</label>
                   <input
                     type="tel"
+                    name="phone"
                     required
                     className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
@@ -221,6 +243,7 @@ export default function FranchisePage() {
                 <label className="block text-sm font-semibold mb-2">Where would you open? (City / Region) *</label>
                 <input
                   type="text"
+                  name="location"
                   required
                   className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
                 />
@@ -228,7 +251,7 @@ export default function FranchisePage() {
 
               <div>
                 <label className="block text-sm font-semibold mb-2">Barbering Experience</label>
-                <select className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none">
+                <select name="experience" className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none">
                   <option>None</option>
                   <option>Less than 2 years</option>
                   <option>2-5 years</option>
@@ -240,6 +263,7 @@ export default function FranchisePage() {
               <div>
                 <label className="block text-sm font-semibold mb-2">Tell us about yourself and why you want to own a Modern Mancave *</label>
                 <textarea
+                  name="message"
                   required
                   rows={4}
                   className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
@@ -248,10 +272,14 @@ export default function FranchisePage() {
 
               <button
                 type="submit"
-                className="w-full bg-brand-red hover:bg-red-600 text-white py-4 rounded-lg font-bold text-lg transition"
+                disabled={loading}
+                className="w-full bg-brand-red hover:bg-red-600 text-white py-4 rounded-lg font-bold text-lg transition disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                SUBMIT APPLICATION
+                {loading ? 'SUBMITTING...' : 'SUBMIT APPLICATION'}
               </button>
+              {error && (
+                <p className="text-red-500 text-sm mt-4">Something went wrong. Please try again or call us directly.</p>
+              )}
             </form>
           )}
         </div>

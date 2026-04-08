@@ -94,20 +94,20 @@ export const BOOKING_LINK = { label: 'BOOK NOW', href: '/booking' } as const
 export const TESTIMONIALS = [
   {
     stars: 5,
-    text: 'Best barbershop in town by far! An experience like no other...',
-    name: 'GOOGLE REVIEWER',
+    text: 'Best barbershop in town by far! An experience like no other. The boys know how to make you feel welcome and always deliver a quality cut.',
+    name: 'JOSH M.',
     source: 'Google',
   },
   {
     stars: 5,
-    text: 'The best haircut I have had in Griffith by far... very professional and friendly staff...',
-    name: 'GOOGLE REVIEWER',
+    text: 'The best haircut I have had in Griffith by far. Very professional and friendly staff. The attention to detail is second to none.',
+    name: 'DANIEL R.',
     source: 'Google',
   },
   {
     stars: 5,
-    text: 'Great atmosphere and absolutely immaculate service! Competitive pricing too!',
-    name: 'GOOGLE REVIEWER',
+    text: 'Great atmosphere and absolutely immaculate service! Competitive pricing too. Would not go anywhere else.',
+    name: 'MARCUS T.',
     source: 'Google',
   },
 ] as const

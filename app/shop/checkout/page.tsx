@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import { useCart } from '@/lib/cart-context'
@@ -201,9 +202,11 @@ export default function CheckoutPage() {
                     key={`${item.id}-${item.size || 'default'}`}
                     className="flex gap-4"
                   >
-                    <img
+                    <Image
                       src={item.image}
                       alt={item.name}
+                      width={64}
+                      height={64}
                       className="w-16 h-16 object-cover rounded"
                     />
                     <div className="flex-1">

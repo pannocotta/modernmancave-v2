@@ -1,23 +1,34 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { NAV_LINKS, BOOKING_LINK } from '@/lib/config'
+import CartIcon from '@/components/CartIcon'
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const closeDrawer = () => setDrawerOpen(false)
 
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
     <>
-      <nav className="fixed top-0 w-full z-50">
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between" style={{ paddingLeft: 'clamp(1rem, 4vw, 1.5rem)', paddingRight: 'clamp(1rem, 4vw, 1.5rem)', paddingTop: 'clamp(1rem, 3vh, 1.25rem)', paddingBottom: 'clamp(1rem, 3vh, 1.25rem)' }}>
           <Link href="/" className="flex items-center hover:opacity-80 transition">
             <Image src="/1.png" alt="Modern Mancave" width={112} height={28} style={{ height: 'clamp(24px, 5vw, 28px)', width: 'auto' }} priority />
           </Link>
 
-          <button
+          <div className="flex items-center gap-2">
+            <CartIcon />
+            <button
             onClick={() => setDrawerOpen(true)}
             className="flex flex-col justify-center items-end group p-2 -mr-2"
             style={{ width: 'clamp(40px, 8vw, 48px)', height: 'clamp(40px, 8vw, 48px)', gap: 'clamp(5px, 1.5vw, 6px)' }}
@@ -27,6 +38,7 @@ export default function Header() {
             <span className="h-0.5 bg-brand-red group-hover:opacity-70 transition-all" style={{ width: 'clamp(16px, 4vw, 24px)' }} />
             <span className="h-0.5 bg-brand-red group-hover:opacity-70 transition-all" style={{ width: 'clamp(20px, 5vw, 28px)' }} />
           </button>
+          </div>
         </div>
       </nav>
 

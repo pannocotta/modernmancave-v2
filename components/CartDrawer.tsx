@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useCart } from '@/lib/cart-context'
 import Link from 'next/link'
 
@@ -66,9 +67,11 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                     key={`${item.id}-${item.size || 'default'}`}
                     className="flex gap-4 bg-black p-4 rounded-lg"
                   >
-                    <img
+                    <Image
                       src={item.image}
                       alt={item.name}
+                      width={80}
+                      height={80}
                       className="w-20 h-20 object-cover rounded"
                     />
                     <div className="flex-1">

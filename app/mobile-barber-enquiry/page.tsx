@@ -5,10 +5,28 @@ import { useState } from 'react'
 
 export default function MobileBarberEnquiryPage() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setError(false)
+    const form = new FormData(e.currentTarget)
+    const data = Object.fromEntries(form.entries())
+    try {
+      const res = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, name: `${data.firstName} ${data.lastName}`.trim(), type: 'mobile-barber' }),
+      })
+      if (!res.ok) throw new Error('Failed')
+      setSubmitted(true)
+    } catch {
+      setError(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -51,6 +69,7 @@ export default function MobileBarberEnquiryPage() {
                     <label className="block text-sm font-bold mb-2 text-gray-400">FIRST NAME *</label>
                     <input
                       type="text"
+                      name="firstName"
                       required
                       className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                     />
@@ -59,6 +78,7 @@ export default function MobileBarberEnquiryPage() {
                     <label className="block text-sm font-bold mb-2 text-gray-400">LAST NAME *</label>
                     <input
                       type="text"
+                      name="lastName"
                       required
                       className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                     />
@@ -69,6 +89,7 @@ export default function MobileBarberEnquiryPage() {
                   <label className="block text-sm font-bold mb-2 text-gray-400">EMAIL *</label>
                   <input
                     type="email"
+                    name="email"
                     required
                     className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
@@ -78,6 +99,7 @@ export default function MobileBarberEnquiryPage() {
                   <label className="block text-sm font-bold mb-2 text-gray-400">PHONE *</label>
                   <input
                     type="tel"
+                    name="phone"
                     required
                     className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
@@ -85,7 +107,7 @@ export default function MobileBarberEnquiryPage() {
 
                 <div>
                   <label className="block text-sm font-bold mb-2 text-gray-400">EVENT TYPE</label>
-                  <select className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none">
+                  <select name="eventType" className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none">
                     <option value="">Select event type</option>
                     <option value="wedding">Wedding</option>
                     <option value="corporate">Corporate Event</option>
@@ -99,6 +121,7 @@ export default function MobileBarberEnquiryPage() {
                   <label className="block text-sm font-bold mb-2 text-gray-400">EVENT DATE</label>
                   <input
                     type="date"
+                    name="eventDate"
                     className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
                 </div>
@@ -107,6 +130,7 @@ export default function MobileBarberEnquiryPage() {
                   <label className="block text-sm font-bold mb-2 text-gray-400">EVENT LOCATION</label>
                   <input
                     type="text"
+                    name="eventLocation"
                     placeholder="e.g. Griffith, NSW"
                     className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
@@ -116,6 +140,7 @@ export default function MobileBarberEnquiryPage() {
                   <label className="block text-sm font-bold mb-2 text-gray-400">ESTIMATED NUMBER OF GUESTS</label>
                   <input
                     type="number"
+                    name="guestCount"
                     placeholder="How many people will need grooming?"
                     className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
                   />
@@ -124,6 +149,7 @@ export default function MobileBarberEnquiryPage() {
                 <div>
                   <label className="block text-sm font-bold mb-2 text-gray-400">TELL US ABOUT YOUR EVENT</label>
                   <textarea
+                    name="message"
                     rows={4}
                     placeholder="Any special requirements or additional details..."
                     className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
@@ -132,10 +158,14 @@ export default function MobileBarberEnquiryPage() {
 
                 <button
                   type="submit"
-                  className="w-full bg-brand-red text-white px-8 py-4 text-lg font-bold tracking-wider hover:bg-white hover:text-brand-red transition-colors"
+                  disabled={loading}
+                  className="w-full bg-brand-red text-white px-8 py-4 text-lg font-bold tracking-wider hover:bg-white hover:text-brand-red transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  SUBMIT ENQUIRY
+                  {loading ? 'SUBMITTING...' : 'SUBMIT ENQUIRY'}
                 </button>
+                {error && (
+                  <p className="text-red-500 text-sm mt-4">Something went wrong. Please try again or call us directly.</p>
+                )}
 
                 <p className="text-xs text-gray-500 text-center">
                   * Required fields. We&apos;ll be in touch within 24 hours.

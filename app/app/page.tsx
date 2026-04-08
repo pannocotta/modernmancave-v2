@@ -42,8 +42,8 @@ export default function AppPage() {
                     {/* Placeholder for app screenshot */}
                     <div className="w-full h-full bg-gradient-to-b from-zinc-900 to-black flex items-center justify-center">
                       <div className="text-center">
-                        <div className="text-6xl mb-4">📱</div>
-                        <p className="text-gray-500">App Screenshot<br/>Coming Soon</p>
+                        <div className="text-2xl font-headliner text-gray-400 mb-2">COMING SOON</div>
+                        <p className="text-sm text-gray-500">Our app is being built for iOS and Android</p>
                       </div>
                     </div>
                   </div>
@@ -76,7 +76,7 @@ export default function AppPage() {
               <ol className="space-y-4 text-gray-300">
                 <li className="flex gap-3">
                   <span className="text-brand-red font-bold">1.</span>
-                  <span>Scan the QR code or visit the website in Safari</span>
+                  <span>Visit the website in Safari</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-brand-red font-bold">2.</span>
@@ -104,7 +104,7 @@ export default function AppPage() {
               <ol className="space-y-4 text-gray-300">
                 <li className="flex gap-3">
                   <span className="text-brand-red font-bold">1.</span>
-                  <span>Scan the QR code or visit the website in Chrome</span>
+                  <span>Visit the website in Chrome</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-brand-red font-bold">2.</span>

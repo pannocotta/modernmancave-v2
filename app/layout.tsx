@@ -3,6 +3,7 @@ import { Poppins, Playfair_Display, Bebas_Neue } from 'next/font/google'
 import './globals.css'
 import PWAPrompt from '@/components/PWAPrompt'
 import { CartProvider } from '@/lib/cart-context'
+import PageTransition from '@/components/PageTransition'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -59,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en-AU" className="scroll-smooth">
       <head>
         <link rel="apple-touch-icon" href="/logo.png" />
         <link rel="preload" href="/fonts/AwakenningPersonalUse-DOLPD.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
@@ -102,7 +103,9 @@ export default function RootLayout({
       </head>
       <body className={`${poppins.variable} ${playfair.variable} ${bebas.variable} font-sans`}>
         <CartProvider>
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
           <PWAPrompt />
         </CartProvider>
       </body>

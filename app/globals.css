@@ -240,3 +240,12 @@ html {
   animation: kenBurns 20s ease-in-out infinite alternate;
   will-change: transform;
 }
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(255, 0, 0, 0.08);
+}

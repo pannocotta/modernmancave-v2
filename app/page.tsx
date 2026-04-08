@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import FloatingBookButton from '@/components/FloatingBookButton'
 import AnimatedSection from '@/components/AnimatedSection'
+import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import { TESTIMONIALS, SOCIAL, SITE, LOCATIONS } from '@/lib/config'
 
 
@@ -176,56 +177,56 @@ export default function Home() {
           </AnimatedSection>
 
           {/* Work Gallery Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[250px]">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[250px]" staggerDelay={0.08}>
             {/* 1: 2x2 hero */}
-            <div className="relative col-span-2 row-span-2 overflow-hidden group">
+            <StaggerItem className="relative col-span-2 row-span-2 overflow-hidden group">
               <Image src="/work/1.jpg" alt="Modern Mancave Work 1" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
+            </StaggerItem>
             {/* 2: 1x1 */}
-            <div className="relative overflow-hidden group">
+            <StaggerItem className="relative overflow-hidden group">
               <Image src="/work/2.jpg" alt="Modern Mancave Work 2" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
+            </StaggerItem>
             {/* 3: 1x1 */}
-            <div className="relative overflow-hidden group">
+            <StaggerItem className="relative overflow-hidden group">
               <Image src="/work/3.jpg" alt="Modern Mancave Work 3" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
+            </StaggerItem>
             {/* 4: 1x1 */}
-            <div className="relative overflow-hidden group">
+            <StaggerItem className="relative overflow-hidden group">
               <Image src="/work/4.jpg" alt="Modern Mancave Work 4" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
+            </StaggerItem>
             {/* 5: 1x1 */}
-            <div className="relative overflow-hidden group">
+            <StaggerItem className="relative overflow-hidden group">
               <Image src="/work/5.jpg" alt="Modern Mancave Work 5" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
+            </StaggerItem>
             {/* 6: 2x1 wide */}
-            <div className="relative col-span-2 overflow-hidden group">
+            <StaggerItem className="relative col-span-2 overflow-hidden group">
               <Image src="/work/6.jpg" alt="Modern Mancave Work 6" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
+            </StaggerItem>
             {/* 7: 1x1 */}
-            <div className="relative overflow-hidden group">
+            <StaggerItem className="relative overflow-hidden group">
               <Image src="/work/7.jpg" alt="Modern Mancave Work 7" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
+            </StaggerItem>
             {/* 8: 1x2 tall */}
-            <div className="relative row-span-2 overflow-hidden group">
+            <StaggerItem className="relative row-span-2 overflow-hidden group">
               <Image src="/work/8.jpg" alt="Modern Mancave Work 8" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
+            </StaggerItem>
             {/* 9: 1x1 */}
-            <div className="relative overflow-hidden group">
+            <StaggerItem className="relative overflow-hidden group">
               <Image src="/work/9.jpg" alt="Modern Mancave Work 9" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
+            </StaggerItem>
             {/* 10: 1x1 */}
-            <div className="relative overflow-hidden group">
+            <StaggerItem className="relative overflow-hidden group">
               <Image src="/work/10.jpg" alt="Modern Mancave Work 10" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
+            </StaggerItem>
             {/* 11: 2x1 wide */}
-            <div className="relative col-span-2 overflow-hidden group">
+            <StaggerItem className="relative col-span-2 overflow-hidden group">
               <Image src="/work/11.jpg" alt="Modern Mancave Work 11" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
+            </StaggerItem>
             {/* 12: 1x1 */}
-            <div className="relative overflow-hidden group">
+            <StaggerItem className="relative overflow-hidden group">
               <Image src="/work/12.jpg" alt="Modern Mancave Work 12" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
 
           <div className="text-center" style={{ marginTop: 'clamp(2rem, 6vh, 3rem)' }}>
             <a
@@ -269,7 +270,7 @@ export default function Home() {
             {TESTIMONIALS.map((review, i) => (
               <div
                 key={i}
-                className="bg-zinc-950 border border-zinc-800 hover:border-brand-red transition-colors relative overflow-hidden"
+                className="card-hover bg-zinc-950 border border-zinc-800 hover:border-brand-red transition-colors relative overflow-hidden"
                 style={{ padding: 'clamp(1.5rem, 5vw, 2rem)' }}
               >
                 <span className="absolute -top-2 -left-1 text-7xl text-brand-red opacity-15 font-serif leading-none select-none pointer-events-none" aria-hidden="true">&ldquo;</span>
@@ -387,7 +388,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-            <div>© 2026 Modern Mancave. All rights reserved.</div>
+            <div>© {new Date().getFullYear()} Modern Mancave. All rights reserved.</div>
             <div className="flex gap-6 mt-4 md:mt-0">
               <Link href={SOCIAL.instagram.url} target="_blank" className="hover:text-brand-red transition">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
