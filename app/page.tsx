@@ -129,25 +129,6 @@ export default function Home() {
                   We care about the details, and it shows in every cut.
                 </p>
               </div>
-              {/* Stats row — under text, evenly spaced */}
-              <div className="grid grid-cols-4 gap-4 mt-10 pt-10 border-t border-zinc-800/50">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white">{new Date().getFullYear() - SITE.established}+</div>
-                  <div className="text-[10px] text-gray-500 tracking-[0.2em] uppercase mt-1">Years</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white">{LOCATIONS.length}</div>
-                  <div className="text-[10px] text-gray-500 tracking-[0.2em] uppercase mt-1">Locations</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white">{SITE.googleRating.count}+</div>
-                  <div className="text-[10px] text-gray-500 tracking-[0.2em] uppercase mt-1">Reviews</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white">{SITE.googleRating.stars}</div>
-                  <div className="text-[10px] text-gray-500 tracking-[0.2em] uppercase mt-1">Stars</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
