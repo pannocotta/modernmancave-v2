@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { NAV_LINKS, BOOKING_LINK } from '@/lib/config'
-import CartIcon from '@/components/CartIcon'
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -26,19 +25,16 @@ export default function Header() {
             <Image src="/1.png" alt="Modern Mancave" width={112} height={28} style={{ height: 'clamp(24px, 5vw, 28px)', width: 'auto' }} priority />
           </Link>
 
-          <div className="flex items-center gap-2">
-            <CartIcon />
-            <button
-            onClick={() => setDrawerOpen(true)}
-            className="flex flex-col justify-center items-end group p-2 -mr-2"
-            style={{ width: 'clamp(40px, 8vw, 48px)', height: 'clamp(40px, 8vw, 48px)', gap: 'clamp(5px, 1.5vw, 6px)' }}
-            aria-label="Open menu"
-          >
-            <span className="h-0.5 bg-brand-red group-hover:opacity-70 transition-all" style={{ width: 'clamp(20px, 5vw, 28px)' }} />
-            <span className="h-0.5 bg-brand-red group-hover:opacity-70 transition-all" style={{ width: 'clamp(16px, 4vw, 24px)' }} />
-            <span className="h-0.5 bg-brand-red group-hover:opacity-70 transition-all" style={{ width: 'clamp(20px, 5vw, 28px)' }} />
-          </button>
-          </div>
+          <button
+          onClick={() => setDrawerOpen(true)}
+          className="flex flex-col justify-center items-end group p-2 -mr-2"
+          style={{ width: 'clamp(44px, 8vw, 48px)', height: 'clamp(44px, 8vw, 48px)', gap: 'clamp(5px, 1.5vw, 6px)' }}
+          aria-label="Open menu"
+        >
+          <span className="h-0.5 bg-brand-red group-hover:opacity-70 transition-all" style={{ width: 'clamp(20px, 5vw, 28px)' }} />
+          <span className="h-0.5 bg-brand-red group-hover:opacity-70 transition-all" style={{ width: 'clamp(16px, 4vw, 24px)' }} />
+          <span className="h-0.5 bg-brand-red group-hover:opacity-70 transition-all" style={{ width: 'clamp(20px, 5vw, 28px)' }} />
+        </button>
         </div>
       </nav>
 

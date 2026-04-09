@@ -65,18 +65,18 @@ export default function CommunityPage() {
       {/* Impact Stats — font-bold (Poppins) for numbers, not headliner */}
       <section className="py-24 md:py-32 border-y border-zinc-800/50">
         <div className="max-w-5xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-3 gap-8 md:gap-16">
+          <div className="grid grid-cols-3 gap-4 md:gap-16">
             <div className="text-center">
-              <AnimatedCounter target={30} suffix="+" className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none" />
-              <div className="text-[10px] md:text-xs text-gray-500 tracking-[0.3em] uppercase mt-3">Community Projects</div>
+              <AnimatedCounter target={30} suffix="+" className="text-4xl md:text-7xl lg:text-8xl font-bold text-white leading-none" />
+              <div className="text-[9px] md:text-xs text-gray-500 tracking-[0.15em] md:tracking-[0.3em] uppercase mt-3">Projects</div>
             </div>
             <div className="text-center">
-              <AnimatedCounter target={150} suffix="+" className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none" />
-              <div className="text-[10px] md:text-xs text-gray-500 tracking-[0.3em] uppercase mt-3">Volunteer Hours</div>
+              <AnimatedCounter target={150} suffix="+" className="text-4xl md:text-7xl lg:text-8xl font-bold text-white leading-none" />
+              <div className="text-[9px] md:text-xs text-gray-500 tracking-[0.15em] md:tracking-[0.3em] uppercase mt-3">Volunteer Hours</div>
             </div>
             <div className="text-center">
-              <AnimatedCounter target={500} suffix="+" className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none" />
-              <div className="text-[10px] md:text-xs text-gray-500 tracking-[0.3em] uppercase mt-3">Free Haircuts</div>
+              <AnimatedCounter target={500} suffix="+" className="text-4xl md:text-7xl lg:text-8xl font-bold text-white leading-none" />
+              <div className="text-[9px] md:text-xs text-gray-500 tracking-[0.15em] md:tracking-[0.3em] uppercase mt-3">Free Haircuts</div>
             </div>
           </div>
         </div>
