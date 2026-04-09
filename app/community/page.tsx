@@ -120,7 +120,7 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="text-center mb-20">
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">In Action</span>
-            <h2 className="font-headliner text-4xl md:text-6xl gradient-heading">THE IMPACT MODERN MANCAVE<br />HAS HAD ACROSS THE GLOBE</h2>
+            <h2 className="font-headliner text-4xl md:text-6xl gradient-heading">OUR IMPACT ACROSS THE GLOBE</h2>
           </div>
 
           <StaggerContainer staggerDelay={0.04} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
