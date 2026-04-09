@@ -40,7 +40,7 @@ export default function CommunityPage() {
     <main className="min-h-screen bg-black text-white">
       <Header />
 
-      {/* Hero — bold statement, not just a title */}
+      {/* Hero — two-line heading */}
       <section className="relative min-h-[80vh] flex items-end pb-20 md:pb-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image src="/stock/community.jpg" alt="" fill className="object-cover grayscale opacity-25" />
@@ -54,7 +54,7 @@ export default function CommunityPage() {
             <div className="h-px flex-1 bg-zinc-800" />
           </div>
           <h1 className="font-headliner text-5xl md:text-7xl lg:text-8xl gradient-heading leading-[0.85] max-w-4xl mb-6">
-            MOST BARBERSHOPS<br />CUT HAIR.<br />WE GIVE BACK.
+            MAKING IMPACT<br />BEYOND THE CHAIR
           </h1>
           <p className="text-gray-400 text-base md:text-lg max-w-xl leading-relaxed">
             Since 2017, Modern Mancave has been part of the fabric of Griffith. Charity events, free haircuts for those in need, fundraisers, and community sponsorships — giving back isn&apos;t something we do on the side. It&apos;s who we are.
@@ -62,20 +62,20 @@ export default function CommunityPage() {
         </div>
       </section>
 
-      {/* Impact Stats — monumental */}
+      {/* Impact Stats — font-bold (Poppins) for numbers, not headliner */}
       <section className="py-24 md:py-32 border-y border-zinc-800/50">
         <div className="max-w-5xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-3 gap-8 md:gap-16">
             <div className="text-center">
-              <AnimatedCounter target={30} suffix="+" className="font-headliner text-5xl md:text-7xl lg:text-8xl gradient-heading leading-none" />
+              <AnimatedCounter target={30} suffix="+" className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none" />
               <div className="text-[10px] md:text-xs text-gray-500 tracking-[0.3em] uppercase mt-3">Community Projects</div>
             </div>
             <div className="text-center">
-              <AnimatedCounter target={150} suffix="+" className="font-headliner text-5xl md:text-7xl lg:text-8xl gradient-heading leading-none" />
+              <AnimatedCounter target={150} suffix="+" className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none" />
               <div className="text-[10px] md:text-xs text-gray-500 tracking-[0.3em] uppercase mt-3">Volunteer Hours</div>
             </div>
             <div className="text-center">
-              <AnimatedCounter target={500} suffix="+" className="font-headliner text-5xl md:text-7xl lg:text-8xl gradient-heading leading-none" />
+              <AnimatedCounter target={500} suffix="+" className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none" />
               <div className="text-[10px] md:text-xs text-gray-500 tracking-[0.3em] uppercase mt-3">Free Haircuts</div>
             </div>
           </div>
@@ -86,30 +86,28 @@ export default function CommunityPage() {
       <section className="py-32 md:py-44">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-            {/* Featured image — pulled from the grid */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+            {/* Featured image — blended on all sides */}
+            <div className="relative aspect-[4/5] overflow-hidden">
               <Image src="/charity/17.jpg" alt="Modern Mancave community work" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-              <div className="absolute inset-0 shadow-[inset_0_0_60px_30px_rgba(0,0,0,0.7)]" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/90 to-transparent">
-                <p className="text-white text-sm md:text-base font-bold">500+ free haircuts</p>
-                <p className="text-gray-400 text-xs">For those in need — locally and abroad</p>
-              </div>
+              <div className="absolute inset-0 shadow-[inset_0_0_80px_40px_rgba(0,0,0,0.9)]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/70" />
             </div>
 
-            {/* Story text */}
+            {/* Story text — two-line heading, generalised copy */}
             <div>
               <h2 className="font-headliner text-4xl md:text-5xl lg:text-6xl gradient-heading leading-[0.9] mb-8">
-                IT STARTED<br />WITH ONE<br />FREE CUT
+                GIVING BACK<br />SINCE DAY ONE
               </h2>
               <div className="space-y-5 text-gray-400 text-sm md:text-base leading-relaxed">
                 <p>
-                  When Tristan opened Modern Mancave in 2017, the first thing he did was offer free haircuts to anyone who couldn&apos;t afford one. Not as a promotion — because he&apos;d been there himself and knew what it meant to feel looked after.
+                  Over the past {new Date().getFullYear() - 2017}+ years, Tristan and his team have been working with both local and overseas communities to give back to those less fortunate — from free haircuts and charity events to sponsoring families and supporting school programs.
                 </p>
                 <p>
-                  That one gesture became a philosophy. Today, the team regularly runs charity events, sponsors local families, supports school programs, and has given hundreds of free cuts to people in need — both in Griffith and overseas in the Philippines.
+                  It&apos;s been a foundation of what makes Modern Mancave an icon in the Riverina. While most barbershops focus on the chair, Tristan built something bigger — a business that lifts up the people around it, both in Griffith and abroad in the Philippines.
                 </p>
                 <p>
-                  No other barbershop in the region comes close to this level of community involvement. It&apos;s not marketing. It&apos;s the reason Modern Mancave exists.
+                  This isn&apos;t a side project. It&apos;s the reason Modern Mancave exists, and it&apos;s what sets it apart from every other barbershop in the region.
                 </p>
               </div>
             </div>
@@ -122,7 +120,8 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="text-center mb-20">
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">In Action</span>
-            <h2 className="font-headliner text-4xl md:text-6xl gradient-heading">THE IMPACT</h2>
+            <h2 className="font-headliner text-4xl md:text-6xl gradient-heading mb-4">THE IMPACT</h2>
+            <p className="text-gray-500 text-sm md:text-base max-w-lg mx-auto">The impact Modern Mancave has had across the globe</p>
           </div>
 
           <StaggerContainer staggerDelay={0.04} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
@@ -149,10 +148,10 @@ export default function CommunityPage() {
       <section className="py-32 md:py-40 bg-black">
         <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
           <h2 className="font-headliner text-4xl md:text-6xl lg:text-7xl gradient-heading leading-[0.85] mb-6">
-            WANT US AT YOUR<br />NEXT EVENT?
+            HAVE A CAUSE YOU<br />WANT US TO HELP WITH?
           </h2>
           <p className="text-gray-500 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">
-            We bring the full barbershop experience to community events, fundraisers, and corporate functions across the Riverina.
+            Whether it&apos;s a charity event, community fundraiser, or a cause close to your heart — we&apos;d love to hear from you.
           </p>
           <Link href="/mobile-barber-enquiry" className="group relative bg-brand-red text-white px-12 py-5 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
             <span className="relative z-10">GET IN TOUCH</span>
