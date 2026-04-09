@@ -60,11 +60,6 @@ export default function Home() {
             />
           </div>
 
-          {/* Subtitle */}
-          <p className="text-gray-400 text-sm md:text-base tracking-wide max-w-md mb-10 leading-relaxed">
-            Premium barbershop. Three locations across Griffith.
-          </p>
-
           {/* Buttons */}
           <div className="flex flex-wrap gap-5 items-center justify-center">
             <Link href="/booking" className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
@@ -100,10 +95,10 @@ export default function Home() {
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
 
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid md:grid-cols-12 gap-12 md:gap-6 items-center">
-            {/* Left — large image with LEFT-side fade */}
-            <div className="md:col-span-6 relative">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            {/* Left — image blended on ALL sides */}
+            <div className="relative">
+              <div className="relative aspect-[4/5] md:aspect-[3/4] overflow-hidden">
                 <Image
                   src="/stock/barber-cutting.jpg"
                   alt="Barber at work"
@@ -111,47 +106,48 @@ export default function Home() {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                {/* Blend into black on LEFT side */}
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-black/90 hidden md:block" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+                {/* Blend on all edges */}
+                <div className="absolute inset-0 shadow-[inset_0_0_80px_40px_rgba(0,0,0,0.9)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/70" />
               </div>
             </div>
 
-            {/* Right — text + integrated years stat */}
-            <div className="md:col-span-6 flex flex-col justify-center md:pl-8 lg:pl-12">
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">About Us</span>
-                <div className="h-px flex-1 bg-zinc-800" />
-              </div>
-              <h2 className="font-headliner text-5xl md:text-6xl lg:text-7xl gradient-heading mb-8 leading-[0.9]">
-                MORE THAN<br/>A HAIRCUT
-              </h2>
-              <div className="space-y-5 text-gray-400 text-base md:text-lg leading-relaxed mb-10">
-                <p>
-                  Modern Mancave is where you switch off, have a yarn, and walk out looking your best.
-                </p>
-                <p>
-                  Since 2017, we&apos;ve been looking after clients across Griffith and the Riverina with quality cuts and genuine service. Whether you&apos;re after a clean fade, a sharp beard trim, or a proper hot towel shave — our barbers take the time to get it right.
-                </p>
-              </div>
-              {/* Stats row — years stat integrated here, not floating */}
-              <div className="flex gap-10 pt-8 border-t border-zinc-800/50">
-                <div>
+            {/* Right — original copy restored, stats centred above */}
+            <div className="flex flex-col justify-center">
+              {/* Stats row — centred, evenly spaced, full width */}
+              <div className="grid grid-cols-4 gap-4 mb-12 pb-10 border-b border-zinc-800/50">
+                <div className="text-center">
                   <div className="text-3xl font-bold text-white">{new Date().getFullYear() - SITE.established}+</div>
                   <div className="text-[10px] text-gray-500 tracking-[0.2em] uppercase mt-1">Years</div>
                 </div>
-                <div>
+                <div className="text-center">
                   <div className="text-3xl font-bold text-white">{LOCATIONS.length}</div>
                   <div className="text-[10px] text-gray-500 tracking-[0.2em] uppercase mt-1">Locations</div>
                 </div>
-                <div>
+                <div className="text-center">
                   <div className="text-3xl font-bold text-white">{SITE.googleRating.count}+</div>
                   <div className="text-[10px] text-gray-500 tracking-[0.2em] uppercase mt-1">Reviews</div>
                 </div>
-                <div>
+                <div className="text-center">
                   <div className="text-3xl font-bold text-white">{SITE.googleRating.stars}</div>
-                  <div className="text-[10px] text-gray-500 tracking-[0.2em] uppercase mt-1">Google Stars</div>
+                  <div className="text-[10px] text-gray-500 tracking-[0.2em] uppercase mt-1">Stars</div>
                 </div>
+              </div>
+
+              <h2 className="font-headliner text-5xl md:text-6xl lg:text-7xl gradient-heading mb-8 leading-[0.9]">
+                RIVERINAS<br/>PREMIUM<br/>BARBERSHOP
+              </h2>
+              <div className="space-y-5 text-gray-400 text-base md:text-lg leading-relaxed">
+                <p>
+                  Modern Mancave is more than a barbershop. It&apos;s a place to switch off, have a yarn, and walk out looking your best.
+                </p>
+                <p>
+                  Since 2017, we&apos;ve been looking after clients across Griffith and the Riverina with quality cuts and genuine service. Whether you&apos;re after a clean fade, a tidy up, a sharp beard trim or a proper hot towel shave, our barbers take the time to get it right.
+                </p>
+                <p>
+                  We care about the details, and it shows in every cut.
+                </p>
               </div>
             </div>
           </div>
@@ -184,56 +180,14 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Bento gallery */}
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 auto-rows-[200px] md:auto-rows-[260px]" staggerDelay={0.06}>
-            <StaggerItem className="relative col-span-2 row-span-2 overflow-hidden group rounded-sm">
-              <Image src="/work/1.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
-            <StaggerItem className="relative overflow-hidden group rounded-sm">
-              <Image src="/work/2.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
-            <StaggerItem className="relative overflow-hidden group rounded-sm">
-              <Image src="/work/3.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
-            <StaggerItem className="relative overflow-hidden group rounded-sm">
-              <Image src="/work/4.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
-            <StaggerItem className="relative overflow-hidden group rounded-sm">
-              <Image src="/work/5.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
-            <StaggerItem className="relative col-span-2 overflow-hidden group rounded-sm">
-              <Image src="/work/6.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
-            <StaggerItem className="relative overflow-hidden group rounded-sm">
-              <Image src="/work/7.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
-            <StaggerItem className="relative row-span-2 overflow-hidden group rounded-sm">
-              <Image src="/work/8.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
-            <StaggerItem className="relative overflow-hidden group rounded-sm">
-              <Image src="/work/9.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
-            <StaggerItem className="relative overflow-hidden group rounded-sm">
-              <Image src="/work/10.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
-            <StaggerItem className="relative col-span-2 overflow-hidden group rounded-sm">
-              <Image src="/work/11.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
-            <StaggerItem className="relative overflow-hidden group rounded-sm">
-              <Image src="/work/12.jpg" alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            </StaggerItem>
+          {/* Gallery — clean 3-col grid, no gaps */}
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3" staggerDelay={0.06}>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
+              <StaggerItem key={num} className="relative aspect-square overflow-hidden group rounded-sm">
+                <Image src={`/work/${num}.jpg`} alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" sizes="(max-width: 768px) 50vw, 33vw" />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+              </StaggerItem>
+            ))}
           </StaggerContainer>
 
           <div className="text-center mt-16">
@@ -274,9 +228,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Featured testimonial — Poppins (sans), not headliner */}
+          {/* Featured testimonial — bold, metallic gradient */}
           <div className="mb-20">
-            <blockquote className="text-2xl md:text-4xl lg:text-5xl font-light italic text-white/90 leading-snug md:leading-[1.2] max-w-4xl mb-10">
+            <blockquote className="text-2xl md:text-4xl lg:text-5xl font-bold gradient-heading leading-snug md:leading-[1.15] max-w-4xl mb-10" style={{ animationDuration: '8s' }}>
               &ldquo;{TESTIMONIALS[0].text}&rdquo;
             </blockquote>
             <div className="flex items-center gap-4">
