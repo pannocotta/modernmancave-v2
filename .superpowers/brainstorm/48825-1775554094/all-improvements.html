@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual Improvements — All Proposals</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; color: #fff; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+  .page-header { text-align: center; padding: 2.5rem 1rem 1rem; }
+  .page-header h1 { font-size: 1.4rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; }
+  .page-header p { color: #666; font-size: 0.85rem; margin-top: 0.5rem; }
+
+  /* === SECTION LAYOUT === */
+  .improvement { padding: 2rem 2rem 3rem; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid #1a1a1a; }
+  .improvement:last-child { border-bottom: none; }
+
+  .imp-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+  .imp-num { background: #ff0000; color: #000; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+  .imp-title { font-size: 1.1rem; font-weight: 600; }
+  .imp-desc { color: #888; font-size: 0.85rem; margin-bottom: 1.5rem; line-height: 1.6; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .split-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #555; margin-bottom: 0.75rem; font-weight: 600; }
+  .split-label.new { color: #ff0000; }
+
+  .demo-box { background: #111; border: 1px solid #222; border-radius: 8px; overflow: hidden; }
+
+  /* === 2. BENTO GRID === */
+  .grid-current {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 1rem;
+  }
+  .grid-current .cell {
+    aspect-ratio: 1;
+    background: #222;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: #555;
+  }
+
+  .grid-bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 4px;
+    padding: 1rem;
+  }
+  .grid-bento .cell {
+    aspect-ratio: 1;
+    background: #222;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: #555;
+    transition: all 0.3s;
+  }
+  .grid-bento .cell.featured {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: auto;
+    background: #2a1a1a;
+    border: 1px solid rgba(255,0,0,0.2);
+    color: #ff0000;
+    font-weight: 600;
+  }
+
+  /* === 3. HOVER SCALE === */
+  .hover-demo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 1rem;
+  }
+  .hover-cell {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+    border-radius: 4px;
+    filter: grayscale(1);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .hover-cell::after {
+    content: 'hover me';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: #555;
+    letter-spacing: 1px;
+  }
+  .hover-cell:hover {
+    filter: grayscale(0);
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #4a2020 0%, #2a1010 100%);
+  }
+  .hover-cell:hover::after {
+    color: transparent;
+  }
+  .hover-no-scale:hover {
+    transform: none !important;
+  }
+
+  /* === 4. TESTIMONIAL QUOTE === */
+  .testimonial-card {
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonial-card .big-quote {
+    position: absolute;
+    top: -0.5rem;
+    left: 0.5rem;
+    font-size: 6rem;
+    color: rgba(255,0,0,0.08);
+    font-family: Georgia, serif;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .testimonial-card .stars { color: #ff0000; font-size: 0.9rem; margin-bottom: 0.75rem; letter-spacing: 2px; }
+  .testimonial-card .quote { color: #ccc; font-style: italic; font-size: 0.85rem; line-height: 1.7; margin-bottom: 1rem; position: relative; z-index: 1; }
+  .testimonial-card .author { font-size: 0.75rem; color: #666; font-weight: 600; letter-spacing: 1px; }
+
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 1rem; }
+  .test-card-simple { background: #0f0f0f; border: 1px solid #222; padding: 1rem; }
+  .test-card-elevated { background: #0f0f0f; border: 1px solid #222; padding: 1rem; position: relative; overflow: hidden; }
+
+  /* === 5. RED CTA BAND === */
+  .cta-current {
+    background: #ff0000;
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .cta-current h3 { color: #000; font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem; }
+  .cta-current p { color: rgba(0,0,0,0.7); font-size: 0.8rem; margin-bottom: 1rem; }
+  .cta-current .btn { display: inline-block; background: #000; color: #fff; padding: 0.6rem 1.5rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; border-radius: 4px; }
+
+  .cta-proposed {
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 50%, #ff1a1a 100%);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-proposed::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(0,0,0,0.03) 20px,
+      rgba(0,0,0,0.03) 40px
+    );
+  }
+  .cta-proposed h3 { color: #000; font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem; position: relative; }
+  .cta-proposed p { color: rgba(0,0,0,0.7); font-size: 0.8rem; margin-bottom: 1rem; position: relative; }
+  .cta-proposed .btn { display: inline-block; background: #000; color: #fff; padding: 0.6rem 1.5rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; border-radius: 4px; position: relative; }
+
+  /* === 6. SECTION TRANSITIONS === */
+  .sections-demo { }
+  .sec-a { background: #000; padding: 2rem; text-align: center; }
+  .sec-b-hard { background: #0c0c0c; padding: 2rem; text-align: center; }
+  .sec-b-gradient {
+    padding: 2rem;
+    text-align: center;
+    background: linear-gradient(to bottom, #000 0%, #0c0c0c 100%);
+  }
+  .sec-c { background: #0c0c0c; padding: 2rem; text-align: center; }
+  .sec-label { font-size: 0.65rem; color: #444; letter-spacing: 2px; text-transform: uppercase; }
+
+  /* === 7. COUNTER ANIMATION === */
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 1.5rem; }
+  .stat-box { text-align: center; padding: 1.5rem 1rem; }
+  .stat-num { font-size: 2.5rem; font-weight: 700; color: #ff0000; }
+  .stat-label { font-size: 0.75rem; color: #888; margin-top: 0.25rem; }
+
+  .stat-animated .stat-num {
+    animation: countPulse 2s ease-out;
+  }
+  @keyframes countPulse {
+    0% { opacity: 0; transform: translateY(10px); }
+    30% { opacity: 1; }
+    100% { transform: translateY(0); }
+  }
+
+  .counter { display: inline-block; }
+  .counting { animation: counting 2s steps(30) forwards; }
+
+  /* === 8. FOOTER STRIP === */
+  .footer-demo { padding: 0; }
+  .footer-current {
+    background: #0c0c0c;
+    border-top: 1px solid #1a1a1a;
+    padding: 1.5rem 1.5rem;
+  }
+  .footer-proposed {
+    background: #0c0c0c;
+    position: relative;
+    padding: 1.5rem 1.5rem;
+  }
+  .footer-proposed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, #ff0000 20%, #ff0000 80%, transparent 100%);
+  }
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo { font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; }
+  .footer-links { display: flex; gap: 1rem; }
+  .footer-links span { font-size: 0.75rem; color: #555; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Visual Elevation Proposals</h1>
+  <p>7 improvements that make the site look noticeably different. All CSS — no new images.</p>
+</div>
+
+<!-- 2. BENTO GRID -->
+<div class="improvement">
+  <div class="imp-header">
+    <div class="imp-num">2</div>
+    <div class="imp-title">Work Gallery: Bento Grid</div>
+  </div>
+  <p class="imp-desc">Instead of 12 identical squares, feature your best work at double size. Creates visual hierarchy — the eye knows where to look first.</p>
+
+  <div class="split">
+    <div>
+      <div class="split-label">CURRENT — FLAT GRID</div>
+      <div class="demo-box">
+        <div class="grid-current">
+          <div class="cell">1</div><div class="cell">2</div><div class="cell">3</div><div class="cell">4</div>
+          <div class="cell">5</div><div class="cell">6</div><div class="cell">7</div><div class="cell">8</div>
+          <div class="cell">9</div><div class="cell">10</div><div class="cell">11</div><div class="cell">12</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="split-label new">PROPOSED — BENTO</div>
+      <div class="demo-box">
+        <div class="grid-bento">
+          <div class="cell featured">BEST<br>WORK</div>
+          <div class="cell">2</div><div class="cell">3</div>
+          <div class="cell">4</div><div class="cell">5</div>
+          <div class="cell featured">FEATURED</div>
+          <div class="cell">8</div><div class="cell">9</div>
+          <div class="cell">10</div><div class="cell">11</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. HOVER SCALE -->
+<div class="improvement">
+  <div class="imp-header">
+    <div class="imp-num">3</div>
+    <div class="imp-title">Image Hover: Add Scale Effect</div>
+  </div>
+  <p class="imp-desc">Currently images go grayscale → color on hover. Adding a subtle 5% zoom makes it feel tactile and premium. Hover the cells below to compare.</p>
+
+  <div class="split">
+    <div>
+      <div class="split-label">CURRENT — COLOR ONLY</div>
+      <div class="demo-box">
+        <div class="hover-demo">
+          <div class="hover-cell hover-no-scale"></div>
+          <div class="hover-cell hover-no-scale"></div>
+          <div class="hover-cell hover-no-scale"></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="split-label new">PROPOSED — COLOR + SCALE</div>
+      <div class="demo-box">
+        <div class="hover-demo">
+          <div class="hover-cell"></div>
+          <div class="hover-cell"></div>
+          <div class="hover-cell"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. TESTIMONIAL QUOTES -->
+<div class="improvement">
+  <div class="imp-header">
+    <div class="imp-num">4</div>
+    <div class="imp-title">Testimonials: Decorative Quote Marks</div>
+  </div>
+  <p class="imp-desc">A large transparent quote character behind each review. Classic premium pattern — immediately signals "this is a testimonial" and adds visual depth.</p>
+
+  <div class="split">
+    <div>
+      <div class="split-label">CURRENT — PLAIN CARDS</div>
+      <div class="demo-box">
+        <div style="padding: 1rem;">
+          <div class="test-card-simple">
+            <div style="color: #ff0000; font-size: 0.8rem; margin-bottom: 0.5rem;">★★★★★</div>
+            <p style="color: #aaa; font-style: italic; font-size: 0.8rem; line-height: 1.6; margin-bottom: 0.75rem;">"Best barbershop in town by far! An experience like no other..."</p>
+            <div style="font-size: 0.7rem; color: #555;">— GOOGLE REVIEWER</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="split-label new">PROPOSED — WITH QUOTE MARK</div>
+      <div class="demo-box">
+        <div style="padding: 1rem;">
+          <div class="test-card-elevated">
+            <div style="position: absolute; top: -8px; left: 8px; font-size: 5rem; color: rgba(255,0,0,0.08); font-family: Georgia, serif; line-height: 1; pointer-events: none;">"</div>
+            <div style="color: #ff0000; font-size: 0.8rem; margin-bottom: 0.5rem; position: relative; z-index: 1;">★★★★★</div>
+            <p style="color: #aaa; font-style: italic; font-size: 0.8rem; line-height: 1.6; margin-bottom: 0.75rem; position: relative; z-index: 1;">"Best barbershop in town by far! An experience like no other..."</p>
+            <div style="font-size: 0.7rem; color: #555; position: relative; z-index: 1;">— GOOGLE REVIEWER</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. RED CTA BAND -->
+<div class="improvement">
+  <div class="imp-header">
+    <div class="imp-num">5</div>
+    <div class="imp-title">CTA Band: Gradient + Texture</div>
+  </div>
+  <p class="imp-desc">The solid red band feels flat. A diagonal gradient with subtle stripe texture adds depth and sophistication without changing the layout.</p>
+
+  <div class="split">
+    <div>
+      <div class="split-label">CURRENT — FLAT RED</div>
+      <div class="demo-box">
+        <div class="cta-current">
+          <h3>LOOK SHARP. BOOK FASTER.</h3>
+          <p>Skip the wait and lock in your appointment.</p>
+          <div class="btn">BOOK MY NEXT CUT</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="split-label new">PROPOSED — GRADIENT + STRIPES</div>
+      <div class="demo-box">
+        <div class="cta-proposed">
+          <h3>LOOK SHARP. BOOK FASTER.</h3>
+          <p>Skip the wait and lock in your appointment.</p>
+          <div class="btn">BOOK MY NEXT CUT</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 6. SECTION TRANSITIONS -->
+<div class="improvement">
+  <div class="imp-header">
+    <div class="imp-num">6</div>
+    <div class="imp-title">Section Transitions: Gradient Bleeds</div>
+  </div>
+  <p class="imp-desc">Sections currently hard-cut from one background to the next. Adding gradient transitions between them smooths the visual flow.</p>
+
+  <div class="split">
+    <div>
+      <div class="split-label">CURRENT — HARD CUT</div>
+      <div class="demo-box">
+        <div class="sec-a"><div class="sec-label">Section A (black)</div></div>
+        <div class="sec-b-hard"><div class="sec-label">Section B (zinc-950) — hard edge</div></div>
+        <div class="sec-a"><div class="sec-label">Section C (black)</div></div>
+        <div class="sec-b-hard"><div class="sec-label">Section D (zinc-950) — hard edge</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="split-label new">PROPOSED — GRADIENT BLEED</div>
+      <div class="demo-box">
+        <div class="sec-a"><div class="sec-label">Section A (black)</div></div>
+        <div class="sec-b-gradient"><div class="sec-label">Section B — gradient transition</div></div>
+        <div style="background: #0c0c0c; padding: 2rem; text-align: center;"><div class="sec-label">continues...</div></div>
+        <div style="background: linear-gradient(to bottom, #0c0c0c 0%, #000 100%); padding: 2rem; text-align: center;"><div class="sec-label">Section C — gradient back</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. COUNTER ANIMATION -->
+<div class="improvement">
+  <div class="imp-header">
+    <div class="imp-num">7</div>
+    <div class="imp-title">Community Stats: Count-Up Animation</div>
+  </div>
+  <p class="imp-desc">The stats on the community page (30+ Projects, 150+ Hours, 500+ Free Haircuts) would count up from 0 when scrolled into view. Classic engagement pattern. Click "Replay" to see it again.</p>
+
+  <div class="split">
+    <div>
+      <div class="split-label">CURRENT — STATIC NUMBERS</div>
+      <div class="demo-box">
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-num">30+</div>
+            <div class="stat-label">Community Projects</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">150+</div>
+            <div class="stat-label">Hours of Work</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">500+</div>
+            <div class="stat-label">Free Haircuts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="split-label new">PROPOSED — ANIMATED COUNT-UP <button onclick="replayCounters()" style="background: #222; border: 1px solid #444; color: #aaa; padding: 2px 8px; font-size: 0.65rem; border-radius: 3px; cursor: pointer; margin-left: 0.5rem;">Replay</button></div>
+      <div class="demo-box">
+        <div class="stats-grid" id="animated-stats">
+          <div class="stat-box stat-animated">
+            <div class="stat-num"><span class="counter" data-target="30" id="c1">0</span>+</div>
+            <div class="stat-label">Community Projects</div>
+          </div>
+          <div class="stat-box stat-animated">
+            <div class="stat-num"><span class="counter" data-target="150" id="c2">0</span>+</div>
+            <div class="stat-label">Hours of Work</div>
+          </div>
+          <div class="stat-box stat-animated">
+            <div class="stat-num"><span class="counter" data-target="500" id="c3">0</span>+</div>
+            <div class="stat-label">Free Haircuts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. FOOTER STRIP -->
+<div class="improvement">
+  <div class="imp-header">
+    <div class="imp-num">8</div>
+    <div class="imp-title">Footer: Red Accent Strip</div>
+  </div>
+  <p class="imp-desc">A thin red gradient line at the top of the footer. Subtle framing detail that separates the footer as its own zone.</p>
+
+  <div class="split">
+    <div>
+      <div class="split-label">CURRENT — PLAIN BORDER</div>
+      <div class="demo-box">
+        <div style="background: #000; padding: 2rem; text-align: center;"><div class="sec-label">page content above</div></div>
+        <div class="footer-current">
+          <div class="footer-content">
+            <div class="footer-logo">MODERN MANCAVE</div>
+            <div class="footer-links"><span>Home</span><span>Team</span><span>Prices</span><span>Book</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="split-label new">PROPOSED — RED GRADIENT LINE</div>
+      <div class="demo-box">
+        <div style="background: #000; padding: 2rem; text-align: center;"><div class="sec-label">page content above</div></div>
+        <div class="footer-proposed">
+          <div class="footer-content">
+            <div class="footer-logo">MODERN MANCAVE</div>
+            <div class="footer-links"><span>Home</span><span>Team</span><span>Prices</span><span>Book</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function animateCounter(el, target, duration) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    function update() {
+      start += increment;
+      if (start >= target) {
+        el.textContent = target;
+        return;
+      }
+      el.textContent = Math.floor(start);
+      requestAnimationFrame(update);
+    }
+    el.textContent = '0';
+    requestAnimationFrame(update);
+  }
+
+  function replayCounters() {
+    animateCounter(document.getElementById('c1'), 30, 1500);
+    animateCounter(document.getElementById('c2'), 150, 1800);
+    animateCounter(document.getElementById('c3'), 500, 2000);
+  }
+
+  // Auto-play on load
+  setTimeout(replayCounters, 500);
+</script>
+
+</body>
+</html>

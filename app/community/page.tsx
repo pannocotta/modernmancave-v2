@@ -43,7 +43,7 @@ export default function CommunityPage() {
       {/* Hero — two-line heading */}
       <section className="relative min-h-[80vh] flex items-end pb-20 md:pb-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/stock/community.jpg" alt="" fill className="object-cover grayscale opacity-25" />
+          <Image src="/stock/community.jpg" alt="" fill priority sizes="100vw" className="object-cover grayscale opacity-25" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         </div>
@@ -133,7 +133,7 @@ export default function CommunityPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    quality={85}
+                    quality={75}
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
                 </a>

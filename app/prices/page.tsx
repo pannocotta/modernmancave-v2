@@ -19,7 +19,7 @@ export default function PricesPage() {
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-end pb-20 md:pb-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/stock/barbershop-tools.jpg" alt="" fill className="object-cover grayscale opacity-25" />
+          <Image src="/stock/barbershop-tools.jpg" alt="" fill priority sizes="100vw" className="object-cover grayscale opacity-25" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         </div>
@@ -80,13 +80,13 @@ export default function PricesPage() {
             {/* Before & After */}
             <div className="grid grid-cols-2 gap-3">
               <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
-                <Image src="/teeth-before.jpg" alt="Before teeth whitening" fill className="object-cover" />
+                <Image src="/teeth-before.jpg" alt="Before teeth whitening" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
                   <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">Before</span>
                 </div>
               </div>
               <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
-                <Image src="/teeth-after.jpg" alt="After teeth whitening" fill className="object-cover" />
+                <Image src="/teeth-after.jpg" alt="After teeth whitening" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
                   <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">After</span>
                 </div>
@@ -109,7 +109,7 @@ export default function PricesPage() {
                 { src: '/tattoo/4.jpg', alt: 'Day of the dead tattoo' },
               ].map((img, i) => (
                 <div key={i} className="relative aspect-square overflow-hidden rounded-sm">
-                  <Image src={img.src} alt={img.alt} fill className="object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+                  <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover grayscale hover:grayscale-0 transition-all duration-500" />
                 </div>
               ))}
             </div>

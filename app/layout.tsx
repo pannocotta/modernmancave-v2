@@ -64,6 +64,8 @@ export default function RootLayout({
       <head>
         <link rel="apple-touch-icon" href="/logo.png" />
         <link rel="preload" href="/fonts/AwakenningPersonalUse-DOLPD.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/hero-background.jpg" as="image" />
+        <link rel="preload" href="/hero-video.mp4" as="video" type="video/mp4" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

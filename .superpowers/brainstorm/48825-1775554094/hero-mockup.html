@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Comparison</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; color: #fff; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+  h1 { text-align: center; padding: 2rem 1rem 0.5rem; font-size: 1.5rem; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+  .subtitle { text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+
+  .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 0 2rem 3rem; max-width: 1400px; margin: 0 auto; }
+
+  .panel { position: relative; border: 2px solid #333; border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color 0.3s; }
+  .panel:hover { border-color: #666; }
+  .panel.selected { border-color: #ff0000; }
+
+  .panel-label { position: absolute; top: 1rem; left: 1rem; z-index: 30; background: rgba(0,0,0,0.8); padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+  .panel-label.current { border: 1px solid #555; }
+  .panel-label.proposed { border: 1px solid #ff0000; color: #ff0000; }
+
+  /* === CURRENT HERO === */
+  .hero-current {
+    position: relative;
+    aspect-ratio: 16/10;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-current .bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #111 100%);
+    opacity: 0.3;
+  }
+
+  .hero-current .bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent, rgba(0,0,0,1));
+  }
+
+  .hero-current .badge {
+    position: relative;
+    z-index: 10;
+    width: 45%;
+    aspect-ratio: 1;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-current .badge .brand { font-size: 1.4rem; font-weight: 700; letter-spacing: 4px; }
+  .hero-current .badge .est { font-size: 0.65rem; color: #888; letter-spacing: 3px; margin-top: 0.3rem; }
+
+  .hero-current .cta {
+    position: absolute;
+    bottom: 15%;
+    z-index: 10;
+    color: #fff;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    font-weight: 600;
+  }
+  .hero-current .cta::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #ff0000;
+    margin-top: 6px;
+  }
+
+  /* === PROPOSED HERO === */
+  .hero-proposed {
+    position: relative;
+    aspect-ratio: 16/10;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-proposed .bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #111 100%);
+    opacity: 0.3;
+    animation: kenBurns 15s ease-in-out infinite alternate;
+  }
+
+  @keyframes kenBurns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+  }
+
+  .hero-proposed .bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent, rgba(0,0,0,1));
+  }
+
+  /* Red glow behind badge */
+  .hero-proposed .glow {
+    position: absolute;
+    width: 60%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,0,0,0.15) 0%, rgba(255,0,0,0.05) 40%, transparent 70%);
+    z-index: 5;
+    animation: glowPulse 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes glowPulse {
+    0% { opacity: 0.6; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1.05); }
+  }
+
+  .hero-proposed .badge {
+    position: relative;
+    z-index: 10;
+    width: 45%;
+    aspect-ratio: 1;
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: badgeFadeIn 1.5s ease-out;
+  }
+
+  @keyframes badgeFadeIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .hero-proposed .badge .brand { font-size: 1.4rem; font-weight: 700; letter-spacing: 4px; }
+  .hero-proposed .badge .est { font-size: 0.65rem; color: #888; letter-spacing: 3px; margin-top: 0.3rem; }
+
+  .hero-proposed .cta {
+    position: absolute;
+    bottom: 15%;
+    z-index: 10;
+    color: #fff;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    font-weight: 600;
+    animation: ctaFadeUp 1.8s ease-out 0.5s both;
+  }
+
+  @keyframes ctaFadeUp {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-proposed .cta::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #ff0000;
+    margin-top: 6px;
+  }
+
+  /* Description panels */
+  .desc { padding: 1.5rem; background: #0a0a0a; }
+  .desc h3 { font-size: 1rem; margin-bottom: 0.75rem; font-weight: 600; }
+  .desc ul { list-style: none; padding: 0; }
+  .desc li { color: #888; font-size: 0.85rem; line-height: 1.8; padding-left: 1.2rem; position: relative; }
+  .desc li::before { content: ''; position: absolute; left: 0; top: 0.65rem; width: 6px; height: 6px; border-radius: 50%; }
+  .desc.current li::before { background: #555; }
+  .desc.proposed li::before { background: #ff0000; }
+
+  .note { text-align: center; padding: 1rem 2rem 2rem; color: #666; font-size: 0.8rem; font-style: italic; }
+</style>
+</head>
+<body>
+
+<h1>Hero Section Comparison</h1>
+<p class="subtitle">Current vs proposed — side by side. The background would be the actual barbershop photo.</p>
+
+<div class="comparison">
+  <!-- CURRENT -->
+  <div class="panel" onclick="this.classList.toggle('selected')">
+    <div class="panel-label current">CURRENT</div>
+    <div class="hero-current">
+      <div class="bg"></div>
+      <div class="badge">
+        <div class="brand">MODERN<br>MANCAVE</div>
+        <div class="est">EST. 2017</div>
+      </div>
+      <div class="cta">BOOK NOW</div>
+    </div>
+    <div class="desc current">
+      <h3>What you have now</h3>
+      <ul>
+        <li>Static background image</li>
+        <li>Badge appears instantly</li>
+        <li>No movement or depth</li>
+        <li>Functional but flat</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROPOSED -->
+  <div class="panel" onclick="this.classList.toggle('selected')">
+    <div class="panel-label proposed">PROPOSED</div>
+    <div class="hero-proposed">
+      <div class="bg"></div>
+      <div class="glow"></div>
+      <div class="badge">
+        <div class="brand">MODERN<br>MANCAVE</div>
+        <div class="est">EST. 2017</div>
+      </div>
+      <div class="cta">BOOK NOW</div>
+    </div>
+    <div class="desc proposed">
+      <h3>What changes</h3>
+      <ul>
+        <li>Slow Ken Burns zoom on background (15s cycle)</li>
+        <li>Subtle red glow pulses behind the badge</li>
+        <li>Badge fades in + scales on page load</li>
+        <li>CTA fades up with slight delay</li>
+        <li>All CSS — no new images or libraries</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<p class="note">The grey backgrounds represent the actual barbershop hero photo. Watch the right panel — the background slowly zooms and the red glow pulses.</p>
+
+</body>
+</html>

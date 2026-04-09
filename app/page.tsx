@@ -224,7 +224,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-3 gap-16 mb-16">
             <div>
-              <Link href="/"><Image src="/1.png" alt="Modern Mancave" width={112} height={32} className="h-8 w-auto mb-6" /></Link>
+              <Link href="/"><Image src="/1.png" alt="Modern Mancave" width={112} height={32} sizes="112px" className="h-8 w-auto mb-6" /></Link>
               <p className="text-sm text-gray-500 leading-relaxed">Premium grooming for men in Griffith and the Riverina since 2017.</p>
             </div>
             <div>

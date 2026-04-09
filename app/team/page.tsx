@@ -17,7 +17,7 @@ export default function TeamPage() {
       {/* Tristan Hero */}
       <section className="relative min-h-screen flex items-center pt-24 md:pt-32 pb-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/stock/barber-cutting.jpg" alt="" fill className="object-cover grayscale opacity-30" />
+          <Image src="/stock/barber-cutting.jpg" alt="" fill priority sizes="100vw" className="object-cover grayscale opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black" />
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         </div>
@@ -30,6 +30,8 @@ export default function TeamPage() {
                 alt="Tristan — Owner & Master Barber"
                 width={600}
                 height={800}
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="w-full h-auto"
                 style={{
                   maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',

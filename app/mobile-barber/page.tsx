@@ -43,7 +43,7 @@ export default function MobileBarberPage() {
       {/* Hero */}
       <section className="relative min-h-[80vh] flex items-end pb-20 md:pb-28 pt-32 md:pt-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/stock/barber-cutting.jpg" alt="" fill className="object-cover grayscale opacity-25" />
+          <Image src="/stock/barber-cutting.jpg" alt="" fill priority sizes="100vw" className="object-cover grayscale opacity-25" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         </div>
