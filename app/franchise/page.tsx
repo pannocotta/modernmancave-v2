@@ -90,17 +90,17 @@ export default function FranchisePage() {
 
             <div className="space-y-8 md:pl-8">
               <div className="border-l-2 border-brand-red/40 pl-8">
-                <div className="text-5xl md:text-6xl font-headliner gradient-heading mb-1">{new Date().getFullYear() - SITE.established}+</div>
+                <div className="text-5xl md:text-6xl font-bold text-white mb-1">{new Date().getFullYear() - SITE.established}+</div>
                 <p className="text-gray-500 text-sm tracking-widest uppercase">Years in business</p>
               </div>
               <div className="h-px bg-zinc-800" />
               <div className="border-l-2 border-brand-red/40 pl-8">
-                <div className="text-5xl md:text-6xl font-headliner gradient-heading mb-1">3</div>
+                <div className="text-5xl md:text-6xl font-bold text-white mb-1">3</div>
                 <p className="text-gray-500 text-sm tracking-widest uppercase">Locations across Griffith</p>
               </div>
               <div className="h-px bg-zinc-800" />
               <div className="border-l-2 border-brand-red/40 pl-8">
-                <div className="text-5xl md:text-6xl font-headliner gradient-heading mb-1">90%+</div>
+                <div className="text-5xl md:text-6xl font-bold text-white mb-1">90%+</div>
                 <p className="text-gray-500 text-sm tracking-widest uppercase">Client return rate</p>
               </div>
             </div>

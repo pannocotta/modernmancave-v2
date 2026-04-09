@@ -65,7 +65,7 @@ export default function AppPage() {
                   'Tap "Add" in the top right corner',
                 ].map((step, i) => (
                   <li key={i} className="flex gap-6 items-start">
-                    <span className="text-brand-red font-headliner text-2xl leading-none w-6 shrink-0">{i + 1}</span>
+                    <span className="text-brand-red font-bold text-2xl leading-none w-6 shrink-0">{i + 1}</span>
                     <span className="text-gray-300 text-base leading-snug">{step}</span>
                   </li>
                 ))}
@@ -83,7 +83,7 @@ export default function AppPage() {
                   'Tap "Add" or "Install" to confirm',
                 ].map((step, i) => (
                   <li key={i} className="flex gap-6 items-start">
-                    <span className="text-brand-red font-headliner text-2xl leading-none w-6 shrink-0">{i + 1}</span>
+                    <span className="text-brand-red font-bold text-2xl leading-none w-6 shrink-0">{i + 1}</span>
                     <span className="text-gray-300 text-base leading-snug">{step}</span>
                   </li>
                 ))}
