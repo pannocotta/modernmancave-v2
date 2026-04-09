@@ -65,35 +65,36 @@ export default function MobileBarberPage() {
         </div>
       </section>
 
-      {/* Trailer — contained within a dark panel */}
-      <section className="relative py-32 md:py-44 bg-black overflow-hidden">
+      {/* Trailer + Features */}
+      <section className="py-32 md:py-44 bg-black">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          {/* Trailer image in a grounded container */}
-          <div className="relative bg-zinc-950 rounded-sm overflow-hidden mb-16 md:mb-20 py-12 md:py-16 px-6">
-            <div className="relative aspect-[16/9] md:aspect-[21/9]">
-              <Image src="/mobile-trailer.png" alt="Modern Mancave Mobile Barber Studio" fill className="object-contain" sizes="100vw" />
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <div>
+              <Image
+                src="/mobile-trailer.png"
+                alt="Modern Mancave Mobile Barber Studio"
+                width={800}
+                height={600}
+                className="w-full h-auto"
+              />
             </div>
-          </div>
 
-          {/* Heading + features grid */}
-          <div className="grid md:grid-cols-2 gap-12 md:gap-20">
             <div>
               <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">The Studio</span>
               <h2 className="font-headliner text-4xl md:text-5xl lg:text-6xl gradient-heading leading-[0.9] mb-6">
                 THE ULTIMATE<br />MOBILE EXPERIENCE
               </h2>
-              <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-8">
                 A fully self-contained barbershop on wheels. Climate-controlled, professionally equipped, and ready to set up anywhere. Your guests get the exact same premium experience as walking into one of our Griffith locations.
               </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-x-8 gap-y-6 content-start">
-              {FEATURES.map((feature) => (
-                <div key={feature} className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 bg-brand-red rounded-full flex-shrink-0 mt-1.5" />
-                  <span className="text-gray-300 text-sm">{feature}</span>
-                </div>
-              ))}
+              <ul className="space-y-4">
+                {FEATURES.map((feature) => (
+                  <li key={feature} className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 bg-brand-red rounded-full flex-shrink-0" />
+                    <span className="text-gray-300 text-sm md:text-base">{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
