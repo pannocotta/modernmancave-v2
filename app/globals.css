@@ -145,6 +145,32 @@ body {
   transform-origin: top;
 }
 
+/* ─── Section Blend Transitions ─── */
+
+.section-blend-dark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, #000000, transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.section-blend-dark::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, #000000, transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
 /* ─── Film Grain Texture ─── */
 
 .grain-overlay {

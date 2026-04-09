@@ -41,10 +41,10 @@ export default function ShopPage() {
             fill
             priority
             quality={80}
-            className="object-cover grayscale opacity-25"
+            className="object-cover grayscale opacity-15"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black z-10" />
           <div className="absolute inset-0 z-20 opacity-[0.03] pointer-events-none grain-overlay" />
         </div>
 

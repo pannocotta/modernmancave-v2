@@ -98,9 +98,9 @@ export default function Home() {
       </section>
 
       {/* Our Work */}
-      <section className="relative bg-zinc-950 py-32 md:py-44 overflow-hidden">
+      <section className="relative bg-zinc-950 py-32 md:py-44 overflow-hidden section-blend-dark">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
           <div className="grid md:grid-cols-2 gap-8 mb-20">
             <div>
               <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Portfolio</span>
@@ -178,8 +178,8 @@ export default function Home() {
       </section>
 
       {/* Mobile Barber */}
-      <section className="relative bg-zinc-950 py-32 md:py-0 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <section className="relative bg-zinc-950 py-32 md:py-0 overflow-hidden section-blend-dark">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center md:min-h-[80vh] md:py-24">
             <div className="relative aspect-[4/3] md:aspect-[3/4] overflow-hidden rounded-sm">
               <Image src="/mobile-trailer.png" alt="Modern Mancave Mobile Barber Studio" fill className="object-contain md:object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
@@ -219,7 +219,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-950 pt-1 pb-20">
+      <footer className="relative bg-zinc-950 pt-1 pb-20 section-blend-dark">
         <div className="h-px bg-gradient-to-r from-transparent via-brand-red/40 to-transparent mb-20" />
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-3 gap-16 mb-16">
