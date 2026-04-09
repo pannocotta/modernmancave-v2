@@ -16,7 +16,6 @@ export default function Home() {
       {/* Hero */}
       <section className="relative min-h-[100svh] flex items-center justify-center bg-black overflow-hidden">
         <div className="absolute inset-0 z-0">
-          {/* Video background — grayscale baked in, poster fallback for instant load */}
           <video
             autoPlay
             muted
@@ -24,12 +23,10 @@ export default function Home() {
             playsInline
             preload="auto"
             poster="/hero-background.jpg"
-            className="absolute inset-0 w-full h-full object-cover opacity-30"
+            className="absolute inset-0 w-full h-full object-cover opacity-50"
           >
             <source src="/hero-video.mp4" type="video/mp4" />
           </video>
-          {/* Fallback image for browsers that block autoplay */}
-          <Image src="/hero-background.jpg" alt="" fill priority quality={80} className="object-cover opacity-30 grayscale" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black z-10" />
           <div className="absolute inset-0 z-20 opacity-[0.03] pointer-events-none grain-overlay" />
         </div>
