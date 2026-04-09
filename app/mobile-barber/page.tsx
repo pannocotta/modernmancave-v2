@@ -65,27 +65,34 @@ export default function MobileBarberPage() {
         </div>
       </section>
 
-      {/* Trailer + Features */}
-      <section className="py-32 md:py-44 bg-black">
+      {/* Trailer — full width hero image */}
+      <section className="relative py-20 md:py-32 bg-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
-              <Image src="/mobile-trailer.png" alt="Modern Mancave Mobile Barber Studio" fill className="object-contain" sizes="(max-width: 768px) 100vw, 50vw" />
-            </div>
+          {/* Big trailer image */}
+          <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-sm mb-16 md:mb-20">
+            <Image src="/mobile-trailer.png" alt="Modern Mancave Mobile Barber Studio" fill className="object-contain" sizes="100vw" />
+            <div className="absolute inset-0 shadow-[inset_0_0_60px_30px_rgba(0,0,0,0.7)]" />
+          </div>
 
+          {/* Heading + features grid */}
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20">
             <div>
               <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">The Studio</span>
-              <h2 className="font-headliner text-4xl md:text-5xl lg:text-6xl gradient-heading leading-[0.9] mb-8">
+              <h2 className="font-headliner text-4xl md:text-5xl lg:text-6xl gradient-heading leading-[0.9] mb-6">
                 THE ULTIMATE<br />MOBILE EXPERIENCE
               </h2>
-              <ul className="space-y-4 mb-10">
-                {FEATURES.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3">
-                    <div className="w-1.5 h-1.5 bg-brand-red rounded-full flex-shrink-0" />
-                    <span className="text-gray-400 text-sm md:text-base">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                A fully self-contained barbershop on wheels. Climate-controlled, professionally equipped, and ready to set up anywhere. Your guests get the exact same premium experience as walking into one of our Griffith locations.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-x-8 gap-y-6 content-start">
+              {FEATURES.map((feature) => (
+                <div key={feature} className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 bg-brand-red rounded-full flex-shrink-0 mt-1.5" />
+                  <span className="text-gray-300 text-sm">{feature}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
