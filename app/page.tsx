@@ -113,10 +113,24 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right — original copy restored, stats centred above */}
+            {/* Right — copy then stats below */}
             <div className="flex flex-col justify-center">
-              {/* Stats row — centred, evenly spaced, full width */}
-              <div className="grid grid-cols-4 gap-4 mb-12 pb-10 border-b border-zinc-800/50">
+              <h2 className="font-headliner text-5xl md:text-6xl lg:text-7xl gradient-heading mb-8 leading-[0.9]">
+                RIVERINAS<br/>PREMIUM<br/>BARBERSHOP
+              </h2>
+              <div className="space-y-5 text-gray-400 text-base md:text-lg leading-relaxed">
+                <p>
+                  Modern Mancave is more than a barbershop. It&apos;s a place to switch off, have a yarn, and walk out looking your best.
+                </p>
+                <p>
+                  Since 2017, we&apos;ve been looking after clients across Griffith and the Riverina with quality cuts and genuine service. Whether you&apos;re after a clean fade, a tidy up, a sharp beard trim or a proper hot towel shave, our barbers take the time to get it right.
+                </p>
+                <p>
+                  We care about the details, and it shows in every cut.
+                </p>
+              </div>
+              {/* Stats row — under text, evenly spaced */}
+              <div className="grid grid-cols-4 gap-4 mt-10 pt-10 border-t border-zinc-800/50">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-white">{new Date().getFullYear() - SITE.established}+</div>
                   <div className="text-[10px] text-gray-500 tracking-[0.2em] uppercase mt-1">Years</div>
@@ -133,21 +147,6 @@ export default function Home() {
                   <div className="text-3xl font-bold text-white">{SITE.googleRating.stars}</div>
                   <div className="text-[10px] text-gray-500 tracking-[0.2em] uppercase mt-1">Stars</div>
                 </div>
-              </div>
-
-              <h2 className="font-headliner text-5xl md:text-6xl lg:text-7xl gradient-heading mb-8 leading-[0.9]">
-                RIVERINAS<br/>PREMIUM<br/>BARBERSHOP
-              </h2>
-              <div className="space-y-5 text-gray-400 text-base md:text-lg leading-relaxed">
-                <p>
-                  Modern Mancave is more than a barbershop. It&apos;s a place to switch off, have a yarn, and walk out looking your best.
-                </p>
-                <p>
-                  Since 2017, we&apos;ve been looking after clients across Griffith and the Riverina with quality cuts and genuine service. Whether you&apos;re after a clean fade, a tidy up, a sharp beard trim or a proper hot towel shave, our barbers take the time to get it right.
-                </p>
-                <p>
-                  We care about the details, and it shows in every cut.
-                </p>
               </div>
             </div>
           </div>
