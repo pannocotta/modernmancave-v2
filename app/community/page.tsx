@@ -120,8 +120,7 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="text-center mb-20">
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">In Action</span>
-            <h2 className="font-headliner text-4xl md:text-6xl gradient-heading mb-4">THE IMPACT</h2>
-            <p className="text-gray-500 text-sm md:text-base max-w-lg mx-auto">The impact Modern Mancave has had across the globe</p>
+            <h2 className="font-headliner text-4xl md:text-6xl gradient-heading">THE IMPACT MODERN MANCAVE<br />HAS HAD ACROSS THE GLOBE</h2>
           </div>
 
           <StaggerContainer staggerDelay={0.04} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
@@ -148,10 +147,10 @@ export default function CommunityPage() {
       <section className="py-32 md:py-40 bg-black">
         <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
           <h2 className="font-headliner text-4xl md:text-6xl lg:text-7xl gradient-heading leading-[0.85] mb-6">
-            HAVE A CAUSE YOU<br />WANT US TO HELP WITH?
+            WE WANT TO<br />HELP YOUR CAUSE
           </h2>
           <p className="text-gray-500 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">
-            Whether it&apos;s a charity event, community fundraiser, or a cause close to your heart — we&apos;d love to hear from you.
+            Whether it&apos;s a charity event, community fundraiser, or a cause close to your heart — reach out and let&apos;s make it happen.
           </p>
           <Link href="/mobile-barber-enquiry" className="group relative bg-brand-red text-white px-12 py-5 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
             <span className="relative z-10">GET IN TOUCH</span>
