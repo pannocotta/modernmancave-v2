@@ -43,7 +43,7 @@ export default function Home() {
           {/* Accent rule + tagline */}
           <div className="flex items-center gap-4 mb-8">
             <div className="w-8 md:w-12 h-px bg-brand-red/50" />
-            <span className="text-brand-red text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase">Est. 2017 — Griffith, NSW</span>
+            <span className="text-white text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase">Est. 2017 — Griffith, NSW</span>
             <div className="w-8 md:w-12 h-px bg-brand-red/50" />
           </div>
 
