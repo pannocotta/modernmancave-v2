@@ -1,97 +1,83 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import { LOCATIONS } from '@/lib/config'
+import { ArrowRightIcon } from '@/components/icons'
+import Link from 'next/link'
 
 export default function LocationCards() {
-  const [selectedLocation, setSelectedLocation] = useState(0)
-  const [expandedCard, setExpandedCard] = useState<number | null>(0)
+  const [selected, setSelected] = useState(0)
+  const location = LOCATIONS[selected]
 
   return (
-    <div className="grid md:grid-cols-[400px_1fr] gap-8">
-      {/* Left: Location Cards */}
-      <div className="space-y-6">
-        {LOCATIONS.map((location, index) => {
-          const isExpanded = expandedCard === index
-          return (
-            <div
-              key={index}
-              onClick={() => {
-                setSelectedLocation(index)
-                setExpandedCard(isExpanded ? null : index)
-              }}
-              className="bg-zinc-900 p-8 rounded-lg shadow-2xl hover:shadow-white/30 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-headliner text-2xl text-white">{location.name}</h3>
-                <svg
-                  className={`w-6 h-6 text-brand-red transition-transform ${isExpanded ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
+    <div>
+      {/* Tabs */}
+      <div className="flex flex-wrap gap-2 md:gap-0 md:border-b border-zinc-800 mb-12 md:mb-16">
+        {LOCATIONS.map((loc, i) => (
+          <button
+            key={loc.name}
+            onClick={() => setSelected(i)}
+            className={`px-5 md:px-8 py-3 md:py-4 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 border md:border-0 rounded-full md:rounded-none ${
+              selected === i
+                ? 'text-white md:border-b-2 md:border-brand-red border-brand-red/40 bg-brand-red/10 md:bg-transparent'
+                : 'text-gray-500 hover:text-gray-300 border-zinc-800 md:border-b-2 md:border-transparent'
+            }`}
+          >
+            {loc.name}
+          </button>
+        ))}
+      </div>
 
-              <div className={`space-y-6 mb-8 ${isExpanded ? 'block' : 'hidden'}`}>
-                <div>
-                  <div className="text-sm font-bold mb-2 text-gray-500 tracking-wider">ADDRESS</div>
-                  <p className="text-white">{location.address}</p>
-                </div>
-                <div>
-                  <div className="text-sm font-bold mb-2 text-gray-500 tracking-wider">HOURS</div>
-                  <div className="text-white space-y-1 text-sm">
-                    {location.hours.map((hour, i) => (
-                      <div key={i}>{hour}</div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+      {/* Selected Location Details */}
+      <div className="grid md:grid-cols-2 gap-12 md:gap-20">
+        {/* Left — Info */}
+        <div>
+          <h2 className="font-headliner text-4xl md:text-5xl gradient-heading leading-[0.9] mb-8">{location.name}</h2>
 
-              <div className={`space-y-3 ${isExpanded ? 'block' : 'hidden'}`}>
-                <a
-                  href={location.directionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cta-button w-full text-center block"
-                >
-                  GET DIRECTIONS
-                </a>
-                {location.hasBooking && (
-                  <Link href="/booking" className="cta-button w-full text-center block">
-                    BOOK NOW
-                  </Link>
-                )}
+          <div className="space-y-8">
+            <div>
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 block mb-2">Address</span>
+              <p className="text-gray-300 text-base">{location.address}</p>
+            </div>
+
+            <div>
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 block mb-3">Hours</span>
+              <div className="space-y-2">
+                {location.hours.map((hour, i) => (
+                  <div key={i} className="text-gray-300 text-sm">{hour}</div>
+                ))}
               </div>
             </div>
-          )
-        })}
-      </div>
 
-      {/* Right: Google Maps (desktop) */}
-      <div className="sticky top-24 h-fit hidden md:block">
-        <div className="aspect-square rounded-lg overflow-hidden bg-zinc-900">
-          <iframe
-            key={selectedLocation}
-            src={LOCATIONS[selectedLocation].mapUrl}
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+            <div className="flex flex-wrap gap-4 pt-4">
+              <a
+                href={location.directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-brand-red text-white px-8 py-3.5 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-flex items-center gap-2 hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]"
+              >
+                <span className="relative z-10">GET DIRECTIONS</span>
+                <ArrowRightIcon className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
+                <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </a>
+              {location.hasBooking && (
+                <Link
+                  href="/booking"
+                  className="group border border-white/20 hover:border-white/40 text-white px-8 py-3.5 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-2"
+                >
+                  <span>BOOK NOW</span>
+                  <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Mobile: Map below cards */}
-      <div className="md:hidden mt-8">
-        <div className="aspect-[16/9] rounded-lg overflow-hidden bg-zinc-900">
+        {/* Right — Map */}
+        <div className="aspect-square md:aspect-auto md:min-h-[500px] rounded-sm overflow-hidden bg-zinc-900">
           <iframe
-            key={`mobile-${selectedLocation}`}
-            src={LOCATIONS[selectedLocation].mapUrl}
+            key={selected}
+            src={location.mapUrl}
             width="100%"
             height="100%"
             style={{ border: 0 }}
