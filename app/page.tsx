@@ -14,12 +14,10 @@ export default function Home() {
       <FloatingBookButton />
 
       {/* ═══════════════════════════════════════
-          HERO
-          Fix #1: Tighter heading, new tagline
-          Fix #2: Badge centred right, larger
-          Fix #3: Premium rounded buttons
+          HERO — Centred badge with accent framing
       ═══════════════════════════════════════ */}
-      <section className="relative min-h-[100svh] flex items-end bg-black overflow-hidden">
+      <section className="relative min-h-[100svh] flex items-center justify-center bg-black overflow-hidden">
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero-background.jpg"
@@ -27,53 +25,56 @@ export default function Home() {
             fill
             priority
             quality={80}
-            className="object-cover opacity-40 animate-ken-burns"
+            className="object-cover opacity-30 grayscale animate-ken-burns"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black z-10" />
           <div className="absolute inset-0 z-20 opacity-[0.03] pointer-events-none grain-overlay" />
         </div>
 
-        <div className="relative z-30 w-full max-w-7xl mx-auto px-6 md:px-10 pb-20 md:pb-28">
-          <div className="grid md:grid-cols-12 gap-8 items-end">
-            {/* Left — tighter heading */}
-            <div className="md:col-span-7 lg:col-span-8">
-              <div className="mb-5">
-                <span className="inline-block text-brand-red text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">Est. 2017 — Griffith, NSW</span>
-              </div>
-              <h1 className="font-headliner text-[clamp(4rem,13vw,10rem)] leading-[0.78] tracking-tight mb-5">
-                <span className="block gradient-heading">BEST BARBERS</span>
-                <span className="block gradient-heading">IN TOWN</span>
-              </h1>
-              <p className="text-gray-400 text-base md:text-lg max-w-md mb-10 leading-relaxed">
-                Premium barbershop. Three locations across Griffith.
-                Walk in sharp, walk out sharper.
-              </p>
-              <div className="flex flex-wrap gap-5 items-center">
-                <Link href="/booking" className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
-                  <span className="relative z-10">BOOK NOW</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </Link>
-                <Link href="/prices" className="group flex items-center gap-2 text-gray-400 hover:text-white text-xs tracking-[0.2em] uppercase transition-all duration-300">
-                  <span>VIEW PRICES</span>
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                </Link>
-              </div>
-            </div>
+        {/* Corner accent brackets */}
+        <div className="absolute top-20 left-6 md:top-28 md:left-12 z-30 w-12 h-12 md:w-16 md:h-16 border-t border-l border-brand-red/30" />
+        <div className="absolute top-20 right-6 md:top-28 md:right-12 z-30 w-12 h-12 md:w-16 md:h-16 border-t border-r border-brand-red/30" />
+        <div className="absolute bottom-20 left-6 md:bottom-28 md:left-12 z-30 w-12 h-12 md:w-16 md:h-16 border-b border-l border-brand-red/30" />
+        <div className="absolute bottom-20 right-6 md:bottom-28 md:right-12 z-30 w-12 h-12 md:w-16 md:h-16 border-b border-r border-brand-red/30" />
 
-            {/* Right — badge centred & larger */}
-            <div className="hidden md:flex md:col-span-5 lg:col-span-4 items-center justify-center">
-              <div className="w-64 lg:w-72 xl:w-80 opacity-90">
-                <Image
-                  src="/hero-badge.png"
-                  alt="Modern Mancave Barbershop"
-                  width={800}
-                  height={800}
-                  priority
-                  className="w-full h-auto drop-shadow-[0_0_40px_rgba(255,0,0,0.15)]"
-                />
-              </div>
-            </div>
+        {/* Content — centred */}
+        <div className="relative z-30 w-full flex flex-col items-center justify-center text-center px-6" style={{ paddingTop: 'clamp(6rem, 15vh, 10rem)', paddingBottom: 'clamp(4rem, 10vh, 6rem)' }}>
+          {/* Accent rule + tagline */}
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-8 md:w-12 h-px bg-brand-red/50" />
+            <span className="text-brand-red text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase">Est. 2017 — Griffith, NSW</span>
+            <div className="w-8 md:w-12 h-px bg-brand-red/50" />
+          </div>
+
+          {/* Badge */}
+          <div className="w-full mx-auto relative mb-8" style={{ maxWidth: 'min(80vw, 500px)' }}>
+            <Image
+              src="/hero-badge.png"
+              alt="Modern Mancave Barbershop Est 2017"
+              width={1200}
+              height={1200}
+              priority
+              quality={80}
+              className="w-full h-auto drop-shadow-[0_0_60px_rgba(255,0,0,0.1)]"
+            />
+          </div>
+
+          {/* Subtitle */}
+          <p className="text-gray-400 text-sm md:text-base tracking-wide max-w-md mb-10 leading-relaxed">
+            Premium barbershop. Three locations across Griffith.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-wrap gap-5 items-center justify-center">
+            <Link href="/booking" className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
+              <span className="relative z-10">BOOK NOW</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </Link>
+            <Link href="/prices" className="group flex items-center gap-2 text-gray-400 hover:text-white text-xs tracking-[0.2em] uppercase transition-all duration-300">
+              <span>VIEW PRICES</span>
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
           </div>
         </div>
 
