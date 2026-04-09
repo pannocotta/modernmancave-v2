@@ -3,11 +3,10 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Header from '@/components/Header'
-import { useCart } from '@/lib/cart-context'
+import FloatingBookButton from '@/components/FloatingBookButton'
 import { products } from '@/lib/products'
 
 export default function ShopPage() {
-  const { addToCart } = useCart()
   const [currentImages, setCurrentImages] = useState<{ [key: string]: number }>({
     'tshirt-black': 0,
     'hat-black': 0,
@@ -31,51 +30,55 @@ export default function ShopPage() {
   return (
     <main className="min-h-screen bg-black text-white">
       <Header />
+      <FloatingBookButton />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[40vh] flex items-center pt-24 md:pt-32 pb-12">
+      {/* Hero */}
+      <section className="relative min-h-[60vh] flex items-end pb-20 md:pb-28 pt-32 md:pt-40 bg-black overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/stock/merch-bg.jpg"
             alt=""
             fill
-            className="object-cover grayscale opacity-20"
+            priority
+            quality={80}
+            className="object-cover grayscale opacity-25"
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black z-10" />
+          <div className="absolute inset-0 z-20 opacity-[0.03] pointer-events-none grain-overlay" />
         </div>
 
-        <div className="relative z-20 w-full px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-headliner gradient-heading mb-4">
-              CHECK OUT OUR MERCH
-            </h1>
-            <div className="w-16 md:w-20 h-1 bg-gray-500 mx-auto mb-6"></div>
-            <p className="text-base md:text-xl text-gray-300">
-              All Modern Mancave merchandise can be purchased at any of our locations. Visit us in-store to see the full range and get your merch today!
-            </p>
-          </div>
+        <div className="relative z-30 w-full max-w-7xl mx-auto px-6 md:px-10">
+          <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Shop</span>
+          <h1 className="font-headliner gradient-heading text-6xl md:text-8xl lg:text-[9rem] leading-[0.85] mb-6">
+            OUR MERCH
+          </h1>
+          <p className="text-gray-400 text-base md:text-lg max-w-md leading-relaxed">
+            Available in-store at all locations.
+          </p>
         </div>
       </section>
 
       {/* Products Grid */}
-      <section className="py-12 md:py-20 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="py-32 md:py-44">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {products.map((product) => {
               const currentImageIndex = currentImages[product.id] || 0
 
               return (
                 <div
                   key={product.id}
-                  className="bg-zinc-900 rounded-lg overflow-hidden hover:shadow-xl hover:shadow-brand-red/20 transition-all duration-300"
+                  className="overflow-hidden transition-all duration-300 group"
                 >
                   {/* Product Image Slideshow */}
-                  <div className="relative aspect-square overflow-hidden bg-zinc-800 group">
+                  <div className="relative aspect-square overflow-hidden bg-zinc-950 group/img">
                     <Image
                       src={product.images[currentImageIndex]}
                       alt={product.name}
                       fill
-                      className="object-cover transition-transform duration-500"
+                      className="object-cover transition-all duration-700 group-hover/img:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
 
                     {/* Navigation Arrows */}
@@ -83,31 +86,29 @@ export default function ShopPage() {
                       <>
                         <button
                           onClick={() => prevImage(product.id, product.images.length)}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-black/60 hover:bg-black/80 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity duration-200"
                           aria-label="Previous image"
                         >
-                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                          </svg>
+                          <span className="text-white text-sm font-bold">&#8249;</span>
                         </button>
                         <button
                           onClick={() => nextImage(product.id, product.images.length)}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-black/60 hover:bg-black/80 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity duration-200"
                           aria-label="Next image"
                         >
-                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
+                          <span className="text-white text-sm font-bold">&#8250;</span>
                         </button>
 
                         {/* Dots Indicator */}
-                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
                           {product.images.map((_, idx) => (
                             <button
                               key={idx}
                               onClick={() => setCurrentImages(prev => ({ ...prev, [product.id]: idx }))}
-                              className={`w-2 h-2 rounded-full transition-all ${
-                                idx === currentImageIndex ? 'bg-brand-red w-4' : 'bg-white/50'
+                              className={`h-px transition-all ${
+                                idx === currentImageIndex
+                                  ? 'bg-brand-red w-6'
+                                  : 'bg-white/40 w-3'
                               }`}
                               aria-label={`View image ${idx + 1}`}
                             />
@@ -118,24 +119,16 @@ export default function ShopPage() {
                   </div>
 
                   {/* Product Details */}
-                  <div className="p-6">
-                    <div className="text-xs text-gray-400 mb-2">{product.category}</div>
-                    <h3 className="text-xl font-headliner mb-3">{product.name}</h3>
-                    <p className="text-2xl font-bold text-brand-red">
+                  <div className="pt-5 pb-2">
+                    <div className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-2">
+                      {product.category}
+                    </div>
+                    <h3 className="font-headliner text-2xl md:text-3xl gradient-heading leading-tight mb-3">
+                      {product.name}
+                    </h3>
+                    <p className="text-xl font-bold text-white">
                       ${product.price.toFixed(2)}
                     </p>
-                    <button
-                      onClick={() => addToCart({
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        image: product.images[0],
-                        category: 'merch'
-                      })}
-                      className="mt-4 w-full bg-brand-red hover:bg-red-700 text-white font-bold text-sm tracking-wide px-6 py-3 transition"
-                    >
-                      ADD TO CART
-                    </button>
                   </div>
                 </div>
               )
@@ -144,33 +137,23 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {/* Info Section */}
-      <section className="py-12 bg-zinc-900">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-2xl font-headliner gradient-heading mb-4">VISIT US IN STORE</h2>
-          <div className="grid md:grid-cols-3 gap-6 text-gray-400">
-            <div>
-              <svg className="w-8 h-8 mx-auto mb-2 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <p className="text-sm">Three locations in Griffith</p>
-            </div>
-            <div>
-              <svg className="w-8 h-8 mx-auto mb-2 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <p className="text-sm">Open 7 days a week</p>
-            </div>
-            <div>
-              <svg className="w-8 h-8 mx-auto mb-2 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              <p className="text-sm">Expert staff to assist you</p>
-            </div>
+      {/* In-store strip */}
+      <div className="relative border-y border-zinc-800/50 bg-black">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 md:py-8">
+          <div className="flex flex-wrap justify-center md:justify-between items-center gap-y-3 gap-x-4 md:gap-x-0">
+            {['THREE LOCATIONS', 'GRIFFITH NSW', 'OPEN 7 DAYS', 'IN-STORE ONLY', 'EST. 2017'].map((item, i, arr) => (
+              <div key={item} className="flex items-center">
+                <span className="text-[10px] md:text-xs text-gray-500 tracking-[0.3em] uppercase font-bold">
+                  {item}
+                </span>
+                {i < arr.length - 1 && (
+                  <span className="hidden md:block ml-4 md:ml-6 lg:ml-8 w-px h-3 bg-zinc-700" />
+                )}
+              </div>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
     </main>
   )
 }

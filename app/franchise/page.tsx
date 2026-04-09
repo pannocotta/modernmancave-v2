@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import { useState } from 'react'
 import { SITE } from '@/lib/config'
+import { ArrowRightIcon } from '@/components/icons'
 
 export default function FranchisePage() {
   const [submitted, setSubmitted] = useState(false)
@@ -35,43 +36,46 @@ export default function FranchisePage() {
     <main className="min-h-screen bg-black text-white">
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center pt-24 md:pt-32 pb-12">
+      {/* Hero */}
+      <section className="relative min-h-[85vh] flex items-end pb-20 md:pb-28 pt-32 md:pt-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/stock/barbershop-tools.jpg" alt="" fill className="object-cover grayscale opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black"></div>
+          <Image src="/stock/barbershop-tools.jpg" alt="" fill priority className="object-cover grayscale opacity-25" sizes="100vw" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black" />
+          <div className="absolute inset-0 z-10 opacity-[0.03] pointer-events-none grain-overlay" />
         </div>
 
-        <div className="relative z-10 w-full px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-headliner gradient-heading mb-6 leading-tight">
-              OWN A MODERN<br/>
-              MANCAVE
-            </h1>
-            <div className="w-20 h-1 bg-brand-red mx-auto mb-8"></div>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              A proven business. A recognised brand. Everything you need to open the doors and start earning from day one.
-            </p>
-            <a
-              href="#application"
-              className="inline-block bg-brand-red hover:bg-red-600 px-8 py-4 rounded-lg font-bold text-lg transition"
-            >
-              APPLY NOW
-            </a>
-          </div>
+        <div className="absolute top-20 left-6 md:top-28 md:left-12 z-20 w-12 h-12 md:w-16 md:h-16 border-t border-l border-brand-red/30" />
+        <div className="absolute top-20 right-6 md:top-28 md:right-12 z-20 w-12 h-12 md:w-16 md:h-16 border-t border-r border-brand-red/30" />
+
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-10">
+          <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-6 block">Franchise</span>
+          <h1 className="font-headliner gradient-heading text-6xl md:text-7xl lg:text-8xl leading-[0.85] mb-8">
+            OWN A MODERN<br />MANCAVE
+          </h1>
+          <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-xl mb-10">
+            A proven business. A recognised brand. Everything you need to open the doors and start earning from day one.
+          </p>
+          <a
+            href="#application"
+            className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]"
+          >
+            <span className="relative z-10">APPLY NOW</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </a>
         </div>
       </section>
 
       {/* The Opportunity */}
-      <section className="py-20 px-6 bg-zinc-950">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative bg-zinc-950 py-32 md:py-44 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-headliner gradient-heading mb-6">
-                THE OPPORTUNITY
+              <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-6 block">The Opportunity</span>
+              <h2 className="font-headliner gradient-heading text-5xl md:text-6xl lg:text-7xl leading-[0.85] mb-10">
+                A BUSINESS<br />THAT WORKS
               </h2>
-              <div className="w-20 h-1 bg-brand-red mb-8"></div>
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
+              <div className="space-y-5 text-gray-400 text-base md:text-lg leading-relaxed">
                 <p>
                   Modern Mancave has been operating since 2017. Three locations in Griffith, a mobile barber studio, a tattoo studio, and a loyal customer base that keeps growing.
                 </p>
@@ -84,18 +88,20 @@ export default function FranchisePage() {
               </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="border border-zinc-800 bg-black p-8 rounded-xl shadow-lg shadow-black/50">
-                <div className="text-4xl font-bold text-brand-red mb-2">{new Date().getFullYear() - SITE.established}+</div>
-                <p className="text-gray-400">Years in business</p>
+            <div className="space-y-8 md:pl-8">
+              <div className="border-l-2 border-brand-red/40 pl-8">
+                <div className="text-5xl md:text-6xl font-headliner gradient-heading mb-1">{new Date().getFullYear() - SITE.established}+</div>
+                <p className="text-gray-500 text-sm tracking-widest uppercase">Years in business</p>
               </div>
-              <div className="border border-zinc-800 bg-black p-8 rounded-xl shadow-lg shadow-black/50">
-                <div className="text-4xl font-bold text-brand-red mb-2">3</div>
-                <p className="text-gray-400">Locations across Griffith</p>
+              <div className="h-px bg-zinc-800" />
+              <div className="border-l-2 border-brand-red/40 pl-8">
+                <div className="text-5xl md:text-6xl font-headliner gradient-heading mb-1">3</div>
+                <p className="text-gray-500 text-sm tracking-widest uppercase">Locations across Griffith</p>
               </div>
-              <div className="border border-zinc-800 bg-black p-8 rounded-xl shadow-lg shadow-black/50">
-                <div className="text-4xl font-bold text-brand-red mb-2">90%+</div>
-                <p className="text-gray-400">Client return rate</p>
+              <div className="h-px bg-zinc-800" />
+              <div className="border-l-2 border-brand-red/40 pl-8">
+                <div className="text-5xl md:text-6xl font-headliner gradient-heading mb-1">90%+</div>
+                <p className="text-gray-500 text-sm tracking-widest uppercase">Client return rate</p>
               </div>
             </div>
           </div>
@@ -103,19 +109,22 @@ export default function FranchisePage() {
       </section>
 
       {/* What You Get */}
-      <section className="py-20 px-6 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-headliner gradient-heading mb-4">
-              WHAT YOU GET
-            </h2>
-            <div className="w-20 h-1 bg-brand-red mx-auto mb-6"></div>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Everything is set up for you. No guesswork, no figuring it out alone.
-            </p>
+      <section className="relative bg-black py-32 md:py-44 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="grid md:grid-cols-2 gap-8 mb-20">
+            <div>
+              <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Inclusions</span>
+              <h2 className="font-headliner gradient-heading text-5xl md:text-7xl leading-[0.85]">WHAT YOU GET</h2>
+            </div>
+            <div className="flex flex-col justify-end">
+              <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-md">
+                Everything is set up for you. No guesswork, no figuring it out alone.
+              </p>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-800/50">
             {[
               { title: 'THE BRAND', desc: 'Complete brand identity, signage, uniforms, and marketing materials ready to go. You open with instant recognition.' },
               { title: 'SHOP FITOUT', desc: 'Interior design guidance and supplier partnerships for equipment, furniture, and products at trade pricing.' },
@@ -127,8 +136,8 @@ export default function FranchisePage() {
               { title: 'ONGOING SUPPORT', desc: 'Direct access to Tristan and the team. Operational guidance, regular check-ins, and help when you need it.' },
               { title: 'PROVEN SYSTEMS', desc: 'Pricing, rostering, stock management, and customer retention systems that already work across three locations.' },
             ].map((item, index) => (
-              <div key={index} className="border border-zinc-800 bg-zinc-950 p-6 rounded-xl shadow-lg shadow-black/50 hover:border-brand-red/30 transition-colors">
-                <h3 className="font-headliner text-lg text-brand-red mb-3">{item.title}</h3>
+              <div key={index} className="bg-black p-8 hover:bg-zinc-950 transition-colors group">
+                <h3 className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-4">{item.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -137,29 +146,27 @@ export default function FranchisePage() {
       </section>
 
       {/* Who This Is For */}
-      <section className="py-20 px-6 bg-zinc-950">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-headliner gradient-heading mb-4">
-              WHO THIS IS FOR
-            </h2>
-            <div className="w-20 h-1 bg-brand-red mx-auto mb-6"></div>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+      <section className="relative bg-zinc-950 py-32 md:py-44 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="mb-20">
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Ideal Candidate</span>
+            <h2 className="font-headliner gradient-heading text-5xl md:text-7xl leading-[0.85] mb-6">WHO THIS<br />IS FOR</h2>
+            <p className="text-gray-500 text-base md:text-lg max-w-lg">
               This is for people who want to build something real.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-5 gap-6">
+          <div className="grid md:grid-cols-5 gap-px bg-zinc-800/50">
             {[
-              { title: 'BUILDER', text: 'You want to own a business, not just work in one', icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0-.75 3.75m0 0-.75 3.75M17.25 7.5l.75 3.75m0 0 .75 3.75" /></svg> },
-              { title: 'COMMUNITY', text: 'You care about your area and want to create something in it', icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" /></svg> },
-              { title: 'COACHABLE', text: 'You\'re willing to follow a system that already works', icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg> },
-              { title: 'COMMITTED', text: 'You have capital to invest and are ready to go', icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg> },
-              { title: 'ANY BACKGROUND', text: 'Barbering experience is a plus but not required', icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a23.838 23.838 0 0 0-1.012 5.434c.306.1.618.19.933.268a23.89 23.89 0 0 0 3.79.518M4.26 10.147A23.867 23.867 0 0 1 12 8.25c2.724 0 5.335.456 7.74 1.297M4.26 10.147l.174-.442c.63-1.593 2.258-2.455 3.867-2.012a23.716 23.716 0 0 1 7.398 0c1.609-.443 3.237.419 3.867 2.012l.174.442m-15.482 0c.38.96.686 1.955.91 2.976m14.572-2.976a23.867 23.867 0 0 1 .91 2.976" /></svg> },
+              { title: 'BUILDER', text: 'You want to own a business, not just work in one' },
+              { title: 'COMMUNITY', text: 'You care about your area and want to create something in it' },
+              { title: 'COACHABLE', text: 'You\'re willing to follow a system that already works' },
+              { title: 'COMMITTED', text: 'You have capital to invest and are ready to go' },
+              { title: 'ANY BACKGROUND', text: 'Barbering experience is a plus but not required' },
             ].map((item, i) => (
-              <div key={i} className="bg-black border border-zinc-800 rounded-xl shadow-lg shadow-black/50 p-6 text-center hover:border-brand-red/30 transition-colors">
-                <div className="text-brand-red mb-4 flex justify-center">{item.icon}</div>
-                <h3 className="font-bold text-brand-red text-xs tracking-widest mb-3">{item.title}</h3>
+              <div key={i} className="bg-zinc-950 p-8 hover:bg-black transition-colors">
+                <h3 className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-4">{item.title}</h3>
                 <p className="text-gray-300 text-sm leading-relaxed">{item.text}</p>
               </div>
             ))}
@@ -167,119 +174,125 @@ export default function FranchisePage() {
         </div>
       </section>
 
-      {/* Application Form Section */}
-      <section id="application" className="py-20 px-6 bg-black">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-headliner gradient-heading mb-4">
-              START YOUR JOURNEY
-            </h2>
-            <div className="w-20 h-1 bg-brand-red mx-auto mb-6"></div>
-            <p className="text-gray-300 text-lg">
-              Take the first step toward owning your own Modern Mancave
-            </p>
-          </div>
+      {/* Application Form */}
+      <section id="application" className="relative bg-black py-32 md:py-44 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-red/30 to-transparent" />
+        <div className="max-w-3xl mx-auto px-6 md:px-10">
+          <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-6 block">Apply</span>
+          <h2 className="font-headliner gradient-heading text-5xl md:text-6xl lg:text-7xl leading-[0.85] mb-6">
+            START YOUR<br />JOURNEY
+          </h2>
+          <p className="text-gray-400 text-base md:text-lg mb-16">
+            Take the first step toward owning your own Modern Mancave.
+          </p>
 
           {submitted ? (
-            <div className="bg-zinc-900 p-8 rounded-lg text-center">
-              <div className="w-16 h-16 bg-brand-red rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h2 className="text-3xl font-headliner mb-4">APPLICATION RECEIVED</h2>
-              <p className="text-gray-300 mb-6">
+            <div className="border border-zinc-800 p-12 text-center">
+              <div className="w-12 h-px bg-brand-red mx-auto mb-8" />
+              <h3 className="font-headliner gradient-heading text-3xl md:text-4xl mb-6">APPLICATION RECEIVED</h3>
+              <p className="text-gray-400 mb-10 leading-relaxed">
                 Thanks for your interest. We&apos;ll review your application and be in touch within 2-3 business days with full details.
               </p>
-              <a href="/" className="inline-block bg-brand-red text-white px-6 py-3 font-bold hover:bg-white hover:text-brand-red transition-colors">
-                BACK TO HOME
+              <a
+                href="/"
+                className="group inline-flex items-center gap-2 text-gray-400 hover:text-white text-xs tracking-[0.2em] uppercase transition-all duration-300"
+              >
+                <span>BACK TO HOME</span>
+                <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="bg-zinc-900 p-8 rounded-lg space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold mb-2">First Name *</label>
+                  <label className="block text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">First Name *</label>
                   <input
                     type="text"
                     name="firstName"
                     required
-                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
+                    className="w-full bg-transparent border-b border-zinc-700 px-0 py-3 text-white focus:border-brand-red focus:outline-none transition-colors placeholder:text-zinc-600"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-2">Last Name *</label>
+                  <label className="block text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">Last Name *</label>
                   <input
                     type="text"
                     name="lastName"
                     required
-                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
+                    className="w-full bg-transparent border-b border-zinc-700 px-0 py-3 text-white focus:border-brand-red focus:outline-none transition-colors placeholder:text-zinc-600"
                   />
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold mb-2">Email *</label>
+                  <label className="block text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">Email *</label>
                   <input
                     type="email"
                     name="email"
                     required
-                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
+                    className="w-full bg-transparent border-b border-zinc-700 px-0 py-3 text-white focus:border-brand-red focus:outline-none transition-colors placeholder:text-zinc-600"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-2">Phone *</label>
+                  <label className="block text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">Phone *</label>
                   <input
                     type="tel"
                     name="phone"
                     required
-                    className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
+                    className="w-full bg-transparent border-b border-zinc-700 px-0 py-3 text-white focus:border-brand-red focus:outline-none transition-colors placeholder:text-zinc-600"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2">Where would you open? (City / Region) *</label>
+                <label className="block text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">Where would you open? (City / Region) *</label>
                 <input
                   type="text"
                   name="location"
                   required
-                  className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
+                  className="w-full bg-transparent border-b border-zinc-700 px-0 py-3 text-white focus:border-brand-red focus:outline-none transition-colors placeholder:text-zinc-600"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2">Barbering Experience</label>
-                <select name="experience" className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none">
-                  <option>None</option>
-                  <option>Less than 2 years</option>
-                  <option>2-5 years</option>
-                  <option>5+ years</option>
-                  <option>Licensed barber</option>
+                <label className="block text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">Barbering Experience</label>
+                <select
+                  name="experience"
+                  className="w-full bg-black border-b border-zinc-700 px-0 py-3 text-white focus:border-brand-red focus:outline-none transition-colors appearance-none cursor-pointer"
+                >
+                  <option value="None" className="bg-black">None</option>
+                  <option value="Less than 2 years" className="bg-black">Less than 2 years</option>
+                  <option value="2-5 years" className="bg-black">2-5 years</option>
+                  <option value="5+ years" className="bg-black">5+ years</option>
+                  <option value="Licensed barber" className="bg-black">Licensed barber</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2">Tell us about yourself and why you want to own a Modern Mancave *</label>
+                <label className="block text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">Tell us about yourself and why you want to own a Modern Mancave *</label>
                 <textarea
                   name="message"
                   required
                   rows={4}
-                  className="w-full bg-black border border-zinc-700 rounded px-4 py-3 focus:border-brand-red focus:outline-none"
+                  className="w-full bg-transparent border-b border-zinc-700 px-0 py-3 text-white focus:border-brand-red focus:outline-none transition-colors resize-none placeholder:text-zinc-600"
                 ></textarea>
               </div>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-brand-red hover:bg-red-600 text-white py-4 rounded-lg font-bold text-lg transition disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                {loading ? 'SUBMITTING...' : 'SUBMIT APPLICATION'}
-              </button>
-              {error && (
-                <p className="text-red-500 text-sm mt-4">Something went wrong. Please try again or call us directly.</p>
-              )}
+              <div className="pt-4">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="group relative bg-brand-red text-white px-12 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
+                >
+                  <span className="relative z-10">{loading ? 'SUBMITTING...' : 'SUBMIT APPLICATION'}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </button>
+                {error && (
+                  <p className="text-red-500 text-xs tracking-wide mt-6">Something went wrong. Please try again or call us directly.</p>
+                )}
+              </div>
             </form>
           )}
         </div>

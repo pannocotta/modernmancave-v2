@@ -5,140 +5,189 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { BOOKING_SERVICES } from '@/lib/services'
 import { CONTACT } from '@/lib/config'
+import { ArrowRightIcon } from '@/components/icons'
 
 export default function BookingPage() {
   const [selectedService, setSelectedService] = useState<number | null>(null)
+
   return (
     <main className="min-h-screen bg-black text-white">
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[40vh] flex items-center pt-24 md:pt-32 pb-12 md:pb-20">
+      {/* Hero — bottom-aligned, matches site pattern */}
+      <section className="relative min-h-[60vh] flex items-end pb-20 md:pb-28 pt-32 md:pt-40 bg-black overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black z-10" />
-          <Image src="/stock/barbershop-tools.jpg" alt="Modern Mancave" fill className="object-cover grayscale" />
+          <Image
+            src="/stock/barbershop-tools.jpg"
+            alt="Modern Mancave"
+            fill
+            priority
+            quality={80}
+            className="object-cover grayscale opacity-25"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black z-10" />
+          <div className="absolute inset-0 z-20 opacity-[0.03] pointer-events-none grain-overlay" />
         </div>
 
-        <div className="relative z-20 w-full px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-headliner gradient-heading mb-4 md:mb-6">
-              BOOK YOUR APPOINTMENT
-            </h1>
-            <div className="w-16 md:w-20 h-1 bg-brand-red mx-auto mb-6 md:mb-8"></div>
-            <div className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto space-y-4">
-              <p>
-                Skip the wait and secure your premium grooming experience. Bookings are paid in full to guarantee your spot. Enjoy a private area, a drink on arrival, and expert service from our senior barber, Nick.
+        <div className="relative z-30 w-full max-w-7xl mx-auto px-6 md:px-10">
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Booking</span>
+            <div className="h-px flex-1 bg-zinc-800" />
+          </div>
+          <h1 className="font-headliner gradient-heading text-5xl md:text-7xl lg:text-8xl leading-[0.85] mb-8">
+            BOOK YOUR<br />APPOINTMENT
+          </h1>
+          <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl">
+            Skip the wait and secure your premium grooming experience. Bookings are paid in full to guarantee your spot — private area, a drink on arrival, expert service from Nick.
+          </p>
+        </div>
+      </section>
+
+      {/* Appointment Notice Banner */}
+      <section className="bg-zinc-950 py-10 md:py-14">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="border border-brand-red/40 bg-black px-8 py-7 flex flex-col md:flex-row md:items-center gap-4">
+            <div className="w-1 self-stretch bg-brand-red shrink-0 hidden md:block" />
+            <div>
+              <p className="text-white font-bold text-sm tracking-[0.1em] uppercase mb-1">Appointments with Nick Only</p>
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                Online bookings are exclusively for Nick&apos;s private appointment space at our Banna Avenue location. Leka and other barbers do not take appointments — walk-ins only.
               </p>
-              <div className="text-left text-sm md:text-base pt-4 border-t border-zinc-800 space-y-2">
-                <p className="font-bold text-white">Important Notes:</p>
-                <ul className="list-disc list-inside space-y-1 text-gray-400">
-                  <li>Full payment is required to confirm your booking.</li>
-                  <li>Please arrive 10 minutes early.</li>
-                  <li>If you are 10 minutes or more late, Nick reserves the right to refuse your appointment out of respect for other clients&apos; time.</li>
-                  <li>Private space and refreshments included with every appointment.</li>
-                </ul>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Appointment Notice */}
-      <section className="px-4 md:px-6 pt-8 md:pt-12 bg-zinc-950">
-        <div className="max-w-4xl mx-auto">
-          <div className="border-2 border-brand-red bg-zinc-900 p-6 md:p-8 rounded-lg">
-            <p className="text-white font-bold text-lg md:text-xl mb-2">Important: Appointments with Nick Only</p>
-            <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-              Please note: Online bookings are exclusively for Nick&apos;s private appointment space at our Banna Avenue location. Leka and other barbers do not take appointments. Walk-ins only.
-            </p>
+      {/* Private Experience */}
+      <section className="relative bg-black py-32 md:py-44 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">The Experience</span>
+            <div className="h-px flex-1 bg-zinc-800" />
           </div>
-        </div>
-      </section>
+          <h2 className="font-headliner gradient-heading text-4xl md:text-6xl lg:text-7xl leading-[0.85] mb-8 max-w-3xl">
+            THE PRIVATE<br />APPOINTMENT
+          </h2>
+          <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl">
+            When you book an appointment, you get your own private barber experience — complimentary water or Coca-Cola, a hot towel treatment, and personalised service. Every appointment adds $20 to skip the walk-in queue entirely.
+          </p>
 
-      {/* VIP Appointment Perks */}
-      <section className="px-4 md:px-6 pt-8 md:pt-12 bg-zinc-950">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-black border border-zinc-800 p-6 md:p-10 rounded-lg text-center">
-            <h2 className="font-headliner text-2xl md:text-3xl gradient-heading mb-4">THE PRIVATE APPOINTMENT EXPERIENCE</h2>
-            <div className="w-16 h-1 bg-brand-red mx-auto mb-6"></div>
-            <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
-              When you book an appointment, you get your own private barber experience, including a complimentary bottle of water or Coca-Cola of your choice, a hot towel treatment, and personalised service. Every appointment is $20 extra and lets you skip the walk-in queue.
-            </p>
+          {/* Booking rules */}
+          <div className="mt-14 grid sm:grid-cols-3 gap-px border border-zinc-800/50 bg-zinc-800/50">
+            {[
+              { label: 'Payment', detail: 'Full payment required to confirm your booking.' },
+              { label: 'Arrival', detail: 'Please arrive 10 minutes before your appointment.' },
+              { label: 'Late policy', detail: '10+ minutes late and Nick reserves the right to refuse the appointment.' },
+            ].map(({ label, detail }) => (
+              <div key={label} className="bg-black px-8 py-8">
+                <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-3">{label}</p>
+                <p className="text-gray-400 text-sm leading-relaxed">{detail}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Service Selection */}
-      <section className="px-4 md:px-6 pt-8 md:pt-12 bg-zinc-950">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-headliner text-2xl md:text-3xl gradient-heading mb-6 text-center">SELECT YOUR SERVICE</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
+      <section className="relative bg-zinc-950 py-32 md:py-44 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="flex items-center gap-4 mb-12">
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Services</span>
+            <div className="h-px flex-1 bg-zinc-800" />
+          </div>
+          <h2 className="font-headliner gradient-heading text-4xl md:text-6xl leading-[0.85] mb-12">SELECT YOUR SERVICE</h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-zinc-800/50 border border-zinc-800/50">
             {BOOKING_SERVICES.map((service, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedService(index)}
-                className={`text-left p-5 rounded-lg border-2 transition-all ${
+                className={`group text-left p-7 bg-black transition-all duration-200 ${
                   selectedService === index
-                    ? 'border-brand-red bg-zinc-900'
-                    : 'border-zinc-800 bg-zinc-950 hover:border-zinc-600'
+                    ? 'bg-zinc-900'
+                    : 'hover:bg-zinc-900/60'
                 }`}
               >
-                <div className="flex justify-between items-start mb-2">
-                  <span className="text-white font-bold text-base md:text-lg">{service.name}</span>
-                  <span className="text-brand-red font-bold text-lg">${service.price}</span>
+                <div
+                  className={`w-6 h-px mb-5 transition-all duration-200 ${
+                    selectedService === index ? 'bg-brand-red w-10' : 'bg-zinc-700 group-hover:bg-zinc-500'
+                  }`}
+                />
+                <p className={`font-bold text-sm md:text-base mb-2 transition-colors ${
+                  selectedService === index ? 'text-white' : 'text-gray-300 group-hover:text-white'
+                }`}>
+                  {service.name}
+                </p>
+                <div className="flex items-baseline gap-3">
+                  <span className={`text-xl font-bold transition-colors ${
+                    selectedService === index ? 'text-brand-red' : 'text-gray-500 group-hover:text-gray-300'
+                  }`}>
+                    ${service.price}
+                  </span>
+                  <span className="text-gray-600 text-xs">{service.duration} min</span>
                 </div>
-                <div className="text-gray-500 text-sm">{service.duration} mins</div>
+                {selectedService === index && (
+                  <div className="mt-4 flex items-center gap-2 text-brand-red text-[10px] font-bold tracking-[0.2em] uppercase">
+                    <span>Selected</span>
+                    <ArrowRightIcon className="w-3 h-3" />
+                  </div>
+                )}
               </button>
             ))}
           </div>
 
-          {/* Teeth whitening day notice (Task 9) */}
+          {/* Teeth Whitening availability notice */}
           {selectedService !== null && BOOKING_SERVICES[selectedService].name === 'Teeth Whitening' && (
-            <div className="mt-4 p-4 bg-zinc-900 border border-yellow-600 rounded-lg text-yellow-400 text-sm md:text-base">
-              Teeth whitening appointments are only available on Mondays and Wednesdays.
+            <div className="mt-6 border border-zinc-700 bg-black px-8 py-5 flex items-start gap-4">
+              <div className="w-1 self-stretch bg-yellow-500/60 shrink-0" />
+              <p className="text-yellow-400/90 text-sm leading-relaxed">
+                Teeth whitening appointments are only available on <span className="font-bold text-yellow-400">Mondays and Wednesdays</span>.
+              </p>
             </div>
           )}
         </div>
       </section>
 
-      {/* Coming Soon Booking Placeholder */}
-      <section className="py-12 md:py-20 px-4 md:px-6 bg-zinc-950">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-12 text-center">
-            <h3 className="text-3xl font-headliner gradient-heading mb-4">ONLINE BOOKING COMING SOON</h3>
-            <p className="text-gray-400 mb-6">We&apos;re setting up online booking. In the meantime, call Nick to secure your spot.</p>
-            <a href={CONTACT.nick.phoneHref} className="inline-block bg-brand-red text-white px-8 py-3 font-bold hover:bg-red-600 transition">
-              CALL {CONTACT.nick.phone}
-            </a>
+      {/* Online Booking Coming Soon */}
+      <section className="relative bg-black py-32 md:py-44 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-red/30 to-transparent" />
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="flex items-center gap-4 mb-12">
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Online Booking</span>
+            <div className="h-px flex-1 bg-zinc-800" />
           </div>
-        </div>
-      </section>
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-end">
+            <div>
+              <h2 className="font-headliner gradient-heading text-4xl md:text-6xl lg:text-7xl leading-[0.85] mb-8">
+                COMING<br />SOON
+              </h2>
+              <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-md">
+                We&apos;re setting up online booking. In the meantime, call or message Nick directly to lock in your spot.
+              </p>
+            </div>
 
-      {/* Help Section */}
-      <section className="py-12 px-4 md:px-6 bg-black">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-gray-400 mb-2">
-            Having trouble booking online?
-          </p>
-          <p className="text-white text-lg font-bold mb-6">
-            Call Nick directly on{' '}
-            <a href={CONTACT.nick.phoneHref} className="text-brand-red hover:underline">{CONTACT.nick.phone}</a>
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={CONTACT.nick.phoneHref}
-              className="inline-block border-2 border-zinc-700 hover:border-brand-red text-white font-bold transition-colors px-6 py-3"
-            >
-              Call Nick: {CONTACT.nick.phone}
-            </a>
-            <a
-              href={CONTACT.nick.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block border-2 border-zinc-700 hover:border-brand-red text-white font-bold transition-colors px-6 py-3"
-            >
-              WhatsApp Nick
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href={CONTACT.nick.phoneHref}
+                className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-flex items-center justify-center gap-3 hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]"
+              >
+                <span className="relative z-10">CALL {CONTACT.nick.phone}</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </a>
+              <a
+                href={CONTACT.nick.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group border border-white/20 hover:border-white/40 text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center justify-center gap-3 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+              >
+                <span>WHATSAPP NICK</span>
+                <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
