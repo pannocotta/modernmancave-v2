@@ -49,7 +49,7 @@ export default function TeamPage() {
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 mb-8">Owner &amp; Master Barber</p>
 
-              <div className="space-y-5 text-gray-400 leading-relaxed text-base md:text-lg">
+              <div className="space-y-4 text-gray-400 leading-relaxed text-sm md:text-base">
                 <p>
                   I got into barbering in an unusual way. In 2015, I was teaching myself to cut hair at a women&apos;s salon in Griffith. Being a young guy in that space raised a few eyebrows, but I loved it, learned fast, and slowly proved I knew my stuff.
                 </p>
@@ -73,24 +73,32 @@ export default function TeamPage() {
             <h2 className="font-headliner text-5xl md:text-7xl gradient-heading">THE TEAM</h2>
           </div>
 
-          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
             {TEAM.map((member) => (
               <StaggerItem key={member.name}>
-                <div className="border border-zinc-800 bg-zinc-950/50 p-8 text-center hover:border-brand-red/30 transition-all duration-300 h-full flex flex-col">
-                  {/* Initial avatar */}
-                  <div className="w-24 h-24 mx-auto mb-6 rounded-full border border-zinc-700 flex items-center justify-center">
-                    <span className="text-4xl font-headliner gradient-heading">{member.initial}</span>
+                <div className="text-center group h-full flex flex-col">
+                  {/* Oversized initial with glow */}
+                  <div className="relative mb-8">
+                    <div className="text-8xl md:text-9xl font-headliner gradient-heading leading-none select-none" style={{ animationDuration: '8s' }}>
+                      {member.initial}
+                    </div>
+                    <div className="absolute inset-0 bg-brand-red/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
-                  <h3 className="text-2xl font-headliner text-white mb-1">{member.name}</h3>
-                  <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5">{member.title}</p>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1">{member.bio}</p>
+                  {/* Name + title */}
+                  <h3 className="text-xl font-headliner text-white tracking-wider mb-1">{member.name}</h3>
+                  <div className="w-8 h-px bg-brand-red/40 mx-auto my-3" />
+                  <p className="text-brand-red/70 text-[10px] font-bold tracking-[0.3em] uppercase mb-6">{member.title}</p>
 
+                  {/* Bio */}
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1">{member.bio}</p>
+
+                  {/* Instagram */}
                   <a
                     href={member.instagram.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-brand-red text-xs tracking-wide transition-colors"
+                    className="text-gray-600 hover:text-brand-red text-xs tracking-wide transition-colors"
                   >
                     {member.instagram.handle}
                   </a>
