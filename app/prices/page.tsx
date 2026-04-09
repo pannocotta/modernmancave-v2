@@ -2,13 +2,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Header from '@/components/Header'
 import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
-import ParallaxHero from '@/components/ParallaxHero'
 import { SERVICE_CATEGORIES, TEETH_WHITENING } from '@/lib/services'
 import { SOCIAL, CONTACT } from '@/lib/config'
+import { ArrowRightIcon } from '@/components/icons'
 
 export const metadata = {
   title: 'Prices - Modern Mancave',
-  description: 'Transparent pricing for all our barbering services',
+  description: 'Transparent pricing for all our barbering services. Walk-ins welcome at all Modern Mancave locations in Griffith.',
 }
 
 export default function PricesPage() {
@@ -16,21 +16,37 @@ export default function PricesPage() {
     <main className="min-h-screen bg-black text-white">
       <Header />
 
-      <ParallaxHero image="/stock/barbershop-tools.jpg" title="OUR PRICES" subtitle="Quality cuts and services at competitive prices. Walk-ins welcome at all locations." />
+      {/* Hero */}
+      <section className="relative min-h-[60vh] flex items-end pb-20 md:pb-28 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image src="/stock/barbershop-tools.jpg" alt="" fill className="object-cover grayscale opacity-25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
+          <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Services</span>
+            <div className="h-px flex-1 bg-zinc-800" />
+          </div>
+          <h1 className="font-headliner text-5xl md:text-7xl lg:text-8xl gradient-heading leading-[0.85] mb-4">OUR PRICES</h1>
+          <p className="text-gray-400 text-base md:text-lg max-w-lg">Walk-ins welcome at all locations. Transparent pricing, no surprises.</p>
+        </div>
+      </section>
 
-      {/* Price Sections */}
-      <section className="py-12 md:py-20 px-4 md:px-6 bg-black text-base md:text-lg">
-        <div className="max-w-6xl mx-auto">
-          <StaggerContainer className="grid md:grid-cols-2 gap-6 md:gap-8">
+      {/* Price Grid */}
+      <section className="py-32 md:py-44 bg-black">
+        <div className="max-w-6xl mx-auto px-6 md:px-10">
+          <StaggerContainer className="grid md:grid-cols-2 gap-x-12 gap-y-16">
             {SERVICE_CATEGORIES.map((category) => (
               <StaggerItem key={category.name}>
-                <div className="border border-zinc-800 p-6">
-                  <h3 className="font-headliner text-xl md:text-2xl mb-6 pb-3 border-b border-zinc-800">{category.name}</h3>
-                  <div className="space-y-3">
+                <div>
+                  <h3 className="font-headliner text-xl md:text-2xl gradient-heading mb-6">{category.name}</h3>
+                  <div className="space-y-4">
                     {category.services.map((service) => (
-                      <div key={service.name} className="flex justify-between items-center">
-                        <span className="text-gray-300">{service.name}</span>
-                        <span className="text-brand-red font-bold">${service.price}</span>
+                      <div key={service.name} className="flex justify-between items-baseline gap-4">
+                        <span className="text-gray-300 text-sm md:text-base">{service.name}</span>
+                        <div className="flex-1 border-b border-dotted border-zinc-800 min-w-[40px] mb-1" />
+                        <span className="text-white font-bold text-sm md:text-base">${service.price}</span>
                       </div>
                     ))}
                   </div>
@@ -38,102 +54,113 @@ export default function PricesPage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
 
-          {/* Featured: Teeth Whitening */}
-          <div className="mt-8 border border-zinc-800 bg-zinc-950 p-8">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div>
-                <h3 className="font-headliner text-2xl md:text-3xl mb-2">TEETH WHITENING</h3>
-                <p className="text-gray-400 mb-4 md:mb-0">Professional teeth whitening to keep your smile sharp (1.5 hours)</p>
-              </div>
-              <div className="flex items-center gap-6">
-                <div className="text-brand-red font-bold text-3xl md:text-4xl">${TEETH_WHITENING.price}</div>
-                <Link href="/booking" className="cta-button whitespace-nowrap">
-                  BOOK NOW
-                </Link>
-              </div>
+      {/* Teeth Whitening Feature */}
+      <section className="py-32 md:py-44 bg-zinc-950">
+        <div className="max-w-6xl mx-auto px-6 md:px-10">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <div>
+              <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Featured Service</span>
+              <h2 className="font-headliner text-4xl md:text-5xl lg:text-6xl gradient-heading leading-[0.9] mb-4">TEETH WHITENING</h2>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-6">${TEETH_WHITENING.price}</div>
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-4">
+                Professional teeth whitening to keep your smile as sharp as your cut. 1.5 hour session with visible results.
+              </p>
+              <p className="text-gray-500 text-xs mb-8">
+                Available on <span className="text-white">{TEETH_WHITENING.availability}</span> only.
+              </p>
+              <Link href="/booking" className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
+                <span className="relative z-10">BOOK NOW</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </Link>
             </div>
 
-            {/* Before & After Photos */}
-            <div className="mt-6">
-              <h4 className="font-headliner text-lg mb-4 text-gray-300">BEFORE &amp; AFTER</h4>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                  <Image src="/teeth-before.jpg" alt="Teeth whitening before" fill className="object-cover" />
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/70 py-2 text-center text-xs font-bold tracking-wider">BEFORE</div>
-                </div>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                  <Image src="/teeth-after.jpg" alt="Teeth whitening after" fill className="object-cover" />
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/70 py-2 text-center text-xs font-bold tracking-wider">AFTER</div>
+            {/* Before & After */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
+                <Image src="/teeth-before.jpg" alt="Before teeth whitening" fill className="object-cover" />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                  <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">Before</span>
                 </div>
               </div>
-            </div>
-
-            {/* Teeth Whitening Availability Notice */}
-            <div className="mt-6 p-4 border border-zinc-700 rounded-lg">
-              <p className="text-gray-400 text-sm">Teeth whitening appointments are only available on <span className="text-white font-semibold">{TEETH_WHITENING.availability}</span>.</p>
+              <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
+                <Image src="/teeth-after.jpg" alt="After teeth whitening" fill className="object-cover" />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                  <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">After</span>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Featured: Tattoo */}
-          <div className="mt-8 border border-zinc-800 bg-zinc-950 p-8">
-            <h3 className="font-headliner text-2xl md:text-3xl mb-3">TATTOOING</h3>
-            <p className="text-gray-400 mb-4">All tattoo bookings go through Cameron directly. Get in touch to discuss your design, pricing, and availability.</p>
-            <div className="flex flex-col sm:flex-row gap-3 mb-8">
-              <a href={SOCIAL.tattooInstagram.url} target="_blank" rel="noopener noreferrer" className="text-brand-red hover:underline text-sm">{SOCIAL.tattooInstagram.handle}</a>
-              <span className="hidden sm:inline text-zinc-600">|</span>
-              <a href={CONTACT.tattoo.phoneHref} className="text-brand-red hover:underline text-sm">{CONTACT.tattoo.phone}</a>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* Tattooing */}
+      <section className="py-32 md:py-44 bg-black">
+        <div className="max-w-6xl mx-auto px-6 md:px-10">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+            {/* Gallery */}
+            <div className="grid grid-cols-2 gap-3 order-2 md:order-1">
               {[
                 { src: '/tattoo/1.jpg', alt: 'Rose and mandala sleeve tattoo' },
                 { src: '/tattoo/2.jpg', alt: 'Portrait tattoo' },
                 { src: '/tattoo/3.jpg', alt: 'Medusa tattoo' },
                 { src: '/tattoo/4.jpg', alt: 'Day of the dead tattoo' },
               ].map((img, i) => (
-                <div key={i} className="relative aspect-square overflow-hidden rounded-lg">
-                  <Image src={img.src} alt={img.alt} fill className="object-cover grayscale" />
+                <div key={i} className="relative aspect-square overflow-hidden rounded-sm">
+                  <Image src={img.src} alt={img.alt} fill className="object-cover grayscale hover:grayscale-0 transition-all duration-500" />
                 </div>
               ))}
             </div>
-          </div>
 
-          {/* Notes */}
-          <div className="mt-8 md:mt-12 p-4 md:p-8 bg-zinc-950 border border-zinc-800">
-            <h3 className="text-lg md:text-xl font-headliner mb-3 md:mb-4">GOOD TO KNOW</h3>
-            <ul className="space-y-2 text-gray-400 text-sm md:text-base">
-              <li className="flex items-start gap-2 md:gap-3">
-                <span className="text-brand-red mt-0.5 md:mt-1">•</span>
-                <span>We accept all major payment methods</span>
-              </li>
-              <li className="flex items-start gap-2 md:gap-3">
-                <span className="text-brand-red mt-0.5 md:mt-1">•</span>
-                <span>General practice is walk-ins only</span>
-              </li>
-              <li className="flex items-start gap-2 md:gap-3">
-                <span className="text-brand-red mt-0.5 md:mt-1">•</span>
-                <span>Online bookings require full payment</span>
-              </li>
-            </ul>
+            {/* Text */}
+            <div className="order-1 md:order-2">
+              <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Studio</span>
+              <h2 className="font-headliner text-4xl md:text-5xl lg:text-6xl gradient-heading leading-[0.9] mb-6">TATTOOING</h2>
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-8">
+                All tattoo bookings go through Cameron directly. Get in touch to discuss your design, pricing, and availability.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href={SOCIAL.tattooInstagram.url} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-400 hover:text-white text-xs tracking-[0.2em] uppercase transition-all duration-300">
+                  <span>{SOCIAL.tattooInstagram.handle}</span>
+                  <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a href={CONTACT.tattoo.phoneHref} className="text-gray-500 hover:text-white text-xs tracking-[0.2em] uppercase transition-colors">
+                  {CONTACT.tattoo.phone}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 md:py-20 px-4 md:px-6 bg-brand-red">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-headliner mb-4 md:mb-6 text-black">
-            SKIP THE QUEUE AND MAKE A BOOKING
+      {/* Good to Know */}
+      <section className="py-20 md:py-28 border-y border-zinc-800/50">
+        <div className="max-w-3xl mx-auto px-6 md:px-10 text-center">
+          <h3 className="font-headliner text-2xl md:text-3xl gradient-heading mb-8">GOOD TO KNOW</h3>
+          <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16 text-gray-400 text-sm">
+            <span>All major payment methods accepted</span>
+            <span className="hidden md:inline text-zinc-700">|</span>
+            <span>General practice is walk-ins only</span>
+            <span className="hidden md:inline text-zinc-700">|</span>
+            <span>Online bookings require full payment</span>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-32 md:py-40 bg-black">
+        <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
+          <h2 className="font-headliner text-5xl md:text-7xl lg:text-8xl gradient-heading leading-[0.85] mb-6">
+            BOOK YOUR<br />APPOINTMENT
           </h2>
-          <p className="text-black/80 mb-6 md:mb-8 text-base md:text-lg">
-            All bookings require full payment. Spots are limited, so secure yours today.
+          <p className="text-gray-500 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">
+            All bookings require full payment. Spots are limited — secure yours today.
           </p>
-          <Link
-            href="/booking"
-            className="inline-block bg-black text-white px-8 md:px-12 py-3 md:py-4 text-base md:text-lg font-bold hover:bg-zinc-900 transition-colors"
-          >
-            BOOK APPOINTMENT
+          <Link href="/booking" className="group relative bg-brand-red text-white px-14 py-5 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_40px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
+            <span className="relative z-10">BOOK NOW</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Link>
         </div>
       </section>
