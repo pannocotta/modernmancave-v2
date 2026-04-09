@@ -1,22 +1,30 @@
-'use client'
-
-const ITEMS = [
-  'CUTS', 'FADES', 'BEARDS', 'SHAVES', 'LINEUPS', 'DESIGNS', 'HOT TOWELS', 'COLOUR'
+const SERVICES = [
+  'CUTS',
+  'FADES',
+  'BEARDS',
+  'SHAVES',
+  'LINEUPS',
+  'DESIGNS',
+  'HOT TOWELS',
+  'COLOUR',
 ]
 
-export default function Marquee() {
-  // Duplicate items for seamless loop
-  const items = [...ITEMS, ...ITEMS, ...ITEMS, ...ITEMS]
-
+export default function ServiceStrip() {
   return (
-    <div className="relative bg-brand-red overflow-hidden py-4 md:py-5 select-none">
-      <div className="marquee-track flex items-center gap-8 md:gap-12 whitespace-nowrap">
-        {items.map((item, i) => (
-          <span key={i} className="flex items-center gap-8 md:gap-12">
-            <span className="font-headliner text-black text-xl md:text-2xl tracking-widest">{item}</span>
-            <span className="text-black/30 text-lg">◆</span>
-          </span>
-        ))}
+    <div className="relative border-y border-zinc-800/50 bg-black">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 md:py-8">
+        <div className="flex flex-wrap justify-center md:justify-between items-center gap-y-3 gap-x-4 md:gap-x-0">
+          {SERVICES.map((service, i) => (
+            <div key={service} className="flex items-center">
+              <span className="text-[10px] md:text-xs text-gray-500 tracking-[0.3em] uppercase font-bold">
+                {service}
+              </span>
+              {i < SERVICES.length - 1 && (
+                <span className="hidden md:block ml-4 md:ml-6 lg:ml-8 w-px h-3 bg-zinc-700" />
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
