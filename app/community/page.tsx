@@ -116,8 +116,8 @@ export default function CommunityPage() {
       </section>
 
       {/* Photo Grid */}
-      <section className="py-32 md:py-44 bg-zinc-950">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <section className="relative section-blend-dark py-32 md:py-44 bg-zinc-950">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <div className="text-center mb-20">
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">In Action</span>
             <h2 className="font-headliner text-4xl md:text-6xl gradient-heading">OUR IMPACT ACROSS THE GLOBE</h2>

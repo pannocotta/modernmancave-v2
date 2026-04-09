@@ -36,9 +36,9 @@ export default function AppPage() {
       </section>
 
       {/* Instructions */}
-      <section className="relative bg-zinc-950 py-32 md:py-44 overflow-hidden">
+      <section className="relative section-blend-dark bg-zinc-950 py-32 md:py-44 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
 
           <div className="grid md:grid-cols-2 gap-8 mb-20">
             <div>

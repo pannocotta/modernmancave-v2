@@ -26,3 +26,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+*.mp4
+!public/hero-video.mp4

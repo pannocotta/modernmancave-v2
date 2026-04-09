@@ -66,9 +66,9 @@ export default function FranchisePage() {
       </section>
 
       {/* The Opportunity */}
-      <section className="relative bg-zinc-950 py-32 md:py-44 overflow-hidden">
+      <section className="relative section-blend-dark bg-zinc-950 py-32 md:py-44 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-6 block">The Opportunity</span>
@@ -146,9 +146,9 @@ export default function FranchisePage() {
       </section>
 
       {/* Who This Is For */}
-      <section className="relative bg-zinc-950 py-32 md:py-44 overflow-hidden">
+      <section className="relative section-blend-dark bg-zinc-950 py-32 md:py-44 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <div className="mb-20">
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Ideal Candidate</span>
             <h2 className="font-headliner gradient-heading text-5xl md:text-7xl leading-[0.85] mb-6">WHO THIS<br />IS FOR</h2>

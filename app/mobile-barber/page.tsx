@@ -101,8 +101,8 @@ export default function MobileBarberPage() {
       </section>
 
       {/* Where We Go */}
-      <section className="py-32 md:py-44 bg-zinc-950">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <section className="relative section-blend-dark py-32 md:py-44 bg-zinc-950">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <div className="text-center mb-20">
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">On Location</span>
             <h2 className="font-headliner text-4xl md:text-6xl gradient-heading">WHEREVER YOU NEED US</h2>

@@ -45,8 +45,8 @@ export default function BookingPage() {
       </section>
 
       {/* Appointment Notice Banner */}
-      <section className="bg-zinc-950 py-10 md:py-14">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <section className="relative section-blend-dark bg-zinc-950 py-10 md:py-14">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <div className="border border-brand-red/40 bg-black px-8 py-7 flex flex-col md:flex-row md:items-center gap-4">
             <div className="w-1 self-stretch bg-brand-red shrink-0 hidden md:block" />
             <div>
@@ -91,9 +91,9 @@ export default function BookingPage() {
       </section>
 
       {/* Service Selection */}
-      <section className="relative bg-zinc-950 py-32 md:py-44 overflow-hidden">
+      <section className="relative section-blend-dark bg-zinc-950 py-32 md:py-44 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <div className="flex items-center gap-4 mb-12">
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Services</span>
             <div className="h-px flex-1 bg-zinc-800" />
