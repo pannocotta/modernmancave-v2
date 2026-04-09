@@ -25,11 +25,11 @@ export default function Home() {
             fill
             priority
             quality={80}
-            className="object-cover animate-ken-burns"
+            className="object-cover opacity-40 animate-ken-burns"
             sizes="100vw"
           />
           {/* Dark overlay — heavier at bottom for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10" />
           {/* Film grain texture */}
           <div className="absolute inset-0 z-20 opacity-[0.03] pointer-events-none grain-overlay" />
         </div>
