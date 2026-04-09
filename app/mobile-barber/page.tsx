@@ -65,13 +65,14 @@ export default function MobileBarberPage() {
         </div>
       </section>
 
-      {/* Trailer — full width hero image */}
-      <section className="relative py-20 md:py-32 bg-black overflow-hidden">
+      {/* Trailer — contained within a dark panel */}
+      <section className="relative py-32 md:py-44 bg-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          {/* Big trailer image */}
-          <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-sm mb-16 md:mb-20">
-            <Image src="/mobile-trailer.png" alt="Modern Mancave Mobile Barber Studio" fill className="object-contain" sizes="100vw" />
-            <div className="absolute inset-0 shadow-[inset_0_0_60px_30px_rgba(0,0,0,0.7)]" />
+          {/* Trailer image in a grounded container */}
+          <div className="relative bg-zinc-950 rounded-sm overflow-hidden mb-16 md:mb-20 py-12 md:py-16 px-6">
+            <div className="relative aspect-[16/9] md:aspect-[21/9]">
+              <Image src="/mobile-trailer.png" alt="Modern Mancave Mobile Barber Studio" fill className="object-contain" sizes="100vw" />
+            </div>
           </div>
 
           {/* Heading + features grid */}
