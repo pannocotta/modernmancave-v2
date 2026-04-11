@@ -31,7 +31,7 @@ export default function LocationsPage() {
       </section>
 
       {/* Location Cards + Map */}
-      <section className="py-32 md:py-44 px-6 md:px-10 bg-black">
+      <section className="py-16 md:py-44 px-6 md:px-10 bg-black">
         <div className="max-w-7xl mx-auto">
           <LocationCards />
         </div>
