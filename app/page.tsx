@@ -224,7 +224,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 md:px-10 text-center relative z-10">
           <h2 className="font-headliner text-5xl md:text-8xl lg:text-[10rem] gradient-heading leading-[0.8] mb-10">BOOK YOUR<br />NEXT CUT</h2>
           <p className="text-gray-500 text-base md:text-lg mb-12 max-w-lg mx-auto leading-relaxed">
-            Skip the wait. Lock in your appointment at any of our {LOCATIONS.length} Griffith locations.
+            Skip the wait. Lock in your appointment at any of our 3 Griffith locations.
           </p>
           <Link href="/booking" className="group relative bg-brand-red text-white px-14 py-5 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_40px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
             <span className="relative z-10">BOOK NOW</span>
