@@ -59,7 +59,7 @@ export default function TeamPage() {
                   By 2017, I opened Modern Mancave with one goal: a space where men could actually feel comfortable looking after themselves. Classic cuts and fades came first, then facials, waxing, teeth whitening, and manicures, all designed for the modern man. I even took it on the road with a mobile barbershop, bringing quality cuts to small towns and helping local stylists sharpen their skills.
                 </p>
                 <p>
-                  Now we have two locations in Griffith and a tattoo studio in the works. Along the way, I&apos;ve sponsored barbers from the Philippines and given free haircuts to people in need here and abroad. At the heart of it, it&apos;s always been the same: build community, help others, and give every guy who walks in a proper grooming experience that actually makes him feel good.
+                  Now we have three locations in Griffith and a tattoo studio. Along the way, I&apos;ve sponsored barbers from the Philippines and given free haircuts to people in need here and abroad. At the heart of it, it&apos;s always been the same: build community, help others, and give every guy who walks in a proper grooming experience that actually makes him feel good.
                 </p>
               </div>
             </div>
