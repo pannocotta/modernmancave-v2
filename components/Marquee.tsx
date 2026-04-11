@@ -4,9 +4,9 @@ const SERVICES = [
   'BEARDS',
   'SHAVES',
   'LINEUPS',
-  'DESIGNS',
+  'TATTOOS',
   'HOT TOWELS',
-  'COLOUR',
+  'TEETH WHITENING',
 ]
 
 export default function ServiceStrip() {

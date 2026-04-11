@@ -70,7 +70,7 @@ export default function Home() {
       <ServiceStrip />
 
       {/* About */}
-      <section className="relative bg-black overflow-hidden py-32 md:py-44">
+      <section className="relative bg-black overflow-hidden py-16 md:py-44">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -118,7 +118,7 @@ export default function Home() {
           </div>
 
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3" staggerDelay={0.06}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
+            {[1, 2, 3, 4, 5, 6].map((num) => (
               <StaggerItem key={num} className="relative aspect-square overflow-hidden group rounded-sm">
                 <Image src={`/work/${num}.jpg`} alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" sizes="(max-width: 768px) 50vw, 33vw" />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
@@ -177,25 +177,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mobile Barber */}
+      {/* Tattooing */}
       <section className="relative bg-zinc-950 py-32 md:py-0 overflow-hidden section-blend-dark">
         <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center md:min-h-[80vh] md:py-24">
             <div className="relative aspect-[4/3] md:aspect-[3/4] overflow-hidden rounded-sm">
-              <Image src="/mobile-trailer.png" alt="Modern Mancave Mobile Barber Studio" fill className="object-contain md:object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              <Image src="/stock/tattooing.jpg" alt="Tattooing at Modern Mancave" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              <div className="absolute inset-0 shadow-[inset_0_0_80px_40px_rgba(0,0,0,0.9)]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
             </div>
 
             <div className="md:pl-4 lg:pl-8">
               <div className="flex items-center gap-4 mb-6">
-                <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">On Location</span>
+                <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Ink Studio</span>
                 <div className="h-px flex-1 bg-zinc-800" />
               </div>
-              <h2 className="font-headliner text-5xl md:text-6xl lg:text-7xl gradient-heading mb-8 leading-[0.9]">WE COME<br />TO YOU</h2>
+              <h2 className="font-headliner text-5xl md:text-6xl lg:text-7xl gradient-heading mb-8 leading-[0.9]">TATTOOS<br />ON SITE</h2>
               <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-10 max-w-md">
-                Premium cuts at your home, office, or event. Our mobile barber studio brings the full shop experience to your doorstep. Perfect for groups, functions, or corporate bookings.
+                Get inked at the cave. Our in-house tattoo studio delivers custom designs in a space you already know and trust. Walk-ins welcome or book your session.
               </p>
-              <Link href="/mobile-barber" className="group relative border border-white/20 hover:border-white/40 text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-3 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-                <span>LEARN MORE</span>
+              <Link href="/booking" className="group relative border border-white/20 hover:border-white/40 text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-3 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+                <span>BOOK A SESSION</span>
                 <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

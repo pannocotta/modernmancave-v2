@@ -26,7 +26,7 @@ export default function FloatingBookButton() {
   return (
     <Link
       href="/booking"
-      className="fixed bottom-6 right-6 z-40 bg-brand-red text-white px-6 py-3 font-bold text-sm tracking-wider shadow-lg shadow-brand-red/30 hover:bg-red-600 transition-colors"
+      className="fixed bottom-6 right-6 z-40 bg-brand-red text-white px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase shadow-lg shadow-brand-red/30 hover:bg-red-600 transition-colors"
     >
       BOOK NOW
     </Link>
