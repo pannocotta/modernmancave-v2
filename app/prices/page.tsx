@@ -41,6 +41,8 @@ export default function PricesPage() {
           <span>General practice is walk-ins only</span>
           <span className="hidden md:inline text-zinc-700">|</span>
           <span>Online bookings require full payment</span>
+          <span className="hidden md:inline text-zinc-700">|</span>
+          <span>Surcharges apply for Sundays and bookings</span>
         </div>
       </div>
 
