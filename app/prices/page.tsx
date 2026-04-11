@@ -29,12 +29,12 @@ export default function PricesPage() {
             <div className="h-px flex-1 bg-zinc-800" />
           </div>
           <h1 className="font-headliner text-5xl md:text-7xl lg:text-8xl gradient-heading leading-[0.85] mb-4">OUR PRICES</h1>
-          <p className="text-gray-400 text-base md:text-lg max-w-lg">Walk-ins welcome at all locations. Transparent pricing, no surprises.</p>
+          <p className="text-gray-400 text-base md:text-lg max-w-lg">These are walk-in prices only. All bookings are surcharged and require full payment upfront.</p>
         </div>
       </section>
 
       {/* Price Grid */}
-      <section className="py-32 md:py-44 bg-black">
+      <section className="py-16 md:py-44 bg-black">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <StaggerContainer className="grid md:grid-cols-2 gap-x-12 gap-y-16">
             {SERVICE_CATEGORIES.map((category) => (
@@ -58,7 +58,7 @@ export default function PricesPage() {
       </section>
 
       {/* Teeth Whitening Feature */}
-      <section className="relative section-blend-dark py-32 md:py-44 bg-zinc-950">
+      <section className="relative section-blend-dark py-16 md:py-44 bg-zinc-950">
         <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <div>
@@ -79,13 +79,13 @@ export default function PricesPage() {
 
             {/* Before & After */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
                 <Image src="/teeth-before.jpg" alt="Before teeth whitening" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
                   <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">Before</span>
                 </div>
               </div>
-              <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
                 <Image src="/teeth-after.jpg" alt="After teeth whitening" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
                   <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">After</span>
@@ -97,7 +97,7 @@ export default function PricesPage() {
       </section>
 
       {/* Tattooing */}
-      <section id="tattooing" className="py-32 md:py-44 bg-black scroll-mt-24">
+      <section id="tattooing" className="py-16 md:py-44 bg-black scroll-mt-24">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             {/* Gallery */}
@@ -108,7 +108,7 @@ export default function PricesPage() {
                 { src: '/tattoo/3.jpg', alt: 'Medusa tattoo' },
                 { src: '/tattoo/4.jpg', alt: 'Day of the dead tattoo' },
               ].map((img, i) => (
-                <div key={i} className="relative aspect-square overflow-hidden rounded-sm">
+                <div key={i} className="relative aspect-square overflow-hidden rounded-xl">
                   <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover grayscale hover:grayscale-0 transition-all duration-500" />
                 </div>
               ))}
