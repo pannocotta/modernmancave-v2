@@ -88,7 +88,7 @@ export default function CommunityPage() {
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             {/* Featured image — blended on all sides */}
             <div className="relative aspect-[4/5] overflow-hidden">
-              <Image src="/charity/17.jpg" alt="Modern Mancave community work" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              <Image src="/charity/17.jpg" alt="Modern Mancave community work" fill priority className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
               <div className="absolute inset-0 shadow-[inset_0_0_80px_40px_rgba(0,0,0,0.9)]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/70" />
@@ -131,6 +131,7 @@ export default function CommunityPage() {
                     src={post.image}
                     alt={`Community impact ${index + 1}`}
                     fill
+                    loading="eager"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     quality={75}
