@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Image from 'next/image'
-import Link from 'next/link'
 import AnimatedCounter from '@/components/AnimatedCounter'
 import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
+import CommunityForm from '@/components/CommunityForm'
 
 export const metadata: Metadata = {
   title: 'Community - Modern Mancave',
@@ -144,19 +144,21 @@ export default function CommunityPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      <div className="h-px bg-gradient-to-r from-transparent via-brand-red/30 to-transparent" />
+
+      {/* CTA + Form */}
       <section className="py-32 md:py-40 bg-black">
-        <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
-          <h2 className="font-headliner text-4xl md:text-6xl lg:text-7xl gradient-heading leading-[0.85] mb-6">
-            WE WANT TO<br />HELP YOUR CAUSE
-          </h2>
-          <p className="text-gray-500 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">
-            Whether it&apos;s a charity event, community fundraiser, or a cause close to your heart — reach out and let&apos;s make it happen.
-          </p>
-          <Link href="/mobile-barber-enquiry" className="group relative bg-brand-red text-white px-12 py-5 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
-            <span className="relative z-10">GET IN TOUCH</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </Link>
+        <div className="max-w-2xl mx-auto px-6 md:px-10">
+          <div className="text-center mb-12">
+            <h2 className="font-headliner text-4xl md:text-6xl lg:text-7xl gradient-heading leading-[0.85] mb-6">
+              WE WANT TO<br />HELP YOUR CAUSE
+            </h2>
+            <p className="text-gray-500 text-base md:text-lg max-w-lg mx-auto leading-relaxed">
+              We allocate time every year to give back to our community. If you have a fundraiser, charity event, or a cause close to your heart — if we can, we&apos;ll try our best to help. Fill out the form below.
+            </p>
+          </div>
+
+          <CommunityForm />
         </div>
       </section>
     </main>

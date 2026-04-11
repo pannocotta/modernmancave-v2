@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
-    // TODO: Add email sending when Tristan's email is ready
+    // TODO: Send to Tristan's email (custom domain TBD — will set up via Google Workspace later)
     console.log(`[ENQUIRY] ${type}:`, JSON.stringify(body))
 
     return NextResponse.json({ success: true })
