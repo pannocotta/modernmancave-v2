@@ -137,7 +137,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="relative bg-black py-32 md:py-44 overflow-hidden">
+      <section className="relative bg-black py-20 md:py-44 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="absolute top-16 left-6 md:left-16 text-[18rem] md:text-[28rem] font-serif text-brand-red/[0.03] leading-none select-none pointer-events-none" aria-hidden="true">&ldquo;</div>
 
