@@ -75,7 +75,7 @@ export default function TeamPage() {
             <h2 className="font-headliner text-5xl md:text-7xl gradient-heading">THE TEAM</h2>
           </div>
 
-          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
             {TEAM.map((member) => (
               <StaggerItem key={member.name}>
                 <div className="text-center group h-full flex flex-col">
