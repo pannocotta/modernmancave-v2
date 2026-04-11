@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 const EVENTS = [
-  { title: 'Weddings', description: 'Keep the groom and groomsmen looking sharp on the big day.' },
+  { title: 'Weddings', description: 'Keep the bridesmaids and groomsmen looking sharp on the big day.' },
   { title: 'Corporate', description: 'On-site cuts and grooming for team building or client appreciation.' },
   { title: 'Community', description: 'Bringing premium grooming to rural towns, youth programs, and local initiatives.' },
   { title: 'Festivals', description: 'Birthday parties, bachelor parties, and celebrations made sharper.' },
@@ -56,7 +56,7 @@ export default function MobileBarberPage() {
             THE MANCAVE<br />COMES TO YOU
           </h1>
           <p className="text-gray-400 text-base md:text-lg max-w-xl leading-relaxed mb-10">
-            Our fully equipped mobile studio delivers expert cuts and grooming to your home, office, or event — anywhere in Griffith and the Riverina.
+            Hands-on barbering training for hairdressers, plus a fully equipped mobile studio serving Griffith and the surrounding towns.
           </p>
           <Link href="/mobile-barber-enquiry" className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
             <span className="relative z-10">BOOK THE STUDIO</span>
@@ -163,10 +163,10 @@ export default function MobileBarberPage() {
       <section className="py-32 md:py-40 bg-black border-t border-zinc-800/50">
         <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
           <h2 className="font-headliner text-4xl md:text-6xl lg:text-7xl gradient-heading leading-[0.85] mb-6">
-            BOOK YOUR<br />NEXT EVENT
+            HIRE THE<br />MOBILE STUDIO
           </h2>
           <p className="text-gray-500 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">
-            Get in touch to discuss your event and secure a custom quote for the mobile barber studio.
+            Book or hire our mobile studio for your next event. Weddings, corporate days, bridal parties with hair and makeup at your location of choice — get in touch for a custom quote.
           </p>
           <Link href="/mobile-barber-enquiry" className="group relative bg-brand-red text-white px-12 py-5 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
             <span className="relative z-10">ENQUIRE NOW</span>
