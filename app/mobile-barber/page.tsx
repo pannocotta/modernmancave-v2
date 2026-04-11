@@ -109,7 +109,7 @@ export default function MobileBarberPage() {
       </section>
 
       {/* Barber Training */}
-      <section className="py-16 md:py-44 bg-black">
+      <section id="education" className="py-16 md:py-44 bg-black scroll-mt-24">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20">
             <div>
