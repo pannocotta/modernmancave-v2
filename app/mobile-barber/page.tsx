@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 }
 
 const EVENTS = [
-  { title: 'Weddings', description: 'Keep the bridesmaids and groomsmen looking sharp on the big day.' },
-  { title: 'Corporate', description: 'On-site cuts and grooming for team building or client appreciation.' },
-  { title: 'Community', description: 'Bringing premium grooming to rural towns, youth programs, and local initiatives.' },
-  { title: 'Festivals', description: 'Birthday parties, bachelor parties, and celebrations made sharper.' },
-  { title: 'Markets', description: 'Bring Modern Mancave to farmers markets and community events.' },
-  { title: 'Charity', description: 'Support fundraisers with premium grooming for your community.' },
+  { title: 'Weddings', description: 'Keep the bridesmaids and groomsmen looking sharp on the big day. Hair and makeup on location.' },
+  { title: 'Corporate', description: 'On-site cuts and grooming for your team. Perfect for team building days or client events.' },
+  { title: 'Community', description: 'Premium grooming for rural towns, youth programs, and local community initiatives.' },
+  { title: 'Festivals', description: 'Birthday parties, bachelor parties, and celebrations. We bring the vibe and the cuts.' },
+  { title: 'Markets', description: 'Set up at farmers markets and community events. Fresh cuts where the people are.' },
+  { title: 'Charity', description: 'Support your fundraiser with premium grooming. We give back wherever we can.' },
 ]
 
 const FEATURES = [
