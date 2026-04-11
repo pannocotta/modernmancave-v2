@@ -97,7 +97,7 @@ export default function PricesPage() {
       </section>
 
       {/* Tattooing */}
-      <section className="py-32 md:py-44 bg-black">
+      <section id="tattooing" className="py-32 md:py-44 bg-black scroll-mt-24">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             {/* Gallery */}

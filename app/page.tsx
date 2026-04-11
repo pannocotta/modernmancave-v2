@@ -209,8 +209,8 @@ export default function Home() {
               <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-10 max-w-md">
                 Get inked at the cave. Our in-house tattoo studio delivers custom designs in a space you already know and trust. Walk-ins welcome or book your session.
               </p>
-              <Link href="/booking" className="group relative border border-white/20 hover:border-white/40 text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-3 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-                <span>BOOK A SESSION</span>
+              <Link href="/prices#tattooing" className="group relative border border-white/20 hover:border-white/40 text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-3 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+                <span>GET IN TOUCH</span>
                 <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
