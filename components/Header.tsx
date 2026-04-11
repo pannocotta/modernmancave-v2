@@ -19,12 +19,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="fixed top-0 w-full z-50 bg-black border-b border-zinc-800/50">
-        <div className="text-center py-1.5 text-[10px] md:text-xs tracking-[0.2em] uppercase text-gray-400">
-          The only barbershop open 7 days in Griffith
-        </div>
-      </div>
-      <nav className={`fixed top-[30px] md:top-[32px] w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between" style={{ paddingLeft: 'clamp(1rem, 4vw, 1.5rem)', paddingRight: 'clamp(1rem, 4vw, 1.5rem)', paddingTop: 'clamp(1rem, 3vh, 1.25rem)', paddingBottom: 'clamp(1rem, 3vh, 1.25rem)' }}>
           <Link href="/" className="flex items-center hover:opacity-80 transition">
             <Image src="/1.png" alt="Modern Mancave" width={112} height={28} style={{ height: 'clamp(24px, 5vw, 28px)', width: 'auto' }} priority />

@@ -39,7 +39,7 @@ export default function Home() {
         <div className="relative z-30 w-full flex flex-col items-center text-center px-6 py-[clamp(6rem,15vh,10rem)]">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-8 md:w-12 h-px bg-brand-red/50" />
-            <span className="text-white text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase">Est. 2017 — Griffith, NSW</span>
+            <span className="text-white text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase">Open 7 Days — Est. 2017</span>
             <div className="w-8 md:w-12 h-px bg-brand-red/50" />
           </div>
 
