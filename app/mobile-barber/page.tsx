@@ -59,7 +59,7 @@ export default function MobileBarberPage() {
             Hands-on barbering training for hairdressers, plus a fully equipped mobile studio serving Griffith and the surrounding towns.
           </p>
           <Link href="/mobile-barber-enquiry" className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
-            <span className="relative z-10">BOOK THE STUDIO</span>
+            <span className="relative z-10">BOOK OR HIRE THE STUDIO</span>
             <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Link>
         </div>
