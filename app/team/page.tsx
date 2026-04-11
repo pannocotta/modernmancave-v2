@@ -49,7 +49,7 @@ export default function TeamPage() {
               <h1 className="font-headliner text-5xl md:text-7xl gradient-heading leading-[0.9] mb-2">
                 MEET<br />TRISTAN
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 mb-8">Owner &amp; Master Barber</p>
+
 
               <div className="space-y-4 text-gray-400 leading-relaxed text-sm md:text-base">
                 <p>
