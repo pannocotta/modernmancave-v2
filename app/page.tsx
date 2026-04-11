@@ -22,8 +22,7 @@ export default function Home() {
             loop
             playsInline
             preload="auto"
-            poster="/hero-background.jpg"
-            className="absolute inset-0 w-full h-full object-cover opacity-50"
+            className="absolute inset-0 w-full h-full object-cover opacity-50 bg-black"
           >
             <source src="/hero-video.mp4" type="video/mp4" />
           </video>
@@ -120,7 +119,7 @@ export default function Home() {
 
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3" staggerDelay={0.06}>
             {[1, 2, 3, 4, 5, 6].map((num) => (
-              <StaggerItem key={num} className="relative aspect-square overflow-hidden group rounded-sm">
+              <StaggerItem key={num} className="relative aspect-square overflow-hidden group rounded-xl">
                 <Image src={`/work/${num}.jpg`} alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" sizes="(max-width: 768px) 50vw, 33vw" />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
               </StaggerItem>
