@@ -151,9 +151,9 @@ export default function FranchisePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <div className="mb-20">
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Ideal Candidate</span>
-            <h2 className="font-headliner gradient-heading text-5xl md:text-7xl leading-[0.85] mb-6">WHO THIS<br />IS FOR</h2>
-            <p className="text-gray-500 text-base md:text-lg max-w-lg">
-              This is for people who want to build something real.
+            <h2 className="font-headliner gradient-heading text-5xl md:text-7xl leading-[0.85] mb-6">WHO THIS IS FOR</h2>
+            <p className="text-gray-500 text-base md:text-lg max-w-xl">
+              This is for people ready to run their own business and back themselves, with expert guidance from a team that&apos;s been doing it for nearly a decade.
             </p>
           </div>
 
