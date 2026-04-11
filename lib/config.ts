@@ -128,7 +128,7 @@ export const TEAM = [
     name: 'ANTONIO',
     initial: 'A',
     image: '/team/antonio.png',
-    title: 'Banna Ave',
+    title: 'Griffith Central',
     bio: "Italian roots and a sharp eye for clean work. Antonio brings old-school discipline to modern cuts. Fades, beard sculpting, and classic styles done right. Quiet confidence in the chair and quality you can see.",
     instagram: { handle: '@_parmentola.antonio_', url: 'https://www.instagram.com/_parmentola.antonio_' },
   },
