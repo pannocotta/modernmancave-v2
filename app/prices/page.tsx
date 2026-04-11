@@ -33,6 +33,17 @@ export default function PricesPage() {
         </div>
       </section>
 
+      {/* Good to Know Banner */}
+      <div className="border-y border-zinc-800/50 py-4 md:py-5">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-16 text-gray-400 text-[10px] md:text-xs tracking-[0.15em] uppercase px-6">
+          <span>All major payment methods accepted</span>
+          <span className="hidden md:inline text-zinc-700">|</span>
+          <span>General practice is walk-ins only</span>
+          <span className="hidden md:inline text-zinc-700">|</span>
+          <span>Online bookings require full payment</span>
+        </div>
+      </div>
+
       {/* Price Grid */}
       <section className="py-16 md:py-44 bg-black">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
@@ -135,19 +146,6 @@ export default function PricesPage() {
         </div>
       </section>
 
-      {/* Good to Know */}
-      <section className="py-20 md:py-28 border-y border-zinc-800/50">
-        <div className="max-w-3xl mx-auto px-6 md:px-10 text-center">
-          <h3 className="font-headliner text-2xl md:text-3xl gradient-heading mb-8">GOOD TO KNOW</h3>
-          <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16 text-gray-400 text-sm">
-            <span>All major payment methods accepted</span>
-            <span className="hidden md:inline text-zinc-700">|</span>
-            <span>General practice is walk-ins only</span>
-            <span className="hidden md:inline text-zinc-700">|</span>
-            <span>Online bookings require full payment</span>
-          </div>
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="py-32 md:py-40 bg-black">
