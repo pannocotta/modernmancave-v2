@@ -65,21 +65,29 @@ export default function MobileBarberPage() {
         </div>
       </section>
 
-      {/* Trailer + Features */}
-      <section className="py-32 md:py-44 bg-black">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-            <div>
-              <Image
-                src="/mobile-trailer.png"
-                alt="Modern Mancave Mobile Barber Studio"
-                width={800}
-                height={600}
-                className="w-full h-auto"
-              />
+      {/* Trailer Video + Features */}
+      <section className="relative py-0 bg-black overflow-hidden">
+        <div className="relative z-10">
+          <div className="grid md:grid-cols-2 items-center md:min-h-[80vh]">
+            <div className="relative aspect-[16/9] md:aspect-auto md:absolute md:inset-y-0 md:left-0 md:w-1/2 overflow-hidden">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="/mobile-barber-video.mp4" type="video/mp4" />
+              </video>
+              {/* Mobile: blend top and bottom only */}
+              <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+              {/* Desktop: blend right, top, bottom — left edge bleeds to screen edge */}
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black" />
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40" />
             </div>
 
-            <div>
+            <div className="px-6 py-16 md:py-0 md:col-start-2 md:pl-12 lg:pl-16 md:pr-10">
               <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">The Studio</span>
               <h2 className="font-headliner text-4xl md:text-5xl lg:text-6xl gradient-heading leading-[0.9] mb-6">
                 THE ULTIMATE<br />MOBILE EXPERIENCE
