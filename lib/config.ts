@@ -80,14 +80,13 @@ export const LOCATIONS = [
 export const NAV_LINKS = [
   { label: 'HOME', href: '/' },
   { label: 'THE TEAM', href: '/team' },
-  { label: 'COMMUNITY', href: '/community' },
   { label: 'PRICES', href: '/prices' },
-  { label: 'LOCATIONS', href: '/locations' },
   { label: 'MOBILE BARBER', href: '/mobile-barber' },
   { label: 'BARBER TRAINING', href: '/mobile-barber#education' },
   { label: 'MERCH', href: '/shop' },
   { label: 'FRANCHISE', href: '/franchise' },
   { label: 'DOWNLOAD APP', href: '/app' },
+  { label: 'LOCATIONS', href: '/locations' },
 ] as const
 
 export const BOOKING_LINK = { label: 'BOOK NOW', href: '/booking' } as const
