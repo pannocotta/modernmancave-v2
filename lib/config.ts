@@ -83,8 +83,8 @@ export const NAV_LINKS = [
   { label: 'PRICES', href: '/prices' },
   { label: 'MOBILE BARBER', href: '/mobile-barber' },
   { label: 'BARBER TRAINING', href: '/mobile-barber#education' },
-  { label: 'MERCH', href: '/shop' },
   { label: 'FRANCHISE', href: '/franchise' },
+  { label: 'MERCH', href: '/shop' },
   { label: 'DOWNLOAD APP', href: '/app' },
   { label: 'LOCATIONS', href: '/locations' },
 ] as const

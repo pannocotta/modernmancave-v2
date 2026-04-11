@@ -9,8 +9,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
-    // TODO: Send to Tristan's email (custom domain TBD — will set up via Google Workspace later)
-    console.log(`[ENQUIRY] ${type}:`, JSON.stringify(body))
+    // Email delivery pending — will wire up Resend when Tristan's custom domain email is ready
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`[ENQUIRY] ${type}:`, JSON.stringify(body))
+    }
 
     return NextResponse.json({ success: true })
   } catch {
