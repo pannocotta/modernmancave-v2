@@ -35,14 +35,14 @@ export default function PricesPage() {
 
       {/* Good to Know Banner */}
       <div className="border-y border-zinc-800/50 py-4 md:py-5">
-        <div className="flex flex-wrap justify-center gap-4 md:gap-16 text-gray-400 text-[10px] md:text-xs tracking-[0.15em] uppercase px-6">
-          <span>All major payment methods accepted</span>
-          <span className="hidden md:inline text-zinc-700">|</span>
-          <span>General practice is walk-ins only</span>
-          <span className="hidden md:inline text-zinc-700">|</span>
-          <span>Online bookings require full payment</span>
-          <span className="hidden md:inline text-zinc-700">|</span>
-          <span>Surcharges apply for Sundays and bookings</span>
+        <div className="flex justify-center items-center gap-3 md:gap-6 text-gray-400 text-[8px] md:text-[11px] tracking-[0.15em] uppercase px-4">
+          <span>Walk-ins only</span>
+          <span className="text-zinc-700">|</span>
+          <span>All payment methods</span>
+          <span className="text-zinc-700">|</span>
+          <span>Bookings require full payment</span>
+          <span className="text-zinc-700">|</span>
+          <span>Surcharges for Sundays &amp; bookings</span>
         </div>
       </div>
 
