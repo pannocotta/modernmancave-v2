@@ -182,9 +182,19 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center md:min-h-[80vh] md:py-24">
             <div className="relative aspect-[4/3] md:aspect-[3/4] overflow-hidden rounded-sm">
-              <Image src="/stock/tattooing.jpg" alt="Tattooing at Modern Mancave" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-              <div className="absolute inset-0 shadow-[inset_0_0_80px_40px_rgba(0,0,0,0.9)]" />
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="/tattoo-loop.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 shadow-[inset_0_0_100px_60px_rgba(0,0,0,1)]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
             </div>
 
             <div className="md:pl-4 lg:pl-8">
