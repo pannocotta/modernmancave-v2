@@ -178,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* Tattooing */}
-      <section className="relative bg-zinc-950 py-0 overflow-hidden section-blend-dark">
+      <section className="relative bg-black py-0 overflow-hidden">
         <div className="relative z-10">
           <div className="grid md:grid-cols-2 items-center md:min-h-[80vh]">
             <div className="relative aspect-[16/9] md:aspect-auto md:absolute md:inset-y-0 md:left-0 md:w-1/2 overflow-hidden">
