@@ -159,8 +159,10 @@ export default function MobileBarberPage() {
         </div>
       </section>
 
+      <div className="h-px bg-gradient-to-r from-transparent via-brand-red/30 to-transparent" />
+
       {/* CTA */}
-      <section className="py-32 md:py-40 bg-black border-t border-zinc-800/50">
+      <section className="py-32 md:py-40 bg-black">
         <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
           <h2 className="font-headliner text-4xl md:text-6xl lg:text-7xl gradient-heading leading-[0.85] mb-6">
             HIRE THE<br />MOBILE STUDIO
