@@ -135,6 +135,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Tattooing */}
+      <section className="relative bg-black py-0 overflow-hidden">
+        <div className="relative z-10">
+          <div className="grid md:grid-cols-2 items-center md:min-h-[80vh]">
+            <div className="relative aspect-[16/9] md:aspect-auto md:absolute md:inset-y-0 md:left-0 md:w-1/2 overflow-hidden">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="/tattoo-loop.mp4" type="video/mp4" />
+              </video>
+              {/* Mobile: blend top and bottom only */}
+              <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+              {/* Desktop: blend right, top, bottom — left edge bleeds to screen edge */}
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black" />
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40" />
+            </div>
+
+            <div className="px-6 py-16 md:py-0 md:col-start-2 md:pl-12 lg:pl-16 md:pr-10">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Ink Studio</span>
+                <div className="h-px flex-1 bg-zinc-800" />
+              </div>
+              <h2 className="font-headliner text-5xl md:text-6xl lg:text-7xl gradient-heading mb-8 leading-[0.9]">TATTOOS<br />ON SITE</h2>
+              <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-10 max-w-md">
+                Get inked at the cave. Our in-house tattoo studio delivers custom designs in a space you already know and trust. Walk-ins welcome or book your session.
+              </p>
+              <Link href="/prices#tattooing" className="group relative border border-white/20 hover:border-white/40 text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-3 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+                <span>GET IN TOUCH</span>
+                <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="relative bg-black py-20 md:py-44 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
@@ -173,46 +213,6 @@ export default function Home() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tattooing */}
-      <section className="relative bg-black py-0 overflow-hidden">
-        <div className="relative z-10">
-          <div className="grid md:grid-cols-2 items-center md:min-h-[80vh]">
-            <div className="relative aspect-[16/9] md:aspect-auto md:absolute md:inset-y-0 md:left-0 md:w-1/2 overflow-hidden">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                className="absolute inset-0 w-full h-full object-cover"
-              >
-                <source src="/tattoo-loop.mp4" type="video/mp4" />
-              </video>
-              {/* Mobile: blend top and bottom only */}
-              <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-              {/* Desktop: blend right, top, bottom — left edge bleeds to screen edge */}
-              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-zinc-950" />
-              <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40" />
-            </div>
-
-            <div className="px-6 py-16 md:py-0 md:col-start-2 md:pl-12 lg:pl-16 md:pr-10">
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Ink Studio</span>
-                <div className="h-px flex-1 bg-zinc-800" />
-              </div>
-              <h2 className="font-headliner text-5xl md:text-6xl lg:text-7xl gradient-heading mb-8 leading-[0.9]">TATTOOS<br />ON SITE</h2>
-              <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-10 max-w-md">
-                Get inked at the cave. Our in-house tattoo studio delivers custom designs in a space you already know and trust. Walk-ins welcome or book your session.
-              </p>
-              <Link href="/prices#tattooing" className="group relative border border-white/20 hover:border-white/40 text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-3 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-                <span>GET IN TOUCH</span>
-                <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
           </div>
         </div>
       </section>
