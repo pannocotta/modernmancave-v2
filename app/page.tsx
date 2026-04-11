@@ -127,8 +127,9 @@ export default function Home() {
           </StaggerContainer>
 
           <div className="text-center mt-16">
-            <a href={SOCIAL.instagram.url} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-gray-500 hover:text-brand-red transition-colors text-xs tracking-[0.2em] uppercase">
-              <span>See more on Instagram</span>
+            <a href={SOCIAL.instagram.url} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-3 text-gray-500 hover:text-brand-red transition-colors text-xs tracking-[0.2em] uppercase">
+              <InstagramIcon className="w-5 h-5" />
+              <span>Follow and see more on Instagram</span>
               <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
