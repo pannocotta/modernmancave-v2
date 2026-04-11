@@ -88,9 +88,11 @@ export default function Home() {
                 RIVERINAS<br />PREMIUM<br />BARBERSHOP
               </h2>
               <div className="space-y-5 text-gray-400 text-base md:text-lg leading-relaxed">
-                <p>Modern Mancave is more than a barbershop. It&apos;s a place to switch off, have a yarn, and walk out looking your best.</p>
-                <p>Since 2017, we&apos;ve been looking after clients across Griffith and the Riverina with quality cuts and genuine service. Whether you&apos;re after a clean fade, a tidy up, a sharp beard trim or a proper hot towel shave, our barbers take the time to get it right.</p>
-                <p>We care about the details, and it shows in every cut.</p>
+                <p>Modern Mancave isn&apos;t just a haircut — it&apos;s an experience.</p>
+                <p>A space to switch off, have a laugh, enjoy a proper chat, and walk out looking and feeling your absolute best.</p>
+                <p>Since 2017, we&apos;ve built a reputation across Griffith and the Riverina for precision cuts, attention to detail, and genuine service. From clean fades to sharp beard work and traditional hot towel shaves, every service is delivered with care and consistency.</p>
+                <p>More than a barbershop, Modern Mancave is a one-stop destination for the modern man.</p>
+                <p>With a full-time tattoo artist operating from one of our locations, we bring grooming and lifestyle together under one roof.</p>
               </div>
             </div>
           </div>
