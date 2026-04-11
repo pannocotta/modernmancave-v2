@@ -108,29 +108,8 @@ export default function MobileBarberPage() {
         </div>
       </section>
 
-      {/* Where We Go */}
-      <section className="relative section-blend-dark py-32 md:py-44 bg-zinc-950">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
-          <div className="text-center mb-20">
-            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">On Location</span>
-            <h2 className="font-headliner text-4xl md:text-6xl gradient-heading">WHEREVER YOU NEED US</h2>
-          </div>
-
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            {EVENTS.map((event) => (
-              <StaggerItem key={event.title}>
-                <div className="text-center py-8">
-                  <h3 className="font-headliner text-xl md:text-2xl text-white mb-3">{event.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{event.description}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
       {/* Barber Training */}
-      <section className="py-32 md:py-44 bg-black">
+      <section className="py-16 md:py-44 bg-black">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20">
             <div>
@@ -159,10 +138,31 @@ export default function MobileBarberPage() {
         </div>
       </section>
 
+      {/* Where We Go */}
+      <section className="relative section-blend-dark py-16 md:py-44 bg-zinc-950">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
+          <div className="text-center mb-20">
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">On Location</span>
+            <h2 className="font-headliner text-4xl md:text-6xl gradient-heading">WHEREVER YOU NEED US</h2>
+          </div>
+
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+            {EVENTS.map((event) => (
+              <StaggerItem key={event.title}>
+                <div className="text-center py-8">
+                  <h3 className="font-headliner text-xl md:text-2xl text-white mb-3">{event.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{event.description}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
       <div className="h-px bg-gradient-to-r from-transparent via-brand-red/30 to-transparent" />
 
       {/* CTA */}
-      <section className="py-32 md:py-40 bg-black">
+      <section className="py-16 md:py-40 bg-black">
         <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
           <h2 className="font-headliner text-4xl md:text-6xl lg:text-7xl gradient-heading leading-[0.85] mb-6">
             HIRE THE<br />MOBILE STUDIO
