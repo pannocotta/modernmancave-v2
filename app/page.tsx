@@ -180,10 +180,10 @@ export default function Home() {
       </section>
 
       {/* Tattooing */}
-      <section className="relative bg-zinc-950 py-32 md:py-0 overflow-hidden section-blend-dark">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center md:min-h-[80vh] md:py-24">
-            <div className="relative aspect-[4/3] md:aspect-[3/4] overflow-hidden rounded-sm">
+      <section className="relative bg-zinc-950 py-0 overflow-hidden section-blend-dark">
+        <div className="relative z-10">
+          <div className="grid md:grid-cols-2 items-center md:min-h-[80vh]">
+            <div className="relative aspect-[16/9] md:aspect-auto md:absolute md:inset-y-0 md:left-0 md:w-1/2 overflow-hidden">
               <video
                 autoPlay
                 muted
@@ -194,12 +194,14 @@ export default function Home() {
               >
                 <source src="/tattoo-loop.mp4" type="video/mp4" />
               </video>
-              <div className="absolute inset-0 shadow-[inset_0_0_100px_60px_rgba(0,0,0,1)]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
+              {/* Mobile: blend top and bottom only */}
+              <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+              {/* Desktop: blend right, top, bottom — left edge bleeds to screen edge */}
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-zinc-950" />
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40" />
             </div>
 
-            <div className="md:pl-4 lg:pl-8">
+            <div className="px-6 py-16 md:py-0 md:col-start-2 md:pl-12 lg:pl-16 md:pr-10">
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Ink Studio</span>
                 <div className="h-px flex-1 bg-zinc-800" />
