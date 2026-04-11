@@ -95,6 +95,7 @@ export const TEAM = [
   {
     name: 'NICK',
     initial: 'N',
+    image: '/team/nick.png',
     title: 'Senior Barber',
     bio: "Nick runs the private appointment space at our Banna Avenue location. It's a one-on-one premium grooming experience with a complimentary drink, hot towel treatment, and personalised service you won't find anywhere else.",
     instagram: { handle: '@barberniks', url: 'https://www.instagram.com/barberniks' },
@@ -102,6 +103,7 @@ export const TEAM = [
   {
     name: 'KEVIN',
     initial: 'K',
+    image: '/team/kevin.png',
     title: 'Senior Barber',
     bio: 'With over a decade of experience from the Philippines, Kevin brings precision and artistry to every cut. His sharp eye for detail and calm, focused approach make him a client favourite. Classic tapers, skin fades, or something bold, Kevin delivers every time.',
     instagram: { handle: '@kevinmarkarana', url: 'https://www.instagram.com/kevinmarkarana' },
@@ -109,6 +111,7 @@ export const TEAM = [
   {
     name: 'DELVIN',
     initial: 'D',
+    image: '/team/delvin.png',
     title: 'Senior Barber',
     bio: 'Delvin brings 10+ years of barbering expertise from the Philippines with a style that blends technical skill and genuine care. Known for his versatility and warm energy, he makes every client feel at home in the chair. From clean fades to textured crops, Delvin delivers consistently sharp results every time.',
     instagram: { handle: '@dhelatyourservice', url: 'https://www.instagram.com/dhelatyourservice' },
@@ -116,6 +119,7 @@ export const TEAM = [
   {
     name: 'LEKA',
     initial: 'L',
+    image: '/team/leka.png',
     title: 'Senior Barber',
     bio: "Straight out of Tonga with over a decade in the game, Leka is a powerhouse behind the chair. His island roots bring a unique edge to his work. Bold, clean, and full of personality. Whether you're after a sharp lineup or a fresh new look, Leka's got the skills and the vibe to match.",
     instagram: { handle: '@barber.leka', url: 'https://www.instagram.com/barber.leka' },

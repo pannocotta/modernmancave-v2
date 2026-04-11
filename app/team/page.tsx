@@ -79,12 +79,10 @@ export default function TeamPage() {
             {TEAM.map((member) => (
               <StaggerItem key={member.name}>
                 <div className="text-center group h-full flex flex-col">
-                  {/* Oversized initial with glow */}
-                  <div className="relative mb-8">
-                    <div className="text-8xl md:text-9xl font-headliner gradient-heading leading-none select-none" style={{ animationDuration: '8s' }}>
-                      {member.initial}
-                    </div>
-                    <div className="absolute inset-0 bg-brand-red/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Photo with bottom blend */}
+                  <div className="relative mb-8 aspect-[3/4] overflow-hidden rounded-sm">
+                    <Image src={member.image} alt={member.name} fill className="object-cover object-top" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                   </div>
 
                   {/* Name + title */}
