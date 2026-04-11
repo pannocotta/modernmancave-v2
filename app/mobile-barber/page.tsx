@@ -118,7 +118,7 @@ export default function MobileBarberPage() {
                 BARBER<br />TRAINING
               </h2>
               <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-10">
-                We bring expert barbering education directly to your salon or business. Whether you&apos;re upskilling your team or starting from scratch, our hands-on training covers everything from foundational techniques to advanced styling.
+                We bring expert barbering education directly to hairdressing salons and businesses across the region. Whether you&apos;re upskilling your team or starting from scratch, our hands-on training covers everything from foundational techniques to advanced styling.
               </p>
               <Link href="/mobile-barber-enquiry" className="group flex items-center gap-2 text-gray-400 hover:text-white text-xs tracking-[0.2em] uppercase transition-all duration-300">
                 <span>Enquire About Training</span>
