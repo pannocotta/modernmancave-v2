@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Poppins, Playfair_Display, Bebas_Neue } from 'next/font/google'
 import './globals.css'
-import PWAPrompt from '@/components/PWAPrompt'
+
 import { CartProvider } from '@/lib/cart-context'
 import PageTransition from '@/components/PageTransition'
 
@@ -107,7 +107,7 @@ export default function RootLayout({
           <PageTransition>
             {children}
           </PageTransition>
-          <PWAPrompt />
+
         </CartProvider>
       </body>
     </html>
