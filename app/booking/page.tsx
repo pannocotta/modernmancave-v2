@@ -55,17 +55,10 @@ export default function BookingPage() {
         </div>
       </section>
 
-      {/* The Private Appointment — combined notice + experience + rules */}
-      <section className="relative bg-black py-24 md:py-32 overflow-hidden">
+      {/* Booking context — description + Nick-only + rule cards */}
+      <section className="relative bg-black pt-4 pb-24 md:pt-6 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="flex items-center gap-4 mb-8">
-            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">The Experience</span>
-            <div className="h-px flex-1 bg-zinc-800" />
-          </div>
-          <h2 className="font-headliner gradient-heading text-4xl md:text-6xl lg:text-7xl leading-[0.85] mb-8 max-w-3xl">
-            THE PRIVATE<br />APPOINTMENT
-          </h2>
           <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl mb-10">
             Book Nick&apos;s private appointment space at our Banna Avenue location for your own barber experience — complimentary water or Coca-Cola, a hot towel treatment, and personalised service. Every appointment adds $20 to skip the walk-in queue entirely.
           </p>
