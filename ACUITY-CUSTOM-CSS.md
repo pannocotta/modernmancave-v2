@@ -1,6 +1,6 @@
 # Acuity Custom CSS — Modern Mancave Branding
 
-Paste this CSS into Acuity to match the Modern Mancave site (black bg, red accents, Poppins font).
+Paste this CSS into Acuity to brand the scheduler to match the Modern Mancave site.
 
 ---
 
@@ -11,90 +11,94 @@ Paste this CSS into Acuity to match the Modern Mancave site (black bg, red accen
    - **Primary colour:** `#FF0000`
    - **Background colour:** `#000000`
    - **Text colour:** `#FFFFFF`
-   - **Logo:** upload Modern Mancave logo (white version on transparent bg)
-3. Hide Acuity branding (Powerhouse plan setting) → toggle off "Powered by Acuity Scheduling"
+   - **Logo:** upload Modern Mancave logo (white version, transparent bg)
+3. (Powerhouse plan) Toggle off "Powered by Acuity Scheduling" branding
 
 ---
 
 ## Step 2 — Paste this CSS
 
-In Acuity dashboard → **Customize Appearance → Advanced CSS** (or wherever the custom CSS textarea lives on the Powerhouse plan), paste the block below.
+In Acuity dashboard → **Customize Appearance → Custom CSS** (textarea on the Powerhouse plan), paste the block below.
+
+> **Why these selectors:** Acuity uses CSS-in-JS — most class names are unstable hashes like `css-1myzyg8` that change every Acuity deploy. This CSS targets only the **stable** semantic classes (`.business-container`, `.select-item`, `.btn`, etc.) and tag selectors (`body`, `h1`, `button`, `input`).
 
 ```css
-/* ─── Modern Mancave brand styling for Acuity scheduler ─── */
+/* ──────────────────────────────────────────
+   Modern Mancave brand styling for Acuity
+   ────────────────────────────────────────── */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-body,
-.scheduling-page,
-input,
-select,
-textarea,
-button {
+/* Global */
+html, body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
   font-family: 'Poppins', system-ui, -apple-system, sans-serif !important;
+}
+
+body * {
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif !important;
+}
+
+/* Outer wrappers */
+.business-container,
+.business-container > div {
   background-color: #000000 !important;
   color: #ffffff !important;
 }
 
-/* Headings */
-h1, h2, h3, h4, h5,
-.scheduling-page h1,
-.scheduling-page h2,
-.scheduling-page h3 {
-  font-family: 'Poppins', sans-serif !important;
+/* Top business name / shop name heading */
+.business-name {
+  color: #ffffff !important;
   font-weight: 800 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.02em !important;
-  color: #ffffff !important;
+  letter-spacing: 0.04em !important;
 }
 
-/* Service / category blocks */
-.appointment-type,
-.service-list-item,
-.category-list-item,
-.calendar-day,
-.time-slot,
-.appt-type-info {
+/* Step titles ("Select an appointment type", "Choose a date", etc.) */
+.step-title {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  font-size: 18px !important;
+}
+
+/* Section headings */
+h1, h2, h3, h4, h5 {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* Service / time-slot rows (Acuity reuses .select-item for several lists) */
+.select-item {
   background-color: #0a0a0a !important;
   border: 1px solid #1f1f1f !important;
-  color: #ffffff !important;
   border-radius: 0 !important;
+  color: #ffffff !important;
   transition: border-color 0.2s ease, background-color 0.2s ease !important;
+  padding: 16px !important;
+  margin-bottom: 8px !important;
 }
 
-.appointment-type:hover,
-.service-list-item:hover,
-.calendar-day:hover,
-.time-slot:hover {
+.select-item:hover {
   border-color: #ff0000 !important;
   background-color: #111111 !important;
 }
 
-/* Selected states */
-.appointment-type.selected,
-.calendar-day.selected,
-.time-slot.selected,
-.calendar-day.active {
-  background-color: #ff0000 !important;
-  border-color: #ff0000 !important;
+/* Service name inside each row */
+.appointment-type-name {
   color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
 }
 
-/* Prices */
-.appointment-type .price,
-.price,
-.appt-type-price {
-  color: #ff0000 !important;
-  font-weight: 700 !important;
-}
-
-/* Primary buttons (Continue, Confirm, Book) */
-button,
-input[type="submit"],
+/* Primary buttons (Continue, Confirm, Book, Select) */
 .btn,
-.button,
-a.button,
-.continue-button {
+button[type="submit"],
+input[type="submit"] {
   background-color: #ff0000 !important;
   color: #ffffff !important;
   border: none !important;
@@ -104,33 +108,16 @@ a.button,
   letter-spacing: 0.2em !important;
   text-transform: uppercase !important;
   padding: 14px 32px !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
   cursor: pointer !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-button:hover,
-input[type="submit"]:hover,
 .btn:hover,
-.button:hover,
-.continue-button:hover {
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+  background-color: #ff0000 !important;
   transform: scale(1.02) !important;
   box-shadow: 0 0 30px rgba(255, 0, 0, 0.3) !important;
-  background-color: #ff0000 !important;
-}
-
-/* Secondary / cancel buttons */
-.btn-secondary,
-.cancel-button,
-button.cancel {
-  background-color: transparent !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important;
-}
-
-.btn-secondary:hover,
-.cancel-button:hover {
-  border-color: rgba(255, 255, 255, 0.4) !important;
-  background-color: transparent !important;
 }
 
 /* Form inputs */
@@ -139,6 +126,7 @@ input[type="email"],
 input[type="tel"],
 input[type="number"],
 input[type="password"],
+input[type="search"],
 select,
 textarea {
   background-color: #0a0a0a !important;
@@ -159,14 +147,12 @@ textarea:focus {
 }
 
 /* Labels */
-label,
-.form-label {
-  color: #888888 !important;
+label {
+  color: #aaaaaa !important;
   font-size: 11px !important;
   font-weight: 700 !important;
-  letter-spacing: 0.2em !important;
+  letter-spacing: 0.18em !important;
   text-transform: uppercase !important;
-  margin-bottom: 6px !important;
 }
 
 /* Links */
@@ -178,39 +164,51 @@ a:hover {
   color: #ff3333 !important;
 }
 
-/* Dividers */
-hr,
-.divider {
-  border-color: #1f1f1f !important;
+/* Separators / dividers */
+[role="separator"],
+hr {
   background-color: #1f1f1f !important;
+  border-color: #1f1f1f !important;
+  height: 1px !important;
 }
 
-/* Calendar header (month name, nav arrows) */
-.calendar-header,
-.month-name {
+/* Calendar / time-picker (rendered later in the flow — defensive selectors) */
+[role="grid"],
+[role="gridcell"],
+[role="button"][aria-label*="date" i],
+[role="button"][aria-label*="time" i] {
+  background-color: #0a0a0a !important;
   color: #ffffff !important;
-  font-weight: 800 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
+  border-color: #1f1f1f !important;
 }
 
-/* Disabled / unavailable days */
-.calendar-day.disabled,
-.calendar-day.unavailable,
-.time-slot.disabled {
+[role="gridcell"]:hover,
+[role="button"][aria-label*="date" i]:hover,
+[role="button"][aria-label*="time" i]:hover {
+  border-color: #ff0000 !important;
+  background-color: #111111 !important;
+}
+
+[aria-selected="true"],
+[aria-pressed="true"] {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  border-color: #ff0000 !important;
+}
+
+[aria-disabled="true"],
+[disabled] {
+  color: #444444 !important;
   background-color: #050505 !important;
-  color: #333333 !important;
-  border-color: #0f0f0f !important;
   cursor: not-allowed !important;
 }
 
 /* Stripe payment block */
-.payment-section,
-.stripe-section,
-.StripeElement {
+.StripeElement,
+.__PrivateStripeElement {
   background-color: #0a0a0a !important;
   border: 1px solid #2a2a2a !important;
-  padding: 16px !important;
+  padding: 14px !important;
 }
 ```
 
@@ -218,20 +216,25 @@ hr,
 
 ## Step 3 — Test
 
-1. Save in Acuity
-2. Open `/booking` on the live site (or local dev) and confirm the embed renders dark
-3. Walk through a test booking end-to-end — verify:
-   - Service list reads cleanly on black
-   - Calendar / time-slot selection states are visible
-   - Form inputs match site
-   - Buttons are red, rounded, hoverable
-   - Stripe payment step renders correctly
-4. Iterate on any selectors that didn't catch (Acuity's class names occasionally differ between accounts/plans — inspect the iframe and add overrides as needed)
+1. Save the CSS in Acuity
+2. Reload `/booking` on the live site (or local dev) — embed should now be black with red accents
+3. Walk through a test booking end-to-end:
+   - Select a service → service rows should be dark with red hover
+   - Pick a date → calendar should be dark, today/selected red
+   - Pick a time → time slots dark, hover red, selected red
+   - Fill the form → inputs dark with white text, red focus ring
+   - Pay through Stripe → Stripe element dark
+4. **If something doesn't restyle:** open `/booking` in Chrome, right-click the iframe, **Inspect Frame Source** (or Inspect → switch context to the Acuity iframe), find the offending element's actual class/role, and let me know — I'll add a targeted override.
 
 ---
 
-## Notes
+## Why some selectors look defensive
 
-- Acuity's iframe is sandboxed, so the parent site's fonts can't pass through. We import Poppins from Google Fonts inside the CSS instead.
-- The display headline font (Awakening) isn't used inside Acuity — it has no number glyphs and the dense booking UI suits Poppins better.
-- If a selector doesn't take effect, right-click the iframe element in the browser, "Inspect Frame", and add the actual class name to this CSS.
+Acuity uses Emotion (CSS-in-JS) so most class names are auto-generated hashes that change on every Acuity deploy. Targeting `.css-1myzyg8` would break next week.
+
+Stable hooks we can use:
+- **Semantic class names:** `.business-container`, `.business-name`, `.step-title`, `.select-item`, `.appointment-type-name`, `.btn`, `.StripeElement`
+- **Tag selectors:** `body`, `h1`–`h5`, `button`, `input`, `select`, `textarea`, `label`, `a`, `hr`
+- **ARIA roles & states:** `[role="grid"]`, `[role="gridcell"]`, `[aria-selected="true"]`, `[aria-disabled="true"]`
+
+If Acuity ever changes a semantic class, we'll see it on a regression check and patch.
