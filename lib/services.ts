@@ -75,20 +75,3 @@ export const TEETH_WHITENING = {
   duration: 90,
   availability: 'Mondays and Wednesdays',
 } as const
-
-/**
- * Booking page services — simplified list for Nick's appointment selector.
- * NOTE: These prices differ from the walk-in prices page (e.g. Haircut $35 vs $40).
- * The booking page is Nick-only with a $20 premium for private appointments,
- * so the base prices shown here are lower. Confirm with Tristan if this is intentional.
- */
-export const BOOKING_SERVICES = [
-  { name: 'Haircut', price: 35, duration: 30 },
-  { name: 'Beard Trim', price: 20, duration: 15 },
-  { name: 'Haircut & Beard', price: 50, duration: 45 },
-  { name: 'Head Shave', price: 30, duration: 30 },
-  { name: 'Kids Cut (Under 12)', price: 25, duration: 20 },
-  { name: 'Hot Towel Shave', price: 40, duration: 30 },
-  { name: 'Hair Design / Pattern', price: 45, duration: 45 },
-  { name: 'Teeth Whitening', price: 250, duration: 90 },
-] as const

@@ -1,14 +1,25 @@
 'use client'
 
+import { useEffect } from 'react'
 import Header from '@/components/Header'
 import Image from 'next/image'
-import { useState } from 'react'
-import { BOOKING_SERVICES } from '@/lib/services'
 import { CONTACT } from '@/lib/config'
 import { ArrowRightIcon } from '@/components/icons'
 
+const ACUITY_URL = 'https://app.acuityscheduling.com/schedule.php?owner=39144906'
+
 export default function BookingPage() {
-  const [selectedService, setSelectedService] = useState<number | null>(null)
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://embed.acuityscheduling.com/js/embed.js'
+    script.async = true
+    document.body.appendChild(script)
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script)
+      }
+    }
+  }, [])
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -90,83 +101,47 @@ export default function BookingPage() {
         </div>
       </section>
 
-      {/* Service Selection */}
-      <section className="relative section-blend-dark bg-zinc-950 py-32 md:py-44 overflow-hidden">
+      {/* Acuity Booking Embed */}
+      <section className="relative section-blend-dark bg-zinc-950 py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <div className="flex items-center gap-4 mb-12">
-            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Services</span>
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Reserve Your Spot</span>
             <div className="h-px flex-1 bg-zinc-800" />
           </div>
-          <h2 className="font-headliner gradient-heading text-4xl md:text-6xl leading-[0.85] mb-12">SELECT YOUR SERVICE</h2>
+          <h2 className="font-headliner gradient-heading text-4xl md:text-6xl leading-[0.85] mb-12">
+            CHOOSE YOUR<br />SERVICE
+          </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-zinc-800/50 border border-zinc-800/50">
-            {BOOKING_SERVICES.map((service, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedService(index)}
-                className={`group text-left p-7 bg-black transition-all duration-200 ${
-                  selectedService === index
-                    ? 'bg-zinc-900'
-                    : 'hover:bg-zinc-900/60'
-                }`}
-              >
-                <div
-                  className={`w-6 h-px mb-5 transition-all duration-200 ${
-                    selectedService === index ? 'bg-brand-red w-10' : 'bg-zinc-700 group-hover:bg-zinc-500'
-                  }`}
-                />
-                <p className={`font-bold text-sm md:text-base mb-2 transition-colors ${
-                  selectedService === index ? 'text-white' : 'text-gray-300 group-hover:text-white'
-                }`}>
-                  {service.name}
-                </p>
-                <div className="flex items-baseline gap-3">
-                  <span className={`text-xl font-bold transition-colors ${
-                    selectedService === index ? 'text-brand-red' : 'text-gray-500 group-hover:text-gray-300'
-                  }`}>
-                    ${service.price}
-                  </span>
-                  <span className="text-gray-600 text-xs">{service.duration} min</span>
-                </div>
-                {selectedService === index && (
-                  <div className="mt-4 flex items-center gap-2 text-brand-red text-[10px] font-bold tracking-[0.2em] uppercase">
-                    <span>Selected</span>
-                    <ArrowRightIcon className="w-3 h-3" />
-                  </div>
-                )}
-              </button>
-            ))}
+          <div className="border border-zinc-800/60 bg-black p-2 md:p-4">
+            <iframe
+              src={ACUITY_URL}
+              title="Schedule Appointment"
+              width="100%"
+              height="800"
+              frameBorder="0"
+              className="block w-full"
+            />
           </div>
-
-          {/* Teeth Whitening availability notice */}
-          {selectedService !== null && BOOKING_SERVICES[selectedService].name === 'Teeth Whitening' && (
-            <div className="mt-6 border border-zinc-700 bg-black px-8 py-5 flex items-start gap-4">
-              <div className="w-1 self-stretch bg-yellow-500/60 shrink-0" />
-              <p className="text-yellow-400/90 text-sm leading-relaxed">
-                Teeth whitening appointments are only available on <span className="font-bold text-yellow-400">Mondays and Wednesdays</span>.
-              </p>
-            </div>
-          )}
         </div>
       </section>
 
-      {/* Online Booking Coming Soon */}
-      <section className="relative bg-black py-32 md:py-44 overflow-hidden">
+      {/* Questions fallback */}
+      <section className="relative bg-black py-24 md:py-32 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-red/30 to-transparent" />
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="flex items-center gap-4 mb-12">
-            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Online Booking</span>
-            <div className="h-px flex-1 bg-zinc-800" />
-          </div>
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-end">
             <div>
-              <h2 className="font-headliner gradient-heading text-4xl md:text-6xl lg:text-7xl leading-[0.85] mb-8">
-                COMING<br />SOON
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Need a hand?</span>
+                <div className="h-px flex-1 bg-zinc-800" />
+              </div>
+              <h2 className="font-headliner gradient-heading text-4xl md:text-5xl lg:text-6xl leading-[0.85] mb-6">
+                QUESTIONS?<br />MESSAGE NICK.
               </h2>
-              <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-md">
-                We&apos;re setting up online booking. In the meantime, call or message Nick directly to lock in your spot.
+              <p className="text-gray-500 text-base leading-relaxed max-w-md">
+                Can&apos;t find the right service or have a special request? Reach out directly.
               </p>
             </div>
 
