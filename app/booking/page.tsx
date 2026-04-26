@@ -55,23 +55,8 @@ export default function BookingPage() {
         </div>
       </section>
 
-      {/* Appointment Notice Banner */}
-      <section className="relative section-blend-dark bg-zinc-950 py-10 md:py-14">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
-          <div className="border border-brand-red/40 bg-black px-8 py-7 flex flex-col md:flex-row md:items-center gap-4">
-            <div className="w-1 self-stretch bg-brand-red shrink-0 hidden md:block" />
-            <div>
-              <p className="text-white font-bold text-sm tracking-[0.1em] uppercase mb-1">Appointments with Nick Only</p>
-              <p className="text-gray-400 text-sm md:text-base leading-relaxed">
-                Online bookings are exclusively for Nick&apos;s private appointment space at our Banna Avenue location. Leka and other barbers do not take appointments — walk-ins only.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Private Experience */}
-      <section className="relative bg-black py-32 md:py-44 overflow-hidden">
+      {/* The Private Appointment — combined notice + experience + rules */}
+      <section className="relative bg-black py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="flex items-center gap-4 mb-8">
@@ -81,12 +66,21 @@ export default function BookingPage() {
           <h2 className="font-headliner gradient-heading text-4xl md:text-6xl lg:text-7xl leading-[0.85] mb-8 max-w-3xl">
             THE PRIVATE<br />APPOINTMENT
           </h2>
-          <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl">
-            When you book an appointment, you get your own private barber experience — complimentary water or Coca-Cola, a hot towel treatment, and personalised service. Every appointment adds $20 to skip the walk-in queue entirely.
+          <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl mb-10">
+            Book Nick&apos;s private appointment space at our Banna Avenue location for your own barber experience — complimentary water or Coca-Cola, a hot towel treatment, and personalised service. Every appointment adds $20 to skip the walk-in queue entirely.
           </p>
 
+          {/* Nick-only callout */}
+          <div className="border border-brand-red/40 bg-zinc-950 px-8 py-6 flex flex-col md:flex-row md:items-center gap-4 mb-10">
+            <div className="w-1 self-stretch bg-brand-red shrink-0 hidden md:block" />
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+              <span className="text-white font-bold tracking-[0.1em] uppercase mr-2">Nick only —</span>
+              Leka and other barbers do not take appointments. Walk-ins only.
+            </p>
+          </div>
+
           {/* Booking rules */}
-          <div className="mt-14 grid sm:grid-cols-3 gap-px border border-zinc-800/50 bg-zinc-800/50">
+          <div className="grid sm:grid-cols-3 gap-px border border-zinc-800/50 bg-zinc-800/50">
             {[
               { label: 'Payment', detail: 'Full payment required to confirm your booking.' },
               { label: 'Arrival', detail: 'Please arrive 10 minutes before your appointment.' },
@@ -138,7 +132,7 @@ export default function BookingPage() {
                 <div className="h-px flex-1 bg-zinc-800" />
               </div>
               <h2 className="font-headliner gradient-heading text-4xl md:text-5xl lg:text-6xl leading-[0.85] mb-6">
-                QUESTIONS?<br />MESSAGE NICK.
+                MESSAGE NICK<br />YOUR QUESTIONS
               </h2>
               <p className="text-gray-500 text-base leading-relaxed max-w-md">
                 Can&apos;t find the right service or have a special request? Reach out directly.
