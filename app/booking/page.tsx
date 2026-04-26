@@ -50,7 +50,7 @@ export default function BookingPage() {
             BOOK YOUR<br />APPOINTMENT
           </h1>
           <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl">
-            Book a guaranteed time with Nick at our Banna Avenue location instead of waiting 20–30 minutes for a walk-in. Every appointment adds $20 to lock in your slot — private area, complimentary water or Coca-Cola, and personalised service. Paid in full upfront to confirm your booking.
+            Book a guaranteed time with Nick at our Banna Avenue location instead of waiting 20–30 minutes for a walk-in. Every appointment includes a private area, complimentary water or Coca-Cola, and personalised service. Paid in full upfront to confirm your booking.
           </p>
         </div>
       </section>
@@ -71,7 +71,7 @@ export default function BookingPage() {
           {/* Booking rules */}
           <div className="grid sm:grid-cols-3 gap-px border border-zinc-800/50 bg-zinc-800/50">
             {[
-              { label: 'Payment', detail: 'Full payment required to confirm your booking.' },
+              { label: 'Payment', detail: 'Full payment required to confirm your booking. A $20 surcharge applies to all booked services.' },
               { label: 'Arrival', detail: 'Please arrive 10 minutes before your appointment.' },
               { label: 'Late policy', detail: '10+ minutes late and Nick reserves the right to refuse the appointment.' },
             ].map(({ label, detail }) => (
