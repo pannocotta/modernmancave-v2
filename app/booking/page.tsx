@@ -50,7 +50,7 @@ export default function BookingPage() {
             BOOK YOUR<br />APPOINTMENT
           </h1>
           <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl">
-            Skip the wait and secure your premium grooming experience. Bookings are paid in full to guarantee your spot — private area, a drink on arrival, expert service from Nick.
+            Book a guaranteed time with Nick at our Banna Avenue location instead of waiting 20–30 minutes for a walk-in. Every appointment adds $20 to lock in your slot — private area, complimentary water or Coca-Cola, and personalised service. Paid in full upfront to confirm your booking.
           </p>
         </div>
       </section>
@@ -59,10 +59,6 @@ export default function BookingPage() {
       <section className="relative bg-black pt-4 pb-24 md:pt-6 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl mb-10">
-            Book Nick&apos;s private appointment space at our Banna Avenue location for your own barber experience — complimentary water or Coca-Cola, a hot towel treatment, and personalised service. Every appointment adds $20 to skip the walk-in queue entirely.
-          </p>
-
           {/* Nick-only callout */}
           <div className="border border-brand-red/40 bg-zinc-950 px-8 py-6 flex flex-col md:flex-row md:items-center gap-4 mb-10">
             <div className="w-1 self-stretch bg-brand-red shrink-0 hidden md:block" />
