@@ -138,7 +138,7 @@ export const TEAM = [
     initial: 'J',
     image: '/team/john.png',
     title: 'Banna Ave',
-    bio: "Top of his class out of one of the Philippines' leading barbering schools. John brings serious technical chops to every chair — fades, lineups, classic cuts, all dialled in. Confident with clippers, sharp with detail, and trained to a standard you can see in every finish.",
+    bio: "Top of his class from a leading Filipino barbering school. Tight fades, clean lineups, sharp finish — trained for precision.",
     instagram: { handle: '@rowi_44', url: 'https://www.instagram.com/rowi_44' },
   },
   {
@@ -146,7 +146,7 @@ export const TEAM = [
     initial: 'J',
     image: '/team/jordan.png',
     title: 'Banna Ave',
-    bio: "Graduated top of his cohort from a top barbering school in the Philippines. Jordan moves through cuts and grooming with the calm precision of someone who's done the reps. Whether it's a clean fade or a full reset, expect the work to land right the first time.",
+    bio: "Graduated top of his cohort in the Philippines. Calm precision across cuts, fades, and grooming. Lands the cut right the first time.",
     instagram: { handle: '@jd_respetado', url: 'https://www.instagram.com/jd_respetado' },
   },
   {
@@ -154,7 +154,7 @@ export const TEAM = [
     initial: 'C',
     image: '/team/christian.png',
     title: 'Griffith Central',
-    bio: 'One of the top graduates from his Filipino barbering academy. Christian leans into the detail — texture, blends, and beard work that takes time and pays off when you walk out. Trained for precision, dialled into modern styles, methodical from start to finish.',
+    bio: 'One of the top graduates from his Filipino academy. Detail-driven work — texture, blends, beard sculpting. Methodical, never rushed.',
     instagram: { handle: '@chris_barber101100', url: 'https://www.instagram.com/chris_barber101100' },
   },
   {
@@ -162,7 +162,7 @@ export const TEAM = [
     initial: 'B',
     image: '/team/brad.png',
     title: 'Griffith Central',
-    bio: "Trained at one of the Philippines' best barbering schools and finished at the top of his class. Brad is versatile across cuts, fades, and beards with a warm, easy chair-side. Quick hands, modern eye, and a finish that reflects exactly the standard he was trained to.",
+    bio: "Trained at one of the Philippines' best schools, top of his class. Versatile across cuts, fades, and beards. Warm chair, quick hands.",
   },
 ] as const
 
