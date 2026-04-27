@@ -24,7 +24,14 @@ export default function FloatingBookButton() {
   }, [])
 
   // Don't show on routes where it's redundant or in the way
-  if (pathname === '/booking' || pathname === '/mobile-barber-enquiry' || pathname === '/launch') return null
+  if (
+    pathname === '/booking' ||
+    pathname === '/mobile-barber-enquiry' ||
+    pathname === '/launch' ||
+    pathname.startsWith('/book/')
+  ) {
+    return null
+  }
   if (!visible) return null
 
   return (

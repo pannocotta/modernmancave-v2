@@ -58,6 +58,16 @@ body {
   animation: tap-flash 0.7s ease-out;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ─── Native date input icon — visible on dark backgrounds ─── */
 
 input[type="date"]::-webkit-calendar-picker-indicator,

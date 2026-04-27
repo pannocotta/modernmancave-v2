@@ -7,10 +7,12 @@ import { LOCATIONS, SOCIAL } from '@/lib/config'
 import { InstagramIcon, FacebookIcon } from '@/components/icons'
 
 const HIDDEN_PATHS = ['/launch']
+const HIDDEN_PREFIXES = ['/book/']
 
 export default function Footer() {
   const pathname = usePathname()
   if (HIDDEN_PATHS.includes(pathname)) return null
+  if (HIDDEN_PREFIXES.some((p) => pathname.startsWith(p))) return null
 
   return (
     <footer className="relative bg-zinc-950 pt-1 pb-20 section-blend-dark">

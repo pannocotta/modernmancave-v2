@@ -95,8 +95,10 @@ export function buildAcuityUrl(appointmentTypeId?: number | string): string {
   return `${ACUITY_BASE_URL}&appointmentType=${appointmentTypeId}`
 }
 
-/** Build the local /booking URL with optional service pre-selection. */
+/** Build the local custom booking URL for a given service.
+ *  When a service ID is provided, links to the multi-step app-style /book flow.
+ *  When omitted, falls back to the iframe-based /booking page (full picker). */
 export function buildBookingUrl(appointmentTypeId?: number): string {
   if (!appointmentTypeId) return '/booking'
-  return `/booking?appointmentType=${appointmentTypeId}`
+  return `/book/${appointmentTypeId}`
 }

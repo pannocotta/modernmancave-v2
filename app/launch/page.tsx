@@ -11,7 +11,7 @@ import {
   buildBookingUrl,
   getServicesByCategory,
 } from '@/lib/acuity'
-import LaunchInstallNudge from '@/components/LaunchInstallNudge'
+import InstallPromptModal from '@/components/InstallPromptModal'
 
 export default function LaunchPage() {
   const [now, setNow] = useState<Date | null>(null)
@@ -160,14 +160,14 @@ export default function LaunchPage() {
 
         {/* Status footer */}
         {status && (
-          <div className="text-center pt-6 mb-2 border-t border-zinc-900">
+          <div className="text-center pt-6 border-t border-zinc-900">
             <p className="text-gray-500 text-xs leading-relaxed">{status.text}</p>
           </div>
         )}
-
-        {/* Contextual install nudge — hidden if already installed */}
-        <LaunchInstallNudge />
       </div>
+
+      {/* First-visit install popup — hidden if already installed or previously dismissed */}
+      <InstallPromptModal />
     </main>
   )
 }
