@@ -38,52 +38,55 @@ export default function CommunityForm() {
 
   if (status === 'sent') {
     return (
-      <div className="text-center py-12">
-        <h3 className="text-2xl font-bold text-white mb-3">Thanks for reaching out</h3>
-        <p className="text-gray-500">We&apos;ll be in touch soon.</p>
+      <div className="border border-zinc-800 p-12 text-center">
+        <div className="w-12 h-px bg-brand-red mx-auto mb-8" />
+        <h3 className="font-headliner gradient-heading text-3xl md:text-4xl mb-6">THANKS FOR REACHING OUT</h3>
+        <p className="text-gray-400 leading-relaxed">We&apos;ll be in touch soon.</p>
       </div>
     )
   }
 
+  const inputClass =
+    'w-full bg-transparent border-b border-zinc-700 px-0 py-3 text-white focus:border-brand-red focus:outline-none transition-colors placeholder:text-zinc-600'
+  const labelClass =
+    'block text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3'
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid md:grid-cols-2 gap-5">
-        <input
-          name="name"
-          type="text"
+    <form onSubmit={handleSubmit} className="space-y-8">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label className={labelClass}>Your Name *</label>
+          <input name="name" type="text" required className={inputClass} />
+        </div>
+        <div>
+          <label className={labelClass}>Email *</label>
+          <input name="email" type="email" required className={inputClass} />
+        </div>
+      </div>
+
+      <div>
+        <label className={labelClass}>Phone</label>
+        <input name="phone" type="tel" className={inputClass} />
+      </div>
+
+      <div>
+        <label className={labelClass}>Tell us about your cause or event *</label>
+        <textarea
+          name="message"
           required
-          placeholder="Your name"
-          className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
-        />
-        <input
-          name="email"
-          type="email"
-          required
-          placeholder="Email address"
-          className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
+          rows={4}
+          className={`${inputClass} resize-none`}
         />
       </div>
-      <input
-        name="phone"
-        type="tel"
-        placeholder="Phone number (optional)"
-        className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
-      />
-      <textarea
-        name="message"
-        required
-        rows={4}
-        placeholder="Tell us about your cause or event"
-        className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors resize-none"
-      />
-      <div className="flex justify-center pt-2">
+
+      <div className="pt-4">
         <CTAButton type="submit" disabled={status === 'sending'}>
           {status === 'sending' ? 'SENDING...' : 'SUBMIT'}
         </CTAButton>
+        {status === 'error' && (
+          <p className="text-red-500 text-xs tracking-wide mt-6">Something went wrong. Please try again.</p>
+        )}
       </div>
-      {status === 'error' && (
-        <p className="text-red-500 text-sm text-center">Something went wrong. Please try again.</p>
-      )}
     </form>
   )
 }
