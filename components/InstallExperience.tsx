@@ -77,7 +77,7 @@ export default function InstallExperience() {
           YOU&apos;RE ALL SET
         </h2>
         <p className="text-gray-400 leading-relaxed max-w-md mx-auto">
-          Modern Mancave is already installed on this device. Open it from your home screen any time you need a cut.
+          Modern Mancave is installed on this device. Open it from your home screen and you&apos;ll go straight to the booking page.
         </p>
       </div>
     )
