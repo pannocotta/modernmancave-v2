@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Poppins, Playfair_Display, Bebas_Neue } from 'next/font/google'
+import { Poppins, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
 import { CartProvider } from '@/lib/cart-context'
@@ -16,15 +16,8 @@ const poppins = Poppins({
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '700', '900'],
-  variable: '--font-playfair',
-  display: 'swap',
-})
-
-const bebas = Bebas_Neue({
-  subsets: ['latin'],
   weight: ['400'],
-  variable: '--font-bebas',
+  variable: '--font-playfair',
   display: 'swap',
 })
 
@@ -66,7 +59,6 @@ export default function RootLayout({
       <head>
         <link rel="apple-touch-icon" href="/logo.png" />
         <link rel="preload" href="/fonts/AwakenningPersonalUse-DOLPD.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/hero-video.mp4" as="video" type="video/mp4" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -104,7 +96,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${poppins.variable} ${playfair.variable} ${bebas.variable} font-sans`}>
+      <body className={`${poppins.variable} ${playfair.variable} font-sans`}>
         <CartProvider>
           <PageTransition>
             {children}
