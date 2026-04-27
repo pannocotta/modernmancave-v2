@@ -14,24 +14,24 @@ export default function AppPage() {
       <Header />
 
       {/* Hero */}
-      <section className="relative min-h-[100svh] flex items-end pb-20 md:pb-28 pt-32 md:pt-40 bg-black overflow-hidden">
+      <section className="relative flex items-center pt-32 md:pt-40 pb-16 md:pb-20 bg-black overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black z-10" />
           <div className="absolute inset-0 z-20 opacity-[0.03] pointer-events-none grain-overlay" />
         </div>
 
-        {/* Corner accent brackets */}
-        <div className="absolute top-20 left-6 md:top-28 md:left-12 z-30 w-12 h-12 md:w-16 md:h-16 border-t border-l border-brand-red/30" />
-        <div className="absolute top-20 right-6 md:top-28 md:right-12 z-30 w-12 h-12 md:w-16 md:h-16 border-t border-r border-brand-red/30" />
-        <div className="absolute bottom-20 left-6 md:bottom-28 md:left-12 z-30 w-12 h-12 md:w-16 md:h-16 border-b border-l border-brand-red/30" />
-        <div className="absolute bottom-20 right-6 md:bottom-28 md:right-12 z-30 w-12 h-12 md:w-16 md:h-16 border-b border-r border-brand-red/30" />
+        {/* Corner accent brackets — tight around the content */}
+        <div className="absolute top-28 left-6 md:top-32 md:left-12 z-30 w-10 h-10 md:w-14 md:h-14 border-t border-l border-brand-red/30" />
+        <div className="absolute top-28 right-6 md:top-32 md:right-12 z-30 w-10 h-10 md:w-14 md:h-14 border-t border-r border-brand-red/30" />
+        <div className="absolute bottom-12 left-6 md:bottom-16 md:left-12 z-30 w-10 h-10 md:w-14 md:h-14 border-b border-l border-brand-red/30" />
+        <div className="absolute bottom-12 right-6 md:bottom-16 md:right-12 z-30 w-10 h-10 md:w-14 md:h-14 border-b border-r border-brand-red/30" />
 
-        <div className="relative z-30 max-w-7xl mx-auto px-6 md:px-10 w-full">
+        <div className="relative z-30 max-w-7xl mx-auto px-6 md:px-10 w-full text-center md:text-left py-16 md:py-20">
           <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-6 block">PWA</span>
-          <h1 className="font-headliner gradient-heading text-6xl md:text-8xl lg:text-[9rem] leading-[0.85] mb-8">
+          <h1 className="font-headliner gradient-heading text-5xl md:text-7xl lg:text-8xl leading-[0.85] mb-8">
             DOWNLOAD<br />THE APP
           </h1>
-          <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-lg">
+          <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-lg mx-auto md:mx-0">
             No app store required. Add Modern Mancave to your home screen for instant bookings and a native app experience.
           </p>
         </div>
