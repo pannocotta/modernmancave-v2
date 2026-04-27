@@ -4,6 +4,13 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { ArrowRightIcon } from '@/components/icons'
 import { CONTACT } from '@/lib/config'
+import {
+  ACUITY_SERVICES,
+  FEATURED_SERVICE_IDS,
+  SERVICE_CATEGORIES_ORDERED,
+  buildBookingUrl,
+  getServicesByCategory,
+} from '@/lib/acuity'
 
 export default function LaunchPage() {
   const [now, setNow] = useState<Date | null>(null)
@@ -15,9 +22,12 @@ export default function LaunchPage() {
   }, [])
 
   const status = now ? deriveStatus(now) : null
+  const featured = FEATURED_SERVICE_IDS.map(
+    (id) => ACUITY_SERVICES.find((s) => s.id === id)!,
+  )
 
   return (
-    <main className="min-h-[100svh] bg-black text-white relative overflow-hidden">
+    <main className="min-h-[100svh] bg-black text-white relative overflow-hidden pb-24">
       {/* Atmospheric backdrop */}
       <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
         <div
@@ -48,65 +58,82 @@ export default function LaunchPage() {
         )}
       </header>
 
-      <div className="relative z-10 px-6 pb-20 max-w-md mx-auto">
+      <div className="relative z-10 px-6 max-w-md mx-auto">
         {/* Welcome */}
-        <div className="mt-10 mb-10">
+        <div className="mt-10 mb-8">
           <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-4">{greeting()}</p>
           <h1 className="font-headliner gradient-heading text-5xl leading-[0.85] mb-4">
             BOOK YOUR<br />NEXT CUT
           </h1>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Tap below to lock in a time with Nick. Skip the walk-in queue, get the private room treatment.
+            Tap a service below to lock in a time with Nick. Pre-pays and confirms in one go.
           </p>
         </div>
 
-        {/* Primary CTA — big, full-width */}
-        <Link
-          href="/booking"
-          className="group relative block border border-white/30 hover:border-white transition-colors mb-8 active:scale-[0.99] transition-transform"
-        >
-          <div className="flex items-stretch">
-            <span className="bg-brand-red w-3 self-stretch group-hover:w-12 transition-all duration-300" />
-            <div className="flex-1 px-6 py-5 flex items-center justify-between">
-              <div>
-                <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-brand-red mb-1">Book Now</p>
-                <p className="text-white font-bold text-base tracking-[0.05em]">Schedule with Nick</p>
-              </div>
-              <ArrowRightIcon className="w-5 h-5 text-white" />
-            </div>
-          </div>
-        </Link>
-
-        {/* Service shortcuts */}
-        <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">Quick Book</p>
+        {/* Featured services — 2x2 grid */}
+        <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">Most Booked</p>
         <div className="grid grid-cols-2 gap-3 mb-8">
-          {[
-            { label: "Men's Cut", price: 40 },
-            { label: 'Skin Fade', price: 45 },
-            { label: 'Cut & Beard', price: 50 },
-            { label: 'Hot Towel', price: 45 },
-          ].map((s) => (
+          {featured.map((service) => (
             <Link
-              key={s.label}
-              href="/booking"
-              className="border border-zinc-800 hover:border-brand-red/60 active:scale-[0.98] transition-all p-4 group"
+              key={service.id}
+              href={buildBookingUrl(service.id)}
+              className="relative border border-zinc-800 hover:border-brand-red/60 active:scale-[0.98] transition-all p-4 group flex flex-col justify-between min-h-[110px] overflow-hidden"
             >
-              <p className="text-white text-sm font-semibold tracking-wide mb-1 group-hover:text-brand-red transition-colors">
-                {s.label}
+              <div className="absolute top-0 left-0 w-2 h-full bg-brand-red/0 group-hover:bg-brand-red transition-colors" />
+              <p className="text-white font-bold text-sm leading-tight tracking-wide pr-2">
+                {service.name}
               </p>
-              <p className="text-gray-500 text-xs">${s.price}</p>
+              <div className="flex items-baseline justify-between mt-3">
+                <span className="text-brand-red text-lg font-bold">${service.price}</span>
+                <span className="text-gray-600 text-[10px] tracking-wide">{service.duration} min</span>
+              </div>
             </Link>
           ))}
+        </div>
+
+        {/* All services by category */}
+        <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-4">All Services</p>
+        <div className="space-y-6 mb-8">
+          {SERVICE_CATEGORIES_ORDERED.map((category) => {
+            const services = getServicesByCategory(category)
+            return (
+              <div key={category}>
+                <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-2">{category}</p>
+                <div className="border border-zinc-900 rounded-sm overflow-hidden">
+                  {services.map((service, i) => (
+                    <Link
+                      key={service.id}
+                      href={buildBookingUrl(service.id)}
+                      className={`group flex items-center justify-between px-4 py-3 hover:bg-zinc-950 active:bg-zinc-900 transition-colors ${
+                        i !== services.length - 1 ? 'border-b border-zinc-900' : ''
+                      }`}
+                    >
+                      <div className="flex-1 min-w-0">
+                        <p className="text-white text-sm font-medium tracking-wide truncate group-hover:text-brand-red transition-colors">
+                          {service.name}
+                        </p>
+                        <p className="text-gray-600 text-[11px]">{service.duration} min</p>
+                      </div>
+                      <div className="flex items-center gap-3 shrink-0 ml-4">
+                        <span className="text-white font-bold text-sm">${service.price}</span>
+                        <ArrowRightIcon className="w-3.5 h-3.5 text-gray-700 group-hover:text-brand-red transition-colors" />
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
         </div>
 
         {/* Quick links */}
         <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">More</p>
         <div className="grid grid-cols-2 gap-3 mb-8">
           {[
-            { label: 'Prices', href: '/prices' },
             { label: 'Locations', href: '/locations' },
-            { label: 'The Team', href: '/team' },
+            { label: 'Our Team', href: '/team' },
             { label: 'Mobile Studio', href: '/mobile-barber' },
+            { label: 'About', href: '/' },
           ].map((link) => (
             <Link
               key={link.href}
@@ -148,16 +175,14 @@ function greeting() {
   return 'Good Evening'
 }
 
-// Banna Ave hours (the only location with appointments) — Mon-Fri 8-5:30,
-// Thu 8-6, Sat 7-4, Sun 8-4. Used for the open/closed indicator.
 const HOURS: Record<number, [number, number]> = {
-  0: [8, 16], // Sunday
-  1: [8, 17.5], // Monday
+  0: [8, 16],
+  1: [8, 17.5],
   2: [8, 17.5],
   3: [8, 17.5],
-  4: [8, 18], // Thursday
+  4: [8, 18],
   5: [8, 17.5],
-  6: [7, 16], // Saturday
+  6: [7, 16],
 }
 
 function deriveStatus(now: Date) {
@@ -173,7 +198,6 @@ function deriveStatus(now: Date) {
       text: `Open now — closes ${formatTime(closeH, closeM)}`,
     }
   }
-  // Find next opening
   for (let i = 0; i < 7; i++) {
     const nextDay = (day + i) % 7
     const [nextOpen] = HOURS[nextDay]

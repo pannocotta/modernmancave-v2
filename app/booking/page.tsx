@@ -1,16 +1,21 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Header from '@/components/Header'
 import Image from 'next/image'
 import { CONTACT } from '@/lib/config'
 import { ArrowRightIcon } from '@/components/icons'
 import { CTAAnchor } from '@/components/CTA'
-
-const ACUITY_URL = 'https://app.acuityscheduling.com/schedule.php?owner=39144906'
+import { buildAcuityUrl, getServiceById } from '@/lib/acuity'
 
 export default function BookingPage() {
+  // Read ?appointmentType= from URL on mount so we can pre-select a service.
+  const [appointmentType, setAppointmentType] = useState<string | null | undefined>(undefined)
+
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setAppointmentType(params.get('appointmentType'))
+
     const script = document.createElement('script')
     script.src = 'https://embed.acuityscheduling.com/js/embed.js'
     script.async = true
@@ -21,6 +26,9 @@ export default function BookingPage() {
       }
     }
   }, [])
+
+  const acuityUrl = buildAcuityUrl(appointmentType ?? undefined)
+  const preselected = appointmentType ? getServiceById(Number(appointmentType)) : null
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -93,19 +101,32 @@ export default function BookingPage() {
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Reserve Your Spot</span>
             <div className="h-px flex-1 bg-zinc-800" />
           </div>
-          <h2 className="font-headliner gradient-heading text-4xl md:text-6xl leading-[0.85] mb-12">
-            CHOOSE YOUR<br />SERVICE
+          <h2 className="font-headliner gradient-heading text-4xl md:text-6xl leading-[0.85] mb-6">
+            {preselected ? 'PICK A TIME' : (<>CHOOSE YOUR<br />SERVICE</>)}
           </h2>
+          {preselected && (
+            <div className="mb-12 inline-flex items-center border border-brand-red/40 bg-zinc-950 px-5 py-3">
+              <span className="bg-brand-red w-1 self-stretch shrink-0 mr-4" />
+              <div>
+                <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-brand-red mb-1">Selected service</p>
+                <p className="text-white font-bold tracking-wide text-base">{preselected.name}</p>
+                <p className="text-gray-500 text-xs tracking-wide">${preselected.price} · {preselected.duration} min</p>
+              </div>
+            </div>
+          )}
 
           <div className="border border-zinc-800/60 bg-black p-2 md:p-4">
-            <iframe
-              src={ACUITY_URL}
-              title="Schedule Appointment"
-              width="100%"
-              height="800"
-              frameBorder="0"
-              className="block w-full"
-            />
+            {appointmentType !== undefined && (
+              <iframe
+                key={appointmentType ?? 'default'}
+                src={acuityUrl}
+                title="Schedule Appointment"
+                width="100%"
+                height="800"
+                frameBorder="0"
+                className="block w-full"
+              />
+            )}
           </div>
         </div>
       </section>
