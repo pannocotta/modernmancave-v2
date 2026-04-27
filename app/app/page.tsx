@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import InstallExperience from '@/components/InstallExperience'
+import AppMockup from '@/components/AppMockup'
 
 export const metadata: Metadata = {
   title: 'Download the App',
@@ -13,27 +14,31 @@ export default function AppPage() {
     <main className="min-h-screen bg-black text-white">
       <Header />
 
-      {/* Hero */}
-      <section className="relative flex items-center pt-32 md:pt-40 pb-16 md:pb-20 bg-black overflow-hidden">
+      {/* Hero — 2-col on desktop, mockup-on-top on mobile */}
+      <section className="relative pt-32 md:pt-40 pb-16 md:pb-24 bg-black overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black z-10" />
           <div className="absolute inset-0 z-20 opacity-[0.03] pointer-events-none grain-overlay" />
         </div>
 
-        {/* Corner accent brackets — tight around the content */}
-        <div className="absolute top-28 left-6 md:top-32 md:left-12 z-30 w-10 h-10 md:w-14 md:h-14 border-t border-l border-brand-red/30" />
-        <div className="absolute top-28 right-6 md:top-32 md:right-12 z-30 w-10 h-10 md:w-14 md:h-14 border-t border-r border-brand-red/30" />
-        <div className="absolute bottom-12 left-6 md:bottom-16 md:left-12 z-30 w-10 h-10 md:w-14 md:h-14 border-b border-l border-brand-red/30" />
-        <div className="absolute bottom-12 right-6 md:bottom-16 md:right-12 z-30 w-10 h-10 md:w-14 md:h-14 border-b border-r border-brand-red/30" />
+        <div className="relative z-30 max-w-7xl mx-auto px-6 md:px-10 w-full">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            {/* Mockup — first on mobile (top), second on desktop (right) */}
+            <div className="order-1 md:order-2 flex justify-center md:justify-end">
+              <AppMockup />
+            </div>
 
-        <div className="relative z-30 max-w-7xl mx-auto px-6 md:px-10 w-full text-center md:text-left py-16 md:py-20">
-          <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-6 block">PWA</span>
-          <h1 className="font-headliner gradient-heading text-5xl md:text-7xl lg:text-8xl leading-[0.85] mb-8">
-            DOWNLOAD<br />THE APP
-          </h1>
-          <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-lg mx-auto md:mx-0">
-            No app store required. Add Modern Mancave to your home screen for instant bookings and a native app experience.
-          </p>
+            {/* Text */}
+            <div className="order-2 md:order-1 text-center md:text-left">
+              <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-6 block">PWA</span>
+              <h1 className="font-headliner gradient-heading text-5xl md:text-7xl lg:text-8xl leading-[0.85] mb-8">
+                DOWNLOAD<br />THE APP
+              </h1>
+              <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-lg mx-auto md:mx-0">
+                No app store required. Add Modern Mancave to your home screen for instant bookings and a native app experience.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
