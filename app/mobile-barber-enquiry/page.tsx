@@ -71,7 +71,7 @@ export default function MobileBarberEnquiryPage() {
                       type="text"
                       name="firstName"
                       required
-                      className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
+                      className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
                     />
                   </div>
                   <div>
@@ -80,7 +80,7 @@ export default function MobileBarberEnquiryPage() {
                       type="text"
                       name="lastName"
                       required
-                      className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
+                      className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
                     />
                   </div>
                 </div>
@@ -91,7 +91,7 @@ export default function MobileBarberEnquiryPage() {
                     type="email"
                     name="email"
                     required
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
                   />
                 </div>
 
@@ -101,13 +101,13 @@ export default function MobileBarberEnquiryPage() {
                     type="tel"
                     name="phone"
                     required
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-bold mb-2 text-gray-400">EVENT TYPE</label>
-                  <select name="eventType" className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none">
+                  <select name="eventType" className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors">
                     <option value="">Select event type</option>
                     <option value="wedding">Wedding</option>
                     <option value="corporate">Corporate Event</option>
@@ -122,7 +122,7 @@ export default function MobileBarberEnquiryPage() {
                   <input
                     type="date"
                     name="eventDate"
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
                   />
                 </div>
 
@@ -132,7 +132,7 @@ export default function MobileBarberEnquiryPage() {
                     type="text"
                     name="eventLocation"
                     placeholder="e.g. Griffith, NSW"
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
                   />
                 </div>
 
@@ -142,7 +142,7 @@ export default function MobileBarberEnquiryPage() {
                     type="number"
                     name="guestCount"
                     placeholder="How many people will need grooming?"
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
                   />
                 </div>
 
@@ -152,7 +152,7 @@ export default function MobileBarberEnquiryPage() {
                     name="message"
                     rows={4}
                     placeholder="Any special requirements or additional details..."
-                    className="w-full bg-black border border-zinc-700 px-4 py-3 focus:border-brand-red focus:outline-none"
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-5 py-4 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
                   />
                 </div>
 
