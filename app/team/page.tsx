@@ -86,13 +86,11 @@ export default function TeamPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                   </div>
 
-                  {/* Name + title */}
+                  {/* Name + location + origin */}
                   <h3 className="text-xl font-headliner text-white tracking-wider mb-1">{member.name}</h3>
                   <div className="w-8 h-px bg-brand-red/40 mx-auto my-3" />
-                  <p className="text-brand-red/70 text-[10px] font-bold tracking-[0.3em] uppercase mb-6">{member.title}</p>
-
-                  {/* Bio */}
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1">{member.bio}</p>
+                  <p className="text-brand-red/70 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">{member.title}</p>
+                  <p className="text-gray-500 text-[10px] tracking-[0.3em] uppercase mb-6 flex-1">From {member.origin}</p>
 
                   {/* Instagram */}
                   {'instagram' in member && member.instagram && (

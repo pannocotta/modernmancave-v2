@@ -98,7 +98,7 @@ export const TEAM = [
     initial: 'N',
     image: '/team/nick.png',
     title: 'Banna Ave',
-    bio: "Nick runs the private appointment space at Banna Ave. One-on-one service with a complimentary drink and hot towel treatment. No rush, no distractions. A premium grooming experience you won't find anywhere else.",
+    origin: 'Philippines',
     instagram: { handle: '@barberniks', url: 'https://www.instagram.com/barberniks' },
   },
   {
@@ -106,7 +106,7 @@ export const TEAM = [
     initial: 'K',
     image: '/team/kevin.png',
     title: 'Banna Ave',
-    bio: 'Over a decade of experience from the Philippines. Kevin brings precision, artistry, and a calm focus to every chair. Classic tapers, skin fades, or something bold. Sharp eye for detail and a client favourite for good reason.',
+    origin: 'Philippines',
     instagram: { handle: '@kevinmarkarana', url: 'https://www.instagram.com/kevinmarkarana' },
   },
   {
@@ -114,7 +114,7 @@ export const TEAM = [
     initial: 'D',
     image: '/team/delvin.png',
     title: 'Griffith Central',
-    bio: 'Ten years of barbering from the Philippines. Delvin blends technical skill with genuine care in every cut. Clean fades, textured crops, beard work. Warm energy and sharp results, every single time.',
+    origin: 'Philippines',
     instagram: { handle: '@barber_dhel', url: 'https://www.instagram.com/barber_dhel' },
   },
   {
@@ -122,7 +122,7 @@ export const TEAM = [
     initial: 'L',
     image: '/team/leka.png',
     title: 'Yambil St',
-    bio: "Straight out of Tonga with over a decade in the game. Leka is a powerhouse behind the chair. Bold cuts, sharp lineups, and full of personality. Island roots with a unique edge you won't find elsewhere.",
+    origin: 'Australia',
     instagram: { handle: '@barber.leka', url: 'https://www.instagram.com/barber.leka' },
   },
   {
@@ -130,7 +130,7 @@ export const TEAM = [
     initial: 'A',
     image: '/team/antonio.png',
     title: 'Griffith Central',
-    bio: "Italian roots and a sharp eye for clean work. Antonio brings old-school discipline to modern cuts. Fades, beard sculpting, and classic styles done right. Quiet confidence in the chair and quality you can see.",
+    origin: 'Italy',
     instagram: { handle: '@_parmentola.antonio_', url: 'https://www.instagram.com/_parmentola.antonio_' },
   },
   {
@@ -138,7 +138,7 @@ export const TEAM = [
     initial: 'J',
     image: '/team/john.png',
     title: 'Banna Ave',
-    bio: "Top of his class from a leading Filipino barbering school. Tight fades, clean lineups, sharp finish — trained for precision.",
+    origin: 'Philippines',
     instagram: { handle: '@rowi_44', url: 'https://www.instagram.com/rowi_44' },
   },
   {
@@ -146,7 +146,7 @@ export const TEAM = [
     initial: 'J',
     image: '/team/jordan.png',
     title: 'Banna Ave',
-    bio: "Graduated top of his cohort in the Philippines. Calm precision across cuts, fades, and grooming. Lands the cut right the first time.",
+    origin: 'Philippines',
     instagram: { handle: '@jd_respetado', url: 'https://www.instagram.com/jd_respetado' },
   },
   {
@@ -154,7 +154,7 @@ export const TEAM = [
     initial: 'C',
     image: '/team/christian.png',
     title: 'Griffith Central',
-    bio: 'One of the top graduates from his Filipino academy. Detail-driven work — texture, blends, beard sculpting. Methodical, never rushed.',
+    origin: 'Philippines',
     instagram: { handle: '@chris_barber101100', url: 'https://www.instagram.com/chris_barber101100' },
   },
   {
@@ -162,7 +162,7 @@ export const TEAM = [
     initial: 'B',
     image: '/team/brad.png',
     title: 'Griffith Central',
-    bio: "Trained at one of the Philippines' best schools, top of his class. Versatile across cuts, fades, and beards. Warm chair, quick hands.",
+    origin: 'Philippines',
   },
 ] as const
 
