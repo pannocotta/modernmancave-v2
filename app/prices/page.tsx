@@ -1,10 +1,10 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import Header from '@/components/Header'
 import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import { SERVICE_CATEGORIES, TEETH_WHITENING } from '@/lib/services'
 import { SOCIAL, CONTACT } from '@/lib/config'
 import { ArrowRightIcon } from '@/components/icons'
+import { CTALink } from '@/components/CTA'
 
 export const metadata = {
   title: 'Prices - Modern Mancave',
@@ -84,10 +84,7 @@ export default function PricesPage() {
               <p className="text-gray-500 text-xs mb-8">
                 Available on <span className="text-white">{TEETH_WHITENING.availability}</span> only.
               </p>
-              <Link href="/booking" className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
-                <span className="relative z-10">BOOK NOW</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </Link>
+              <CTALink href="/booking">BOOK NOW</CTALink>
             </div>
 
             {/* Before & After */}
@@ -158,10 +155,7 @@ export default function PricesPage() {
           <p className="text-gray-500 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">
             All bookings require full payment. Spots are limited — secure yours today.
           </p>
-          <Link href="/booking" className="group relative bg-brand-red text-white px-14 py-5 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_40px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
-            <span className="relative z-10">BOOK NOW</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </Link>
+          <CTALink href="/booking">BOOK NOW</CTALink>
         </div>
       </section>
     </main>

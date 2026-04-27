@@ -5,6 +5,7 @@ import FloatingBookButton from '@/components/FloatingBookButton'
 import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import { TESTIMONIALS, SOCIAL, SITE, LOCATIONS } from '@/lib/config'
 import ServiceStrip from '@/components/Marquee'
+import { CTALink } from '@/components/CTA'
 import { ArrowRightIcon, InstagramIcon, FacebookIcon } from '@/components/icons'
 
 export default function Home() {
@@ -48,10 +49,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap gap-5 items-center justify-center">
-            <Link href="/booking" className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
-              <span className="relative z-10">BOOK NOW</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </Link>
+            <CTALink href="/booking">BOOK NOW</CTALink>
             <Link href="/prices" className="group flex items-center gap-2 text-gray-400 hover:text-white text-xs tracking-[0.2em] uppercase transition-all duration-300">
               <span>VIEW PRICES</span>
               <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -167,10 +165,10 @@ export default function Home() {
               <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-10 max-w-md">
                 Get inked at the cave. Our in-house tattoo studio delivers custom designs in a space you already know and trust. Walk-ins welcome or book your session.
               </p>
-              <Link href="/prices#tattooing" className="group relative border border-white/20 hover:border-white/40 text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-3 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+              <CTALink href="/prices#tattooing" variant="ghost">
                 <span>GET IN TOUCH</span>
                 <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </CTALink>
             </div>
           </div>
         </div>
@@ -226,10 +224,7 @@ export default function Home() {
           <p className="text-gray-500 text-base md:text-lg mb-12 max-w-lg mx-auto leading-relaxed">
             Skip the wait. Lock in your appointment at any of our 3 Griffith locations.
           </p>
-          <Link href="/booking" className="group relative bg-brand-red text-white px-14 py-5 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_40px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
-            <span className="relative z-10">BOOK NOW</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </Link>
+          <CTALink href="/booking">BOOK NOW</CTALink>
         </div>
       </section>
 

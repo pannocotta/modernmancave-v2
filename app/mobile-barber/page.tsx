@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import { ArrowRightIcon } from '@/components/icons'
+import { CTALink } from '@/components/CTA'
 
 export const metadata: Metadata = {
   title: 'Mobile Barber - Modern Mancave',
@@ -58,10 +59,7 @@ export default function MobileBarberPage() {
           <p className="text-gray-400 text-base md:text-lg max-w-xl leading-relaxed mb-10">
             Hands-on barbering training for hairdressers, plus a fully equipped mobile studio serving Griffith and the surrounding towns.
           </p>
-          <Link href="/mobile-barber-enquiry" className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
-            <span className="relative z-10">BOOK OR HIRE THE STUDIO</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </Link>
+          <CTALink href="/mobile-barber-enquiry">BOOK OR HIRE THE STUDIO</CTALink>
         </div>
       </section>
 
@@ -170,10 +168,7 @@ export default function MobileBarberPage() {
           <p className="text-gray-500 text-base md:text-lg mb-10 max-w-lg mx-auto leading-relaxed">
             Book or hire our mobile studio for your next event. Weddings, corporate days, bridal parties with hair and makeup at your location of choice — get in touch for a custom quote.
           </p>
-          <Link href="/mobile-barber-enquiry" className="group relative bg-brand-red text-white px-12 py-5 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]">
-            <span className="relative z-10">ENQUIRE NOW</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </Link>
+          <CTALink href="/mobile-barber-enquiry">ENQUIRE NOW</CTALink>
         </div>
       </section>
     </main>

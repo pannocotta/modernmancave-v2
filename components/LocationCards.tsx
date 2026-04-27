@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { LOCATIONS } from '@/lib/config'
 import { ArrowRightIcon } from '@/components/icons'
-import Link from 'next/link'
+import { CTAAnchor, CTALink } from '@/components/CTA'
 
 export default function LocationCards() {
   const [selected, setSelected] = useState(0)
@@ -50,24 +50,19 @@ export default function LocationCards() {
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <a
+              <CTAAnchor
                 href={location.directionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative bg-brand-red text-white px-8 py-3.5 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-flex items-center gap-2 hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]"
               >
-                <span className="relative z-10">GET DIRECTIONS</span>
-                <ArrowRightIcon className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
-                <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </a>
+                <span>GET DIRECTIONS</span>
+                <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </CTAAnchor>
               {location.hasBooking && (
-                <Link
-                  href="/booking"
-                  className="group border border-white/20 hover:border-white/40 text-white px-8 py-3.5 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-2"
-                >
+                <CTALink href="/booking" variant="ghost">
                   <span>BOOK NOW</span>
                   <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                </CTALink>
               )}
             </div>
           </div>

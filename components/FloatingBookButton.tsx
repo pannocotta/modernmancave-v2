@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import { CTALink } from '@/components/CTA'
 
 export default function FloatingBookButton() {
   const [visible, setVisible] = useState(false)
@@ -24,11 +24,11 @@ export default function FloatingBookButton() {
   if (!visible) return null
 
   return (
-    <Link
+    <CTALink
       href="/booking"
-      className="fixed bottom-6 right-6 z-40 bg-brand-red text-white px-8 py-3 rounded-full font-bold text-xs tracking-[0.2em] uppercase shadow-lg shadow-brand-red/30 hover:bg-red-600 transition-colors"
+      className="fixed bottom-6 right-6 z-40 bg-black shadow-lg shadow-black/40"
     >
       BOOK NOW
-    </Link>
+    </CTALink>
   )
 }

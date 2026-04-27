@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import Image from 'next/image'
 import { CONTACT } from '@/lib/config'
 import { ArrowRightIcon } from '@/components/icons'
+import { CTAAnchor } from '@/components/CTA'
 
 const ACUITY_URL = 'https://app.acuityscheduling.com/schedule.php?owner=39144906'
 
@@ -129,22 +130,18 @@ export default function BookingPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={CONTACT.nick.phoneHref}
-                className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-flex items-center justify-center gap-3 hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]"
-              >
-                <span className="relative z-10">CALL {CONTACT.nick.phone}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </a>
-              <a
+              <CTAAnchor href={CONTACT.nick.phoneHref}>
+                CALL {CONTACT.nick.phone}
+              </CTAAnchor>
+              <CTAAnchor
                 href={CONTACT.nick.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group border border-white/20 hover:border-white/40 text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center justify-center gap-3 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+                variant="ghost"
               >
                 <span>WHATSAPP NICK</span>
                 <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </CTAAnchor>
             </div>
           </div>
         </div>

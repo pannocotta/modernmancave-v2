@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import { useState } from 'react'
 import { SITE } from '@/lib/config'
 import { ArrowRightIcon } from '@/components/icons'
+import { CTAAnchor, CTAButton } from '@/components/CTA'
 
 export default function FranchisePage() {
   const [submitted, setSubmitted] = useState(false)
@@ -55,13 +56,7 @@ export default function FranchisePage() {
           <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-xl mb-10">
             A proven business. A recognised brand. Everything you need to open the doors and start earning from day one.
           </p>
-          <a
-            href="#application"
-            className="group relative bg-brand-red text-white px-10 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 inline-block hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02]"
-          >
-            <span className="relative z-10">APPLY NOW</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </a>
+          <CTAAnchor href="#application">APPLY NOW</CTAAnchor>
         </div>
       </section>
 
@@ -281,14 +276,9 @@ export default function FranchisePage() {
               </div>
 
               <div className="pt-4">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="group relative bg-brand-red text-white px-12 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
-                >
-                  <span className="relative z-10">{loading ? 'SUBMITTING...' : 'SUBMIT APPLICATION'}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-brand-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </button>
+                <CTAButton type="submit" disabled={loading}>
+                  {loading ? 'SUBMITTING...' : 'SUBMIT APPLICATION'}
+                </CTAButton>
                 {error && (
                   <p className="text-red-500 text-xs tracking-wide mt-6">Something went wrong. Please try again or call us directly.</p>
                 )}
