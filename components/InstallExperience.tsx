@@ -151,8 +151,10 @@ export default function InstallExperience() {
     )
   }
 
-  // Desktop fallback — QR code so they can scan with their phone
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&bgcolor=000000&color=FFFFFF&margin=8&data=${encodeURIComponent('https://modernmancave.com.au/app')}`
+  // Desktop fallback — QR points to /launch so phone users land in the
+  // actual app shell, not the install instructions page. They can use it
+  // immediately and the install nudge sits inside /launch for context.
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&bgcolor=000000&color=FFFFFF&margin=8&data=${encodeURIComponent('https://modernmancave.com.au/launch')}`
   return (
     <div className="border border-zinc-800 bg-zinc-950 p-10 md:p-16 text-center">
       <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-6 block">
@@ -162,14 +164,14 @@ export default function InstallExperience() {
         SCAN ON YOUR PHONE
       </h2>
       <p className="text-gray-400 leading-relaxed max-w-md mx-auto mb-8">
-        The app installs to your phone&apos;s home screen, not your computer. Point your phone camera at the QR code below — it&apos;ll open this page on your phone where you can install it.
+        Point your phone camera at the QR code below. It opens the Modern Mancave app on your phone — you can book straight away or add it to your home screen for one-tap access.
       </p>
       <div className="inline-block p-3 bg-white">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={qrUrl} width={240} height={240} alt="QR code linking to modernmancave.com.au/app" className="block" />
+        <img src={qrUrl} width={240} height={240} alt="QR code linking to modernmancave.com.au/launch" className="block" />
       </div>
       <p className="text-gray-600 text-xs tracking-[0.15em] uppercase mt-6">
-        Or visit modernmancave.com.au/app on your phone
+        Or visit modernmancave.com.au/launch on your phone
       </p>
     </div>
   )
