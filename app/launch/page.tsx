@@ -10,11 +10,13 @@ import {
   SERVICE_CATEGORIES_ORDERED,
   buildBookingUrl,
   getServicesByCategory,
+  type ServiceCategory,
 } from '@/lib/acuity'
 import InstallPromptModal from '@/components/InstallPromptModal'
 
 export default function LaunchPage() {
   const [now, setNow] = useState<Date | null>(null)
+  const [openCategory, setOpenCategory] = useState<ServiceCategory | null>(null)
 
   useEffect(() => {
     setNow(new Date())
@@ -92,36 +94,57 @@ export default function LaunchPage() {
           ))}
         </div>
 
-        {/* All services by category */}
-        <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-4">All Services</p>
-        <div className="space-y-6 mb-8">
+        {/* All services by category — collapsible accordion */}
+        <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-4">Browse All Services</p>
+        <div className="space-y-2 mb-8">
           {SERVICE_CATEGORIES_ORDERED.map((category) => {
             const services = getServicesByCategory(category)
+            const isOpen = openCategory === category
             return (
-              <div key={category}>
-                <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-2">{category}</p>
-                <div className="border border-zinc-900 rounded-sm overflow-hidden">
-                  {services.map((service, i) => (
-                    <Link
-                      key={service.id}
-                      href={buildBookingUrl(service.id)}
-                      className={`group flex items-center justify-between px-4 py-3 hover:bg-zinc-950 active:bg-zinc-900 transition-colors ${
-                        i !== services.length - 1 ? 'border-b border-zinc-900' : ''
-                      }`}
-                    >
-                      <div className="flex-1 min-w-0">
-                        <p className="text-white text-sm font-medium tracking-wide truncate group-hover:text-brand-red transition-colors">
-                          {service.name}
-                        </p>
-                        <p className="text-gray-600 text-[11px]">{service.duration} min</p>
-                      </div>
-                      <div className="flex items-center gap-3 shrink-0 ml-4">
-                        <span className="text-white font-bold text-sm">${service.price}</span>
-                        <ArrowRightIcon className="w-3.5 h-3.5 text-gray-700 group-hover:text-brand-red transition-colors" />
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+              <div key={category} className="border border-zinc-900 overflow-hidden">
+                <button
+                  onClick={() => setOpenCategory(isOpen ? null : category)}
+                  className="w-full flex items-center justify-between px-4 py-4 hover:bg-zinc-950 active:bg-zinc-900 transition-colors"
+                  aria-expanded={isOpen}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className={`w-1 h-6 transition-colors ${isOpen ? 'bg-brand-red' : 'bg-zinc-800'}`} />
+                    <span className="text-white text-sm font-bold tracking-[0.15em] uppercase">{category}</span>
+                    <span className="text-gray-600 text-[10px] tracking-wide">{services.length}</span>
+                  </div>
+                  <span
+                    className={`text-gray-500 text-lg leading-none transition-transform ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}
+                    aria-hidden="true"
+                  >
+                    ⌄
+                  </span>
+                </button>
+                {isOpen && (
+                  <div className="border-t border-zinc-900">
+                    {services.map((service, i) => (
+                      <Link
+                        key={service.id}
+                        href={buildBookingUrl(service.id)}
+                        className={`group flex items-center justify-between px-4 py-3 hover:bg-zinc-950 active:bg-zinc-900 transition-colors ${
+                          i !== services.length - 1 ? 'border-b border-zinc-900' : ''
+                        }`}
+                      >
+                        <div className="flex-1 min-w-0">
+                          <p className="text-white text-sm font-medium tracking-wide truncate group-hover:text-brand-red transition-colors">
+                            {service.name}
+                          </p>
+                          <p className="text-gray-600 text-[11px]">{service.duration} min</p>
+                        </div>
+                        <div className="flex items-center gap-3 shrink-0 ml-4">
+                          <span className="text-white font-bold text-sm">${service.price}</span>
+                          <ArrowRightIcon className="w-3.5 h-3.5 text-gray-700 group-hover:text-brand-red transition-colors" />
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             )
           })}
