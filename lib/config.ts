@@ -133,6 +133,37 @@ export const TEAM = [
     bio: "Italian roots and a sharp eye for clean work. Antonio brings old-school discipline to modern cuts. Fades, beard sculpting, and classic styles done right. Quiet confidence in the chair and quality you can see.",
     instagram: { handle: '@_parmentola.antonio_', url: 'https://www.instagram.com/_parmentola.antonio_' },
   },
+  {
+    name: 'JOHN',
+    initial: 'J',
+    image: '/team/john.png',
+    title: 'Banna Ave',
+    bio: 'Sharp eye and a love for clean lines, fresh from the Philippines. John specialises in fades and lineups — patient, precise, and built for clients who want crisp work that holds its shape. Skin fades, beard work, or classic taper, every cut is dialled in. Quiet focus, sharp results.',
+    instagram: { handle: '@rowi_44', url: 'https://www.instagram.com/rowi_44' },
+  },
+  {
+    name: 'JORDAN',
+    initial: 'J',
+    image: '/team/jordan.png',
+    title: 'Yambil St',
+    bio: "All-rounder out of the Philippines with a calm, steady hand. Jordan moves through scissor work, fades, and full grooming sessions with the same easy rhythm. Whether you're after a fresh trim or a complete reset, expect crisp lines and good conversation. Built for clients who like a relaxed pace and proper attention.",
+    instagram: { handle: '@jd_respetado', url: 'https://www.instagram.com/jd_respetado' },
+  },
+  {
+    name: 'CHRISTIAN',
+    initial: 'C',
+    image: '/team/christian.png',
+    title: 'Griffith Central',
+    bio: 'Filipino barber with a sharp focus on detail and texture. Christian leans into longer cuts, scissor blends, and beard sculpting — work that takes time and pays off in how the cut wears in. Methodical in the chair and never rushed. Book Christian for something tailored, not templated.',
+    instagram: { handle: '@chris_barber101100', url: 'https://www.instagram.com/chris_barber101100' },
+  },
+  {
+    name: 'BRAD',
+    initial: 'B',
+    image: '/team/brad.png',
+    title: 'Yambil St',
+    bio: 'Warm energy and quick hands, fresh from the Philippines. Brad is a versatile barber comfortable across cuts, fades, and kids\' chairs. Friendly with first-timers, fast with regulars, and dialled into modern styles. Makes everyone — kids included — look forward to the chair.',
+  },
 ] as const
 
 export const TESTIMONIALS = [

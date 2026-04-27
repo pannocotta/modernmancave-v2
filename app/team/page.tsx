@@ -95,14 +95,16 @@ export default function TeamPage() {
                   <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-1">{member.bio}</p>
 
                   {/* Instagram */}
-                  <a
-                    href={member.instagram.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-brand-red text-xs tracking-wide transition-colors"
-                  >
-                    {member.instagram.handle}
-                  </a>
+                  {'instagram' in member && member.instagram && (
+                    <a
+                      href={member.instagram.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-brand-red text-xs tracking-wide transition-colors"
+                    >
+                      {member.instagram.handle}
+                    </a>
+                  )}
                 </div>
               </StaggerItem>
             ))}
