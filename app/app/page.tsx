@@ -60,35 +60,7 @@ export default function AppPage() {
         </div>
       </section>
 
-      {/* Step 1 — On a desktop? Scan this QR with your phone */}
-      <section className="relative bg-black py-20 md:py-24 overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
-        <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
-          <div className="flex items-center gap-4 mb-10">
-            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">On Your Computer?</span>
-            <div className="h-px flex-1 bg-zinc-800" />
-          </div>
-          <div className="border border-zinc-800 bg-zinc-950 p-8 md:p-10 grid md:grid-cols-[auto_1fr] gap-8 md:gap-10 items-center">
-            <div className="bg-white p-3 mx-auto md:mx-0 shrink-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={QR_URL} width={200} height={200} alt="QR code linking to modernmancave.com.au/launch" className="block w-[200px] h-[200px]" />
-            </div>
-            <div>
-              <h2 className="font-headliner gradient-heading text-3xl md:text-4xl leading-[0.85] mb-4">
-                SCAN WITH<br />YOUR PHONE
-              </h2>
-              <p className="text-gray-400 text-sm leading-relaxed mb-3">
-                Point your phone camera at the QR code. Tap the link that pops up. The Modern Mancave app opens on your phone — book straight away, or follow the instructions below to add it to your home screen.
-              </p>
-              <p className="text-gray-600 text-xs tracking-wide">
-                Or visit <span className="text-white font-mono">modernmancave.com.au/launch</span> in your phone&apos;s browser.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Step 2 — Install instructions, BOTH platforms always visible */}
+      {/* Step 1 — Install instructions, BOTH platforms always visible (read first) */}
       <section className="relative section-blend-dark bg-zinc-950 py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
@@ -121,6 +93,44 @@ export default function AppPage() {
           <p className="text-gray-600 text-sm tracking-wide text-center mt-12">
             Stuck? Ask at any of our locations — we&apos;ll get you set up in 30 seconds.
           </p>
+        </div>
+      </section>
+
+      {/* Step 2 — Open the app on your phone (QR for desktop, link for mobile) */}
+      <section className="relative bg-black py-20 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
+        <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
+          <div className="flex items-center gap-4 mb-10">
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Open the App</span>
+            <div className="h-px flex-1 bg-zinc-800" />
+          </div>
+          <div className="border border-zinc-800 bg-zinc-950 p-8 md:p-10 grid md:grid-cols-[auto_1fr] gap-8 md:gap-10 items-center">
+            <div className="bg-white p-3 mx-auto md:mx-0 shrink-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={QR_URL} width={200} height={200} alt="QR code linking to modernmancave.com.au/launch" className="block w-[200px] h-[200px]" />
+            </div>
+            <div>
+              <h2 className="font-headliner gradient-heading text-3xl md:text-4xl leading-[0.85] mb-4">
+                SCAN OR TAP<br />TO OPEN
+              </h2>
+              <p className="text-gray-400 text-sm leading-relaxed mb-5">
+                On a computer? Point your phone camera at the QR code — it&apos;ll open Modern Mancave on your phone. Already on your phone? Just tap the button below.
+              </p>
+              <a
+                href="/launch"
+                className="inline-flex items-stretch border border-white/30 hover:border-white transition-colors group"
+              >
+                <span className="bg-brand-red w-2 self-stretch group-hover:w-12 transition-all duration-300" />
+                <span className="px-5 py-3 text-white font-bold text-xs tracking-[0.2em] uppercase">Open the App</span>
+              </a>
+              <p className="text-gray-600 text-xs tracking-wide mt-4">
+                Or visit{' '}
+                <a href="/launch" className="text-white font-mono hover:text-brand-red transition-colors underline-offset-4 hover:underline">
+                  modernmancave.com.au/launch
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
