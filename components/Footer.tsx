@@ -1,9 +1,17 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { LOCATIONS, SOCIAL } from '@/lib/config'
 import { InstagramIcon, FacebookIcon } from '@/components/icons'
 
+const HIDDEN_PATHS = ['/launch']
+
 export default function Footer() {
+  const pathname = usePathname()
+  if (HIDDEN_PATHS.includes(pathname)) return null
+
   return (
     <footer className="relative bg-zinc-950 pt-1 pb-20 section-blend-dark">
       <div className="h-px bg-gradient-to-r from-transparent via-brand-red/40 to-transparent mb-20" />

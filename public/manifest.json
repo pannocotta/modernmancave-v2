@@ -2,7 +2,7 @@
   "name": "Modern Mancave Barbershop",
   "short_name": "Mancave",
   "description": "Premium barbershop in Griffith NSW. Book your cut, view prices, find a location.",
-  "start_url": "/booking",
+  "start_url": "/launch",
   "scope": "/",
   "display": "standalone",
   "background_color": "#000000",

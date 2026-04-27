@@ -23,8 +23,8 @@ export default function FloatingBookButton() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Don't show on the booking page itself
-  if (pathname === '/booking' || pathname === '/mobile-barber-enquiry') return null
+  // Don't show on routes where it's redundant or in the way
+  if (pathname === '/booking' || pathname === '/mobile-barber-enquiry' || pathname === '/launch') return null
   if (!visible) return null
 
   return (
