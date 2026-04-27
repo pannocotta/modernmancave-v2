@@ -5,6 +5,7 @@ import './globals.css'
 import { CartProvider } from '@/lib/cart-context'
 import PageTransition from '@/components/PageTransition'
 import Footer from '@/components/Footer'
+import FloatingBookButton from '@/components/FloatingBookButton'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -109,6 +110,7 @@ export default function RootLayout({
             {children}
             <Footer />
           </PageTransition>
+          <FloatingBookButton />
         </CartProvider>
       </body>
     </html>

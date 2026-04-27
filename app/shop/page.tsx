@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Header from '@/components/Header'
-import FloatingBookButton from '@/components/FloatingBookButton'
 import { products } from '@/lib/products'
 
 export default function ShopPage() {
@@ -30,7 +29,6 @@ export default function ShopPage() {
   return (
     <main className="min-h-screen bg-black text-white">
       <Header />
-      <FloatingBookButton />
 
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-end pb-20 md:pb-28 pt-32 md:pt-40 bg-black overflow-hidden">

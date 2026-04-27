@@ -1,9 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { CTALink } from '@/components/CTA'
 
 export default function FloatingBookButton() {
+  const pathname = usePathname()
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -21,6 +23,8 @@ export default function FloatingBookButton() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Don't show on the booking page itself
+  if (pathname === '/booking' || pathname === '/mobile-barber-enquiry') return null
   if (!visible) return null
 
   return (

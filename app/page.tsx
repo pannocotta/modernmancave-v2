@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Header from '@/components/Header'
-import FloatingBookButton from '@/components/FloatingBookButton'
 import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import { TESTIMONIALS, SOCIAL, SITE } from '@/lib/config'
 import ServiceStrip from '@/components/Marquee'
@@ -12,7 +11,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white">
       <Header />
-      <FloatingBookButton />
 
       {/* Hero */}
       <section className="relative min-h-[100svh] flex items-center justify-center bg-black overflow-hidden">
@@ -177,7 +175,7 @@ export default function Home() {
       {/* Testimonials */}
       <section className="relative bg-black py-20 md:py-44 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
-        <div className="absolute top-16 left-6 md:left-16 text-[18rem] md:text-[28rem] font-serif text-brand-red/[0.03] leading-none select-none pointer-events-none" aria-hidden="true">&ldquo;</div>
+        <div className="absolute top-16 left-6 md:left-16 text-[10rem] md:text-[18rem] lg:text-[28rem] font-serif text-brand-red/[0.03] leading-none select-none pointer-events-none" aria-hidden="true">&ldquo;</div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
           <div className="flex items-center gap-4 mb-20">
