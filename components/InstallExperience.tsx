@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { CTAButton } from '@/components/CTA'
-import { ArrowRightIcon } from '@/components/icons'
 
 type Platform = 'ios-safari' | 'ios-other' | 'android' | 'desktop' | 'installed' | 'unknown'
 
@@ -11,27 +10,28 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
 }
 
+interface InstallStep {
+  title: string
+  detail: string
+  icon: React.ReactNode
+}
+
 export default function InstallExperience() {
   const [platform, setPlatform] = useState<Platform>('unknown')
   const [installPromptEvent, setInstallPromptEvent] = useState<BeforeInstallPromptEvent | null>(null)
 
   useEffect(() => {
-    // Already installed?
     const isStandalone =
       window.matchMedia('(display-mode: standalone)').matches ||
-      // iOS Safari sets navigator.standalone when added to home screen
       (window.navigator as Navigator & { standalone?: boolean }).standalone === true
     if (isStandalone) {
       setPlatform('installed')
       return
     }
-
-    // Detect device
     const ua = navigator.userAgent.toLowerCase()
     const isIOS = /iphone|ipad|ipod/.test(ua)
     const isAndroid = /android/.test(ua)
     const isSafari = /safari/.test(ua) && !/chrome|crios|fxios|edgios/.test(ua)
-
     if (isIOS) {
       setPlatform(isSafari ? 'ios-safari' : 'ios-other')
     } else if (isAndroid) {
@@ -39,7 +39,6 @@ export default function InstallExperience() {
     } else {
       setPlatform('desktop')
     }
-
     const onBeforeInstall = (e: Event) => {
       e.preventDefault()
       setInstallPromptEvent(e as BeforeInstallPromptEvent)
@@ -107,12 +106,7 @@ export default function InstallExperience() {
       <PlatformInstructions
         eyebrow="Android · Chrome"
         heading="ADD TO HOME"
-        steps={[
-          'Tap the three-dot menu in the top right of Chrome',
-          'Tap "Install app" (or "Add to Home screen" on older Chrome)',
-          'Tap "Install" in the popup to confirm',
-          'A new Modern Mancave icon will appear on your home screen',
-        ]}
+        steps={ANDROID_STEPS}
       />
     )
   }
@@ -122,12 +116,8 @@ export default function InstallExperience() {
       <PlatformInstructions
         eyebrow="iPhone · Safari"
         heading="ADD TO HOME"
-        steps={[
-          'Tap the Share icon — the square with an upward arrow. On iPhone it sits in the bottom toolbar; on iPad it\'s in the top right.',
-          'In the share sheet, scroll down through the action list',
-          'Tap "Add to Home Screen"',
-          'Tap "Add" in the top right of the next screen — the icon will appear on your home screen',
-        ]}
+        steps={IOS_STEPS}
+        intro="Takes about 20 seconds. After this, Modern Mancave will live on your home screen just like any other app."
       />
     )
   }
@@ -151,9 +141,7 @@ export default function InstallExperience() {
     )
   }
 
-  // Desktop fallback — QR points to /launch so phone users land in the
-  // actual app shell, not the install instructions page. They can use it
-  // immediately and the install nudge sits inside /launch for context.
+  // Desktop fallback — QR points to /launch so phone users land in the app shell.
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&bgcolor=000000&color=FFFFFF&margin=8&data=${encodeURIComponent('https://modernmancave.com.au/launch')}`
   return (
     <div className="border border-zinc-800 bg-zinc-950 p-10 md:p-16 text-center">
@@ -177,34 +165,183 @@ export default function InstallExperience() {
   )
 }
 
+/* ─── Step icons (inline SVG, brand-coloured) ───────────────────── */
+
+function SafariIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <circle cx="12" cy="12" r="10" />
+      <polygon points="15.5 8.5 13 13 8.5 15.5 11 11" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function ShareIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3 L12 15" />
+      <path d="M8 7 L12 3 L16 7" />
+      <path d="M5 12 L5 20 L19 20 L19 12" />
+    </svg>
+  )
+}
+
+function PlusBoxIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="2.5" />
+      <path d="M12 8 L12 16" />
+      <path d="M8 12 L16 12" />
+    </svg>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 13 L10 18 L20 7" />
+    </svg>
+  )
+}
+
+function ChromeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="3.5" />
+      <path d="M12 2 L12 8.5" />
+      <path d="M21 12 L14 12" />
+      <path d="M3.5 6 L9 9.5" />
+    </svg>
+  )
+}
+
+function ThreeDotsIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <circle cx="12" cy="6" r="2" />
+      <circle cx="12" cy="12" r="2" />
+      <circle cx="12" cy="18" r="2" />
+    </svg>
+  )
+}
+
+function DownloadIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3 L12 16" />
+      <path d="M7 11 L12 16 L17 11" />
+      <path d="M4 18 L4 21 L20 21 L20 18" />
+    </svg>
+  )
+}
+
+/* ─── Step definitions ───────────────────────────────────── */
+
+const IOS_STEPS: InstallStep[] = [
+  {
+    title: 'Make sure you\'re in Safari',
+    detail: 'On iPhone, only Safari can install apps to your home screen. If you\'re not in Safari, copy this page\'s address and open it there.',
+    icon: <SafariIcon />,
+  },
+  {
+    title: 'Tap the Share button',
+    detail: 'It\'s the square with an upward arrow. On iPhone it sits in the bottom toolbar; on iPad it\'s usually in the top right.',
+    icon: <ShareIcon />,
+  },
+  {
+    title: 'Tap "Add to Home Screen"',
+    detail: 'Scroll down through the share sheet — it appears in the second row of options alongside "Find on Page" and others.',
+    icon: <PlusBoxIcon />,
+  },
+  {
+    title: 'Tap "Add" in the top right',
+    detail: 'You can rename the app first if you want — but the default works fine. The Modern Mancave icon will appear on your home screen.',
+    icon: <CheckIcon />,
+  },
+]
+
+const ANDROID_STEPS: InstallStep[] = [
+  {
+    title: 'Make sure you\'re in Chrome',
+    detail: 'Chrome handles installs cleanest on Android. If you\'re in Samsung Internet or Firefox, the steps are similar but the menu item may be named differently.',
+    icon: <ChromeIcon />,
+  },
+  {
+    title: 'Tap the three-dot menu',
+    detail: 'In the top right of Chrome. Three vertical dots opens the menu with Settings, Bookmarks, and Install.',
+    icon: <ThreeDotsIcon />,
+  },
+  {
+    title: 'Tap "Install app"',
+    detail: 'On older Chrome versions this is called "Add to Home screen". Either way it\'s the same outcome.',
+    icon: <DownloadIcon />,
+  },
+  {
+    title: 'Tap "Install" to confirm',
+    detail: 'Chrome will ask for confirmation. Tap Install and the Modern Mancave icon appears on your home screen straight away.',
+    icon: <CheckIcon />,
+  },
+]
+
+/* ─── Layout component ────────────────────────────────────── */
+
 function PlatformInstructions({
   eyebrow,
   heading,
   steps,
+  intro,
 }: {
   eyebrow: string
   heading: string
-  steps: string[]
+  steps: InstallStep[]
+  intro?: string
 }) {
   return (
-    <div className="border border-zinc-800 bg-zinc-950 p-10 md:p-16">
-      <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-6 block">
+    <div className="border border-zinc-800 bg-zinc-950 p-6 md:p-10">
+      <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-4 block">
         {eyebrow}
       </span>
-      <h2 className="font-headliner gradient-heading text-3xl md:text-5xl mb-10">
+      <h2 className="font-headliner gradient-heading text-3xl md:text-5xl leading-[0.85] mb-4">
         {heading}
       </h2>
-      <ol className="space-y-7">
+      {intro && (
+        <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">{intro}</p>
+      )}
+
+      <div className="space-y-3">
         {steps.map((step, i) => (
-          <li key={i} className="flex gap-6 items-start">
-            <span className="text-brand-red font-bold text-2xl leading-none w-6 shrink-0">{i + 1}</span>
-            <span className="text-gray-300 text-base leading-snug">{step}</span>
-          </li>
+          <div
+            key={i}
+            className="border border-zinc-900 bg-black p-5 flex items-start gap-5"
+          >
+            {/* Number + icon stack */}
+            <div className="flex flex-col items-center gap-3 shrink-0">
+              <div className="w-9 h-9 rounded-full bg-brand-red flex items-center justify-center text-white font-bold text-sm">
+                {i + 1}
+              </div>
+              <div className="w-7 h-7 text-brand-red">{step.icon}</div>
+            </div>
+
+            {/* Text */}
+            <div className="flex-1 pt-1">
+              <p className="text-white font-bold text-sm tracking-wide mb-1.5">
+                {step.title}
+              </p>
+              <p className="text-gray-400 text-[13px] leading-relaxed">{step.detail}</p>
+            </div>
+          </div>
         ))}
-      </ol>
-      <div className="mt-12 pt-8 border-t border-zinc-800 flex items-center gap-3 text-gray-500 text-sm">
-        <ArrowRightIcon className="w-4 h-4 text-brand-red shrink-0" />
-        <span>Once installed, open from your home screen — looks and feels like a native app.</span>
+      </div>
+
+      {/* Outcome card */}
+      <div className="mt-6 border border-brand-red/40 bg-zinc-950 p-5 flex items-center gap-4">
+        <div className="w-8 h-8 text-brand-red shrink-0">
+          <CheckIcon />
+        </div>
+        <p className="text-white text-sm leading-relaxed">
+          Once installed, tap the Modern Mancave icon any time you want to book — it opens straight to the booking screen.
+        </p>
       </div>
     </div>
   )
