@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo, use } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import { ArrowRightIcon } from '@/components/icons'
 import { ACUITY_BASE_URL, getServiceById, type AcuityService } from '@/lib/acuity'
@@ -14,9 +14,8 @@ interface FormState {
   phone: string
 }
 
-export default function BookFlowPage({ params }: { params: Promise<{ serviceId: string }> }) {
-  const { serviceId: serviceIdParam } = use(params)
-  const serviceId = Number(serviceIdParam)
+export default function BookFlowPage({ params }: { params: { serviceId: string } }) {
+  const serviceId = Number(params.serviceId)
   const service = getServiceById(serviceId)
 
   const [step, setStep] = useState<Step>('date')
