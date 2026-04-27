@@ -18,8 +18,7 @@ export async function GET(request: NextRequest) {
     const dates = Array.isArray(result) ? result.map((d) => d.date) : []
     return NextResponse.json({ dates })
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err)
     console.error('[book/dates]', err)
-    return NextResponse.json({ error: 'Failed to fetch dates', detail: message }, { status: 502 })
+    return NextResponse.json({ error: 'Failed to fetch dates' }, { status: 502 })
   }
 }
