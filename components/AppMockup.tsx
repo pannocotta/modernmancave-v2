@@ -1,14 +1,25 @@
 /**
- * Stylised iPhone-shaped mockup that renders a mini version of the
- * /booking page hero. Pure HTML/CSS — no static screenshot needed,
- * so it stays in sync with the live design.
+ * Stylised iPhone-shaped mockup that depicts a calendar / time-slot
+ * step for a specific service inside the booking flow. Pure HTML/CSS
+ * — no static screenshot needed, so it stays in sync with the brand.
  */
 export default function AppMockup() {
+  // Mock calendar: 5 rows × 7 cols. Numbers are stylistic, not real dates.
+  // null = empty cell, number = day, prefix `_` = past/disabled day.
+  const calendarRows: (string | null)[][] = [
+    [null, '_1', '_2', '_3', '_4', '_5', '_6'],
+    ['_7', '_8', '_9', '_10', '11', '12', '13'],
+    ['14', '15', '16', '17', '18', '19', '20'],
+    ['21', '22', '23', '24', '25', '26', '27'],
+    ['28', '29', '30', null, null, null, null],
+  ]
+  const selectedDay = '11'
+
+  const timeSlots = ['10:00', '11:30', '13:00', '14:30']
+  const selectedTime = '11:30'
+
   return (
     <div className="relative mx-auto w-full max-w-[280px] md:max-w-[300px]">
-      {/* Subtle red glow behind the phone */}
-      <div className="absolute inset-0 -m-8 bg-brand-red/[0.08] blur-3xl rounded-full" aria-hidden="true" />
-
       {/* iPhone frame */}
       <div className="relative aspect-[9/19.5] rounded-[42px] bg-zinc-900 p-2.5 shadow-2xl shadow-black/60 border border-zinc-800">
         {/* Side button (right) */}
@@ -33,9 +44,9 @@ export default function AppMockup() {
           </div>
 
           {/* App content */}
-          <div className="pt-10 px-4 h-full">
+          <div className="pt-10 px-3.5 h-full">
             {/* Header */}
-            <div className="flex items-center justify-between mb-5 pt-1">
+            <div className="flex items-center justify-between mb-3 pt-1">
               <span className="text-brand-red text-[10px] font-black tracking-[0.2em]">MMC</span>
               <div className="flex flex-col gap-[3px]">
                 <span className="block w-4 h-px bg-brand-red" />
@@ -44,44 +55,88 @@ export default function AppMockup() {
               </div>
             </div>
 
-            {/* Eyebrow */}
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-brand-red text-[7px] font-bold tracking-[0.3em] uppercase">Booking</span>
+            {/* Step indicator */}
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-brand-red text-[6.5px] font-bold tracking-[0.3em] uppercase">Booking · Step 2 of 4</span>
               <div className="h-px flex-1 bg-zinc-800" />
             </div>
 
-            {/* Headline */}
-            <h3 className="font-headliner gradient-heading text-xl leading-[0.85] mb-3">
-              BOOK YOUR<br />APPOINTMENT
-            </h3>
-
-            {/* Description */}
-            <p className="text-gray-400 text-[8px] leading-relaxed mb-4">
-              Book a guaranteed time with Nick at our Banna Avenue location instead of waiting 20–30 minutes for a walk-in.
-            </p>
-
-            {/* Nick-only callout */}
-            <div className="border border-brand-red/40 bg-zinc-950 px-2 py-2 mb-3 flex items-start gap-1.5">
-              <div className="w-px self-stretch bg-brand-red shrink-0" />
-              <p className="text-gray-400 text-[7px] leading-relaxed">
-                <span className="text-white font-bold tracking-[0.05em] uppercase block mb-0.5 text-[7px]">Nick Only</span>
-                Other barbers walk-in only.
-              </p>
+            {/* Service summary */}
+            <div className="border-l-2 border-brand-red pl-2 mb-3">
+              <p className="text-white font-bold text-[11px] tracking-wide leading-tight">MEN&apos;S CUT</p>
+              <p className="text-gray-500 text-[7.5px] tracking-[0.15em] uppercase">$40 · 30 min · Nick</p>
             </div>
 
-            {/* Mini rule cards */}
-            <div className="grid grid-cols-3 gap-px bg-zinc-800/50 border border-zinc-800/50 mb-3">
-              {['Payment', 'Arrival', 'Late'].map((label) => (
-                <div key={label} className="bg-black px-1.5 py-2">
-                  <p className="text-brand-red text-[6px] font-bold tracking-[0.15em] uppercase">{label}</p>
+            {/* Calendar header */}
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-white text-[8px] font-bold tracking-[0.15em] uppercase">April 2026</span>
+              <div className="flex gap-1.5 text-gray-500">
+                <span className="text-[8px]">‹</span>
+                <span className="text-[8px]">›</span>
+              </div>
+            </div>
+
+            {/* Day-of-week row */}
+            <div className="grid grid-cols-7 gap-px mb-0.5">
+              {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
+                <div key={i} className="text-center text-gray-600 text-[6.5px] font-bold py-0.5">
+                  {d}
                 </div>
               ))}
             </div>
 
-            {/* CTA pill */}
-            <div className="flex items-stretch border border-white/30 mt-4">
+            {/* Calendar grid */}
+            <div className="grid grid-cols-7 gap-px mb-3">
+              {calendarRows.flat().map((cell, i) => {
+                if (cell === null) {
+                  return <div key={i} className="aspect-square" />
+                }
+                const day = cell.replace('_', '')
+                const isPast = cell.startsWith('_')
+                const isSelected = day === selectedDay
+                return (
+                  <div
+                    key={i}
+                    className={`aspect-square flex items-center justify-center text-[7.5px] font-medium rounded-sm ${
+                      isSelected
+                        ? 'bg-brand-red text-white'
+                        : isPast
+                        ? 'text-gray-700'
+                        : 'text-gray-300'
+                    }`}
+                  >
+                    {day}
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Time slots */}
+            <p className="text-gray-500 text-[6.5px] font-bold tracking-[0.3em] uppercase mb-1.5">Available Times</p>
+            <div className="grid grid-cols-2 gap-1 mb-3">
+              {timeSlots.map((time) => {
+                const isSelected = time === selectedTime
+                return (
+                  <div
+                    key={time}
+                    className={`text-center text-[8px] font-semibold py-1 border rounded-sm ${
+                      isSelected
+                        ? 'bg-brand-red border-brand-red text-white'
+                        : 'border-zinc-800 text-gray-400'
+                    }`}
+                  >
+                    {time}
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Continue CTA */}
+            <div className="flex items-stretch border border-white/30">
               <span className="bg-brand-red w-2 self-stretch shrink-0" />
-              <span className="px-3 py-1.5 text-white font-bold text-[8px] tracking-[0.2em] uppercase">Book Now</span>
+              <span className="px-3 py-1.5 text-white font-bold text-[8px] tracking-[0.2em] uppercase flex-1 text-center">
+                Continue
+              </span>
             </div>
           </div>
         </div>

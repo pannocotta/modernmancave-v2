@@ -18,13 +18,37 @@ export default function AppPage() {
       <section className="relative pt-32 md:pt-40 pb-16 md:pb-24 bg-black overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black z-10" />
+          {/* Subtle grid texture */}
+          <div
+            className="absolute inset-0 z-10 opacity-[0.025] pointer-events-none"
+            style={{
+              backgroundImage:
+                'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
+              backgroundSize: '48px 48px',
+            }}
+            aria-hidden="true"
+          />
           <div className="absolute inset-0 z-20 opacity-[0.03] pointer-events-none grain-overlay" />
+          {/* Top + bottom red gradient hairlines for depth */}
+          <div className="absolute top-0 left-0 w-full h-px z-10 bg-gradient-to-r from-transparent via-brand-red/30 to-transparent" />
+          <div className="absolute bottom-0 left-0 w-full h-px z-10 bg-gradient-to-r from-transparent via-brand-red/20 to-transparent" />
         </div>
 
         <div className="relative z-30 max-w-7xl mx-auto px-6 md:px-10 w-full">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             {/* Mockup — first on mobile (top), second on desktop (right) */}
-            <div className="order-1 md:order-2 flex justify-center md:justify-end">
+            <div className="relative order-1 md:order-2 flex justify-center md:justify-end">
+              {/* Layered ambience behind the phone */}
+              <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+                {/* Primary spotlight */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-red/[0.18] blur-3xl rounded-full" />
+                {/* Offset accent glows */}
+                <div className="absolute top-0 right-0 w-40 h-40 bg-brand-red/[0.1] blur-3xl rounded-full" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-red/[0.08] blur-3xl rounded-full" />
+                {/* Concentric rings */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] aspect-square rounded-full border border-brand-red/10" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] aspect-square rounded-full border border-brand-red/5" />
+              </div>
               <AppMockup />
             </div>
 
