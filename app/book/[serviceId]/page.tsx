@@ -518,10 +518,14 @@ function ConfirmStep({
   onBack: () => void
 }) {
   const acuityUrl = useMemo(() => {
+    // Acuity expects separate date + time params (not a combined datetime).
+    // With these set, it skips the service-list, calendar, and time-picker
+    // steps and lands the user directly on "Confirm and Pay".
     const params = new URLSearchParams({
       owner: '39144906',
       appointmentType: String(service.id),
-      datetime: `${date} ${formatTime24(time)}`,
+      date,
+      time: formatTime24(time),
       firstName: form.firstName,
       lastName: form.lastName,
       email: form.email,
