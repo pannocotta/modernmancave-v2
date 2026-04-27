@@ -20,7 +20,8 @@ export async function GET(request: NextRequest) {
       : []
     return NextResponse.json({ times })
   } catch (err) {
+    const message = err instanceof Error ? err.message : String(err)
     console.error('[book/times]', err)
-    return NextResponse.json({ error: 'Failed to fetch times' }, { status: 502 })
+    return NextResponse.json({ error: 'Failed to fetch times', detail: message }, { status: 502 })
   }
 }
