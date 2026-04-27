@@ -46,6 +46,18 @@ body {
   }
 }
 
+/* ─── Tap-flash animation for the /app mockup demo ─── */
+
+@keyframes tap-flash {
+  0% { transform: scale(0.96); }
+  40% { transform: scale(1.06); box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.35), 0 0 22px 6px rgba(255, 0, 0, 0.4); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+
+.animate-tap-flash {
+  animation: tap-flash 0.7s ease-out;
+}
+
 /* ─── Native date input icon — visible on dark backgrounds ─── */
 
 input[type="date"]::-webkit-calendar-picker-indicator,

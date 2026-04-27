@@ -105,13 +105,13 @@ export default function InstallExperience() {
   if (platform === 'android') {
     return (
       <PlatformInstructions
-        eyebrow="Android"
+        eyebrow="Android · Chrome"
         heading="ADD TO HOME"
         steps={[
-          'Tap the menu (three dots) in the top right of Chrome',
-          'Tap "Install app" or "Add to Home screen"',
-          'Tap "Install" to confirm',
-          'Open Modern Mancave from your home screen',
+          'Tap the three-dot menu in the top right of Chrome',
+          'Tap "Install app" (or "Add to Home screen" on older Chrome)',
+          'Tap "Install" in the popup to confirm',
+          'A new Modern Mancave icon will appear on your home screen',
         ]}
       />
     )
@@ -120,13 +120,13 @@ export default function InstallExperience() {
   if (platform === 'ios-safari') {
     return (
       <PlatformInstructions
-        eyebrow="iPhone / iPad"
+        eyebrow="iPhone · Safari"
         heading="ADD TO HOME"
         steps={[
-          'Tap the Share button at the bottom of Safari',
-          'Scroll down and tap "Add to Home Screen"',
-          'Tap "Add" in the top right',
-          'Open Modern Mancave from your home screen',
+          'Tap the Share icon — the square with an upward arrow. On iPhone it sits in the bottom toolbar; on iPad it\'s in the top right.',
+          'In the share sheet, scroll down through the action list',
+          'Tap "Add to Home Screen"',
+          'Tap "Add" in the top right of the next screen — the icon will appear on your home screen',
         ]}
       />
     )
@@ -141,25 +141,35 @@ export default function InstallExperience() {
         <h2 className="font-headliner gradient-heading text-3xl md:text-5xl mb-6">
           OPEN IN SAFARI
         </h2>
-        <p className="text-gray-400 leading-relaxed max-w-md mx-auto">
-          To install Modern Mancave on your iPhone, you&apos;ll need to open this page in Safari.
-          Apple only allows installs from their own browser.
+        <p className="text-gray-400 leading-relaxed max-w-md mx-auto mb-6">
+          On iPhone and iPad, only Safari can install web apps to the home screen — Apple doesn&apos;t allow other browsers to do it.
+        </p>
+        <p className="text-gray-500 text-sm leading-relaxed max-w-md mx-auto">
+          Copy the address <span className="text-white font-mono">modernmancave.com.au/app</span> into Safari, then come back to this page.
         </p>
       </div>
     )
   }
 
-  // Desktop fallback
+  // Desktop fallback — QR code so they can scan with their phone
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&bgcolor=000000&color=FFFFFF&margin=8&data=${encodeURIComponent('https://modernmancave.com.au/app')}`
   return (
     <div className="border border-zinc-800 bg-zinc-950 p-10 md:p-16 text-center">
       <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-6 block">
         Mobile Only
       </span>
       <h2 className="font-headliner gradient-heading text-3xl md:text-5xl mb-6">
-        OPEN ON YOUR PHONE
+        SCAN ON YOUR PHONE
       </h2>
-      <p className="text-gray-400 leading-relaxed max-w-md mx-auto">
-        The Modern Mancave app installs to your phone&apos;s home screen. Open this page on your iPhone or Android to add it.
+      <p className="text-gray-400 leading-relaxed max-w-md mx-auto mb-8">
+        The app installs to your phone&apos;s home screen, not your computer. Point your phone camera at the QR code below — it&apos;ll open this page on your phone where you can install it.
+      </p>
+      <div className="inline-block p-3 bg-white">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={qrUrl} width={240} height={240} alt="QR code linking to modernmancave.com.au/app" className="block" />
+      </div>
+      <p className="text-gray-600 text-xs tracking-[0.15em] uppercase mt-6">
+        Or visit modernmancave.com.au/app on your phone
       </p>
     </div>
   )
