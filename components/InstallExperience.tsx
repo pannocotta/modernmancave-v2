@@ -286,6 +286,8 @@ const ANDROID_STEPS: InstallStep[] = [
 
 /* ─── Layout component ────────────────────────────────────── */
 
+export { IOS_STEPS, ANDROID_STEPS, PlatformInstructions }
+
 function PlatformInstructions({
   eyebrow,
   heading,
