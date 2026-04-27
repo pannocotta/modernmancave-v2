@@ -57,3 +57,49 @@ export async function getAvailableTimes(
   }
   return res.json()
 }
+
+export interface CreateAppointmentInput {
+  appointmentTypeID: number
+  datetime: string // ISO with timezone, e.g. 2026-04-28T11:30:00+1000
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  stripeToken: string
+}
+
+export interface AcuityAppointment {
+  id: number
+  firstName: string
+  lastName: string
+  email: string
+  datetime: string
+  appointmentTypeID: number
+  amountPaid?: string
+  paid?: 'yes' | 'no'
+  type?: string
+  confirmationPage?: string
+}
+
+export async function createAppointment(
+  input: CreateAppointmentInput,
+): Promise<AcuityAppointment> {
+  const res = await fetch(`${ACUITY_BASE}/appointments`, {
+    method: 'POST',
+    headers: {
+      Authorization: getAuthHeader(),
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(input),
+    cache: 'no-store',
+  })
+  if (!res.ok) {
+    const errorBody = await res.json().catch(() => null)
+    const message =
+      errorBody?.message ||
+      errorBody?.error ||
+      `Acuity API ${res.status}: ${res.statusText}`
+    throw new Error(message)
+  }
+  return res.json()
+}

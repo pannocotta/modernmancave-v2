@@ -2,10 +2,13 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
+import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import type { StripeCardElementOptions } from '@stripe/stripe-js'
 import { ArrowRightIcon } from '@/components/icons'
-import { ACUITY_BASE_URL, getServiceById, type AcuityService } from '@/lib/acuity'
+import { getServiceById, type AcuityService } from '@/lib/acuity'
+import { getStripe } from '@/lib/stripe'
 
-type Step = 'date' | 'time' | 'details' | 'confirm'
+type Step = 'date' | 'time' | 'details' | 'confirm' | 'success'
 
 interface FormState {
   firstName: string
@@ -134,13 +137,19 @@ export default function BookFlowPage({ params }: { params: { serviceId: string }
             />
           )}
           {step === 'confirm' && selectedDate && selectedTime && (
-            <ConfirmStep
-              service={service}
-              date={selectedDate}
-              time={selectedTime}
-              form={form}
-              onBack={() => setStep('details')}
-            />
+            <Elements stripe={getStripe()}>
+              <ConfirmStep
+                service={service}
+                date={selectedDate}
+                time={selectedTime}
+                form={form}
+                onBack={() => setStep('details')}
+                onSuccess={() => setStep('success')}
+              />
+            </Elements>
+          )}
+          {step === 'success' && selectedDate && selectedTime && (
+            <SuccessStep service={service} date={selectedDate} time={selectedTime} form={form} />
           )}
         </div>
       </div>
@@ -153,9 +162,10 @@ function StepIndicator({ step }: { step: Step }) {
     { key: 'date', label: 'Date' },
     { key: 'time', label: 'Time' },
     { key: 'details', label: 'Details' },
-    { key: 'confirm', label: 'Confirm' },
+    { key: 'confirm', label: 'Pay' },
   ]
-  const currentIndex = labels.findIndex((l) => l.key === step)
+  // 'success' state: render every step as completed
+  const currentIndex = step === 'success' ? labels.length : labels.findIndex((l) => l.key === step)
   return (
     <div className="flex items-center gap-1.5">
       {labels.map((l, i) => {
@@ -510,35 +520,91 @@ function ConfirmStep({
   time,
   form,
   onBack,
+  onSuccess,
 }: {
   service: AcuityService
   date: string
   time: string
   form: FormState
   onBack: () => void
+  onSuccess: () => void
 }) {
-  const acuityUrl = useMemo(() => {
-    // Acuity expects separate date + time params (not a combined datetime).
-    // With these set, it skips the service-list, calendar, and time-picker
-    // steps and lands the user directly on "Confirm and Pay".
-    const params = new URLSearchParams({
-      owner: '39144906',
-      appointmentType: String(service.id),
-      date,
-      time: formatTime24(time),
-      firstName: form.firstName,
-      lastName: form.lastName,
-      email: form.email,
-      phone: form.phone,
+  const stripe = useStripe()
+  const elements = useElements()
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const cardOptions: StripeCardElementOptions = {
+    style: {
+      base: {
+        color: '#ffffff',
+        fontFamily: 'system-ui, -apple-system, sans-serif',
+        fontSize: '15px',
+        '::placeholder': { color: '#525252' },
+        iconColor: '#ff3333',
+      },
+      invalid: {
+        color: '#f87171',
+        iconColor: '#f87171',
+      },
+    },
+    hidePostalCode: false,
+  }
+
+  async function handlePay() {
+    if (!stripe || !elements) return
+    const card = elements.getElement(CardElement)
+    if (!card) return
+
+    setSubmitting(true)
+    setError(null)
+
+    // 1. Tokenise the card via Stripe (this happens entirely client-side
+    //    and the card data never touches our server)
+    const tokenResult = await stripe.createToken(card, {
+      name: `${form.firstName} ${form.lastName}`,
     })
-    return `${ACUITY_BASE_URL.split('?')[0]}?${params.toString()}`
-  }, [service, date, time, form])
+    if (tokenResult.error) {
+      setError(tokenResult.error.message ?? 'Card could not be processed')
+      setSubmitting(false)
+      return
+    }
+
+    // 2. Send the token + booking details to our server, which creates
+    //    the appointment in Acuity. Acuity charges the card via their
+    //    connected Stripe account.
+    try {
+      const res = await fetch('/api/book/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          serviceId: service.id,
+          datetime: time, // already an ISO string with timezone from Acuity
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          phone: form.phone,
+          stripeToken: tokenResult.token.id,
+        }),
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        throw new Error(body.error ?? 'Booking failed')
+      }
+      onSuccess()
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Booking failed'
+      setError(message)
+      setSubmitting(false)
+    }
+  }
 
   return (
     <div>
       <button
         onClick={onBack}
-        className="text-gray-500 text-[10px] tracking-[0.2em] uppercase hover:text-white mb-4 inline-flex items-center gap-1"
+        disabled={submitting}
+        className="text-gray-500 text-[10px] tracking-[0.2em] uppercase hover:text-white mb-4 inline-flex items-center gap-1 disabled:opacity-40"
       >
         <span>‹</span>
         <span>Edit details</span>
@@ -556,19 +622,82 @@ function ConfirmStep({
         <SummaryRow label="Total" value={`$${service.price.toFixed(2)}`} highlight />
       </div>
 
-      <p className="text-gray-500 text-[11px] leading-relaxed mb-5">
-        Tap below to complete payment. You&apos;ll be sent to the secure payment page where the time slot is held while you check out. A confirmation email will be sent once payment is complete.
+      {/* Card input */}
+      <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">Card details</p>
+      <div className="border border-zinc-800 bg-zinc-950 px-4 py-4 mb-3">
+        <CardElement options={cardOptions} />
+      </div>
+      <p className="text-gray-600 text-[11px] leading-relaxed mb-5">
+        Card processed securely by Stripe. We don&apos;t see or store your card details.
       </p>
 
-      <a
-        href={acuityUrl}
+      {error && (
+        <p className="text-red-400 text-xs leading-relaxed mb-4 border border-red-500/30 bg-red-500/[0.05] px-4 py-3">
+          {error}
+        </p>
+      )}
+
+      <button
+        onClick={handlePay}
+        disabled={submitting || !stripe}
+        className="inline-flex items-stretch border border-white/30 hover:border-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors group w-full"
+      >
+        <span className="bg-brand-red w-2 self-stretch group-hover:w-12 transition-all duration-300" />
+        <span className="px-5 py-3 text-white font-bold text-xs tracking-[0.2em] uppercase flex-1 text-center">
+          {submitting ? 'Processing…' : `Pay $${service.price.toFixed(2)}`}
+        </span>
+      </button>
+    </div>
+  )
+}
+
+/* ─── Success step ──────────────────────────────────────── */
+
+function SuccessStep({
+  service,
+  date,
+  time,
+  form,
+}: {
+  service: AcuityService
+  date: string
+  time: string
+  form: FormState
+}) {
+  return (
+    <div>
+      <div className="border border-brand-red/40 bg-zinc-950 p-8 text-center mb-6">
+        <div className="w-14 h-14 rounded-full bg-brand-red/15 border border-brand-red flex items-center justify-center mx-auto mb-5">
+          <svg className="w-7 h-7 text-brand-red" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h2 className="font-headliner gradient-heading text-3xl md:text-4xl mb-3">BOOKING CONFIRMED</h2>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          Payment received. A confirmation email is on its way to {form.email}.
+        </p>
+      </div>
+
+      <div className="border border-zinc-800 divide-y divide-zinc-900 mb-6">
+        <SummaryRow label="Service" value={service.name} />
+        <SummaryRow label="When" value={`${formatHumanDate(date)} · ${formatTime(time)}`} />
+        <SummaryRow label="Name" value={`${form.firstName} ${form.lastName}`} />
+        <SummaryRow label="Paid" value={`$${service.price.toFixed(2)}`} highlight />
+      </div>
+
+      <p className="text-gray-500 text-[11px] leading-relaxed mb-5">
+        Please arrive 10 minutes before your appointment. We&apos;re at our Banna Avenue location.
+      </p>
+
+      <Link
+        href="/launch"
         className="inline-flex items-stretch border border-white/30 hover:border-white transition-colors group w-full"
       >
         <span className="bg-brand-red w-2 self-stretch group-hover:w-12 transition-all duration-300" />
         <span className="px-5 py-3 text-white font-bold text-xs tracking-[0.2em] uppercase flex-1 text-center">
-          Confirm and Pay
+          Done
         </span>
-      </a>
+      </Link>
     </div>
   )
 }
@@ -597,11 +726,6 @@ function validateForm(f: FormState): string | null {
 function formatTime(iso: string): string {
   const d = new Date(iso)
   return d.toLocaleTimeString('en-AU', { hour: 'numeric', minute: '2-digit', hour12: true })
-}
-
-function formatTime24(iso: string): string {
-  const d = new Date(iso)
-  return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`
 }
 
 function formatHumanDate(dateStr: string): string {
