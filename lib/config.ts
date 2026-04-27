@@ -84,6 +84,7 @@ export const NAV_LINKS = [
   { label: 'MOBILE BARBER', href: '/mobile-barber' },
   { label: 'BARBER TRAINING', href: '/mobile-barber#education' },
   { label: 'FRANCHISE', href: '/franchise' },
+  { label: 'COMMUNITY', href: '/community' },
   { label: 'MERCH', href: '/shop' },
   { label: 'DOWNLOAD APP', href: '/app' },
   { label: 'LOCATIONS', href: '/locations' },
