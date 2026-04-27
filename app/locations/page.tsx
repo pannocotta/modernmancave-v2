@@ -4,8 +4,9 @@ import Header from '@/components/Header'
 import LocationCards from '@/components/LocationCards'
 
 export const metadata: Metadata = {
-  title: 'Our Locations - Modern Mancave',
-  description: 'Find your nearest Modern Mancave barbershop in Griffith, NSW. Three locations plus a tattoo studio.',
+  title: 'Locations in Griffith NSW',
+  description: 'Find your nearest Modern Mancave barbershop in Griffith, NSW. Three locations open 7 days a week, plus an in-house tattoo studio at Banna Avenue.',
+  alternates: { canonical: '/locations' },
 }
 
 export default function LocationsPage() {

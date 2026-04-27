@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Poppins, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
-import { CartProvider } from '@/lib/cart-context'
+import { Analytics } from '@vercel/analytics/next'
 import PageTransition from '@/components/PageTransition'
 import Footer from '@/components/Footer'
 import FloatingBookButton from '@/components/FloatingBookButton'
@@ -30,22 +30,39 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Modern Mancave - Premium Grooming for the Modern Man',
-  description: 'Precision hairstyling, beard trims, and hot towel shaves. Where style begins with confidence.',
+  metadataBase: new URL('https://modernmancave.com.au'),
+  title: {
+    default: 'Premium Barbershop in Griffith NSW | Modern Mancave',
+    template: '%s | Modern Mancave',
+  },
+  description: 'Precision hairstyling, beard trims, and hot towel shaves at Modern Mancave Griffith. Three locations, walk-ins welcome, online booking with Nick.',
+  keywords: ['barbershop', 'Griffith', 'NSW', 'mens haircut', 'beard trim', 'hot towel shave', 'fade', 'Modern Mancave'],
   manifest: '/manifest.json',
+  alternates: { canonical: '/' },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
     title: 'Modern Mancave',
   },
   openGraph: {
-    title: 'Modern Mancave - Premium Grooming for the Modern Man',
-    description: 'Precision hairstyling, beard trims, and hot towel shaves. Griffith, NSW.',
+    title: 'Modern Mancave — Premium Barbershop in Griffith NSW',
+    description: 'Precision hairstyling, beard trims, and hot towel shaves. Three locations in Griffith. Walk-ins welcome.',
     url: 'https://modernmancave.com.au',
     siteName: 'Modern Mancave',
-    images: [{ url: '/hero-badge.png', width: 1200, height: 1200, alt: 'Modern Mancave' }],
+    images: [{ url: '/hero-badge-new.png', width: 1200, height: 1200, alt: 'Modern Mancave Barbershop' }],
     locale: 'en_AU',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Modern Mancave — Premium Barbershop in Griffith NSW',
+    description: 'Precision hairstyling, beard trims, and hot towel shaves. Three locations in Griffith.',
+    images: ['/hero-badge-new.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
 }
 
@@ -97,13 +114,12 @@ export default function RootLayout({
         />
       </head>
       <body className={`${poppins.variable} ${playfair.variable} font-sans`}>
-        <CartProvider>
-          <PageTransition>
-            {children}
-            <Footer />
-          </PageTransition>
-          <FloatingBookButton />
-        </CartProvider>
+        <PageTransition>
+          {children}
+          <Footer />
+        </PageTransition>
+        <FloatingBookButton />
+        <Analytics />
       </body>
     </html>
   )

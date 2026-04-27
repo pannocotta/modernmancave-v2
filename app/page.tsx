@@ -1,11 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import { TESTIMONIALS, SOCIAL, SITE } from '@/lib/config'
 import ServiceStrip from '@/components/Marquee'
 import { CTALink } from '@/components/CTA'
 import { ArrowRightIcon, InstagramIcon } from '@/components/icons'
+
+export const metadata: Metadata = {
+  title: 'Premium Barbershop in Griffith NSW',
+  description: 'Modern Mancave — premium grooming for men in Griffith and the Riverina since 2017. Precision haircuts, beard trims, hot towel shaves. Three locations. Walk-ins welcome.',
+  alternates: { canonical: '/' },
+}
 
 export default function Home() {
   return (
@@ -36,6 +43,7 @@ export default function Home() {
         <div className="absolute bottom-20 right-6 md:bottom-28 md:right-12 z-30 w-12 h-12 md:w-16 md:h-16 border-b border-r border-brand-red/30" />
 
         <div className="relative z-30 w-full flex flex-col items-center text-center px-6 py-[clamp(6rem,15vh,10rem)]">
+          <h1 className="sr-only">Modern Mancave — Premium Barbershop in Griffith NSW</h1>
           <div className="flex items-center gap-4 mb-8">
             <div className="w-8 md:w-12 h-px bg-brand-red/50" />
             <span className="text-white text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase">Open 7 Days — Est. 2017</span>

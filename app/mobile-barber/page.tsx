@@ -7,8 +7,9 @@ import { ArrowRightIcon } from '@/components/icons'
 import { CTALink } from '@/components/CTA'
 
 export const metadata: Metadata = {
-  title: 'Mobile Barber - Modern Mancave',
-  description: 'Bring the Modern Mancave experience to your home, office, or event. Fully equipped mobile barber studio in Griffith and the Riverina.',
+  title: 'Mobile Barber Studio — Griffith & Riverina',
+  description: 'Fully equipped mobile barber studio for weddings, corporate events, and parties across Griffith and the Riverina. Bring the Modern Mancave experience to your location.',
+  alternates: { canonical: '/mobile-barber' },
 }
 
 const EVENTS = [

@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 
 export const metadata: Metadata = {
-  title: 'Download App - Modern Mancave',
-  description: 'Install the Modern Mancave app on your phone for instant bookings and exclusive deals.',
+  title: 'Download the App',
+  description: 'Install Modern Mancave on your phone — no app store required. Add to your home screen for instant bookings and a native app experience.',
+  alternates: { canonical: '/app' },
 }
 
 export default function AppPage() {

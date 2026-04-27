@@ -5,8 +5,9 @@ import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import { TEAM } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title: 'Our Team - Modern Mancave',
-  description: 'Meet the skilled barbers at Modern Mancave Griffith. Expert cuts, fades, and grooming from our experienced team.',
+  title: 'Our Team — Expert Barbers in Griffith',
+  description: 'Meet the skilled barbers at Modern Mancave Griffith. Nick, Leka, and the team — expert cuts, fades, and grooming with years of experience.',
+  alternates: { canonical: '/team' },
 }
 
 export default function TeamPage() {

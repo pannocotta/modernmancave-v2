@@ -7,8 +7,9 @@ import { ArrowRightIcon } from '@/components/icons'
 import { CTALink } from '@/components/CTA'
 
 export const metadata = {
-  title: 'Prices - Modern Mancave',
-  description: 'Transparent pricing for all our barbering services. Walk-ins welcome at all Modern Mancave locations in Griffith.',
+  title: 'Barbershop Prices in Griffith NSW',
+  description: 'Transparent pricing for haircuts, beard trims, fades, hot towel shaves, and teeth whitening at Modern Mancave Griffith. Walk-ins welcome at all three locations.',
+  alternates: { canonical: '/prices' },
 }
 
 export default function PricesPage() {

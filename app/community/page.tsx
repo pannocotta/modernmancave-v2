@@ -6,8 +6,9 @@ import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import CommunityForm from '@/components/CommunityForm'
 
 export const metadata: Metadata = {
-  title: 'Community - Modern Mancave',
-  description: 'Modern Mancave giving back to Griffith and beyond. 30+ community projects, 500+ free haircuts since 2017.',
+  title: 'Community & Sponsorships in Griffith',
+  description: 'Modern Mancave gives back to Griffith and beyond — 30+ community projects, 500+ free haircuts since 2017. Tell us about your cause or event.',
+  alternates: { canonical: '/community' },
 }
 
 const charityPosts = [
