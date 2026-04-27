@@ -103,7 +103,7 @@ function ServiceScreen({ visible, step }: { visible: boolean; step: number }) {
         {services.map((s) => (
           <div
             key={s.name}
-            className={`flex items-center justify-between py-2 px-2 border rounded-sm ${
+            className={`relative flex items-center justify-between py-2 px-2 border rounded-sm ${
               s.selected ? 'border-brand-red bg-brand-red/10' : 'border-zinc-800'
             }`}
           >
@@ -113,17 +113,16 @@ function ServiceScreen({ visible, step }: { visible: boolean; step: number }) {
             <span className={`text-[9px] font-bold ${s.selected ? 'text-brand-red' : 'text-gray-600'}`}>
               ${s.price}
             </span>
+            {s.selected && step === 0 && (
+              <span
+                key={`s-${step}`}
+                className="absolute inset-0 rounded-sm border border-brand-red animate-tap-flash pointer-events-none"
+                aria-hidden="true"
+              />
+            )}
           </div>
         ))}
       </div>
-      {/* Tap-flash on the selected row */}
-      {step === 0 && (
-        <div
-          key={`s-${step}`}
-          className="absolute left-3.5 right-3.5 top-[60px] h-[26px] border border-brand-red rounded-sm animate-tap-flash pointer-events-none"
-          aria-hidden="true"
-        />
-      )}
     </ScreenWrap>
   )
 }
