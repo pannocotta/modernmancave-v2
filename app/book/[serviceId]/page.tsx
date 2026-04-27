@@ -7,6 +7,7 @@ import type { StripeCardElementOptions } from '@stripe/stripe-js'
 import { ArrowRightIcon } from '@/components/icons'
 import { getServiceById, type AcuityService } from '@/lib/acuity'
 import { getStripe } from '@/lib/stripe'
+import { saveBooking } from '@/lib/bookings'
 
 type Step = 'date' | 'time' | 'details' | 'confirm' | 'success'
 
@@ -590,6 +591,22 @@ function ConfirmStep({
       if (!res.ok) {
         const body = await res.json().catch(() => ({}))
         throw new Error(body.error ?? 'Booking failed')
+      }
+      const data = await res.json()
+      const apt = data.appointment as { id: number; confirmationPage?: string } | undefined
+      if (apt?.id) {
+        saveBooking({
+          appointmentId: apt.id,
+          serviceId: service.id,
+          serviceName: service.name,
+          servicePrice: service.price,
+          serviceDuration: service.duration,
+          datetime: time, // ISO with timezone from Acuity
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          confirmationPage: apt.confirmationPage,
+        })
       }
       onSuccess()
     } catch (err) {

@@ -13,6 +13,7 @@ import {
   type ServiceCategory,
 } from '@/lib/acuity'
 import InstallPromptModal from '@/components/InstallPromptModal'
+import UpcomingBookingCard from '@/components/UpcomingBookingCard'
 
 export default function LaunchPage() {
   const [now, setNow] = useState<Date | null>(null)
@@ -72,6 +73,9 @@ export default function LaunchPage() {
             Tap a service below to lock in a time with Nick. Pre-pays and confirms in one go.
           </p>
         </div>
+
+        {/* Next appointment — only renders if there's a saved upcoming booking */}
+        <UpcomingBookingCard />
 
         {/* Featured services — 2x2 grid */}
         <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">Most Booked</p>
