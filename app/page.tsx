@@ -228,7 +228,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 md:px-10 text-center relative z-10">
           <h2 className="font-headliner text-5xl md:text-8xl lg:text-[10rem] gradient-heading leading-[0.8] mb-10">BOOK YOUR<br />NEXT CUT</h2>
           <p className="text-gray-500 text-base md:text-lg mb-12 max-w-lg mx-auto leading-relaxed">
-            Skip the wait. Lock in your appointment at any of our 3 Griffith locations.
+            Skip the wait. Lock in your appointment with Nick at our Banna Avenue location.
           </p>
           <CTALink href="/booking">BOOK NOW</CTALink>
         </div>

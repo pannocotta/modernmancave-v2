@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
+import InstallExperience from '@/components/InstallExperience'
 
 export const metadata: Metadata = {
   title: 'Download the App',
@@ -36,70 +37,52 @@ export default function AppPage() {
         </div>
       </section>
 
-      {/* Instructions */}
-      <section className="relative section-blend-dark bg-zinc-950 py-32 md:py-44 overflow-hidden">
+      {/* Install — adapts to the user's device */}
+      <section className="relative section-blend-dark bg-black py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
-
-          <div className="grid md:grid-cols-2 gap-8 mb-20">
-            <div>
-              <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Installation</span>
-              <h2 className="font-headliner gradient-heading text-5xl md:text-7xl lg:text-8xl leading-[0.85]">HOW TO<br />INSTALL</h2>
-            </div>
-            <div className="flex flex-col justify-end">
-              <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-md">
-                Takes less than a minute. Open the site in your phone&apos;s browser and follow the steps below for your device.
-              </p>
-            </div>
+        <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
+          <div className="flex items-center gap-4 mb-12">
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Installation</span>
+            <div className="h-px flex-1 bg-zinc-800" />
           </div>
-
-          <div className="grid md:grid-cols-2 gap-px bg-zinc-800">
-
-            {/* iOS */}
-            <div className="bg-zinc-950 p-10 md:p-14">
-              <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-8 block">iPhone / iPad</span>
-              <ol className="space-y-8">
-                {[
-                  'Open modernmancave.com.au in Safari',
-                  'Tap the Share button at the bottom of the screen',
-                  'Scroll down and tap "Add to Home Screen"',
-                  'Tap "Add" in the top right corner',
-                ].map((step, i) => (
-                  <li key={i} className="flex gap-6 items-start">
-                    <span className="text-brand-red font-bold text-2xl leading-none w-6 shrink-0">{i + 1}</span>
-                    <span className="text-gray-300 text-base leading-snug">{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            {/* Android */}
-            <div className="bg-zinc-950 p-10 md:p-14">
-              <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-8 block">Android</span>
-              <ol className="space-y-8">
-                {[
-                  'Open modernmancave.com.au in Chrome',
-                  'Tap the menu button (three dots) in the top right',
-                  'Tap "Add to Home screen" or "Install app"',
-                  'Tap "Add" or "Install" to confirm',
-                ].map((step, i) => (
-                  <li key={i} className="flex gap-6 items-start">
-                    <span className="text-brand-red font-bold text-2xl leading-none w-6 shrink-0">{i + 1}</span>
-                    <span className="text-gray-300 text-base leading-snug">{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-          </div>
-
-          <div className="mt-16 text-center">
-            <p className="text-gray-600 text-sm tracking-wide">Need help? Ask at any of our locations.</p>
-          </div>
-
+          <InstallExperience />
+          <p className="text-gray-600 text-sm tracking-wide text-center mt-12">
+            Need help? Ask at any of our locations.
+          </p>
         </div>
       </section>
 
+      {/* Why install */}
+      <section className="relative bg-zinc-950 py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
+          <div className="flex items-center gap-4 mb-12">
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Why Install</span>
+            <div className="h-px flex-1 bg-zinc-800" />
+          </div>
+          <div className="grid sm:grid-cols-3 gap-px border border-zinc-800/50 bg-zinc-800/50">
+            {[
+              {
+                label: 'No App Store',
+                detail: 'Installs directly from your browser. No downloads, no waiting, no account needed.',
+              },
+              {
+                label: 'Full Screen',
+                detail: 'Opens in its own window without browser bars. Looks and feels like a native app.',
+              },
+              {
+                label: 'One Tap Booking',
+                detail: 'Lock in your next cut from your home screen. Skip typing the address every time.',
+              },
+            ].map(({ label, detail }) => (
+              <div key={label} className="bg-black px-8 py-8">
+                <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-3">{label}</p>
+                <p className="text-gray-400 text-sm leading-relaxed">{detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   )
 }

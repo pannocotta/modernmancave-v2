@@ -1,18 +1,33 @@
 {
-  "name": "Modern Mancave",
+  "name": "Modern Mancave Barbershop",
   "short_name": "Mancave",
-  "description": "Premium barbershop in Griffith - Book your cut",
+  "description": "Premium barbershop in Griffith NSW. Book your cut, view prices, find a location.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#ff0000",
   "orientation": "portrait",
+  "categories": ["lifestyle", "business"],
+  "lang": "en-AU",
   "icons": [
     {
-      "src": "/logo.png",
+      "src": "/icon1",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon2",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icon2",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
