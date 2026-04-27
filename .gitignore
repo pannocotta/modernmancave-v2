@@ -30,3 +30,7 @@ next-env.d.ts
 !public/hero-video.mp4
 !public/tattoo-loop.mp4
 !public/mobile-barber-video.mp4
+
+# raw design source files — never commit
+public/Canva/
+*.zip
