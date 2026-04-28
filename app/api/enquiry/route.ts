@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
 const TO_EMAIL = 'tristan@modernmancave.com.au'
-const FROM_EMAIL = 'Modern Mancave Website <onboarding@resend.dev>'
+const FROM_EMAIL = 'Modern Mancave <enquiries@modernmancave.com.au>'
 
 const TYPE_LABELS: Record<string, string> = {
   'mobile-barber': 'Mobile Studio Enquiry',
