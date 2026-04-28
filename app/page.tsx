@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import { TESTIMONIALS, SOCIAL, SITE } from '@/lib/config'
 import ServiceStrip from '@/components/Marquee'
+import WorkMarquee from '@/components/WorkMarquee'
 import { CTALink } from '@/components/CTA'
 import { ArrowRightIcon, InstagramIcon } from '@/components/icons'
 
@@ -121,14 +122,7 @@ export default function Home() {
             </div>
           </div>
 
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3" staggerDelay={0.06}>
-            {[1, 2, 3, 4, 5, 6].map((num) => (
-              <StaggerItem key={num} className="relative aspect-square overflow-hidden group rounded-xl">
-                <Image src={`/work/${num}.jpg`} alt="Modern Mancave Work" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" sizes="(max-width: 768px) 50vw, 33vw" />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+          <WorkMarquee />
 
           <div className="text-center mt-16">
             <a href={SOCIAL.instagram.url} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-3 text-gray-500 hover:text-brand-red transition-colors text-xs tracking-[0.2em] uppercase">

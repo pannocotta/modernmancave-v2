@@ -183,6 +183,41 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
   transform-origin: top;
 }
 
+/* ─── Work Marquee (homepage portfolio reel) ─── */
+
+@keyframes work-scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes work-scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.work-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 16px;
+  animation: work-scroll-left 60s linear infinite;
+  will-change: transform;
+}
+
+.work-marquee-track.reverse {
+  animation: work-scroll-right 60s linear infinite;
+}
+
+.work-marquee-wrap:hover .work-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-marquee-track,
+  .work-marquee-track.reverse {
+    animation: none;
+  }
+}
+
 /* ─── Section Blend Transitions ─── */
 
 .section-blend-dark::before {
