@@ -58,9 +58,14 @@ export default function BookingPage() {
           <h1 className="font-headliner gradient-heading text-5xl md:text-7xl lg:text-8xl leading-[0.85] mb-8">
             BOOK THE<br />VIP EXPERIENCE
           </h1>
-          <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl">
-            Skip the queue. Every VIP booking with Nick at Banna Avenue includes a private area, complimentary drinks, and personalised service. Your full booking total, including a $20 VIP fee, is paid upfront to lock in your spot.
-          </p>
+          <div className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl space-y-4">
+            <p>
+              Step beyond the standard. Each VIP booking with Nick at Banna Avenue delivers an exclusive private setting, signature hot towel ritual, and refined one-on-one service. With no waiting, your experience begins the moment you walk in.
+            </p>
+            <p>
+              Your appointment is reserved exclusively for you. Full payment, including the $20 VIP fee, is required upfront to confirm your reservation.
+            </p>
+          </div>
         </div>
       </section>
 

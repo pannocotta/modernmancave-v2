@@ -56,13 +56,13 @@ export default function Header() {
           <Image src="/1.png" alt="Modern Mancave" width={112} height={32} className="h-8 w-auto" />
         </div>
 
-        <nav className="flex flex-col gap-6 p-12 pt-8">
+        <nav className="flex flex-col gap-4 p-12 pt-8">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={closeDrawer}
-              className="text-white text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
+              className="text-white text-lg font-headliner tracking-wide hover:translate-x-2 transition-transform"
             >
               {link.label}
             </Link>
@@ -70,7 +70,7 @@ export default function Header() {
           <Link
             href={BOOKING_LINK.href}
             onClick={closeDrawer}
-            className="text-brand-red text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
+            className="text-brand-red text-lg font-headliner tracking-wide hover:translate-x-2 transition-transform"
           >
             {BOOKING_LINK.label}
           </Link>

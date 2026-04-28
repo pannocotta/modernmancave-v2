@@ -81,6 +81,7 @@ export const NAV_LINKS = [
   { label: 'HOME', href: '/' },
   { label: 'THE TEAM', href: '/team' },
   { label: 'PRICES', href: '/prices' },
+  { label: 'TATTOO', href: '/prices#tattooing' },
   { label: 'MOBILE BARBER', href: '/mobile-barber' },
   { label: 'BARBER TRAINING', href: '/mobile-barber#education' },
   { label: 'FRANCHISE', href: '/franchise' },
