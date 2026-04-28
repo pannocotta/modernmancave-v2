@@ -59,7 +59,7 @@ export default function BookingPage() {
             BOOK THE<br />VIP EXPERIENCE
           </h1>
           <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl">
-            The Modern Mancave VIP experience — a guaranteed time with Nick at our Banna Avenue location, no 20–30 minute walk-in wait. Every VIP booking includes a private area, complimentary water or Coca-Cola, and personalised service. The full booking total — your service plus the $20 VIP fee — is paid upfront to confirm your spot.
+            Skip the queue. Every VIP booking with Nick at Banna Avenue includes a private area, complimentary drinks, and personalised service. Your full booking total, including a $20 VIP fee, is paid upfront to lock in your spot.
           </p>
         </div>
       </section>
