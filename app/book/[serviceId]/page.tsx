@@ -74,7 +74,7 @@ export default function BookFlowPage({ params }: { params: { serviceId: string }
         >
           <ArrowRightIcon className="w-5 h-5 rotate-180" />
         </Link>
-        <p className="text-white/80 text-xs tracking-[0.2em] uppercase font-semibold">Book</p>
+        <p className="text-white/80 text-xs tracking-[0.2em] uppercase font-semibold">VIP Booking</p>
         <Link
           href="/launch"
           aria-label="Close"
@@ -86,11 +86,19 @@ export default function BookFlowPage({ params }: { params: { serviceId: string }
 
       <div className="relative z-10 px-6 pt-6 pb-24 max-w-md mx-auto">
         {/* Service summary */}
-        <div className="border-l-2 border-brand-red pl-4 mb-6">
-          <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-1">Selected Service</p>
+        <div className="border-l-2 border-brand-red pl-4 mb-5">
+          <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-1">Your VIP Booking</p>
           <p className="text-white font-bold text-lg leading-tight">{service.name}</p>
           <p className="text-gray-500 text-xs tracking-wide mt-1">
             ${service.price} · {service.duration} min · with Nick
+          </p>
+        </div>
+
+        {/* VIP inclusions */}
+        <div className="border border-zinc-800 bg-zinc-950/60 px-4 py-3 mb-6">
+          <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-2">VIP Inclusions</p>
+          <p className="text-gray-400 text-xs leading-relaxed">
+            Private area · complimentary drinks · guaranteed time · no walk-in wait. The $20 VIP fee is included in your total.
           </p>
         </div>
 
@@ -689,7 +697,7 @@ function SuccessStep({
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h2 className="font-headliner gradient-heading text-3xl md:text-4xl mb-3">BOOKING CONFIRMED</h2>
+        <h2 className="font-headliner gradient-heading text-3xl md:text-4xl mb-3">VIP BOOKING CONFIRMED</h2>
         <p className="text-gray-400 text-sm leading-relaxed">
           Payment received. A confirmation email is on its way to {form.email}.
         </p>
