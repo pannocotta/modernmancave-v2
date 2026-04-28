@@ -1,54 +1,48 @@
 import Image from 'next/image'
 
-// All work photos are 800x800 squares — keep tiles square so the cut
-// is never cropped. Vary tile *size* instead for visual rhythm.
-type TileSize = 'sm' | 'md' | 'lg'
+// All work photos are 800x800 squares. Uniform tile size reads as a
+// curated gallery; motion + opposite-direction rows give the energy.
+const TILE_CLASS = 'w-[240px] h-[240px] md:w-[280px] md:h-[280px]'
 
-const SIZE_CLASS: Record<TileSize, string> = {
-  sm: 'w-[200px] h-[200px] md:w-[240px] md:h-[240px]',
-  md: 'w-[240px] h-[240px] md:w-[300px] md:h-[300px]',
-  lg: 'w-[280px] h-[280px] md:w-[360px] md:h-[360px]',
-}
-
-const ROW_TOP: { src: string; size: TileSize }[] = [
-  { src: '/work/1.jpg', size: 'md' },
-  { src: '/work/3.jpg', size: 'lg' },
-  { src: '/work/5.jpg', size: 'sm' },
-  { src: '/work/7.jpg', size: 'md' },
-  { src: '/work/9.jpg', size: 'lg' },
-  { src: '/work/11.jpg', size: 'sm' },
+const ROW_TOP = [
+  '/work/1.jpg',
+  '/work/3.jpg',
+  '/work/5.jpg',
+  '/work/7.jpg',
+  '/work/9.jpg',
+  '/work/11.jpg',
 ]
 
-const ROW_BOTTOM: { src: string; size: TileSize }[] = [
-  { src: '/work/2.jpg', size: 'lg' },
-  { src: '/work/4.jpg', size: 'sm' },
-  { src: '/work/6.jpg', size: 'md' },
-  { src: '/work/8.jpg', size: 'lg' },
-  { src: '/work/10.jpg', size: 'sm' },
-  { src: '/work/12.jpg', size: 'md' },
+const ROW_BOTTOM = [
+  '/work/2.jpg',
+  '/work/4.jpg',
+  '/work/6.jpg',
+  '/work/8.jpg',
+  '/work/10.jpg',
+  '/work/12.jpg',
 ]
 
 function MarqueeRow({
   tiles,
   reverse = false,
 }: {
-  tiles: { src: string; size: TileSize }[]
+  tiles: string[]
   reverse?: boolean
 }) {
   // Render twice for seamless loop — keyframes animate to -50%.
   const doubled = [...tiles, ...tiles]
   return (
     <div className={`work-marquee-track ${reverse ? 'reverse' : ''}`}>
-      {doubled.map((tile, i) => (
+      {doubled.map((src, i) => (
         <div
-          key={`${tile.src}-${i}`}
-          className={`relative shrink-0 overflow-hidden rounded-md group ${SIZE_CLASS[tile.size]}`}
+          key={`${src}-${i}`}
+          className={`relative shrink-0 overflow-hidden rounded-md group ${TILE_CLASS}`}
         >
           <Image
-            src={tile.src}
+            src={src}
             alt="Modern Mancave portfolio"
             fill
-            sizes="(max-width: 768px) 50vw, 33vw"
+            sizes="280px"
             className="object-cover grayscale group-hover:grayscale-0 transition-[filter,transform] duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/15 group-hover:bg-transparent transition-colors duration-500" />
