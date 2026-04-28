@@ -68,20 +68,12 @@ export default function BookingPage() {
       <section className="relative bg-black pt-4 pb-24 md:pt-6 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          {/* Nick-only callout */}
-          <div className="border-l-2 border-brand-red pl-6 md:pl-8 py-3 mb-12 md:mb-16">
-            <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Nick only</p>
-            <p className="text-gray-400 text-sm md:text-base leading-relaxed">
-              Leka and other barbers do not take appointments. Walk-ins only.
-            </p>
-          </div>
-
           {/* Booking rules */}
           <div className="grid md:grid-cols-3 gap-10 md:gap-12">
             {[
+              { label: 'Nick only', detail: 'Nick is the only barber currently taking appointments. Leka and the rest of the team are walk-ins only.' },
               { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Covers your private area, complimentary drinks, and guaranteed time slot. Full booking total paid upfront to confirm.' },
-              { label: 'Arrival', detail: 'Please arrive 10 minutes before your appointment.' },
-              { label: 'Late policy', detail: '10+ minutes late and Nick reserves the right to refuse the appointment.' },
+              { label: 'Booking policy', detail: 'Please arrive 10 minutes before your appointment. 10+ minutes late and Nick reserves the right to refuse the booking.' },
             ].map(({ label, detail }) => (
               <div key={label} className="border-l-2 border-brand-red/30 pl-6 md:pl-8 py-2">
                 <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-3">{label}</p>
