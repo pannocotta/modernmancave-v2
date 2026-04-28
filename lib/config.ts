@@ -77,18 +77,33 @@ export const LOCATIONS = [
   },
 ] as const
 
-export const NAV_LINKS = [
-  { label: 'HOME', href: '/' },
-  { label: 'THE TEAM', href: '/team' },
-  { label: 'PRICES', href: '/prices' },
-  { label: 'TATTOO', href: '/prices#tattooing' },
-  { label: 'MOBILE BARBER', href: '/mobile-barber' },
-  { label: 'BARBER TRAINING', href: '/mobile-barber#education' },
-  { label: 'FRANCHISE', href: '/franchise' },
-  { label: 'COMMUNITY', href: '/community' },
-  { label: 'MERCH', href: '/shop' },
-  { label: 'DOWNLOAD APP', href: '/app' },
-  { label: 'LOCATIONS', href: '/locations' },
+export const NAV_SECTIONS = [
+  {
+    eyebrow: 'The Shop',
+    links: [
+      { label: 'HOME', href: '/' },
+      { label: 'THE TEAM', href: '/team' },
+      { label: 'PRICES', href: '/prices' },
+      { label: 'TATTOO', href: '/prices#tattooing' },
+      { label: 'LOCATIONS', href: '/locations' },
+    ],
+  },
+  {
+    eyebrow: 'Beyond the Shop',
+    links: [
+      { label: 'MOBILE BARBER', href: '/mobile-barber' },
+      { label: 'DOWNLOAD APP', href: '/app' },
+      { label: 'MERCH', href: '/shop' },
+    ],
+  },
+  {
+    eyebrow: 'Work With Us',
+    links: [
+      { label: 'BARBER TRAINING', href: '/mobile-barber#education' },
+      { label: 'FRANCHISE', href: '/franchise' },
+      { label: 'COMMUNITY', href: '/community' },
+    ],
+  },
 ] as const
 
 export const BOOKING_LINK = { label: 'BOOK NOW', href: '/booking' } as const

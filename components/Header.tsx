@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { NAV_LINKS, BOOKING_LINK } from '@/lib/config'
+import { NAV_SECTIONS, BOOKING_LINK } from '@/lib/config'
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -40,13 +40,13 @@ export default function Header() {
 
       {/* Side Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-black z-[100] transform transition-transform duration-300 ease-in-out shadow-2xl ${
+        className={`fixed top-0 right-0 h-full w-80 bg-black z-[100] transform transition-transform duration-300 ease-in-out shadow-2xl overflow-y-auto ${
           drawerOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <button
           onClick={closeDrawer}
-          className="absolute top-8 right-8 text-white text-4xl font-light hover:rotate-90 transition-transform"
+          className="absolute top-8 right-8 text-white text-4xl font-light hover:rotate-90 transition-transform z-10"
           aria-label="Close menu"
         >
           ×
@@ -56,24 +56,38 @@ export default function Header() {
           <Image src="/1.png" alt="Modern Mancave" width={112} height={32} className="h-8 w-auto" />
         </div>
 
-        <nav className="flex flex-col gap-4 p-12 pt-8">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={closeDrawer}
-              className="text-white text-lg font-headliner tracking-wide hover:translate-x-2 transition-transform"
+        <nav className="flex flex-col">
+          {NAV_SECTIONS.map((section, i) => (
+            <div
+              key={section.eyebrow}
+              className={`px-8 py-6 ${i > 0 ? 'border-t border-zinc-800' : ''}`}
             >
-              {link.label}
-            </Link>
+              <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-4">
+                {section.eyebrow}
+              </p>
+              <div className="flex flex-col gap-2.5">
+                {section.links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={closeDrawer}
+                    className="text-white text-lg font-headliner tracking-wide hover:translate-x-2 hover:text-brand-red transition-all"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
           ))}
-          <Link
-            href={BOOKING_LINK.href}
-            onClick={closeDrawer}
-            className="text-brand-red text-lg font-headliner tracking-wide hover:translate-x-2 transition-transform"
-          >
-            {BOOKING_LINK.label}
-          </Link>
+          <div className="px-8 py-6 border-t border-zinc-800">
+            <Link
+              href={BOOKING_LINK.href}
+              onClick={closeDrawer}
+              className="block text-brand-red text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
+            >
+              {BOOKING_LINK.label}
+            </Link>
+          </div>
         </nav>
       </div>
 
