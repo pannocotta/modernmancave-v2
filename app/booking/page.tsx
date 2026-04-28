@@ -59,7 +59,7 @@ export default function BookingPage() {
             BOOK THE<br />VIP EXPERIENCE
           </h1>
           <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl">
-            The Modern Mancave VIP experience — a guaranteed time with Nick at our Banna Avenue location, no 20–30 minute walk-in wait. Every VIP booking includes a private area, complimentary water or Coca-Cola, and personalised service. The $20 VIP fee is paid upfront to confirm your booking.
+            The Modern Mancave VIP experience — a guaranteed time with Nick at our Banna Avenue location, no 20–30 minute walk-in wait. Every VIP booking includes a private area, complimentary water or Coca-Cola, and personalised service. The full booking total — your service plus the $20 VIP fee — is paid upfront to confirm your spot.
           </p>
         </div>
       </section>
@@ -80,7 +80,7 @@ export default function BookingPage() {
           {/* Booking rules */}
           <div className="grid sm:grid-cols-3 gap-px border border-zinc-800/50 bg-zinc-800/50">
             {[
-              { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Covers your private area, complimentary drinks, and guaranteed time slot. Paid upfront to confirm.' },
+              { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Covers your private area, complimentary drinks, and guaranteed time slot. Full booking total paid upfront to confirm.' },
               { label: 'Arrival', detail: 'Please arrive 10 minutes before your appointment.' },
               { label: 'Late policy', detail: '10+ minutes late and Nick reserves the right to refuse the appointment.' },
             ].map(({ label, detail }) => (
