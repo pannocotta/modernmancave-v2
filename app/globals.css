@@ -197,6 +197,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
 
 .work-marquee-track {
   display: flex;
+  align-items: center;
   width: max-content;
   gap: 16px;
   animation: work-scroll-left 60s linear infinite;

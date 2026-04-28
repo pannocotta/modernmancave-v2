@@ -1,29 +1,31 @@
 import Image from 'next/image'
 
-type TileSize = 'default' | 'tall' | 'wide'
+// All work photos are 800x800 squares — keep tiles square so the cut
+// is never cropped. Vary tile *size* instead for visual rhythm.
+type TileSize = 'sm' | 'md' | 'lg'
 
 const SIZE_CLASS: Record<TileSize, string> = {
-  default: 'w-[260px] h-[200px] md:w-[320px] md:h-[240px]',
-  tall: 'w-[200px] h-[240px] md:w-[240px] md:h-[300px]',
-  wide: 'w-[340px] h-[200px] md:w-[440px] md:h-[240px]',
+  sm: 'w-[200px] h-[200px] md:w-[240px] md:h-[240px]',
+  md: 'w-[240px] h-[240px] md:w-[300px] md:h-[300px]',
+  lg: 'w-[280px] h-[280px] md:w-[360px] md:h-[360px]',
 }
 
 const ROW_TOP: { src: string; size: TileSize }[] = [
-  { src: '/work/1.jpg', size: 'default' },
-  { src: '/work/3.jpg', size: 'tall' },
-  { src: '/work/5.jpg', size: 'wide' },
-  { src: '/work/7.jpg', size: 'default' },
-  { src: '/work/9.jpg', size: 'tall' },
-  { src: '/work/11.jpg', size: 'default' },
+  { src: '/work/1.jpg', size: 'md' },
+  { src: '/work/3.jpg', size: 'lg' },
+  { src: '/work/5.jpg', size: 'sm' },
+  { src: '/work/7.jpg', size: 'md' },
+  { src: '/work/9.jpg', size: 'lg' },
+  { src: '/work/11.jpg', size: 'sm' },
 ]
 
 const ROW_BOTTOM: { src: string; size: TileSize }[] = [
-  { src: '/work/2.jpg', size: 'wide' },
-  { src: '/work/4.jpg', size: 'default' },
-  { src: '/work/6.jpg', size: 'tall' },
-  { src: '/work/8.jpg', size: 'default' },
-  { src: '/work/10.jpg', size: 'wide' },
-  { src: '/work/12.jpg', size: 'tall' },
+  { src: '/work/2.jpg', size: 'lg' },
+  { src: '/work/4.jpg', size: 'sm' },
+  { src: '/work/6.jpg', size: 'md' },
+  { src: '/work/8.jpg', size: 'lg' },
+  { src: '/work/10.jpg', size: 'sm' },
+  { src: '/work/12.jpg', size: 'md' },
 ]
 
 function MarqueeRow({
