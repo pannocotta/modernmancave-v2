@@ -5,6 +5,7 @@ import { SERVICE_CATEGORIES, TEETH_WHITENING } from '@/lib/services'
 import { SOCIAL, CONTACT } from '@/lib/config'
 import { ArrowRightIcon } from '@/components/icons'
 import { CTALink } from '@/components/CTA'
+import TeethSlideshow from '@/components/TeethSlideshow'
 
 export const metadata = {
   title: 'Barbershop Prices in Griffith NSW',
@@ -88,21 +89,8 @@ export default function PricesPage() {
               <CTALink href="/booking">BOOK NOW</CTALink>
             </div>
 
-            {/* Before & After */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
-                <Image src="/teeth-before.jpg" alt="Before teeth whitening" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
-                  <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">Before</span>
-                </div>
-              </div>
-              <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
-                <Image src="/teeth-after.jpg" alt="After teeth whitening" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
-                  <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">After</span>
-                </div>
-              </div>
-            </div>
+            {/* Before & After Slideshow */}
+            <TeethSlideshow />
           </div>
         </div>
       </section>
