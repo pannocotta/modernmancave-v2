@@ -85,6 +85,7 @@ export const NAV_SECTIONS = [
       { label: 'THE TEAM', href: '/team' },
       { label: 'PRICES', href: '/prices' },
       { label: 'TATTOO', href: '/prices#tattooing' },
+      { label: 'TEETH WHITENING', href: '/prices#teeth-whitening' },
       { label: 'LOCATIONS', href: '/locations' },
     ],
   },

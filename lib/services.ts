@@ -73,6 +73,6 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
 export const TEETH_WHITENING = {
   name: 'Teeth Whitening',
   price: 250,
-  duration: 90,
-  availability: 'Mondays and Wednesdays',
+  duration: 120,
+  availability: 'Wednesdays',
 } as const

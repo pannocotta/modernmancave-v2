@@ -72,7 +72,7 @@ export default function PricesPage() {
       </section>
 
       {/* Teeth Whitening Feature */}
-      <section className="relative section-blend-dark py-16 md:py-44 bg-zinc-950">
+      <section id="teeth-whitening" className="relative section-blend-dark py-16 md:py-44 bg-zinc-950 scroll-mt-24">
         <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <div>
@@ -80,7 +80,7 @@ export default function PricesPage() {
               <h2 className="font-headliner text-4xl md:text-5xl lg:text-6xl gradient-heading leading-[0.9] mb-4">TEETH WHITENING</h2>
               <div className="text-3xl md:text-4xl font-bold text-white mb-6">${TEETH_WHITENING.price}</div>
               <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-4">
-                Professional teeth whitening to keep your smile as sharp as your cut. 1.5 hour session with visible results.
+                Professional teeth whitening to keep your smile as sharp as your cut. 2 hour session with visible results.
               </p>
               <p className="text-gray-500 text-xs mb-8">
                 Available on <span className="text-white">{TEETH_WHITENING.availability}</span> only.
