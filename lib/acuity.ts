@@ -1,8 +1,8 @@
 /**
  * Acuity scheduler integration — service catalogue + URL helpers.
  *
- * IDs scraped from the live scheduler at owner=39144906 on 2026-04-27.
- * Update by re-scraping if appointment types change in the Acuity dashboard.
+ * Pulled live from the Acuity API on 2026-04-29 (owner=39144906).
+ * Update by re-running the API fetch if appointment types change in the Acuity dashboard.
  */
 
 export const ACUITY_OWNER = '39144906'
@@ -16,7 +16,7 @@ export type ServiceCategory =
   | 'Hot Towel Shaves'
   | 'Beard Services'
   | 'Kids Cuts'
-  | 'Specialty'
+  | 'Teeth Whitening'
 
 export interface AcuityService {
   id: number
@@ -28,43 +28,44 @@ export interface AcuityService {
 
 export const ACUITY_SERVICES: AcuityService[] = [
   // Men's Cuts
-  { id: 92440644, name: "Men's Cut", price: 60, duration: 25, category: "Men's Cuts" },
+  { id: 92440644, name: "Men's Cut", price: 60, duration: 30, category: "Men's Cuts" },
   { id: 92440668, name: "Men's Cut & Beard Trim", price: 70, duration: 30, category: "Men's Cuts" },
-  { id: 92440699, name: "Men's Cut, Beard Trim & Line Up", price: 78, duration: 35, category: "Men's Cuts" },
+  { id: 92440699, name: "Men's Cut With Beard Trim & Line Up", price: 78, duration: 45, category: "Men's Cuts" },
 
   // Skin Fades
   { id: 92440719, name: 'Skin Fade', price: 65, duration: 30, category: 'Skin Fades' },
-  { id: 92440764, name: 'Skin Fade, Beard Trim & Line Up', price: 80, duration: 40, category: 'Skin Fades' },
+  { id: 92485942, name: 'Skin Fade With Beard Trim', price: 70, duration: 45, category: 'Skin Fades' },
+  { id: 92440764, name: 'Skin Fade With Beard Trim & Line Up', price: 80, duration: 45, category: 'Skin Fades' },
 
   // Buzz Cuts
   { id: 92440783, name: 'Buzz Cut', price: 50, duration: 15, category: 'Buzz Cuts' },
-  { id: 92440811, name: 'Buzz Cut & Beard Trim', price: 60, duration: 20, category: 'Buzz Cuts' },
-  { id: 92440850, name: 'Buzz Cut, Beard Trim & Line Up', price: 70, duration: 25, category: 'Buzz Cuts' },
+  { id: 92440811, name: 'Buzz Cut With Beard Trim', price: 60, duration: 30, category: 'Buzz Cuts' },
+  { id: 92440850, name: 'Buzz Cut With Beard Trim & Line Up', price: 70, duration: 30, category: 'Buzz Cuts' },
 
   // Head Shaves
   { id: 92440891, name: 'Head Shave', price: 60, duration: 30, category: 'Head Shaves' },
-  { id: 92440902, name: 'Head Shave & Beard Trim', price: 65, duration: 35, category: 'Head Shaves' },
-  { id: 92440926, name: 'Head Shave, Beard Trim & Line Up', price: 80, duration: 40, category: 'Head Shaves' },
+  { id: 92440902, name: 'Head Shave With Beard Trim', price: 65, duration: 30, category: 'Head Shaves' },
+  { id: 92440926, name: 'Head Shave With Beard Trim & Line Up', price: 80, duration: 45, category: 'Head Shaves' },
 
   // Hot Towel Shaves
-  { id: 92440977, name: 'Hot Towel Shave', price: 65, duration: 25, category: 'Hot Towel Shaves' },
-  { id: 92440997, name: 'Hot Towel Shave & Haircut', price: 85, duration: 45, category: 'Hot Towel Shaves' },
+  { id: 92440977, name: 'Hot Towel Shave', price: 65, duration: 30, category: 'Hot Towel Shaves' },
+  { id: 92440997, name: 'Hot Towel Shave With Haircut', price: 85, duration: 45, category: 'Hot Towel Shaves' },
+  { id: 92546233, name: 'Hot Towel Shave With Skin Fade', price: 90, duration: 45, category: 'Hot Towel Shaves' },
 
   // Beard Services
-  { id: 92441036, name: 'Beard Trim', price: 40, duration: 10, category: 'Beard Services' },
-  { id: 92441060, name: 'Beard Trim & Line Up', price: 45, duration: 15, category: 'Beard Services' },
+  { id: 92441036, name: 'Beard Trim', price: 40, duration: 15, category: 'Beard Services' },
+  { id: 92441060, name: 'Beard Trim With Line Up', price: 45, duration: 15, category: 'Beard Services' },
 
   // Kids Cuts
-  { id: 92328251, name: 'Baby', price: 50, duration: 20, category: 'Kids Cuts' },
-  { id: 92440505, name: 'Baby Skin Fade', price: 55, duration: 25, category: 'Kids Cuts' },
-  { id: 92440530, name: 'Primary School', price: 55, duration: 20, category: 'Kids Cuts' },
-  { id: 92440579, name: 'Primary School Skin Fade', price: 58, duration: 25, category: 'Kids Cuts' },
-  { id: 92440606, name: 'High School', price: 55, duration: 25, category: 'Kids Cuts' },
+  { id: 92328251, name: 'Baby (0-5 Y.O)', price: 50, duration: 15, category: 'Kids Cuts' },
+  { id: 92440505, name: 'Baby (0-5 Y.O) Skin Fade', price: 55, duration: 30, category: 'Kids Cuts' },
+  { id: 92440530, name: 'Primary School', price: 55, duration: 30, category: 'Kids Cuts' },
+  { id: 92440579, name: 'Primary School Skin Fade', price: 58, duration: 30, category: 'Kids Cuts' },
+  { id: 92440606, name: 'High School', price: 55, duration: 30, category: 'Kids Cuts' },
   { id: 92440623, name: 'High School Skin Fade', price: 58, duration: 30, category: 'Kids Cuts' },
 
-  // Specialty
-  { id: 6945612, name: 'Hair Art', price: 15, duration: 15, category: 'Specialty' },
-  { id: 92449597, name: 'Teeth Whitening', price: 250, duration: 120, category: 'Specialty' },
+  // Teeth Whitening
+  { id: 92449597, name: 'Teeth Whitening', price: 250, duration: 120, category: 'Teeth Whitening' },
 ]
 
 /** The four most popular services to surface as quick-book tiles. */
@@ -78,7 +79,7 @@ export const SERVICE_CATEGORIES_ORDERED: ServiceCategory[] = [
   'Hot Towel Shaves',
   'Beard Services',
   'Kids Cuts',
-  'Specialty',
+  'Teeth Whitening',
 ]
 
 export function getServicesByCategory(category: ServiceCategory): AcuityService[] {

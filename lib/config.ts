@@ -139,7 +139,7 @@ export const TEAM = [
     initial: 'L',
     image: '/team/leka.png',
     title: 'Yambil St',
-    origin: 'Australia',
+    origin: 'Tonga',
     instagram: { handle: '@barber.leka', url: 'https://www.instagram.com/barber.leka' },
   },
   {
