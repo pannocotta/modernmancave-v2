@@ -93,7 +93,6 @@ export const NAV_SECTIONS = [
     eyebrow: 'Beyond the Shop',
     links: [
       { label: 'MOBILE BARBER', href: '/mobile-barber' },
-      { label: 'DOWNLOAD APP', href: '/app' },
       { label: 'MERCH', href: '/shop' },
     ],
   },
@@ -105,9 +104,14 @@ export const NAV_SECTIONS = [
       { label: 'COMMUNITY', href: '/community' },
     ],
   },
+  {
+    eyebrow: 'VIP Service',
+    links: [
+      { label: 'DOWNLOAD APP', href: '/app' },
+      { label: 'BOOK NOW', href: '/booking', accent: true },
+    ],
+  },
 ] as const
-
-export const BOOKING_LINK = { label: 'BOOK NOW', href: '/booking' } as const
 
 export const TEAM = [
   {

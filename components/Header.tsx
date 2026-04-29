@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { NAV_SECTIONS, BOOKING_LINK } from '@/lib/config'
+import { NAV_SECTIONS } from '@/lib/config'
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -66,28 +66,26 @@ export default function Header() {
                 {section.eyebrow}
               </p>
               <div className="flex flex-col gap-2.5">
-                {section.links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={closeDrawer}
-                    className="text-white text-lg font-headliner tracking-wide hover:translate-x-2 hover:text-brand-red transition-all"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {section.links.map((link) => {
+                  const accent = 'accent' in link && link.accent
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeDrawer}
+                      className={`font-headliner tracking-wide hover:translate-x-2 transition-all ${
+                        accent
+                          ? 'text-brand-red text-xl'
+                          : 'text-white text-lg hover:text-brand-red'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                })}
               </div>
             </div>
           ))}
-          <div className="px-8 py-6 border-t border-zinc-800">
-            <Link
-              href={BOOKING_LINK.href}
-              onClick={closeDrawer}
-              className="block text-brand-red text-2xl font-headliner tracking-wide hover:translate-x-2 transition-transform"
-            >
-              {BOOKING_LINK.label}
-            </Link>
-          </div>
         </nav>
       </div>
 
