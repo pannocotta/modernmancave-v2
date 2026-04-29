@@ -67,11 +67,16 @@ export default function LaunchPage() {
         <div className="mt-10 mb-8">
           <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-4">{greeting()}</p>
           <h1 className="font-headliner gradient-heading text-5xl leading-[0.85] mb-4">
-            BOOK YOUR<br />NEXT CUT
+            BOOK YOUR NEXT<br />VIP CUT
           </h1>
-          <p className="text-gray-400 text-sm leading-relaxed">
-            Tap a service below to lock in a time with Nick. Pre-pays and confirms in one go.
-          </p>
+          <div className="text-gray-400 text-sm leading-relaxed space-y-3">
+            <p>
+              Each VIP booking with Nick at Banna Avenue delivers an exclusive private setting, signature hot towel ritual, and refined one-on-one service.
+            </p>
+            <p>
+              Your appointment is reserved exclusively for you. Full payment, including the $20 VIP fee, is required upfront to confirm your reservation.
+            </p>
+          </div>
         </div>
 
         {/* Next appointment — only renders if there's a saved upcoming booking */}
