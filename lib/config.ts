@@ -117,7 +117,7 @@ export const TEAM = [
   {
     name: 'NICK',
     initial: 'N',
-    image: '/team/nick.png',
+    image: '/team/nick.webp',
     title: 'Banna Ave',
     origin: 'Philippines',
     instagram: { handle: '@barberniks', url: 'https://www.instagram.com/barberniks' },
@@ -125,7 +125,7 @@ export const TEAM = [
   {
     name: 'KEVIN',
     initial: 'K',
-    image: '/team/kevin.png',
+    image: '/team/kevin.webp',
     title: 'Banna Ave',
     origin: 'Philippines',
     instagram: { handle: '@kevinmarkarana', url: 'https://www.instagram.com/kevinmarkarana' },
@@ -133,7 +133,7 @@ export const TEAM = [
   {
     name: 'DELVIN',
     initial: 'D',
-    image: '/team/delvin.png',
+    image: '/team/delvin.webp',
     title: 'Griffith Central',
     origin: 'Philippines',
     instagram: { handle: '@barber_dhel', url: 'https://www.instagram.com/barber_dhel' },
@@ -141,7 +141,7 @@ export const TEAM = [
   {
     name: 'LEKA',
     initial: 'L',
-    image: '/team/leka.png',
+    image: '/team/leka.webp',
     title: 'Yambil St',
     origin: 'Tonga',
     instagram: { handle: '@barber.leka', url: 'https://www.instagram.com/barber.leka' },
@@ -149,7 +149,7 @@ export const TEAM = [
   {
     name: 'ANTONIO',
     initial: 'A',
-    image: '/team/antonio.png',
+    image: '/team/antonio.webp',
     title: 'Griffith Central',
     origin: 'Italy',
     instagram: { handle: '@_parmentola.antonio_', url: 'https://www.instagram.com/_parmentola.antonio_' },
@@ -157,7 +157,7 @@ export const TEAM = [
   {
     name: 'JOHN',
     initial: 'J',
-    image: '/team/john.png',
+    image: '/team/john.webp',
     title: 'Banna Ave',
     origin: 'Philippines',
     instagram: { handle: '@rowi_44', url: 'https://www.instagram.com/rowi_44' },
@@ -165,7 +165,7 @@ export const TEAM = [
   {
     name: 'JORDAN',
     initial: 'J',
-    image: '/team/jordan.png',
+    image: '/team/jordan.webp',
     title: 'Banna Ave',
     origin: 'Philippines',
     instagram: { handle: '@jd_respetado', url: 'https://www.instagram.com/jd_respetado' },
@@ -173,7 +173,7 @@ export const TEAM = [
   {
     name: 'CHRISTIAN',
     initial: 'C',
-    image: '/team/christian.png',
+    image: '/team/christian.webp',
     title: 'Griffith Central',
     origin: 'Philippines',
     instagram: { handle: '@chris_barber101100', url: 'https://www.instagram.com/chris_barber101100' },
@@ -181,14 +181,14 @@ export const TEAM = [
   {
     name: 'BRAD',
     initial: 'B',
-    image: '/team/brad.png',
+    image: '/team/brad.webp',
     title: 'Griffith Central',
     origin: 'Philippines',
   },
   {
     name: 'ANDREW',
     initial: 'A',
-    image: '/team/andrew.png',
+    image: '/team/andrew.webp',
     title: 'Yambil St',
     origin: 'Australia',
     instagram: { handle: '@drewkfauoo', url: 'https://www.instagram.com/drewkfauoo' },
@@ -196,7 +196,7 @@ export const TEAM = [
   {
     name: 'TAU',
     initial: 'T',
-    image: '/team/tau.png',
+    image: '/team/tau.webp',
     title: 'Yambil St',
     origin: 'Australia',
     instagram: { handle: '@_taulawz', url: 'https://www.instagram.com/_taulawz' },
@@ -204,7 +204,7 @@ export const TEAM = [
   {
     name: 'POU',
     initial: 'P',
-    image: '/team/pou.png',
+    image: '/team/pou.webp',
     title: 'Yambil St',
     origin: 'Tonga',
     instagram: { handle: '@poukoulamafi_', url: 'https://www.instagram.com/poukoulamafi_' },

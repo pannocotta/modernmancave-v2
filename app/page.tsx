@@ -51,7 +51,7 @@ export default function Home() {
           </div>
 
           <div className="w-full mx-auto mb-8 max-w-[min(80vw,500px)]">
-            <Image src="/hero-badge-new.png" alt="Modern Mancave Barbershop Est 2017" width={1200} height={1200} priority quality={80} className="w-full h-auto drop-shadow-[0_0_60px_rgba(255,0,0,0.1)]" />
+            <Image src="/hero-badge-new.webp" alt="Modern Mancave Barbershop Est 2017" width={1200} height={1200} priority quality={80} className="w-full h-auto drop-shadow-[0_0_60px_rgba(255,0,0,0.1)]" />
           </div>
 
           <div className="flex flex-wrap gap-5 items-center justify-center">
