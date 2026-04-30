@@ -27,7 +27,7 @@ export default function Home() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             className="absolute inset-0 w-full h-full object-cover opacity-50 bg-black"
           >
             <source src="/hero-video.mp4" type="video/mp4" />
@@ -143,7 +143,7 @@ export default function Home() {
                 muted
                 loop
                 playsInline
-                preload="auto"
+                preload="metadata"
                 className="absolute inset-0 w-full h-full object-cover"
               >
                 <source src="/tattoo-loop.mp4" type="video/mp4" />
