@@ -18,12 +18,12 @@ export default function TeethSlideshow() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') go(-1)
-      if (e.key === 'ArrowRight') go(1)
+      if (e.key === 'ArrowLeft') setIndex((i) => (i - 1 + total) % total)
+      if (e.key === 'ArrowRight') setIndex((i) => (i + 1) % total)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [])
+  }, [total])
 
   return (
     <div className="w-full">
