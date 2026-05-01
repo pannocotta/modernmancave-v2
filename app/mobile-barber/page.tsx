@@ -81,8 +81,8 @@ export default function MobileBarberPage() {
               >
                 <source src="/mobile-barber-video.mp4" type="video/mp4" />
               </video>
-              {/* Mobile: blend top and bottom only */}
-              <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+              {/* Mobile: vignette blend on all four edges */}
+              <div className="md:hidden absolute inset-0 pointer-events-none shadow-[inset_0_0_60px_30px_rgba(0,0,0,1)]" />
               {/* Desktop: blend right, top, bottom — left edge bleeds to screen edge */}
               <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black" />
               <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40" />
