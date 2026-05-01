@@ -103,3 +103,19 @@ export async function createAppointment(
   }
   return res.json()
 }
+
+export async function cancelAppointment(appointmentId: number): Promise<void> {
+  const res = await fetch(`${ACUITY_BASE}/appointments/${appointmentId}/cancel`, {
+    method: 'PUT',
+    headers: {
+      Authorization: getAuthHeader(),
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ noEmail: true }),
+    cache: 'no-store',
+  })
+  if (!res.ok) {
+    const text = await res.text().catch(() => '')
+    throw new Error(`Acuity cancel ${res.status}: ${text || res.statusText}`)
+  }
+}

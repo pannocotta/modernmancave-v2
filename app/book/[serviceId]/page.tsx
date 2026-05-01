@@ -601,21 +601,34 @@ function ConfirmStep({
         throw new Error(body.error ?? 'Booking failed')
       }
       const data = await res.json()
-      const apt = data.appointment as { id: number; confirmationPage?: string } | undefined
-      if (apt?.id) {
-        saveBooking({
-          appointmentId: apt.id,
-          serviceId: service.id,
-          serviceName: service.name,
-          servicePrice: service.price,
-          serviceDuration: service.duration,
-          datetime: time, // ISO with timezone from Acuity
-          firstName: form.firstName,
-          lastName: form.lastName,
-          email: form.email,
-          confirmationPage: apt.confirmationPage,
-        })
+      const apt = data.appointment as
+        | { id: number; confirmationPage?: string; paid?: 'yes' | 'no'; amountPaid?: string }
+        | undefined
+
+      // Hard gate: the appointment must come back as paid. Acuity's
+      // /appointments endpoint will silently skip the charge (returning
+      // paid: 'no') when an appointment type isn't configured for online
+      // payment — leaving the customer with a confirmed appointment but
+      // no charge. Treat that as a failure so the user never sees a
+      // phantom 'Payment received' screen.
+      if (!apt?.id || apt.paid !== 'yes') {
+        throw new Error(
+          "Payment didn't complete — your card has not been charged. Please try again, or contact us if the issue persists.",
+        )
       }
+
+      saveBooking({
+        appointmentId: apt.id,
+        serviceId: service.id,
+        serviceName: service.name,
+        servicePrice: service.price,
+        serviceDuration: service.duration,
+        datetime: time, // ISO with timezone from Acuity
+        firstName: form.firstName,
+        lastName: form.lastName,
+        email: form.email,
+        confirmationPage: apt.confirmationPage,
+      })
       onSuccess()
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Booking failed'
