@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
+import HashScrollHandler from '@/components/HashScrollHandler'
 import Link from 'next/link'
 import Image from 'next/image'
 import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
@@ -41,6 +42,7 @@ export default function MobileBarberPage() {
   return (
     <main className="min-h-screen bg-black text-white">
       <Header />
+      <HashScrollHandler />
 
       {/* Hero */}
       <section className="relative min-h-[80vh] flex items-end pb-20 md:pb-28 pt-32 md:pt-40 overflow-hidden">
