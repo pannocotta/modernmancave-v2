@@ -53,6 +53,12 @@ export function getNextBooking(): SavedBooking | null {
   return upcoming[0] ?? null
 }
 
+export function removeBooking(appointmentId: number) {
+  if (typeof window === 'undefined') return
+  const remaining = loadBookings().filter((b) => b.appointmentId !== appointmentId)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(remaining))
+}
+
 /** Build an .ics calendar file body for the given booking. */
 export function buildICS(booking: SavedBooking): string {
   const start = new Date(booking.datetime)

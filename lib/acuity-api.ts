@@ -81,6 +81,7 @@ export interface AcuityAppointment {
   /** Hosted payment-only page for this specific appointment. Acuity
    *  returns this whenever an appointment is created unpaid. */
   confirmationPagePaymentLink?: string
+  canceled?: boolean
 }
 
 export async function createAppointment(
@@ -103,6 +104,23 @@ export async function createAppointment(
       `Acuity API ${res.status}: ${res.statusText}`
     throw new Error(message)
   }
+  return res.json()
+}
+
+export async function getAppointment(
+  appointmentId: number,
+): Promise<AcuityAppointment | null> {
+  const res = await fetch(`${ACUITY_BASE}/appointments/${appointmentId}`, {
+    headers: { Authorization: getAuthHeader() },
+    cache: 'no-store',
+  })
+  if (res.status === 404) return null
+  if (!res.ok) {
+    const text = await res.text().catch(() => '')
+    throw new Error(`Acuity get ${res.status}: ${text || res.statusText}`)
+  }
+  // Acuity quirk: cancelled appointments still return 200 with canceled: true.
+  // Caller decides how to interpret canceled state.
   return res.json()
 }
 
