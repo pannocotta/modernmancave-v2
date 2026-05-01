@@ -24,6 +24,10 @@ export interface AcuityService {
   price: number
   duration: number
   category: ServiceCategory
+  /** When true, the service is bookable via /book/[id] but hidden from
+   *  the /launch catalogue and category listings. Used for the Stripe
+   *  test service so customers don't see it. */
+  hidden?: boolean
 }
 
 export const ACUITY_SERVICES: AcuityService[] = [
@@ -66,6 +70,9 @@ export const ACUITY_SERVICES: AcuityService[] = [
 
   // Teeth Whitening
   { id: 92449597, name: 'Teeth Whitening', price: 250, duration: 120, category: 'Teeth Whitening' },
+
+  // Hidden — Stripe end-to-end test service
+  { id: 92635113, name: 'Test Service', price: 4, duration: 30, category: 'Kids Cuts', hidden: true },
 ]
 
 /** The four most popular services to surface as quick-book tiles. */
@@ -83,7 +90,7 @@ export const SERVICE_CATEGORIES_ORDERED: ServiceCategory[] = [
 ]
 
 export function getServicesByCategory(category: ServiceCategory): AcuityService[] {
-  return ACUITY_SERVICES.filter((s) => s.category === category)
+  return ACUITY_SERVICES.filter((s) => s.category === category && !s.hidden)
 }
 
 export function getServiceById(id: number): AcuityService | undefined {
