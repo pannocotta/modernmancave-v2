@@ -65,7 +65,6 @@ export interface CreateAppointmentInput {
   lastName: string
   email: string
   phone: string
-  stripeToken: string
 }
 
 export interface AcuityAppointment {
@@ -79,6 +78,9 @@ export interface AcuityAppointment {
   paid?: 'yes' | 'no'
   type?: string
   confirmationPage?: string
+  /** Hosted payment-only page for this specific appointment. Acuity
+   *  returns this whenever an appointment is created unpaid. */
+  confirmationPagePaymentLink?: string
 }
 
 export async function createAppointment(

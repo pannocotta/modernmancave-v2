@@ -2,14 +2,11 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
-import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
-import type { StripeCardElementOptions } from '@stripe/stripe-js'
 import { ArrowRightIcon } from '@/components/icons'
 import { getServiceById, type AcuityService } from '@/lib/acuity'
-import { getStripe } from '@/lib/stripe'
 import { saveBooking } from '@/lib/bookings'
 
-type Step = 'date' | 'time' | 'details' | 'confirm' | 'success'
+type Step = 'date' | 'time' | 'details' | 'confirm'
 
 interface FormState {
   firstName: string
@@ -146,19 +143,13 @@ export default function BookFlowPage({ params }: { params: { serviceId: string }
             />
           )}
           {step === 'confirm' && selectedDate && selectedTime && (
-            <Elements stripe={getStripe()}>
-              <ConfirmStep
-                service={service}
-                date={selectedDate}
-                time={selectedTime}
-                form={form}
-                onBack={() => setStep('details')}
-                onSuccess={() => setStep('success')}
-              />
-            </Elements>
-          )}
-          {step === 'success' && selectedDate && selectedTime && (
-            <SuccessStep service={service} date={selectedDate} time={selectedTime} form={form} />
+            <ConfirmStep
+              service={service}
+              date={selectedDate}
+              time={selectedTime}
+              form={form}
+              onBack={() => setStep('details')}
+            />
           )}
         </div>
       </div>
@@ -173,8 +164,7 @@ function StepIndicator({ step }: { step: Step }) {
     { key: 'details', label: 'Details' },
     { key: 'confirm', label: 'Pay' },
   ]
-  // 'success' state: render every step as completed
-  const currentIndex = step === 'success' ? labels.length : labels.findIndex((l) => l.key === step)
+  const currentIndex = labels.findIndex((l) => l.key === step)
   return (
     <div className="flex items-center gap-1.5">
       {labels.map((l, i) => {
@@ -529,71 +519,30 @@ function ConfirmStep({
   time,
   form,
   onBack,
-  onSuccess,
 }: {
   service: AcuityService
   date: string
   time: string
   form: FormState
   onBack: () => void
-  onSuccess: () => void
 }) {
-  const stripe = useStripe()
-  const elements = useElements()
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const cardOptions: StripeCardElementOptions = {
-    style: {
-      base: {
-        color: '#ffffff',
-        fontFamily: 'system-ui, -apple-system, sans-serif',
-        fontSize: '15px',
-        '::placeholder': { color: '#525252' },
-        iconColor: '#ff3333',
-      },
-      invalid: {
-        color: '#f87171',
-        iconColor: '#f87171',
-      },
-    },
-    hidePostalCode: false,
-  }
-
-  async function handlePay() {
-    if (!stripe || !elements) return
-    const card = elements.getElement(CardElement)
-    if (!card) return
-
+  async function handleContinueToPayment() {
     setSubmitting(true)
     setError(null)
-
-    // 1. Tokenise the card via Stripe (this happens entirely client-side
-    //    and the card data never touches our server)
-    const tokenResult = await stripe.createToken(card, {
-      name: `${form.firstName} ${form.lastName}`,
-    })
-    if (tokenResult.error) {
-      setError(tokenResult.error.message ?? 'Card could not be processed')
-      setSubmitting(false)
-      return
-    }
-
-    // 2. Send the token + booking details to our server, which creates
-    //    the appointment in Acuity. Acuity charges the card via their
-    //    connected Stripe account.
     try {
       const res = await fetch('/api/book/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           serviceId: service.id,
-          datetime: time, // already an ISO string with timezone from Acuity
+          datetime: time,
           firstName: form.firstName,
           lastName: form.lastName,
           email: form.email,
           phone: form.phone,
-          stripeToken: tokenResult.token.id,
         }),
       })
       if (!res.ok) {
@@ -602,34 +551,38 @@ function ConfirmStep({
       }
       const data = await res.json()
       const apt = data.appointment as
-        | { id: number; confirmationPage?: string; paid?: 'yes' | 'no'; amountPaid?: string }
+        | {
+            id: number
+            confirmationPage?: string
+            confirmationPagePaymentLink?: string
+          }
         | undefined
 
-      // Hard gate: the appointment must come back as paid. Acuity's
-      // /appointments endpoint will silently skip the charge (returning
-      // paid: 'no') when an appointment type isn't configured for online
-      // payment — leaving the customer with a confirmed appointment but
-      // no charge. Treat that as a failure so the user never sees a
-      // phantom 'Payment received' screen.
-      if (!apt?.id || apt.paid !== 'yes') {
-        throw new Error(
-          "Payment didn't complete — your card has not been charged. Please try again, or contact us if the issue persists.",
-        )
+      if (!apt?.id || !apt.confirmationPagePaymentLink) {
+        throw new Error("Couldn't generate your payment link. Please try again.")
       }
 
+      // Save the unpaid booking locally so /launch shows it as upcoming
+      // even if the customer drops off before completing payment. The
+      // appointment is real in Acuity at this point — Tristan can see
+      // it in his calendar as awaiting payment.
       saveBooking({
         appointmentId: apt.id,
         serviceId: service.id,
         serviceName: service.name,
         servicePrice: service.price,
         serviceDuration: service.duration,
-        datetime: time, // ISO with timezone from Acuity
+        datetime: time,
         firstName: form.firstName,
         lastName: form.lastName,
         email: form.email,
         confirmationPage: apt.confirmationPage,
       })
-      onSuccess()
+
+      // Hand off to Acuity's hosted payment-only page. Stripe v2 / SCA
+      // can't be driven via the public API, so the actual charge happens
+      // on Acuity's domain — same flow the iframe booking page uses.
+      window.location.href = apt.confirmationPagePaymentLink
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Booking failed'
       setError(message)
@@ -648,7 +601,7 @@ function ConfirmStep({
         <span>Edit details</span>
       </button>
 
-      <p className="text-white font-bold text-base tracking-wide mb-5">Review and pay</p>
+      <p className="text-white font-bold text-base tracking-wide mb-5">Review your booking</p>
 
       <div className="border border-zinc-800 divide-y divide-zinc-900 mb-6">
         <SummaryRow label="Service" value={service.name} />
@@ -660,13 +613,8 @@ function ConfirmStep({
         <SummaryRow label="Total" value={`$${service.price.toFixed(2)}`} highlight />
       </div>
 
-      {/* Card input */}
-      <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-3">Card details</p>
-      <div className="border border-zinc-800 bg-zinc-950 px-4 py-4 mb-3">
-        <CardElement options={cardOptions} />
-      </div>
-      <p className="text-gray-600 text-[11px] leading-relaxed mb-5">
-        Card processed securely by Stripe. We don&apos;t see or store your card details.
+      <p className="text-gray-500 text-[11px] leading-relaxed mb-5">
+        The next screen is our secure payment page where you&apos;ll enter your card details. Your booking only confirms once payment goes through.
       </p>
 
       {error && (
@@ -676,66 +624,15 @@ function ConfirmStep({
       )}
 
       <button
-        onClick={handlePay}
-        disabled={submitting || !stripe}
+        onClick={handleContinueToPayment}
+        disabled={submitting}
         className="inline-flex items-stretch border border-white/30 hover:border-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors group w-full"
       >
         <span className="bg-brand-red w-2 self-stretch group-hover:w-12 transition-all duration-300" />
         <span className="px-5 py-3 text-white font-bold text-xs tracking-[0.2em] uppercase flex-1 text-center">
-          {submitting ? 'Processing…' : `Pay $${service.price.toFixed(2)}`}
+          {submitting ? 'Preparing payment…' : `Continue to Payment · $${service.price.toFixed(2)}`}
         </span>
       </button>
-    </div>
-  )
-}
-
-/* ─── Success step ──────────────────────────────────────── */
-
-function SuccessStep({
-  service,
-  date,
-  time,
-  form,
-}: {
-  service: AcuityService
-  date: string
-  time: string
-  form: FormState
-}) {
-  return (
-    <div>
-      <div className="border border-brand-red/40 bg-zinc-950 p-8 text-center mb-6">
-        <div className="w-14 h-14 rounded-full bg-brand-red/15 border border-brand-red flex items-center justify-center mx-auto mb-5">
-          <svg className="w-7 h-7 text-brand-red" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h2 className="font-headliner gradient-heading text-3xl md:text-4xl mb-3">VIP BOOKING CONFIRMED</h2>
-        <p className="text-gray-400 text-sm leading-relaxed">
-          Payment received. A confirmation email is on its way to {form.email}.
-        </p>
-      </div>
-
-      <div className="border border-zinc-800 divide-y divide-zinc-900 mb-6">
-        <SummaryRow label="Service" value={service.name} />
-        <SummaryRow label="When" value={`${formatHumanDate(date)} · ${formatTime(time)}`} />
-        <SummaryRow label="Name" value={`${form.firstName} ${form.lastName}`} />
-        <SummaryRow label="Paid" value={`$${service.price.toFixed(2)}`} highlight />
-      </div>
-
-      <p className="text-gray-500 text-[11px] leading-relaxed mb-5">
-        Please arrive 10 minutes before your appointment. We&apos;re at our Banna Avenue location.
-      </p>
-
-      <Link
-        href="/launch"
-        className="inline-flex items-stretch border border-white/30 hover:border-white transition-colors group w-full"
-      >
-        <span className="bg-brand-red w-2 self-stretch group-hover:w-12 transition-all duration-300" />
-        <span className="px-5 py-3 text-white font-bold text-xs tracking-[0.2em] uppercase flex-1 text-center">
-          Done
-        </span>
-      </Link>
     </div>
   )
 }

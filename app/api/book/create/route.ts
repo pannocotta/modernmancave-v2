@@ -1,6 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createAppointment, cancelAppointment } from '@/lib/acuity-api'
+import { createAppointment } from '@/lib/acuity-api'
 
+/**
+ * Create an unpaid appointment in Acuity and return its hosted-payment
+ * link. Acuity's public API can't process card payments on accounts
+ * running Stripe v2 (their iframe uses a private endpoint we can't reach),
+ * so we hand the customer off to Acuity's own payment page for the actual
+ * charge. The returned `confirmationPagePaymentLink` is a payment-only URL
+ * locked to this specific appointment — no re-selection of date / time /
+ * service required.
+ */
 export async function POST(request: NextRequest) {
   let body: Record<string, unknown>
   try {
@@ -9,17 +18,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
   }
 
-  const {
-    serviceId,
-    datetime,
-    firstName,
-    lastName,
-    email,
-    phone,
-    stripeToken,
-  } = body as Record<string, string | number>
+  const { serviceId, datetime, firstName, lastName, email, phone } =
+    body as Record<string, string | number>
 
-  if (!serviceId || !datetime || !firstName || !lastName || !email || !phone || !stripeToken) {
+  if (!serviceId || !datetime || !firstName || !lastName || !email || !phone) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
 
@@ -31,29 +33,15 @@ export async function POST(request: NextRequest) {
       lastName: String(lastName),
       email: String(email),
       phone: String(phone),
-      stripeToken: String(stripeToken),
     })
 
-    // Acuity will return paid: 'no' if it created the appointment but
-    // never fired the charge — typically because the appointment type
-    // isn't configured for online payment in the Acuity dashboard.
-    // Cancel the unpaid appointment so we don't leave a phantom booking
-    // for the staff to chase.
-    if (appointment.paid !== 'yes') {
+    if (!appointment.confirmationPagePaymentLink) {
       console.error(
-        '[book/create] Appointment created but charge did not fire',
-        { appointmentId: appointment.id, paid: appointment.paid, amountPaid: appointment.amountPaid },
+        '[book/create] Acuity returned no payment link for unpaid appointment',
+        { id: appointment.id },
       )
-      try {
-        await cancelAppointment(appointment.id)
-      } catch (cancelErr) {
-        console.error('[book/create] Failed to cancel unpaid appointment', cancelErr)
-      }
       return NextResponse.json(
-        {
-          error:
-            "Payment didn't go through. Your card has not been charged. Please try again, or contact us if the issue continues.",
-        },
+        { error: "Couldn't generate a payment link. Please try again." },
         { status: 502 },
       )
     }
