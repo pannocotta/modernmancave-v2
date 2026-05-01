@@ -2,73 +2,61 @@
 
 import { useEffect, useState } from 'react'
 import {
-  getNextBooking,
+  loadBookings,
   downloadICS,
   removeBooking,
   type SavedBooking,
 } from '@/lib/bookings'
 import { CONTACT } from '@/lib/config'
 
-type Status = 'loading' | 'paid' | 'unpaid'
-
 export default function UpcomingBookingCard() {
   const [booking, setBooking] = useState<SavedBooking | null>(null)
-  const [status, setStatus] = useState<Status>('loading')
-  const [paymentLink, setPaymentLink] = useState<string | null>(null)
 
   useEffect(() => {
     let cancelled = false
 
-    async function resolveNext() {
-      // Verify each saved booking against Acuity before showing it. If
-      // it's cancelled (or no longer exists), drop it locally and try
-      // the next one. Repeat until we find a valid one or run out.
-      while (!cancelled) {
-        const next = getNextBooking()
-        if (!next) {
-          if (!cancelled) setBooking(null)
-          return
-        }
+    async function resolve() {
+      // Walk every locally-stored booking that is still in the future,
+      // earliest first. Show the first one that Acuity confirms as
+      // paid. Drop ones Acuity says don't exist / are cancelled.
+      // Skip (but keep) unpaid ones — the customer may complete payment
+      // later via Acuity's email link, and we'll pick it up on the next
+      // /launch visit.
+      const now = Date.now()
+      const upcoming = loadBookings()
+        .filter((b) => new Date(b.datetime).getTime() > now)
+        .sort(
+          (a, b) =>
+            new Date(a.datetime).getTime() - new Date(b.datetime).getTime(),
+        )
 
+      for (const b of upcoming) {
+        if (cancelled) return
         try {
-          const res = await fetch(`/api/book/status?id=${next.appointmentId}`)
-          if (!res.ok) {
-            // Treat a server error as 'show the cached booking' rather
-            // than hide it — better to risk a stale view than a blank
-            // one when our endpoint is briefly down.
-            if (!cancelled) {
-              setBooking(next)
-              setStatus('paid')
-            }
-            return
-          }
-          const data: { exists?: boolean; canceled?: boolean; paid?: boolean } =
-            await res.json()
+          const res = await fetch(`/api/book/status?id=${b.appointmentId}`)
+          if (!res.ok) continue
+          const data: {
+            exists?: boolean
+            canceled?: boolean
+            paid?: boolean
+          } = await res.json()
 
           if (!data.exists || data.canceled) {
-            removeBooking(next.appointmentId)
+            removeBooking(b.appointmentId)
             continue
           }
+          if (!data.paid) continue
 
-          if (!cancelled) {
-            setBooking(next)
-            setStatus(data.paid ? 'paid' : 'unpaid')
-            setPaymentLink(
-              data.paid ? null : next.confirmationPage ?? null,
-            )
-          }
+          if (!cancelled) setBooking(b)
           return
         } catch {
-          if (!cancelled) {
-            setBooking(next)
-            setStatus('paid')
-          }
-          return
+          // Network glitch — skip without removing, try the next.
+          continue
         }
       }
     }
 
-    resolveNext()
+    resolve()
     return () => {
       cancelled = true
     }
@@ -88,20 +76,12 @@ export default function UpcomingBookingCard() {
     hour12: true,
   })
 
-  const isUnpaid = status === 'unpaid'
-  const accent = isUnpaid ? 'border-amber-500/50' : 'border-brand-red/40'
-  const dotColor = isUnpaid ? 'bg-amber-500' : 'bg-emerald-500'
-  const eyebrowColor = isUnpaid ? 'text-amber-400' : 'text-brand-red'
-  const eyebrowText = isUnpaid ? 'Awaiting Payment' : 'Your Next Appointment'
-
   return (
-    <div className={`border ${accent} bg-zinc-950 p-5 mb-8`}>
+    <div className="border border-brand-red/40 bg-zinc-950 p-5 mb-8">
       <div className="flex items-center gap-3 mb-4">
-        <span className={`w-2 h-2 rounded-full ${dotColor} animate-pulse`} />
-        <span
-          className={`${eyebrowColor} text-[10px] font-bold tracking-[0.3em] uppercase`}
-        >
-          {eyebrowText}
+        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">
+          Your Next Appointment
         </span>
       </div>
 
@@ -113,28 +93,15 @@ export default function UpcomingBookingCard() {
       </p>
 
       <div className="flex flex-wrap gap-2">
-        {isUnpaid && paymentLink && (
-          <a
-            href={paymentLink}
-            className="inline-flex items-stretch border border-amber-500/60 hover:border-amber-400 transition-colors group active:scale-[0.98]"
-          >
-            <span className="bg-amber-500 w-1.5 self-stretch group-hover:w-6 transition-all duration-300" />
-            <span className="px-4 py-2 text-amber-100 font-bold text-[10px] tracking-[0.2em] uppercase">
-              Complete Payment
-            </span>
-          </a>
-        )}
-        {!isUnpaid && (
-          <button
-            onClick={() => downloadICS(booking)}
-            className="inline-flex items-stretch border border-white/30 hover:border-white transition-colors group active:scale-[0.98]"
-          >
-            <span className="bg-brand-red w-1.5 self-stretch group-hover:w-6 transition-all duration-300" />
-            <span className="px-4 py-2 text-white font-bold text-[10px] tracking-[0.2em] uppercase">
-              Add to Calendar
-            </span>
-          </button>
-        )}
+        <button
+          onClick={() => downloadICS(booking)}
+          className="inline-flex items-stretch border border-white/30 hover:border-white transition-colors group active:scale-[0.98]"
+        >
+          <span className="bg-brand-red w-1.5 self-stretch group-hover:w-6 transition-all duration-300" />
+          <span className="px-4 py-2 text-white font-bold text-[10px] tracking-[0.2em] uppercase">
+            Add to Calendar
+          </span>
+        </button>
         <a
           href={CONTACT.nick.phoneHref}
           className="inline-flex items-stretch border border-zinc-800 hover:border-white/40 transition-colors group active:scale-[0.98]"
@@ -147,8 +114,7 @@ export default function UpcomingBookingCard() {
       </div>
 
       <p className="text-gray-600 text-[10px] mt-4 leading-relaxed">
-        {isUnpaid ? 'Pending' : 'Paid'} ${booking.servicePrice.toFixed(2)} ·{' '}
-        {booking.serviceDuration} min · Banna Ave with Nick
+        Paid ${booking.servicePrice.toFixed(2)} · {booking.serviceDuration} min · Banna Ave with Nick
       </p>
     </div>
   )
