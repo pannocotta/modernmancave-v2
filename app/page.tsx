@@ -28,6 +28,7 @@ export default function Home() {
             loop
             playsInline
             preload="metadata"
+            poster="/hero-poster.webp"
             className="absolute inset-0 w-full h-full object-cover opacity-50 bg-black"
           >
             <source src="/hero-video.mp4" type="video/mp4" />
@@ -51,7 +52,7 @@ export default function Home() {
           </div>
 
           <div className="w-full mx-auto mb-8 max-w-[min(80vw,500px)]">
-            <Image src="/hero-badge-new.webp" alt="Modern Mancave Barbershop Est 2017" width={1200} height={1200} priority quality={80} className="w-full h-auto drop-shadow-[0_0_60px_rgba(255,0,0,0.1)]" />
+            <Image src="/hero-badge-new.webp" alt="Modern Mancave Barbershop Est 2017" width={1200} height={1200} priority quality={80} sizes="(max-width: 768px) 80vw, 500px" className="w-full h-auto drop-shadow-[0_0_60px_rgba(255,0,0,0.1)]" />
           </div>
 
           <div className="flex flex-wrap gap-5 items-center justify-center">
