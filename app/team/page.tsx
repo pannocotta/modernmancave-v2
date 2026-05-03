@@ -27,7 +27,7 @@ export default function TeamPage() {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             <div>
               <Image
-                src="/tristan-hero.png"
+                src="/tristan-hero.webp"
                 alt="Tristan — Owner & Master Barber"
                 width={600}
                 height={800}
