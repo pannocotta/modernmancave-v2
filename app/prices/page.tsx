@@ -71,7 +71,7 @@ export default function PricesPage() {
             <div className="text-center">
               <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">04</div>
               <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">With Nick</div>
-              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Owner, Banna Ave</div>
+              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Master Barber, Banna Ave</div>
             </div>
           </div>
 
