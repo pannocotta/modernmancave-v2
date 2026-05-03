@@ -57,8 +57,8 @@ export default function Home() {
 
           <div className="flex flex-wrap gap-5 items-center justify-center">
             <CTALink href="/booking">BOOK VIP NOW</CTALink>
-            <Link href="/prices" className="group flex items-center gap-2 text-gray-400 hover:text-white text-xs tracking-[0.2em] uppercase transition-all duration-300">
-              <span>VIEW PRICES</span>
+            <Link href="/prices#prices" className="group flex items-center gap-2 text-gray-400 hover:text-white text-xs tracking-[0.2em] uppercase transition-all duration-300">
+              <span>VIEW WALK-IN PRICES</span>
               <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
