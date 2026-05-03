@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
-import AppMockup from '@/components/AppMockup'
+import LaunchPhonePreview from '@/components/LaunchPhonePreview'
 import { IOS_STEPS, ANDROID_STEPS, PlatformInstructions } from '@/components/InstallExperience'
 
 export const metadata: Metadata = {
@@ -44,7 +44,7 @@ export default function AppPage() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] aspect-square rounded-full border border-brand-red/10" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] aspect-square rounded-full border border-brand-red/5" />
               </div>
-              <AppMockup />
+              <LaunchPhonePreview />
             </div>
 
             <div className="order-1 text-center md:text-left">

@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import { TESTIMONIALS, SOCIAL, SITE } from '@/lib/config'
 import ServiceStrip from '@/components/ServiceStrip'
 import WorkMarquee from '@/components/WorkMarquee'
+import AppCTABanner from '@/components/AppCTABanner'
 import { CTALink } from '@/components/CTA'
 import { ArrowRightIcon, InstagramIcon } from '@/components/icons'
 
@@ -216,17 +217,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Booking CTA */}
-      <section className="relative py-36 md:py-48 bg-black overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-red/30 to-transparent" />
-        <div className="max-w-5xl mx-auto px-6 md:px-10 text-center relative z-10">
-          <h2 className="font-headliner text-5xl md:text-8xl lg:text-[10rem] gradient-heading leading-[0.8] mb-10">BOOK YOUR<br />NEXT CUT</h2>
-          <p className="text-gray-500 text-base md:text-lg mb-12 max-w-lg mx-auto leading-relaxed">
-            Skip the wait. Lock in your appointment with Nick at our Banna Avenue location.
-          </p>
-          <CTALink href="/booking">BOOK NOW</CTALink>
-        </div>
-      </section>
+      {/* App CTA */}
+      <AppCTABanner />
 
     </main>
   )
