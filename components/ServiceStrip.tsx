@@ -4,7 +4,7 @@ const SERVICES = [
   'BEARDS',
   'SHAVES',
   'LINEUPS',
-  'TATTOOS',
+  'INK STUDIO',
   'HOT TOWELS',
   'TEETH WHITENING',
 ]

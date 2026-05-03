@@ -63,7 +63,7 @@ export const LOCATIONS = [
     hasBooking: false,
   },
   {
-    name: 'MODERN MANCAVE TATTOO STUDIO',
+    name: 'MODERN MANCAVE INK STUDIO',
     address: '224a Banna Ave, Griffith NSW 2680',
     hours: [
       'Mon-Wed, Fri: 8:00am - 5:30pm',
@@ -82,9 +82,9 @@ export const NAV_SECTIONS = [
     eyebrow: 'The Shop',
     links: [
       { label: 'HOME', href: '/' },
-      { label: 'THE TEAM', href: '/team' },
+      { label: 'OUR SPECIALISTS', href: '/team' },
       { label: 'PRICES', href: '/prices' },
-      { label: 'TATTOO STUDIO', href: '/prices#tattooing' },
+      { label: 'INK STUDIO', href: '/prices#tattooing' },
       { label: 'TEETH WHITENING', href: '/prices#teeth-whitening' },
       { label: 'LOCATIONS', href: '/locations' },
     ],

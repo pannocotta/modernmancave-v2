@@ -161,7 +161,7 @@ export default function Home() {
                 <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Ink Studio</span>
                 <div className="h-px flex-1 bg-zinc-800" />
               </div>
-              <h2 className="font-headliner text-5xl md:text-6xl lg:text-7xl gradient-heading mb-8 leading-[0.9]">TATTOOS<br />ON SITE</h2>
+              <h2 className="font-headliner text-5xl md:text-6xl lg:text-7xl gradient-heading mb-8 leading-[0.9]">INK STUDIO<br />ON SITE</h2>
               <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-10 max-w-md">
                 Get inked at the cave. Our in-house tattoo studio delivers custom designs in a space you already know and trust. Walk-ins welcome or book your session.
               </p>

@@ -5,8 +5,8 @@ import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import { TEAM } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title: 'Our Team — Expert Barbers in Griffith',
-  description: 'Meet the skilled barbers at Modern Mancave Griffith. Nick, Leka, and the team — expert cuts, fades, and grooming with years of experience.',
+  title: 'Our Specialists — Expert Barbers in Griffith',
+  description: 'Meet the specialists at Modern Mancave Griffith. Nick, Leka, and the team — expert cuts, fades, and grooming with years of experience.',
   alternates: { canonical: '/team' },
 }
 
@@ -73,7 +73,7 @@ export default function TeamPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Our Barbers</span>
-            <h2 className="font-headliner text-5xl md:text-7xl gradient-heading">THE TEAM</h2>
+            <h2 className="font-headliner text-5xl md:text-7xl gradient-heading">OUR SPECIALISTS</h2>
           </div>
 
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">

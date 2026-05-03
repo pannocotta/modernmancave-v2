@@ -7,12 +7,12 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   {
     name: "KIDS CUTS",
     services: [
-      { name: 'Baby', price: 30 },
-      { name: 'Baby Double Zero Fade', price: 35 },
-      { name: 'Primary', price: 35 },
-      { name: 'Primary School, Skin Fade', price: 38 },
-      { name: 'High School', price: 35 },
-      { name: 'High School, Skin Fade', price: 38 },
+      { name: 'Baby', price: 32 },
+      { name: 'Baby Double Zero Fade', price: 37 },
+      { name: 'Primary', price: 37 },
+      { name: 'Primary School, Skin Fade', price: 39 },
+      { name: 'High School', price: 37 },
+      { name: 'High School, Skin Fade', price: 39 },
     ],
   },
   {
@@ -20,7 +20,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     services: [
       { name: "Men's Cut", price: 40 },
       { name: "Men's Cut & Beard Trim", price: 50 },
-      { name: "Men's Cut, Beard Trim, Line up & Shape", price: 58 },
+      { name: "Men's Cut, Beard Trim, Line up & Shape", price: 60 },
     ],
   },
   {
@@ -28,7 +28,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     services: [
       { name: 'Skin Fade', price: 45 },
       { name: 'Skin Fade & Beard Trim', price: 55 },
-      { name: 'Skin Fade, Beard Trim, Line up & Shape', price: 60 },
+      { name: 'Skin Fade, Beard Trim, Line up & Shape', price: 65 },
     ],
   },
   {
@@ -43,7 +43,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     name: 'HEAD SHAVES',
     services: [
       { name: 'Head Shave', price: 40 },
-      { name: 'Head Shave & Beard Trim', price: 45 },
+      { name: 'Head Shave & Beard Trim', price: 50 },
       { name: 'Head Shave, Beard Trim, Line up & Shape', price: 60 },
     ],
   },
