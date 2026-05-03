@@ -154,7 +154,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
 }
 
 .gradient-silver-red {
-  background: linear-gradient(90deg, #888 0%, #ccc 25%, #ff0000 50%, #ccc 75%, #888 100%);
+  background: linear-gradient(90deg, #999 0%, #d0d0d0 42%, #aa2020 50%, #d0d0d0 58%, #999 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
