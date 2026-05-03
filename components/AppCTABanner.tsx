@@ -24,7 +24,7 @@ export default function AppCTABanner() {
               <div className="h-px flex-1 bg-zinc-800 md:max-w-[120px]" />
             </div>
 
-            <h2 className="font-headliner text-6xl md:text-7xl lg:text-9xl gradient-heading leading-[0.85] mb-10">
+            <h2 className="font-headliner text-5xl sm:text-6xl md:text-7xl lg:text-9xl gradient-heading !leading-[0.85] mb-10">
               IN YOUR<br />POCKET
             </h2>
 
