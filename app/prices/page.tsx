@@ -54,22 +54,22 @@ export default function PricesPage() {
           {/* Inclusions as 4-up horizontal grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-14 max-w-3xl mx-auto">
             <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-headliner mb-2">01</div>
+              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">01</div>
               <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Private Room</div>
               <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Closed-door booth</div>
             </div>
             <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-headliner mb-2">02</div>
+              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">02</div>
               <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Hot Towel Ritual</div>
               <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Steamed finish</div>
             </div>
             <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-headliner mb-2">03</div>
+              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">03</div>
               <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Reserved Time</div>
               <div className="text-gray-600 text-[10px] md:text-xs leading-snug">No waiting</div>
             </div>
             <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-headliner mb-2">04</div>
+              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">04</div>
               <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">With Nick</div>
               <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Owner, Banna Ave</div>
             </div>
@@ -79,7 +79,7 @@ export default function PricesPage() {
           <div className="flex flex-col items-center gap-8">
             <div className="flex items-baseline gap-3">
               <span className="text-gray-600 text-xs tracking-[0.3em] uppercase">Walk-in price +</span>
-              <span className="font-headliner text-5xl text-white">$20</span>
+              <span className="font-bold text-5xl text-white">$20</span>
             </div>
             <CTALink href="/booking">RESERVE YOUR VIP</CTALink>
           </div>
