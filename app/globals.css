@@ -153,6 +153,20 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
   100% { background-position: 200% center; }
 }
 
+.gradient-silver-red {
+  background: linear-gradient(90deg, #888 0%, #ccc 25%, #ff0000 50%, #ccc 75%, #888 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: metallicShift 7s ease-in-out infinite;
+  will-change: background-position;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-silver-red { animation: none; background-position: 0% center; }
+}
+
 /* ─── Ken Burns Hero Zoom ─── */
 
 @keyframes kenBurns {

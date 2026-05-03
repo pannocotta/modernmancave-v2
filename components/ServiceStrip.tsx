@@ -16,7 +16,7 @@ export default function ServiceStrip() {
         <div className="flex flex-wrap justify-center md:justify-between items-center gap-y-3 gap-x-4 md:gap-x-0">
           {SERVICES.map((service, i) => (
             <div key={service} className="flex items-center">
-              <span className="text-[10px] md:text-xs text-gray-500 tracking-[0.3em] uppercase font-bold">
+              <span className="text-[10px] md:text-xs gradient-silver-red tracking-[0.3em] uppercase font-bold">
                 {service}
               </span>
               {i < SERVICES.length - 1 && (
