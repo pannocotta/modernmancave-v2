@@ -62,7 +62,7 @@ export default function PricesPage() {
             <div className="text-center">
               <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">01</div>
               <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Private Room</div>
-              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Closed-door booth</div>
+              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">A space of your own</div>
             </div>
             <div className="text-center">
               <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">02</div>
@@ -82,10 +82,9 @@ export default function PricesPage() {
           </div>
 
           {/* Price + CTA */}
-          <div className="flex flex-col items-center gap-8">
-            <div className="flex items-baseline gap-3">
-              <span className="text-gray-600 text-xs tracking-[0.3em] uppercase">Walk-in price +</span>
-              <span className="font-bold text-5xl text-white">$20</span>
+          <div className="flex flex-col items-center gap-7">
+            <div className="text-white text-sm md:text-base font-bold tracking-[0.3em] uppercase">
+              Walk-in Price + $20 VIP Fee
             </div>
             <CTALink href="/booking">RESERVE YOUR VIP</CTALink>
           </div>
