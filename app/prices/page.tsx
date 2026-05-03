@@ -54,7 +54,7 @@ export default function PricesPage() {
 
           {/* Body */}
           <p className="text-gray-300 text-base md:text-xl leading-relaxed mb-12 max-w-2xl mx-auto">
-            A private room. A reserved hour with Nick. The signature hot towel ritual to close. Your time begins the moment you walk in.
+            Our VIP booking eliminates the uncertainty of the barbershop floor. Walk straight into a private chair for a refined one-on-one cut and signature hot towel treatment that fits perfectly into your schedule.
           </p>
 
           {/* Inclusions as 4-up horizontal grid */}
