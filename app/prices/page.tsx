@@ -20,20 +20,26 @@ export default function PricesPage() {
 
       {/* VIP Feature Hero */}
       <section className="relative bg-black pt-32 md:pt-48 pb-32 md:pb-48 overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
+        {/* Background image — moved up from former OUR PRICES hero */}
+        <div className="absolute inset-0 z-0">
+          <Image src="/stock/barbershop-tools.jpg" alt="" fill priority sizes="100vw" className="object-cover grayscale opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black" />
+        </div>
+
+        <div className="absolute inset-0 z-[1] opacity-[0.02] pointer-events-none grain-overlay" />
 
         {/* Faint background metallic ghost type */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden="true">
+        <div className="absolute inset-0 z-[2] flex items-center justify-center pointer-events-none select-none" aria-hidden="true">
           <span className="font-headliner text-[20rem] md:text-[32rem] gradient-heading opacity-[0.04] leading-none whitespace-nowrap">VIP</span>
         </div>
 
         {/* Brand corner brackets */}
-        <div className="absolute top-28 left-6 md:left-16 w-12 h-12 md:w-16 md:h-16 border-t border-l border-brand-red/30" />
-        <div className="absolute top-28 right-6 md:right-16 w-12 h-12 md:w-16 md:h-16 border-t border-r border-brand-red/30" />
-        <div className="absolute bottom-16 left-6 md:left-16 w-12 h-12 md:w-16 md:h-16 border-b border-l border-brand-red/30" />
-        <div className="absolute bottom-16 right-6 md:right-16 w-12 h-12 md:w-16 md:h-16 border-b border-r border-brand-red/30" />
+        <div className="absolute top-28 left-6 md:left-16 z-[3] w-12 h-12 md:w-16 md:h-16 border-t border-l border-brand-red/30" />
+        <div className="absolute top-28 right-6 md:right-16 z-[3] w-12 h-12 md:w-16 md:h-16 border-t border-r border-brand-red/30" />
+        <div className="absolute bottom-16 left-6 md:left-16 z-[3] w-12 h-12 md:w-16 md:h-16 border-b border-l border-brand-red/30" />
+        <div className="absolute bottom-16 right-6 md:right-16 z-[3] w-12 h-12 md:w-16 md:h-16 border-b border-r border-brand-red/30" />
 
-        <div className="relative max-w-4xl mx-auto px-6 md:px-10 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-10 text-center">
           {/* Eyebrow */}
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="w-8 md:w-12 h-px bg-brand-red/50" />
@@ -94,12 +100,8 @@ export default function PricesPage() {
       </section>
 
       {/* Hero */}
-      <section id="prices" className="relative min-h-[60vh] flex items-end pb-20 md:pb-28 overflow-hidden scroll-mt-24">
-        <div className="absolute inset-0 z-0">
-          <Image src="/stock/barbershop-tools.jpg" alt="" fill priority sizes="100vw" className="object-cover grayscale opacity-25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
-          <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
-        </div>
+      <section id="prices" className="relative bg-black min-h-[40vh] flex items-end pt-24 pb-16 md:pb-20 overflow-hidden scroll-mt-24">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full">
           <div className="flex items-center gap-4 mb-8">
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Services</span>
