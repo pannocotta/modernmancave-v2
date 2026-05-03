@@ -72,7 +72,7 @@ export default function TeamPage() {
       <section className="py-32 md:py-44 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Our Barbers</span>
+            <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-5 block">Barbers At The Cave</span>
             <h2 className="font-headliner text-5xl md:text-7xl gradient-heading">OUR SPECIALISTS</h2>
           </div>
 
