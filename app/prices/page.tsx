@@ -49,7 +49,7 @@ export default function PricesPage() {
 
           {/* Hero heading */}
           <h1 className="font-headliner text-6xl md:text-8xl lg:text-9xl gradient-heading leading-[0.85] mb-10">
-            RESERVE<br />THE ROOM
+            RESERVE<br />THE CHAIR
           </h1>
 
           {/* Body */}
