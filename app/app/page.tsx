@@ -36,7 +36,7 @@ export default function AppPage() {
 
         <div className="relative z-30 max-w-7xl mx-auto px-6 md:px-10 w-full">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div className="relative order-2 flex justify-center md:justify-end">
+            <div className="relative order-2 flex justify-center">
               <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-red/[0.18] blur-3xl rounded-full" />
                 <div className="absolute top-0 right-0 w-40 h-40 bg-brand-red/[0.1] blur-3xl rounded-full" />
