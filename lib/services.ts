@@ -28,7 +28,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     services: [
       { name: 'Skin Fade', price: 45 },
       { name: 'Skin Fade & Beard Trim', price: 55 },
-      { name: 'Skin Fade, Beard Trim, Line up & Shape', price: 60 },
+      { name: 'Skin Fade, Beard Trim, Line up & Shape', price: 65 },
     ],
   },
   {
@@ -52,6 +52,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     services: [
       { name: 'Hot Towel Shave', price: 45 },
       { name: "Hot Towel Shave & Men's Hair Cut", price: 65 },
+      { name: 'Hot Towel Shave & Skin Fade', price: 75 },
     ],
   },
   {
