@@ -119,9 +119,7 @@ export default function PricesPage() {
           <span className="text-zinc-700">|</span>
           <span>All payment methods</span>
           <span className="text-zinc-700">|</span>
-          <span>Bookings require full payment</span>
-          <span className="text-zinc-700">|</span>
-          <span>Surcharges for Sundays &amp; bookings</span>
+          <span>Surcharges for Sundays</span>
         </div>
       </div>
 
