@@ -101,13 +101,14 @@ export default function PricesPage() {
       {/* Hero */}
       <section id="prices" className="relative bg-black min-h-[40vh] flex items-end pt-24 pb-16 md:pb-20 overflow-hidden scroll-mt-24">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full">
-          <div className="flex items-center gap-4 mb-8">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-10 w-full text-center">
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="w-8 md:w-12 h-px bg-brand-red/50" />
             <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Services</span>
-            <div className="h-px flex-1 bg-zinc-800" />
+            <div className="w-8 md:w-12 h-px bg-brand-red/50" />
           </div>
           <h2 className="font-headliner text-5xl md:text-7xl lg:text-8xl gradient-heading leading-[0.85] mb-4">OUR PRICES</h2>
-          <p className="text-gray-400 text-base md:text-lg max-w-lg">These are walk-in prices only. All bookings are surcharged and require full payment upfront.</p>
+          <p className="text-gray-400 text-base md:text-lg max-w-lg mx-auto">These are walk-in prices only. All bookings are surcharged and require full payment upfront.</p>
         </div>
       </section>
 
