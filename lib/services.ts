@@ -28,7 +28,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     services: [
       { name: 'Skin Fade', price: 45 },
       { name: 'Skin Fade & Beard Trim', price: 55 },
-      { name: 'Skin Fade, Beard Trim, Line up & Shape', price: 65 },
+      { name: 'Skin Fade, Beard Trim, Line up & Shape', price: 60 },
     ],
   },
   {
