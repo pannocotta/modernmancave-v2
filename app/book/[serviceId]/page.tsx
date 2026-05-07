@@ -95,7 +95,7 @@ export default function BookFlowPage({ params }: { params: { serviceId: string }
         <div className="border border-zinc-800 bg-zinc-950/60 px-4 py-3 mb-6">
           <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-2">VIP Inclusions</p>
           <p className="text-gray-400 text-xs leading-relaxed">
-            Private area · signature hot towel ritual · guaranteed time · no walk-in wait. Full booking total — service plus the $20 VIP fee — is paid upfront.
+            Private area · hair wash · signature hot towel ritual · drink on us · guaranteed time · no walk-in wait. Full booking total, service plus the $20 VIP fee, is paid upfront.
           </p>
         </div>
 

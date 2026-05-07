@@ -54,11 +54,11 @@ export default function PricesPage() {
 
           {/* Body */}
           <p className="text-gray-300 text-base md:text-xl leading-relaxed mb-12 max-w-2xl mx-auto">
-            Our VIP booking eliminates the uncertainty of the barbershop floor. Walk straight into a private chair for a refined one-on-one cut and signature hot towel treatment that fits perfectly into your schedule.
+            Our VIP booking eliminates the uncertainty of the barbershop floor. Walk straight into a private chair for a fresh hair wash, refined one-on-one cut, signature hot towel treatment, and a complimentary non-alcoholic drink, all on your schedule.
           </p>
 
-          {/* Inclusions as 4-up horizontal grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-14 max-w-3xl mx-auto">
+          {/* Inclusions as 6-up grid (3-cols desktop, 2-cols mobile) */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-14 max-w-3xl mx-auto">
             <div className="text-center">
               <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">01</div>
               <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Private Room</div>
@@ -66,16 +66,26 @@ export default function PricesPage() {
             </div>
             <div className="text-center">
               <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">02</div>
+              <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Hair Wash</div>
+              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Fresh start</div>
+            </div>
+            <div className="text-center">
+              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">03</div>
               <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Hot Towel Ritual</div>
               <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Steamed finish</div>
             </div>
             <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">03</div>
+              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">04</div>
+              <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Drink On Us</div>
+              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Non-alcoholic</div>
+            </div>
+            <div className="text-center">
+              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">05</div>
               <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Reserved Time</div>
               <div className="text-gray-600 text-[10px] md:text-xs leading-snug">No waiting</div>
             </div>
             <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">04</div>
+              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">06</div>
               <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">With Nick</div>
               <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Master Barber, Banna Ave</div>
             </div>

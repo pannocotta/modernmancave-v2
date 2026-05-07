@@ -71,7 +71,7 @@ export default function LaunchPage() {
           </h1>
           <div className="text-gray-400 text-sm leading-relaxed space-y-3">
             <p>
-              Each VIP booking with Nick at Banna Avenue delivers an exclusive private setting, signature hot towel ritual, and refined one-on-one service.
+              Each VIP booking with Nick at Banna Avenue delivers an exclusive private setting, fresh hair wash, signature hot towel ritual, complimentary non-alcoholic drink, and refined one-on-one service.
             </p>
             <p>
               Your appointment is reserved exclusively for you. Full payment, including the $20 VIP fee, is required upfront to confirm your reservation.

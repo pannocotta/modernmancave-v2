@@ -60,7 +60,7 @@ export default function BookingPage() {
           </h1>
           <div className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl space-y-4">
             <p>
-              Step beyond the standard. Each VIP booking with Nick at Banna Avenue delivers an exclusive private setting, signature hot towel ritual, and refined one-on-one service. With no waiting, your experience begins the moment you walk in.
+              Step beyond the standard. Each VIP booking with Nick at Banna Avenue delivers an exclusive private setting, fresh hair wash, signature hot towel ritual, complimentary non-alcoholic drink, and refined one-on-one service. With no waiting, your experience begins the moment you walk in.
             </p>
             <p>
               Your appointment is reserved exclusively for you. Full payment, including the $20 VIP fee, is required upfront to confirm your reservation.
@@ -77,7 +77,7 @@ export default function BookingPage() {
           <div className="grid md:grid-cols-3 gap-10 md:gap-12">
             {[
               { label: 'Nick only', detail: 'Nick is the only barber currently taking appointments. Leka and the rest of the team are walk-ins only.' },
-              { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Covers your private area, signature hot towel ritual, and guaranteed time slot. Full booking total paid upfront to confirm.' },
+              { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Covers your private area, hair wash, signature hot towel ritual, complimentary non-alcoholic drink, and guaranteed time slot. Full booking total paid upfront to confirm.' },
               { label: 'Booking policy', detail: 'Please arrive 10 minutes before your appointment. If you are 10+ minutes late, Nick reserves the right to refuse the booking.' },
             ].map(({ label, detail }) => (
               <div key={label} className="border-l-2 border-brand-red/30 pl-6 md:pl-8 py-2">
