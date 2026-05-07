@@ -60,7 +60,7 @@ export default function BookingPage() {
           </h1>
           <div className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl space-y-4">
             <p>
-              Step beyond the standard. Each VIP booking with Nick at Banna Avenue delivers an exclusive private setting, fresh hair wash, signature hot towel ritual, complimentary non-alcoholic drink, and refined one-on-one service. With no waiting, your experience begins the moment you walk in.
+              Step beyond the standard. Each VIP booking with Nick at Banna Avenue delivers a refined one-on-one experience that begins the moment you walk in.
             </p>
             <p>
               Your appointment is reserved exclusively for you. Full payment, including the $20 VIP fee, is required upfront to confirm your reservation.
