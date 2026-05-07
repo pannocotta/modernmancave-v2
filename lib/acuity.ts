@@ -33,8 +33,8 @@ export const ACUITY_SERVICES: AcuityService[] = [
   { id: 92440699, name: "Men's Cut With Beard Trim & Line Up", price: 80, duration: 45, category: "Men's Cuts" },
 
   // Skin Fades
-  { id: 92440719, name: 'Skin Fade', price: 65, duration: 30, category: 'Skin Fades' },
-  { id: 92485942, name: 'Skin Fade With Beard Trim', price: 70, duration: 45, category: 'Skin Fades' },
+  { id: 92440719, name: 'Skin Fade', price: 68, duration: 30, category: 'Skin Fades' },
+  { id: 92485942, name: 'Skin Fade With Beard Trim', price: 75, duration: 45, category: 'Skin Fades' },
   { id: 92440764, name: 'Skin Fade With Beard Trim & Line Up', price: 80, duration: 45, category: 'Skin Fades' },
 
   // Buzz Cuts
