@@ -54,7 +54,7 @@ export default function PricesPage() {
 
           {/* Body */}
           <p className="text-gray-300 text-base md:text-xl leading-relaxed mb-12 max-w-2xl mx-auto">
-            Our VIP booking eliminates the uncertainty of the barbershop floor. Walk straight into a private chair for a fresh hair wash, refined one-on-one cut, signature hot towel treatment, and a complimentary non-alcoholic drink, all on your schedule.
+            Our VIP booking eliminates the uncertainty of the barbershop floor. Walk straight into a private chair for a refined one-on-one experience that fits perfectly into your schedule.
           </p>
 
           {/* Inclusions as 6-up grid (3-cols desktop, 2-cols mobile) */}
