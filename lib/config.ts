@@ -8,7 +8,7 @@ export const SITE = {
 } as const
 
 export const CONTACT = {
-  nick: { name: 'Nick', phone: '0458 520 456', phoneHref: 'tel:0458520456', whatsapp: 'https://wa.me/61458520456' },
+  nick: { name: 'Nik', phone: '0458 520 456', phoneHref: 'tel:0458520456', whatsapp: 'https://wa.me/61458520456' },
   tattoo: { name: 'Cameron', phone: '0413 074 669', phoneHref: 'tel:0413074669' },
 } as const
 
@@ -115,7 +115,7 @@ export const NAV_SECTIONS = [
 
 export const TEAM = [
   {
-    name: 'NICK',
+    name: 'NIK',
     initial: 'N',
     image: '/team/nick.webp',
     title: 'Banna Ave',

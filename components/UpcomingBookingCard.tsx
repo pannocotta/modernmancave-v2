@@ -114,7 +114,7 @@ export default function UpcomingBookingCard() {
       </div>
 
       <p className="text-gray-600 text-[10px] mt-4 leading-relaxed">
-        Paid ${booking.servicePrice.toFixed(2)} · {booking.serviceDuration} min · Banna Ave with Nick
+        Paid ${booking.servicePrice.toFixed(2)} · {booking.serviceDuration} min · Banna Ave with Nik
       </p>
     </div>
   )

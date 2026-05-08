@@ -79,7 +79,7 @@ export function buildICS(booking: SavedBooking): string {
     `DTSTART:${fmt(start)}`,
     `DTEND:${fmt(end)}`,
     `SUMMARY:Modern Mancave — ${booking.serviceName}`,
-    `DESCRIPTION:${booking.serviceName} appointment with Nick at Modern Mancave Banna Ave.`,
+    `DESCRIPTION:${booking.serviceName} appointment with Nik at Modern Mancave Banna Ave.`,
     'LOCATION:224a Banna Ave\\, Griffith NSW 2680\\, Australia',
     'END:VEVENT',
     'END:VCALENDAR',

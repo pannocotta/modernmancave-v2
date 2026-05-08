@@ -7,7 +7,7 @@ import { TEAM } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'Our Specialists — Expert Barbers in Griffith',
-  description: 'Meet the specialists at Modern Mancave Griffith. Nick, Leka, and the team — expert cuts, fades, and grooming with years of experience.',
+  description: 'Meet the specialists at Modern Mancave Griffith. Nik, Leka, and the team — expert cuts, fades, and grooming with years of experience.',
   alternates: { canonical: '/team' },
 }
 

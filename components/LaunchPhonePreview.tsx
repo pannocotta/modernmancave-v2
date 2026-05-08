@@ -46,7 +46,7 @@ export default function LaunchPhonePreview({
                 BOOK YOUR<br />NEXT VIP CUT
               </h3>
               <p className="text-gray-400 text-[7px] leading-snug">
-                Reserved private setting, hot towel ritual, one-on-one with Nick.
+                Reserved private setting, hot towel ritual, one-on-one with Nik.
               </p>
             </div>
 
@@ -85,7 +85,7 @@ export default function LaunchPhonePreview({
                 Booking
               </p>
               <h3 className="font-headliner gradient-heading text-[18px] leading-[0.85] mb-1">
-                MEN&apos;S CUT<br />WITH NICK
+                MEN&apos;S CUT<br />WITH NIK
               </h3>
               <p className="text-gray-500 text-[6px]">$60 · 30 min · Banna Avenue</p>
             </div>
@@ -148,7 +148,7 @@ export default function LaunchPhonePreview({
               <p className="font-bold text-white text-[12px] leading-tight mb-1">
                 Thu 16 May · 2:30 PM
               </p>
-              <p className="text-[7px] text-gray-300">Men&apos;s Cut · with Nick</p>
+              <p className="text-[7px] text-gray-300">Men&apos;s Cut · with Nik</p>
               <p className="text-[6px] text-gray-500 mt-0.5">Banna Avenue · Griffith</p>
             </div>
 

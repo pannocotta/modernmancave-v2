@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     default: 'Premium Barbershop in Griffith NSW | Modern Mancave',
     template: '%s | Modern Mancave',
   },
-  description: 'Precision hairstyling, beard trims, and hot towel shaves at Modern Mancave Griffith. Three locations, walk-ins welcome, online booking with Nick.',
+  description: 'Precision hairstyling, beard trims, and hot towel shaves at Modern Mancave Griffith. Three locations, walk-ins welcome, online booking with Nik.',
   keywords: ['barbershop', 'Griffith', 'NSW', 'mens haircut', 'beard trim', 'hot towel shave', 'fade', 'Modern Mancave'],
   manifest: '/manifest.json',
   alternates: { canonical: '/' },

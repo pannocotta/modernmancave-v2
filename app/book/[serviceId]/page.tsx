@@ -87,7 +87,7 @@ export default function BookFlowPage({ params }: { params: { serviceId: string }
           <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-1">Your VIP Booking</p>
           <p className="text-white font-bold text-lg leading-tight">{service.name}</p>
           <p className="text-gray-500 text-xs tracking-wide mt-1">
-            ${service.price} · {service.duration} min · with Nick
+            ${service.price} · {service.duration} min · with Nik
           </p>
         </div>
 

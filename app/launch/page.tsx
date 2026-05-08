@@ -71,7 +71,7 @@ export default function LaunchPage() {
           </h1>
           <div className="text-gray-400 text-sm leading-relaxed space-y-3">
             <p>
-              Each VIP booking with Nick at Banna Avenue delivers a refined one-on-one experience that begins the moment you walk in.
+              Each VIP booking with Nik at Banna Avenue delivers a refined one-on-one experience that begins the moment you walk in.
             </p>
             <p>
               Your appointment is reserved exclusively for you. Full payment, including the $20 VIP fee, is required upfront to confirm your reservation.
@@ -186,7 +186,7 @@ export default function LaunchPage() {
           href={CONTACT.nick.phoneHref}
           className="block border border-zinc-800 hover:border-zinc-600 active:scale-[0.99] transition-all p-4 mb-6"
         >
-          <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-1">Talk to Nick</p>
+          <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-1">Talk to Nik</p>
           <p className="text-white text-base font-semibold tracking-wide">{CONTACT.nick.phone}</p>
         </a>
 
