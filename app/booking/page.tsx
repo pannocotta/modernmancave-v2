@@ -74,11 +74,12 @@ export default function BookingPage() {
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {/* Booking rules */}
-          <div className="grid md:grid-cols-3 gap-10 md:gap-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
             {[
               { label: 'Nik only', detail: 'Nik is the only barber currently taking appointments. Leka and the rest of the team are walk-ins only.' },
               { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Covers your private area, hair wash, signature hot towel ritual, complimentary non-alcoholic drink, and guaranteed time slot. Full booking total paid upfront to confirm.' },
               { label: 'Booking policy', detail: 'Please arrive 10 minutes before your appointment. If you are 10+ minutes late, Nik reserves the right to refuse the booking.' },
+              { label: 'No refunds', detail: 'No refunds on any bookings. Please make sure you can make it to your appointment.' },
             ].map(({ label, detail }) => (
               <div key={label} className="border-l-2 border-brand-red/30 pl-6 md:pl-8 py-2">
                 <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-3">{label}</p>

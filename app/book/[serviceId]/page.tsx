@@ -613,9 +613,16 @@ function ConfirmStep({
         <SummaryRow label="Total" value={`$${service.price.toFixed(2)}`} highlight />
       </div>
 
-      <p className="text-gray-500 text-[11px] leading-relaxed mb-5">
+      <p className="text-gray-500 text-[11px] leading-relaxed mb-4">
         The next screen is our secure payment page where you&apos;ll enter your card details. Your booking only confirms once payment goes through.
       </p>
+
+      <div className="border border-brand-red/40 bg-brand-red/[0.06] px-4 py-3 mb-5">
+        <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-1">No Refunds</p>
+        <p className="text-gray-300 text-[11px] leading-relaxed">
+          No refunds on any bookings. Please make sure you can make it to your appointment.
+        </p>
+      </div>
 
       {error && (
         <p className="text-red-400 text-xs leading-relaxed mb-4 border border-red-500/30 bg-red-500/[0.05] px-4 py-3">
