@@ -77,7 +77,7 @@ export default function BookingPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
             {[
               { label: 'Nik only', detail: 'Nik is the only barber currently taking appointments. Leka and the rest of the team are walk-ins only.' },
-              { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Covers your private area, hair wash, signature hot towel ritual, complimentary non-alcoholic drink, and guaranteed time slot. Full booking total paid upfront to confirm.' },
+              { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Covers your private area, hair wash, hot towel, non-alcoholic drink, and guaranteed time slot.' },
               { label: 'Booking policy', detail: 'Please arrive 10 minutes before your appointment. If you are 10+ minutes late, Nik reserves the right to refuse the booking.' },
               { label: 'No refunds', detail: 'No refunds on any bookings. Please make sure you can make it to your appointment.' },
             ].map(({ label, detail }) => (
