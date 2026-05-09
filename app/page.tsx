@@ -6,6 +6,7 @@ import { TESTIMONIALS, SOCIAL, SITE } from '@/lib/config'
 import ServiceStrip from '@/components/ServiceStrip'
 import WorkMarquee from '@/components/WorkMarquee'
 import AppCTABanner from '@/components/AppCTABanner'
+import AmbientVideo from '@/components/AmbientVideo'
 import { CTALink } from '@/components/CTA'
 import { ArrowRightIcon, InstagramIcon } from '@/components/icons'
 
@@ -23,17 +24,12 @@ export default function Home() {
       {/* Hero */}
       <section className="relative min-h-[100svh] flex items-center justify-center bg-black overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
+          <AmbientVideo
+            eager
+            src="/hero-video.mp4"
             poster="/hero-poster.webp"
             className="absolute inset-0 w-full h-full object-cover opacity-50 bg-black"
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black z-10" />
           <div className="absolute inset-0 z-20 opacity-[0.03] pointer-events-none grain-overlay" />
         </div>
@@ -140,16 +136,10 @@ export default function Home() {
         <div className="relative z-10">
           <div className="grid md:grid-cols-2 items-center md:min-h-[80vh]">
             <div className="relative aspect-[16/9] md:aspect-auto md:absolute md:inset-y-0 md:left-0 md:w-1/2 overflow-hidden">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
+              <AmbientVideo
+                src="/tattoo-loop.mp4"
                 className="absolute inset-0 w-full h-full object-cover"
-              >
-                <source src="/tattoo-loop.mp4" type="video/mp4" />
-              </video>
+              />
               {/* Mobile: vignette blend on all four edges */}
               <div className="md:hidden absolute inset-0 pointer-events-none shadow-[inset_0_0_60px_30px_rgba(0,0,0,1)]" />
               {/* Desktop: blend right, top, bottom — left edge bleeds to screen edge */}
