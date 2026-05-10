@@ -618,9 +618,9 @@ function ConfirmStep({
       </p>
 
       <div className="border border-brand-red/40 bg-brand-red/[0.06] px-4 py-3 mb-5">
-        <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-1">No Refunds</p>
+        <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-1">No Refunds · Booking Is Final</p>
         <p className="text-gray-300 text-[11px] leading-relaxed">
-          No refunds on any bookings. Please make sure you can make it to your appointment.
+          No refunds on any bookings, and the service you book is what you&apos;ll receive at the store. Pick the right service before you pay.
         </p>
       </div>
 
