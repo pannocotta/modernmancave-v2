@@ -82,7 +82,7 @@ export default function BookingPage() {
             {[
               { label: 'Nik only', detail: 'Nik is the only barber currently taking appointments. Leka and the rest of the team are walk-ins only.' },
               { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Required upfront to confirm your booking.' },
-              { label: 'Booking policy', detail: 'Please arrive 10 minutes before your appointment. If you are 10+ minutes late, Nik reserves the right to refuse the booking.' },
+              { label: 'Booking policy', detail: 'Please arrive 10 minutes early. If you are 10+ minutes late, Nik reserves the right to refuse the booking.' },
               { label: 'All bookings are final', detail: "No refunds on any bookings, and the service you book is what you'll receive at the store. Pick the right service before you pay." },
             ].map(({ label, detail }) => (
               <div key={label} className="border-l-2 border-brand-red/30 pl-6 md:pl-8 py-2">
