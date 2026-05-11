@@ -1,7 +1,7 @@
 /**
  * Acuity scheduler integration — service catalogue + URL helpers.
  *
- * Pulled live from the Acuity API on 2026-04-29 (owner=39144906).
+ * Pulled live from the Acuity API on 2026-05-11 (owner=39144906).
  * Update by re-running the API fetch if appointment types change in the Acuity dashboard.
  */
 
@@ -38,9 +38,11 @@ export const ACUITY_SERVICES: AcuityService[] = [
   { id: 92440764, name: 'Skin Fade With Beard Trim & Line Up', price: 80, duration: 45, category: 'Skin Fades' },
 
   // Buzz Cuts
-  { id: 92440783, name: 'Buzz Cut', price: 50, duration: 15, category: 'Buzz Cuts' },
+  { id: 92440783, name: 'Buzz Cut', price: 50, duration: 30, category: 'Buzz Cuts' },
   { id: 92440811, name: 'Buzz Cut With Beard Trim', price: 60, duration: 30, category: 'Buzz Cuts' },
   { id: 92440850, name: 'Buzz Cut With Beard Trim & Line Up', price: 70, duration: 30, category: 'Buzz Cuts' },
+  { id: 93006287, name: 'Buzz Cut With Skin Fade', price: 68, duration: 30, category: 'Buzz Cuts' },
+  { id: 93035165, name: 'Buzz Cut With Skin Fade, Beard Trim & Line Up', price: 80, duration: 45, category: 'Buzz Cuts' },
 
   // Head Shaves
   { id: 92440891, name: 'Head Shave', price: 60, duration: 30, category: 'Head Shaves' },
@@ -54,7 +56,7 @@ export const ACUITY_SERVICES: AcuityService[] = [
 
   // Beard Services
   { id: 92441036, name: 'Beard Trim', price: 40, duration: 15, category: 'Beard Services' },
-  { id: 92441060, name: 'Beard Trim With Line Up', price: 45, duration: 15, category: 'Beard Services' },
+  { id: 92441060, name: 'Beard Trim With Line Up', price: 45, duration: 20, category: 'Beard Services' },
 
   // Kids Cuts
   { id: 92328251, name: 'Baby (0-5 Y.O)', price: 52, duration: 15, category: 'Kids Cuts' },
