@@ -7,6 +7,7 @@ import { CONTACT } from '@/lib/config'
 import { ArrowRightIcon } from '@/components/icons'
 import { CTAAnchor } from '@/components/CTA'
 import { buildAcuityUrl, getServiceById } from '@/lib/acuity'
+import VipInclusionsStrip from '@/components/VipInclusionsStrip'
 
 export default function BookingPage() {
   // Read ?appointmentType= from URL on mount so we can pre-select a service.
@@ -69,15 +70,18 @@ export default function BookingPage() {
         </div>
       </section>
 
+      {/* VIP inclusions strip — what's baked into the $20 VIP fee */}
+      <VipInclusionsStrip />
+
       {/* Booking context — description + Nik-only + rule cards */}
-      <section className="relative bg-black pt-4 pb-24 md:pt-6 md:pb-32 overflow-hidden">
+      <section className="relative bg-black pt-16 pb-24 md:pt-20 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none grain-overlay" />
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {/* Booking rules */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
             {[
               { label: 'Nik only', detail: 'Nik is the only barber currently taking appointments. Leka and the rest of the team are walk-ins only.' },
-              { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Covers your private area, hair wash, hot towel, non-alcoholic drink, and guaranteed time slot.' },
+              { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Required upfront to confirm your booking.' },
               { label: 'Booking policy', detail: 'Please arrive 10 minutes before your appointment. If you are 10+ minutes late, Nik reserves the right to refuse the booking.' },
               { label: 'No refunds · Booking is final', detail: "No refunds on any bookings, and the service you book is what you'll receive at the store. Pick the right service before you pay." },
             ].map(({ label, detail }) => (

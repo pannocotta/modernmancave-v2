@@ -3,6 +3,7 @@ import Header from '@/components/Header'
 import { StaggerContainer, StaggerItem } from '@/components/StaggerReveal'
 import { SERVICE_CATEGORIES, TEETH_WHITENING } from '@/lib/services'
 import { SOCIAL, CONTACT } from '@/lib/config'
+import { VIP_INCLUSIONS } from '@/lib/vip-inclusions'
 import { ArrowRightIcon } from '@/components/icons'
 import { CTALink } from '@/components/CTA'
 import TeethSlideshow from '@/components/TeethSlideshow'
@@ -59,36 +60,13 @@ export default function PricesPage() {
 
           {/* Inclusions as 6-up grid (3-cols desktop, 2-cols mobile) */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-14 max-w-3xl mx-auto">
-            <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">01</div>
-              <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Private Room</div>
-              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">A space of your own</div>
-            </div>
-            <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">02</div>
-              <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Hair Wash</div>
-              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Fresh start</div>
-            </div>
-            <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">03</div>
-              <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Hot Towel Ritual</div>
-              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Steamed finish</div>
-            </div>
-            <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">04</div>
-              <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Drink On Us</div>
-              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Non-alcoholic</div>
-            </div>
-            <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">05</div>
-              <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">Reserved Time</div>
-              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">No waiting</div>
-            </div>
-            <div className="text-center">
-              <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">06</div>
-              <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">With Nik</div>
-              <div className="text-gray-600 text-[10px] md:text-xs leading-snug">Master Barber, Banna Ave</div>
-            </div>
+            {VIP_INCLUSIONS.map(({ number, label, caption }) => (
+              <div key={number} className="text-center">
+                <div className="text-brand-red text-2xl md:text-3xl font-bold tracking-wider mb-2">{number}</div>
+                <div className="text-white text-xs md:text-sm font-bold tracking-wide mb-1">{label}</div>
+                <div className="text-gray-600 text-[10px] md:text-xs leading-snug">{caption}</div>
+              </div>
+            ))}
           </div>
 
           {/* Price + CTA */}
