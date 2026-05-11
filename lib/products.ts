@@ -17,7 +17,7 @@ export const products: ShopProduct[] = [
   {
     id: 'hat-black',
     name: 'Modern Mancave Snapback',
-    price: 25.00,
+    price: 30.00,
     images: ['/Hat-1.jpg', '/Hat-2.jpg'],
     category: 'Headwear'
   },

@@ -16,7 +16,6 @@ export const SOCIAL = {
   instagram: { handle: '@modern_mancave', url: 'https://www.instagram.com/modern_mancave/' },
   facebook: { url: 'https://www.facebook.com/TristansBarberShop' },
   nickInstagram: { handle: '@barberniks', url: 'https://www.instagram.com/barberniks' },
-  kevinInstagram: { handle: '@kevinmarkarana', url: 'https://www.instagram.com/kevinmarkarana' },
   delvinInstagram: { handle: '@dhelatyourservice', url: 'https://www.instagram.com/dhelatyourservice' },
   lekaInstagram: { handle: '@barber.leka', url: 'https://www.instagram.com/barber.leka' },
   tattooInstagram: { handle: '@relentless_image_tattoo_shop', url: 'https://www.instagram.com/relentless_image_tattoo_shop' },
@@ -121,14 +120,6 @@ export const TEAM = [
     title: 'Banna Ave',
     origin: 'Philippines',
     instagram: { handle: '@barberniks', url: 'https://www.instagram.com/barberniks' },
-  },
-  {
-    name: 'KEVIN',
-    initial: 'K',
-    image: '/team/kevin.webp',
-    title: 'Banna Ave',
-    origin: 'Philippines',
-    instagram: { handle: '@kevinmarkarana', url: 'https://www.instagram.com/kevinmarkarana' },
   },
   {
     name: 'DELVIN',
