@@ -80,7 +80,7 @@ export default function BookingPage() {
           {/* Booking rules */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
             {[
-              { label: 'Nik only', detail: 'Nik is the only barber currently taking appointments. Leka and the rest of the team are walk-ins only.' },
+              { label: 'Nik only', detail: 'Nik is the only barber currently taking appointments. The rest of our team are walk-ins only.' },
               { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Required upfront to confirm your booking.' },
               { label: 'Booking policy', detail: 'Please arrive 10 minutes early. If you are 10+ minutes late, Nik reserves the right to refuse the booking.' },
               { label: 'All bookings are final', detail: "No refunds on any bookings, and the service you book is what you'll receive at the store. Pick the right service before you pay." },
