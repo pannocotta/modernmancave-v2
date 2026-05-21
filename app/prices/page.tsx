@@ -77,6 +77,20 @@ export default function PricesPage() {
             <CTALink href="/booking">RESERVE YOUR VIP</CTALink>
           </div>
 
+          {/* Reserved tier — kids cuts get a lower fee, no VIP extras */}
+          <div className="mt-16 max-w-2xl mx-auto border border-zinc-800 bg-zinc-950/60 px-6 md:px-8 py-6 md:py-7 text-left">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase">Reserved Booking · Kids Cuts</span>
+              <div className="h-px flex-1 bg-zinc-800" />
+            </div>
+            <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-2">
+              <span className="text-white font-bold">$10 Extra With No VIP Inclusions.</span> Locked-in time with Nik only.
+            </p>
+            <p className="text-gray-500 text-xs md:text-sm leading-relaxed">
+              Applies to all Kids Cuts — Baby, Primary School, and High School.
+            </p>
+          </div>
+
           {/* Walk-in disclaimer line */}
           <div className="mt-20 pt-8 border-t border-zinc-900">
             <p className="text-gray-600 text-xs tracking-[0.2em] uppercase">

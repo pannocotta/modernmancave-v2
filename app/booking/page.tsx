@@ -66,6 +66,9 @@ export default function BookingPage() {
             <p>
               Your appointment is reserved exclusively for you. Full payment, including the $20 VIP fee, is required upfront to confirm your reservation.
             </p>
+            <p className="text-gray-500 text-sm md:text-base">
+              Kids Cuts is $10 Extra With No VIP Inclusions — just locked-in time with Nik.
+            </p>
           </div>
         </div>
       </section>
@@ -81,7 +84,7 @@ export default function BookingPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
             {[
               { label: 'Nik only', detail: 'Nik is the only barber currently taking appointments. The rest of our team are walk-ins only.' },
-              { label: 'VIP Fee', detail: '$20 VIP fee on top of your service price. Required upfront to confirm your booking.' },
+              { label: 'Booking fees', detail: 'Kids Cuts is $10 Extra With No VIP Inclusions. Adult Cuts is $20 Extra With Full VIP Inclusions.' },
               { label: 'Booking policy', detail: 'Please arrive 10 minutes early. If you are 10+ minutes late, Nik reserves the right to refuse the booking.' },
               { label: 'All bookings are final', detail: "No refunds on any bookings, and the service you book is what you'll receive at the store. Pick the right service before you pay." },
             ].map(({ label, detail }) => (

@@ -1,7 +1,7 @@
 /**
  * Acuity scheduler integration — service catalogue + URL helpers.
  *
- * Pulled live from the Acuity API on 2026-05-11 (owner=39144906).
+ * Pulled live from the Acuity API on 2026-05-21 (owner=39144906).
  * Update by re-running the API fetch if appointment types change in the Acuity dashboard.
  */
 
@@ -58,13 +58,13 @@ export const ACUITY_SERVICES: AcuityService[] = [
   { id: 92441036, name: 'Beard Trim', price: 40, duration: 15, category: 'Beard Services' },
   { id: 92441060, name: 'Beard Trim With Line Up', price: 45, duration: 20, category: 'Beard Services' },
 
-  // Kids Cuts
-  { id: 92328251, name: 'Baby (0-5 Y.O)', price: 52, duration: 15, category: 'Kids Cuts' },
-  { id: 92440505, name: 'Baby (0-5 Y.O) Skin Fade', price: 57, duration: 30, category: 'Kids Cuts' },
-  { id: 92440530, name: 'Primary School', price: 57, duration: 30, category: 'Kids Cuts' },
-  { id: 92440579, name: 'Primary School Skin Fade', price: 59, duration: 30, category: 'Kids Cuts' },
-  { id: 92440606, name: 'High School', price: 57, duration: 30, category: 'Kids Cuts' },
-  { id: 92440623, name: 'High School Skin Fade', price: 59, duration: 30, category: 'Kids Cuts' },
+  // Kids Cuts — Reserved tier ($10 booking fee, no VIP extras)
+  { id: 92328251, name: 'Baby (0-5 Y.O)', price: 42, duration: 15, category: 'Kids Cuts' },
+  { id: 92440505, name: 'Baby (0-5 Y.O) Skin Fade', price: 47, duration: 30, category: 'Kids Cuts' },
+  { id: 92440530, name: 'Primary School', price: 47, duration: 30, category: 'Kids Cuts' },
+  { id: 92440579, name: 'Primary School Skin Fade', price: 49, duration: 30, category: 'Kids Cuts' },
+  { id: 92440606, name: 'High School', price: 47, duration: 30, category: 'Kids Cuts' },
+  { id: 92440623, name: 'High School Skin Fade', price: 49, duration: 30, category: 'Kids Cuts' },
 
   // Teeth Whitening
   { id: 92449597, name: 'Teeth Whitening', price: 250, duration: 120, category: 'Teeth Whitening' },
@@ -90,6 +90,21 @@ export function getServicesByCategory(category: ServiceCategory): AcuityService[
 
 export function getServiceById(id: number): AcuityService | undefined {
   return ACUITY_SERVICES.find((s) => s.id === id)
+}
+
+/**
+ * Online-booking tier for a service.
+ * - `vip` — $20 booking fee with full inclusions (private room, hair wash, hot towel, drink, reserved time, with Nik).
+ * - `reserved` — $10 booking fee, kids only, reserved time with Nik. No VIP extras.
+ */
+export type BookingTier = 'vip' | 'reserved'
+
+export function getBookingTier(service: Pick<AcuityService, 'category'>): BookingTier {
+  return service.category === 'Kids Cuts' ? 'reserved' : 'vip'
+}
+
+export function getBookingFee(tier: BookingTier): number {
+  return tier === 'reserved' ? 10 : 20
 }
 
 /** Build the deep-link URL into Acuity, optionally pre-selecting a service. */

@@ -12,3 +12,9 @@ export const VIP_INCLUSIONS: VipInclusion[] = [
   { number: '05', label: 'Hot Towel Ritual', caption: 'Steamed finish' },
   { number: '06', label: 'With Nik', caption: 'Banna Ave Only' },
 ]
+
+/** Reserved tier (kids cuts) — $10 booking fee, no VIP extras. */
+export const RESERVED_INCLUSIONS: VipInclusion[] = [
+  { number: '01', label: 'Reserved Time', caption: 'No waiting' },
+  { number: '02', label: 'With Nik', caption: 'Banna Ave Only' },
+]

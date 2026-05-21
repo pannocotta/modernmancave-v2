@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import { ArrowRightIcon } from '@/components/icons'
-import { getServiceById, type AcuityService } from '@/lib/acuity'
+import { getServiceById, getBookingTier, getBookingFee, type AcuityService } from '@/lib/acuity'
 import { saveBooking } from '@/lib/bookings'
 
 type Step = 'date' | 'time' | 'details' | 'confirm'
@@ -18,6 +18,9 @@ interface FormState {
 export default function BookFlowPage({ params }: { params: { serviceId: string } }) {
   const serviceId = Number(params.serviceId)
   const service = getServiceById(serviceId)
+  const tier = service ? getBookingTier(service) : 'vip'
+  const fee = getBookingFee(tier)
+  const isReserved = tier === 'reserved'
 
   const [step, setStep] = useState<Step>('date')
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
@@ -71,7 +74,7 @@ export default function BookFlowPage({ params }: { params: { serviceId: string }
         >
           <ArrowRightIcon className="w-5 h-5 rotate-180" />
         </Link>
-        <p className="text-white/80 text-xs tracking-[0.2em] uppercase font-semibold">VIP Booking</p>
+        <p className="text-white/80 text-xs tracking-[0.2em] uppercase font-semibold">{isReserved ? 'Reserved Booking' : 'VIP Booking'}</p>
         <Link
           href="/launch"
           aria-label="Close"
@@ -84,18 +87,24 @@ export default function BookFlowPage({ params }: { params: { serviceId: string }
       <div className="relative z-10 px-6 pt-6 pb-24 max-w-md mx-auto">
         {/* Service summary */}
         <div className="border-l-2 border-brand-red pl-4 mb-5">
-          <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-1">Your VIP Booking</p>
+          <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-1">
+            {isReserved ? 'Your Reserved Booking' : 'Your VIP Booking'}
+          </p>
           <p className="text-white font-bold text-lg leading-tight">{service.name}</p>
           <p className="text-gray-500 text-xs tracking-wide mt-1">
             ${service.price} · {service.duration} min · with Nik
           </p>
         </div>
 
-        {/* VIP inclusions */}
+        {/* Booking inclusions */}
         <div className="border border-zinc-800 bg-zinc-950/60 px-4 py-3 mb-6">
-          <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-2">VIP Inclusions</p>
+          <p className="text-brand-red text-[10px] font-bold tracking-[0.3em] uppercase mb-2">
+            {isReserved ? 'What You Get' : 'VIP Inclusions'}
+          </p>
           <p className="text-gray-400 text-xs leading-relaxed">
-            Private area · hair wash · signature hot towel ritual · drink on us · guaranteed time · no walk-in wait. Full booking total, service plus the $20 VIP fee, is paid upfront.
+            {isReserved
+              ? `$${fee} Extra With No VIP Inclusions. Locked-in time with Nik. Full booking total, service plus the $${fee} fee, is paid upfront.`
+              : `Private area · hair wash · signature hot towel ritual · drink on us · guaranteed time · no walk-in wait. Full booking total, service plus the $${fee} VIP fee, is paid upfront.`}
           </p>
         </div>
 
